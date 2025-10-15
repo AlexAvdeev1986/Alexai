@@ -13,8 +13,8 @@ project/
 ├── nginx/
 │   └── your-site.conf
 └── site/
-    ├── index.html (переименуйте NikitaAI.html)
-    └── photo_2025-10-14_18-20-51.jpg
+    ├── index.html
+    └── 20251014_232231.png
 ```
 
 ## Шаг 2: Локальный запуск на Fedora 42
@@ -34,12 +34,6 @@ sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-### Изменения в файлах
-
-**1. Переименуйте файл:**
-```bash
-mv NikitaAI.html index.html
-```
 
 **2. Обновите `nginx/your-site.conf`:**
 
@@ -95,10 +89,7 @@ sudo systemctl enable docker
 
 ### 3.2 Загрузите проект на сервер
 
-```bash
-# Создайте директорию
-mkdir -p /opt/nikitaai
-cd /opt/nikitaai
+git clone https://github.com/AlexAvdeev1986/Alexai.git
 
 # Загрузите файлы (используйте scp, git или другой метод)
 ```
