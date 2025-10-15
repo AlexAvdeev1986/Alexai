@@ -1,0 +1,11 @@
+# docker-compose.yml
+services:
+  nginx:
+    image: nginx:alpine  # Используем облегченный образ
+    container_name: Alexai
+    ports:
+      - "80:80"  # Пробрасываем порт 80 хоста на порт 80 контейнера
+    volumes:
+      - ./nginx:/etc/nginx/conf.d/:ro  # Монтируем ваш конфиг Nginx
+      - ./site:/usr/share/nginx/html:ro  # Монтируем файлы сайта
+    restart: unless-stopped
