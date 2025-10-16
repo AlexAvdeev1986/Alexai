@@ -4,7 +4,7 @@ services:
     image: nginx:alpine
     container_name: Alexai
     ports:
-      - "127.0.0.1:8080:80"  # Слушаем только на localhost
+      - "127.0.0.1:8081:81"  # Слушаем только на localhost
     volumes:
       - ./nginx:/etc/nginx/conf.d/:ro
       - ./site:/usr/share/nginx/html:ro

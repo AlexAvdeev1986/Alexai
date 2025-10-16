@@ -46,7 +46,7 @@ newgrp docker
 
 ```nginx
 server {
-    listen 80;
+    listen 81;
     server_name localhost;
     root /usr/share/nginx/html;
     index index.html;
@@ -73,10 +73,10 @@ podman-compose ps
  podman-compose logs -f
 
 # Откройте в браузере
-firefox http://127.0.0.1:8080
+firefox http://127.0.0.1:8081
 
 ```
-Теперь сайт доступен по адресу: `http://127.0.0.1:8080`
+Теперь сайт доступен по адресу: `http://127.0.0.1:8081`
 
 ## Шаг 3: Развертывание на Ubuntu 22 с HTTPS
 
@@ -111,8 +111,8 @@ git clone https://github.com/AlexAvdeev1986/Alexai.git
 
 ```nginx
 server {
-    listen 80;
-    server_name Alexai5151.serveminecraft.net;
+    listen 81;
+    server_name alexai.ddns.net;
     root /usr/share/nginx/html;
     index index.html;
 
@@ -130,7 +130,7 @@ services:
     image: nginx:alpine
     container_name: Alexai
     ports:
-      - "127.0.0.1:8080:80"  # Слушаем только на localhost
+      - "127.0.0.1:8081:81"  # Слушаем только на localhost
     volumes:
       - ./nginx:/etc/nginx/conf.d/:ro
       - ./site:/usr/share/nginx/html:ro
@@ -149,11 +149,11 @@ sudo nano /etc/nginx/sites-available/Alexai
 
 ```nginx
 server {
-    listen 80;
-    server_name Alexai5151.serveminecraft.net;
+    listen 81;
+    server_name alexai.ddns.net;
 
     location / {
-        proxy_pass http://127.0.0.1:8080;
+        proxy_pass http://127.0.0.1:8081;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -268,7 +268,7 @@ sudo firewall-cmd --reload
 ## Итоговая схема
 
 ```
-Пользователь → HTTPS (443) → Nginx (хост) → HTTP (127.0.0.1:8080) → Docker контейнер (Nginx)
+Пользователь → HTTPS (443) → Nginx (хост) → HTTP (127.0.0.1:8081) → Docker контейнер (Nginx)
 ```
 
 Теперь ваш сайт будет доступен по адресу `https://alexai.ddns.net` без отображения порта!
@@ -292,6 +292,12 @@ sudo docker restart Alexai
 # Удалить контейнер
 sudo docker rm Alexai
 
+
+Если вам нужно полностью удалить контейнер:
+
+bash
+docker-compose down -v  # остановит и удалит тома
+
 Для podman
 # Просмотр логов контейнера
 sudo podman logs Alexai
@@ -310,3 +316,7 @@ sudo podman restart Alexai
 
 # Удалить контейнер
 sudo podman rm Alexai
+
+# Если нужно обновить сайт
+
+sudo systemctl reload nginx
