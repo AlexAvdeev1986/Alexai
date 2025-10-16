@@ -14,16 +14,23 @@ project/
 │   └── your-site.conf
 └── site/
     ├── index.html
-    └── 20251014_232231.png
+    └── photo_2025-10-14_18-20-51.jpg
 ```
+
+
+# Или Чтобы использовать Python в проектах, создавайте виртуальные окружения:
+```bash
+python -m venv venv
+source venv/bin/activate
 
 ## Шаг 2: Локальный запуск на Fedora 42
 
 ### Установка Docker (если не установлен)
 
+
 ```bash
 # Установка Docker
-sudo dnf install docker docker-compose -y
+sudo dnf install podman podman-compose -y
 
 # Запуск и автозагрузка Docker
 sudo systemctl start docker
@@ -54,19 +61,22 @@ server {
 
 ```bash
 # Перейдите в директорию проекта
-cd /path/to/project
+cd Alexai
 
 # Запустите контейнер
-docker-compose up -d
+podman-compose up -d
 
 # Проверьте статус
-docker-compose ps
+podman-compose ps
 
 # Просмотрите логи
-docker-compose logs -f
-```
+ podman-compose logs -f
 
-Теперь сайт доступен по адресу: `http://localhost`
+# Откройте в браузере
+firefox http://127.0.0.1:8080
+
+```
+Теперь сайт доступен по адресу: `http://127.0.0.1:8080`
 
 ## Шаг 3: Развертывание на Ubuntu 22 с HTTPS
 
@@ -89,7 +99,8 @@ sudo systemctl enable docker
 
 ### 3.2 Загрузите проект на сервер
 
-git clone https://github.com/AlexAvdeev1986/Alexai.git
+```bash
+git clone 
 
 # Загрузите файлы (используйте scp, git или другой метод)
 ```
@@ -101,7 +112,7 @@ git clone https://github.com/AlexAvdeev1986/Alexai.git
 ```nginx
 server {
     listen 80;
-    server_name nikitaai5151.serveminecraft.net;
+    server_name Alexai5151.serveminecraft.net;
     root /usr/share/nginx/html;
     index index.html;
 
@@ -117,7 +128,7 @@ server {
 services:
   nginx:
     image: nginx:alpine
-    container_name: NikitaAI
+    container_name: Alexai
     ports:
       - "127.0.0.1:8080:80"  # Слушаем только на localhost
     volumes:
@@ -131,15 +142,15 @@ services:
 Создайте конфигурацию Nginx на хосте:
 
 ```bash
-sudo nano /etc/nginx/sites-available/nikitaai
+sudo nano /etc/nginx/sites-available/Alexai
 ```
 
-**Содержимое файла `/etc/nginx/sites-available/nikitaai`:**
+**Содержимое файла `/etc/nginx/sites-available/Alexai`:**
 
 ```nginx
 server {
     listen 80;
-    server_name nikitaai5151.serveminecraft.net;
+    server_name Alexai5151.serveminecraft.net;
 
     location / {
         proxy_pass http://127.0.0.1:8080;
@@ -155,7 +166,7 @@ server {
 
 ```bash
 # Создайте символическую ссылку
-sudo ln -s /etc/nginx/sites-available/nikitaai /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/Alexai /etc/nginx/sites-enabled/
 
 # Удалите дефолтную конфигурацию
 sudo rm /etc/nginx/sites-enabled/default
@@ -170,8 +181,15 @@ sudo systemctl restart nginx
 ### 3.6 Настройка SSL с помощью Let's Encrypt
 
 ```bash
+sudo docker ps
+
+6. Проверьте статус Nginx
+sudo systemctl status nginx.service
+journalctl -xeu nginx.service
+
+
 # Получите SSL-сертификат
-sudo certbot --nginx -d nikitaai5151.serveminecraft.net
+sudo certbot --nginx -d Alexai5151.serveminecraft.net
 
 # Следуйте инструкциям certbot
 # Выберите опцию редиректа HTTP -> HTTPS
@@ -182,7 +200,7 @@ Certbot автоматически обновит конфигурацию Nginx
 ### 3.7 Запустите Docker контейнер
 
 ```bash
-cd /opt/nikitaai
+cd /opt/Alexai
 docker-compose up -d
 
 # Проверьте статус
@@ -203,7 +221,7 @@ sudo certbot renew --dry-run
 
 ## Шаг 4: Проверка работы
 
-1. Откройте браузер и перейдите по адресу: `https://nikitaai5151.serveminecraft.net`
+1. Откройте браузер и перейдите по адресу: `https://alexai.ddns.net`
 2. Убедитесь, что:
    - Сайт загружается
    - Используется HTTPS
@@ -253,7 +271,8 @@ sudo firewall-cmd --reload
 Пользователь → HTTPS (443) → Nginx (хост) → HTTP (127.0.0.1:8080) → Docker контейнер (Nginx)
 ```
 
-Теперь ваш сайт будет доступен по адресу `https://nikitaai5151.serveminecraft.net` без отображения порта!
+Теперь ваш сайт будет доступен по адресу `https://alexai.ddns.net` без отображения порта!
+
 
 # Просмотр логов контейнера
 sudo docker logs Alexai
@@ -272,3 +291,22 @@ sudo docker restart Alexai
 
 # Удалить контейнер
 sudo docker rm Alexai
+
+Для podman
+# Просмотр логов контейнера
+sudo podman logs Alexai
+
+# Просмотр логов в реальном времени
+sudo podman logs -f Alexai
+
+# Остановить контейнер
+sudo podman stop Alexai
+
+# Запустить остановленный контейнер
+sudo podman start Alexai
+
+# Перезапустить контейнер
+sudo podman restart Alexai
+
+# Удалить контейнер
+sudo podman rm Alexai
