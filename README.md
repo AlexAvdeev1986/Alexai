@@ -100,7 +100,7 @@ sudo systemctl enable docker
 ### 3.2 Загрузите проект на сервер
 
 ```bash
-git clone 
+git clone https://github.com/AlexAvdeev1986/Alexai.git
 
 # Загрузите файлы (используйте scp, git или другой метод)
 ```
@@ -189,7 +189,7 @@ journalctl -xeu nginx.service
 
 
 # Получите SSL-сертификат
-sudo certbot --nginx -d Alexai5151.serveminecraft.net
+sudo certbot --nginx -d alexai.ddns.net
 
 # Следуйте инструкциям certbot
 # Выберите опцию редиректа HTTP -> HTTPS
