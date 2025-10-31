@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Developer | Aleksandr - Создаю нейросотрудников для бизнеса</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Cover Section */
+        .cover-section {
+            background: #0a0a0a;
+            padding: 120px 0 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cover-container {
+            width: 100%;
+            max-width: 1200px;
+            min-height: 600px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            position: relative;
+            display: flex;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(102, 126, 234, 0.3);
+        }
+
+        .cover-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .left-section {
+            width: 50%;
+            padding: 60px 50px;
+            background: rgba(26, 26, 46, 0.5);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-title {
+            font-size: 68px;
+            font-weight: 900;
+            line-height: 0.95;
+            background: linear-gradient(135deg, #fff 0%, #667eea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #b0b0b0;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .portfolio-list {
+            list-style: none;
+        }
+
+        .portfolio-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #b0b0b0;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(5px);
+        }
+
+        .portfolio-item .icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .contact-footer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: auto;
+            padding-top: 20px;
+        }
+
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact-text {
+            font-size: 16px;
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+
+        .right-section {
+            width: 50%;
+            position: relative;
+            background: linear-gradient(180deg, rgba(22, 33, 62, 0.5) 0%, rgba(26, 26, 46, 0.5) 100%);
+        }
+
+        .photo-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .photo-frame {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.2) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        .logo-badge {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+            z-index: 2;
+        }
+
+        .logo-badge .pin-icon {
+            font-size: 24px;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 0;
+            background: #0a0a0a;
+            position: relative;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #667eea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #b0b0b0;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .portfolio-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top right, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-card:hover::before {
+            opacity: 1;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .portfolio-card .card-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .portfolio-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .portfolio-card p {
+            font-size: 15px;
+            color: #b0b0b0;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Stack Section */
+        .stack {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #0a0a0a 0%, #16213e 100%);
+            position: relative;
+        }
+
+        .stack::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+        }
+
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .stack-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 17px;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stack-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stack-item:hover::before {
+            opacity: 1;
+        }
+
+        .stack-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: #0a0a0a;
+        }
+
+        .services-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 30px 35px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .service-item:hover {
+            transform: translateX(15px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .service-item .check {
+            font-size: 28px;
+            color: #667eea;
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 50%;
+        }
+
+        .service-item span {
+            font-size: 18px;
+            color: #e0e0e0;
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #0a0a0a 0%, #16213e 100%);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content > p {
+            font-size: 20px;
+            color: #b0b0b0;
+            line-height: 1.8;
+        }
+
+        .about-content .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 1.7;
+            margin-top: 40px;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content .highlight::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .contact .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .contact-item .contact-icon-large {
+            font-size: 56px;
+        }
+
+        .contact-item span {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            font-size: 18px;
+        }
+
+        .contact-item a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 40px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 15px;
+        }
+
+        /* Scroll animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .portfolio-card, .service-item, .stack-item {
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .portfolio-card:nth-child(1) { animation-delay: 0.1s; }
+        .portfolio-card:nth-child(2) { animation-delay: 0.2s; }
+        .portfolio-card:nth-child(3) { animation-delay: 0.3s; }
+        .portfolio-card:nth-child(4) { animation-delay: 0.4s; }
+        .portfolio-card:nth-child(5) { animation-delay: 0.5s; }
+        .portfolio-card:nth-child(6) { animation-delay: 0.6s; }
+        .portfolio-card:nth-child(7) { animation-delay: 0.7s; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .cover-container {
+                flex-direction: column;
+            }
+
+            .left-section, .right-section {
+                width: 100%;
+            }
+
+            .right-section {
+                min-height: 500px;
+            }
+
+            .main-title {
+                font-size: 52px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 42px;
+            }
+
+            .subtitle {
+                font-size: 20px;
+            }
+
+            .page-title {
+                font-size: 36px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .left-section {
+                padding: 40px 30px;
+            }
+
+            nav .logo {
+                font-size: 20px;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-container.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50%;
+            border-top-color: #667eea;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            transform: translateY(50px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .modal-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .modal-description {
+            color: #b0b0b0;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .modal-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .modal-features li {
+            padding: 8px 0;
+            color: #b0b0b0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-features li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading-container" id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">AI Agent Dev</div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul id="navMenu">
+                <li><a href="#portfolio">Портфолио</a></li>
+                <li><a href="#stack">Технологии</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Cover Section -->
+    <section class="cover-section">
+        <div class="cover-container">
+            <div class="left-section">
+                <h1 class="main-title">AI Agent<br>Developer</h1>
+                
+                <p class="subtitle">Создаю нейросотрудников<br>для бизнеса:</p>
+                
+                <p class="description">
+                    Разрабатываю интеллектуальных агентов, которые автоматизируют рутинные бизнес-процессы и работают как полноценные сотрудники
+                </p>
+
+                <h2 class="section-title">Портфолио нейросотрудников:</h2>
+                <ul class="portfolio-list">
+                    <li class="portfolio-item" data-modal="modal1">
+                        <span class="icon">🎯</span>
+                        <span><strong>Нейро-контроль качества</strong> — анализ звонков (OpenAI Whisper + GPT-4)</span>
+                    </li>
+                    <li class="portfolio-item" data-modal="modal2">
+                        <span class="icon">👥</span>
+                        <span><strong>Нейро-HR</strong> — автоматизация подбора персонала</span>
+                    </li>
+                    <li class="portfolio-item" data-modal="modal3">
+                        <span class="icon">📝</span>
+                        <span><strong>Нейро-контент-мейкер</strong> — генерация контента</span>
+                    </li>
+                    <li class="portfolio-item" data-modal="modal4">
+                        <span class="icon">✈️</span>
+                        <span><strong>Нейро-секретарь</strong> — обработка запросов</span>
+                    </li>
+                    <li class="portfolio-item" data-modal="modal5">
+                        <span class="icon">🎬</span>
+                        <span><strong>Нейро-видеоагент</strong> — таблица экзаменов</span>
+                    </li>
+                    <li class="portfolio-item" data-modal="modal6">
+                        <span class="icon">📊</span>
+                        <span><strong>Нейроконтентагент</strong> — генератор сценариев</span>
+                    </li>
+                </ul>
+
+                <div class="contact-footer">
+                    <div class="contact-icon">🌐</div>
+                    <span class="contact-text">Открыт к проектам • @DmitryTo1986</span>
+                </div>
+            </div>
+
+            <div class="right-section">
+                <div class="photo-container">
+                    <div class="photo-frame">
+                        <!-- Замените этот URL на ваше реальное фото -->
+                        <img src="20251014_232231.jpeg" alt="Professional Photo">
+                    </div>
+                    <div class="logo-badge">
+                        <span class="pin-icon">📍</span>
+                        <span>Москва</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="page-title">Портфолио нейросотрудников</h2>
+            <p class="page-subtitle">Готовые решения для автоматизации вашего бизнеса</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-card" data-modal="modal1">
+                    <div class="card-icon">🎯</div>
+                    <h3>Нейро-контроль качества</h3>
+                    <p>Анализ звонков с использованием OpenAI Whisper + GPT-4: транскрибация, выявление проблем и рекомендации по улучшению</p>
+                </div>
+
+                <div class="portfolio-card" data-modal="modal2">
+                    <div class="card-icon">👥</div>
+                    <h3>Нейро-HR</h3>
+                    <p>Автоматизация подбора и адаптации персонала. Скрининг резюме, проведение первичных интервью и оценка кандидатов</p>
+                </div>
+
+                <div class="portfolio-card" data-modal="modal3">
+                    <div class="card-icon">📝</div>
+                    <h3>Нейро-экзаменатор</h3>
+                    <p>Проверка знаний и навыков сотрудников. Автоматическое тестирование и оценка компетенций</p>
+                </div>
+
+                <div class="portfolio-card" data-modal="modal4">
+                    <div class="card-icon">📊</div>
+                    <h3>Нейро-контент-мейкер + трафиколог</h3>
+                    <p>Генерация контента и управление рекламой. Создание постов, настройка и оптимизация рекламных кампаний</p>
+                </div>
+
+                <div class="portfolio-card" data-modal="modal5">
+                    <div class="card-icon">💼</div>
+                    <h3>Нейро-продажник</h3>
+                    <p>Квалификация лидов и автоматизация продаж. Общение с клиентами, выявление потребностей и закрытие сделок</p>
+                </div>
+
+                <div class="portfolio-card" data-modal="modal6">
+                    <div class="card-icon">✈️</div>
+                    <h3>Нейро-секретарь</h3>
+                    <p>Обработка запросов и управление коммуникациями. Ответы на вопросы, запись на встречи и координация задач</p>
+                </div>
+
+                <div class="portfolio-card" data-modal="modal7">
+                    <div class="card-icon">🎬</div>
+                    <h3>Нейро-копирайтер по видео</h3>
+                    <p>Создание сценариев и описаний для видеоконтента. Генерация идей, написание текстов и оптимизация под SEO</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stack Section -->
+    <section id="stack" class="stack">
+        <div class="container">
+            <h2 class="page-title">Технологический стек</h2>
+            <p class="page-subtitle">Использую современные технологии для создания надежных решений</p>
+            
+            <div class="stack-grid">
+                <div class="stack-item">Python, Django, FastAPI</div>
+                <div class="stack-item">OpenAI API</div>
+                <div class="stack-item">Telegram API</div>
+                <div class="stack-item">Docker</div>
+                <div class="stack-item">REST API</div>
+                <div class="stack-item">Интеграции с CRM</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="page-title">Что я делаю</h2>
+            <p class="page-subtitle">Полный цикл разработки AI-решений под ключ</p>
+            
+            <div class="services-list">
+                <div class="service-item">
+                    <span class="check">✓</span>
+                    <span>Создание AI-агентов под ключ с нуля до запуска</span>
+                </div>
+                <div class="service-item">
+                    <span class="check">✓</span>
+                    <span>Автоматизация продаж и HR-процессов</span>
+                </div>
+                <div class="service-item">
+                    <span class="check">✓</span>
+                    <span>Интеграция ИИ в существующие системы и CRM</span>
+                </div>
+                <div class="service-item">
+                    <span class="check">✓</span>
+                    <span>MVP и прототипы за 2-4 недели</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2 class="page-title">Уникальное сочетание</h2>
+            <div class="about-content">
+                <p>
+                    Мой опыт — это не только технические навыки, но и глубокое понимание бизнес-процессов
+                </p>
+                <div class="highlight">
+                    10+ лет в продажах + технические навыки = ИИ-решения, которые понимают реальный бизнес и приносят результат
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="page-title" style="color: white;">Готовы начать проект?</h2>
+            <p style="font-size: 22px; margin-bottom: 20px;">Свяжитесь со мной удобным способом</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon-large">📍</div>
+                    <span>Москва</span>
+                    <p style="opacity: 0.9; margin-top: 5px;">Открыт к проектам</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon-large">💬</div>
+                    <span>Telegram</span>
+                    <a href="https://t.me/DmitryTo1986">@DmitryTo1986</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <a href="https://t.me/DmitryTo1986" class="btn btn-primary">Написать в Telegram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 AI Agent Developer | Шухоров Никита Сергеевич. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Windows -->
+    <div class="modal" id="modal1">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Нейро-контроль качества</h3>
+            <p class="modal-description">Автоматизированная система анализа звонков с использованием OpenAI Whisper и GPT-4. Обеспечивает полный контроль качества коммуникаций с клиентами.</p>
+            <ul class="modal-features">
+                <li>Транскрибация аудиозаписей звонков</li>
+                <li>Анализ тона и эмоциональной окраски разговора</li>
+                <li>Выявление проблемных моментов в диалоге</li>
+                <li>Автоматические рекомендации по улучшению</li>
+                <li>Интеграция с CRM-системами</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal2">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Нейро-HR</h3>
+            <p class="modal-description">Интеллектуальная система автоматизации процессов подбора и адаптации персонала.</p>
+            <ul class="modal-features">
+                <li>Автоматический скрининг резюме</li>
+                <li>Проведение первичных интервью</li>
+                <li>Оценка компетенций кандидатов</li>
+                <li>Анализ соответствия требованиям вакансии</li>
+                <li>Интеграция с системами управления персоналом</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal3">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Нейро-контент-мейкер</h3>
+            <p class="modal-description">Автоматизированная система создания контента для различных платформ и каналов коммуникации.</p>
+            <ul class="modal-features">
+                <li>Генерация текстового контента</li>
+                <li>Создание постов для социальных сетей</li>
+                <li>Написание статей и пресс-релизов</li>
+                <li>Адаптация контента под разные аудитории</li>
+                <li>Оптимизация под SEO-требования</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal4">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Нейро-секретарь</h3>
+            <p class="modal-description">Виртуальный помощник для обработки запросов и управления коммуникациями.</p>
+            <ul class="modal-features">
+                <li>Ответы на часто задаваемые вопросы</li>
+                <li>Запись на встречи и консультации</li>
+                <li>Координация задач и напоминания</li>
+                <li>Интеграция с календарями и мессенджерами</li>
+                <li>Персонализация взаимодействия</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal5">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Нейро-видеоагент</h3>
+            <p class="modal-description">Система автоматизации работы с видео-контентом и анализа видеоматериалов.</p>
+            <ul class="modal-features">
+                <li>Автоматическое создание таблиц экзаменов</li>
+                <li>Анализ видеозаписей</li>
+                <li>Генерация субтитров и аннотаций</li>
+                <li>Создание сценариев для видеоконтента</li>
+                <li>Оптимизация видео под разные платформы</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal6">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Нейроконтентагент</h3>
+            <p class="modal-description">Продвинутая система генерации сценариев и контент-стратегий.</p>
+            <ul class="modal-features">
+                <li>Создание сценариев для видеороликов</li>
+                <li>Разработка контент-стратегий</li>
+                <li>Генерация идей для контента</li>
+                <li>Анализ эффективности контента</li>
+                <li>Адаптация под целевую аудиторию</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal7">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Нейро-копирайтер по видео</h3>
+            <p class="modal-description">Специализированная система для создания текстового сопровождения видеоконтента.</p>
+            <ul class="modal-features">
+                <li>Написание сценариев для видео</li>
+                <li>Создание описаний и аннотаций</li>
+                <li>Генерация SEO-оптимизированных текстов</li>
+                <li>Адаптация контента под разные платформы</li>
+                <li>Анализ эффективности текстового сопровождения</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Loading animation
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Mobile menu
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.getElementById('navbar').classList.add('scrolled');
+            } else {
+                document.getElementById('navbar').classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // Modal functionality
+        const modals = document.querySelectorAll('.modal');
+        const modalTriggers = document.querySelectorAll('[data-modal]');
+        const modalCloseButtons = document.querySelectorAll('.modal-close');
+
+        // Open modal
+        modalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function() {
+                const modalId = this.getAttribute('data-modal');
+                const modal = document.getElementById(modalId);
+                
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close modal
+        modalCloseButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = this.closest('.modal');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close modal when clicking outside
+        modals.forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                modals.forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.portfolio-card, .service-item, .stack-item').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
