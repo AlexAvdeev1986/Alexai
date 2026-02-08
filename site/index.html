@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent Factory | Создаю нейросотрудников которые работают 24/7</title>
-    <meta name="description" content="Автоматизируйте бизнес с AI-агентами. Экономьте до 70% на зарплатах сотрудников. Внедрение за 2-4 недели с гарантией результата">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Логотип пекарни - Варианты</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Cormorant+Garamond:wght@600&family=Playfair+Display:wght@700&family=Comfortaa:wght@600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,1719 +12,596 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --neon-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-            --dark-bg: #0a0a0a;
-            --card-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            --text-light: #e0e0e0;
-            --text-gray: #b0b0b0;
-            --neon-glow: 0 0 20px rgba(102, 126, 234, 0.7);
-        }
-
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: var(--dark-bg);
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(102, 126, 234, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(118, 75, 162, 0.05) 0%, transparent 20%);
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #fef5e7 0%, #f9e4c8 50%, #f5d5ae 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
         }
 
-        /* Анимированный фон с частицами */
-        .particles {
-            position: fixed;
+        h1 {
+            text-align: center;
+            color: #5d4037;
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8d6e63;
+            font-size: 24px;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        .logos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .logo-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(139, 69, 19, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-card::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
+            right: 0;
             height: 4px;
-            background: var(--primary-gradient);
-            border-radius: 50%;
-            animation: float 6s infinite linear;
+            background: linear-gradient(90deg, #d4a574, #e8b974, #d4a574);
         }
 
-        @keyframes float {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        .logo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(139, 69, 19, 0.25);
         }
 
-        /* Новый хедер с анимацией */
-        .ai-pulse {
+        .logo-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-svg {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08));
+        }
+
+        .logo-name {
+            font-size: 32px;
+            color: #5d4037;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .logo-tagline {
+            font-size: 16px;
+            color: #8d6e63;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .marketing-info {
+            border-top: 2px solid #f5e6d3;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .marketing-info h3 {
+            color: #6d4c41;
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .marketing-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .marketing-info li {
+            color: #8d6e63;
+            font-size: 15px;
+            margin-bottom: 8px;
+            padding-left: 24px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .marketing-info li::before {
+            content: '🌾';
+            position: absolute;
+            left: 0;
+        }
+
+        .best-choice {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(238, 90, 111, 0.3);
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(102, 126, 234, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(102, 126, 234, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            background: rgba(10, 10, 10, 0.98);
-            box-shadow: 0 5px 30px rgba(102, 126, 234, 0.2);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-
-        nav .logo {
-            font-size: 28px;
-            font-weight: 900;
-            background: var(--neon-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            font-size: 32px;
-            background: var(--neon-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-            font-size: 16px;
-        }
-
-        nav a:hover {
-            color: #00f2fe;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--neon-gradient);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            background: var(--neon-gradient);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 10px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--neon-glow);
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(79, 172, 254, 0.5);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        /* Новый хедер с статистикой */
-        .stats-bar {
-            background: rgba(0, 242, 254, 0.1);
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(0, 242, 254, 0.2);
-            backdrop-filter: blur(10px);
-        }
-
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--text-light);
-        }
-
-        .stat-number {
-            font-size: 32px;
-            font-weight: 900;
-            background: var(--neon-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-top: 5px;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            background: var(--dark-bg);
-            padding: 180px 0 100px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            background: rgba(0, 242, 254, 0.1);
-            border: 1px solid rgba(0, 242, 254, 0.3);
-            color: #00f2fe;
-            padding: 10px 20px;
-            border-radius: 30px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 25px;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-title {
-            font-size: 68px;
-            font-weight: 900;
-            line-height: 1.1;
-            background: linear-gradient(135deg, #fff 0%, #00f2fe 50%, #4facfe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 25px;
-            letter-spacing: -1.5px;
-        }
-
-        .hero-subtitle {
-            font-size: 24px;
-            color: var(--text-light);
-            margin-bottom: 30px;
-            font-weight: 400;
-            line-height: 1.4;
-        }
-
-        .hero-description {
-            font-size: 18px;
-            line-height: 1.6;
-            color: var(--text-gray);
-            margin-bottom: 40px;
-        }
-
-        .hero-visual {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .ai-orb {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle at 30% 30%, #667eea, #764ba2);
-            border-radius: 50%;
-            position: relative;
-            box-shadow: 
-                inset 0 0 50px rgba(255,255,255,0.1),
-                0 0 80px rgba(102, 126, 234, 0.4);
-            animation: float-orb 6s ease-in-out infinite;
-        }
-
-        @keyframes float-orb {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.02); }
-        }
-
-        .ai-orb::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: conic-gradient(from 0deg, #667eea, #764ba2, #667eea);
-            border-radius: 50%;
-            z-index: -1;
-            animation: rotate 10s linear infinite;
-            opacity: 0.7;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .orb-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-            z-index: 2;
-        }
-
-        .orb-icon {
-            font-size: 80px;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .orb-text {
-            font-size: 24px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #fff 0%, #00f2fe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* CTA кнопки */
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            margin: 35px 0;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 18px 35px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn-primary {
-            background: var(--neon-gradient);
-            color: white;
-            box-shadow: var(--neon-glow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(79, 172, 254, 0.5);
-        }
-
-        .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: 2px solid rgba(0, 242, 254, 0.5);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(0, 242, 254, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 242, 254, 0.3);
-        }
-
-        /* Секция преимуществ */
-        .benefits {
-            padding: 100px 0;
-            background: rgba(10, 10, 10, 0.8);
-            position: relative;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .benefit-card {
-            background: var(--card-bg);
-            padding: 40px 30px;
+        .recommendations {
+            background: white;
             border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(139, 69, 19, 0.15);
+            margin-top: 40px;
+        }
+
+        .recommendations h2 {
+            color: #5d4037;
+            font-size: 36px;
+            margin-bottom: 24px;
+            font-family: 'Playfair Display', serif;
             text-align: center;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            position: relative;
-            overflow: hidden;
         }
 
-        .benefit-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--neon-gradient);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
+        .recommendations p {
+            color: #6d4c41;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 16px;
         }
 
-        .benefit-card:hover::before {
-            transform: scaleX(1);
+        .recommendations strong {
+            color: #5d4037;
+            font-weight: 700;
         }
 
-        .benefit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
-            border-color: rgba(0, 242, 254, 0.5);
-        }
-
-        .benefit-icon {
-            font-size: 60px;
-            margin-bottom: 25px;
-            display: block;
-            background: var(--neon-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .benefit-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-
-        .benefit-card p {
-            font-size: 16px;
-            color: var(--text-gray);
-            line-height: 1.6;
-        }
-
-        /* Секция портфолио */
-        .portfolio {
-            padding: 100px 0;
-            background: var(--dark-bg);
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title {
-            font-size: 52px;
-            font-weight: 900;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #fff 0%, #00f2fe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .section-subtitle {
-            font-size: 20px;
-            color: var(--text-gray);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .portfolio-card {
-            background: var(--card-bg);
-            padding: 35px;
-            border-radius: 20px;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .portfolio-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at top right, rgba(0, 242, 254, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .portfolio-card:hover::before {
-            opacity: 1;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 242, 254, 0.2);
-            border-color: rgba(0, 242, 254, 0.5);
-        }
-
-        .card-header {
+        .color-palette {
             display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .card-icon {
-            font-size: 48px;
-            background: var(--neon-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            flex-shrink: 0;
-        }
-
-        .card-title {
-            font-size: 24px;
-            color: #fff;
-            margin: 0;
-        }
-
-        .portfolio-card p {
-            font-size: 16px;
-            color: var(--text-gray);
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .card-features {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .card-features li {
-            padding: 8px 0;
-            color: var(--text-gray);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-features li:last-child {
-            border-bottom: none;
-        }
-
-        .feature-icon {
-            color: #00f2fe;
-            font-size: 14px;
-        }
-
-        .card-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #00f2fe;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .card-cta:hover {
             gap: 12px;
-            color: #4facfe;
+            margin-top: 20px;
+            flex-wrap: wrap;
         }
 
-        /* Секция процесса работы */
-        .process {
-            padding: 100px 0;
-            background: rgba(10, 10, 10, 0.8);
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .process-step {
-            background: var(--card-bg);
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            position: relative;
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .process-step:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 242, 254, 0.5);
-            box-shadow: 0 15px 30px rgba(0, 242, 254, 0.2);
-        }
-
-        .step-number {
+        .color-swatch {
             width: 60px;
             height: 60px;
-            background: var(--neon-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 900;
-            color: white;
-            margin: 0 auto 25px;
-            box-shadow: var(--neon-glow);
-        }
-
-        .process-step h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-
-        .process-step p {
-            color: var(--text-gray);
-            line-height: 1.6;
-        }
-
-        /* Секция CTA */
-        .cta-section {
-            padding: 120px 0;
-            background: var(--neon-gradient);
-            color: white;
-            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
             position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
-            background-size: cover;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .cta-title {
-            font-size: 56px;
-            font-weight: 900;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .cta-subtitle {
-            font-size: 22px;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .btn-white {
-            background: white;
-            color: #4facfe;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-white:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-outline-white {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-outline-white:hover {
-            background: white;
-            color: #4facfe;
-        }
-
-        /* Форма заявки */
-        .form-section {
-            padding: 100px 0;
-            background: var(--dark-bg);
-        }
-
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            position: relative;
-        }
-
-        .form-title {
-            text-align: center;
-            font-size: 36px;
-            font-weight: 900;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #fff 0%, #00f2fe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .form-subtitle {
-            text-align: center;
-            font-size: 18px;
-            color: var(--text-gray);
-            margin-bottom: 40px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-light);
-            font-weight: 600;
-            font-size: 16px;
-        }
-
-        .form-input, .form-select, .form-textarea {
-            width: 100%;
-            padding: 15px 20px;
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            border-radius: 10px;
-            background: rgba(10, 10, 10, 0.6);
-            color: white;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-            outline: none;
-            border-color: #00f2fe;
-            box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.2);
-        }
-
-        .form-textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .form-submit {
-            width: 100%;
-            padding: 18px;
-            background: var(--neon-gradient);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-            box-shadow: var(--neon-glow);
+            transition: transform 0.3s;
         }
 
-        .form-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(79, 172, 254, 0.4);
-        }
-
-        .form-success {
-            display: none;
-            background: rgba(76, 175, 80, 0.1);
-            border: 1px solid #4CAF50;
-            color: #4CAF50;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 20px;
-            font-size: 16px;
-        }
-
-        .form-success i {
-            font-size: 24px;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        /* Футер */
-        footer {
-            background: #050505;
-            color: white;
-            padding: 60px 0 30px;
-            border-top: 1px solid rgba(102, 126, 234, 0.2);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            background: var(--neon-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: var(--text-gray);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .footer-links a:hover {
-            color: #00f2fe;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-gray);
-            font-size: 14px;
-        }
-
-        /* WhatsApp кнопка */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: #25D366;
-            color: white;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 34px;
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            animation: pulse 2s infinite;
-        }
-
-        .whatsapp-float:hover {
+        .color-swatch:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
         }
 
-        /* Модальное окно */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            transform: translateY(50px);
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal.active .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-close {
+        .color-label {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .modal-title {
-            font-size: 28px;
-            margin-bottom: 10px;
-            color: white;
-            text-align: center;
-        }
-
-        .modal-description {
-            color: var(--text-gray);
-            line-height: 1.6;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        /* Адаптивность */
-        @media (max-width: 1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-
-            .hero-title {
-                font-size: 52px;
-            }
-
-            .ai-orb {
-                width: 300px;
-                height: 300px;
-            }
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: #8d6e63;
+            white-space: nowrap;
         }
 
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 42px;
-            }
-
-            .hero-subtitle {
-                font-size: 20px;
-            }
-
-            .section-title {
-                font-size: 42px;
-            }
-
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(10, 10, 10, 0.98);
-                flex-direction: column;
-                padding: 20px;
-                text-align: center;
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .stats-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .form-container {
-                padding: 30px 20px;
-            }
-
-            .form-title {
-                font-size: 28px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 36px;
-            }
-
-            .section-title {
-                font-size: 36px;
-            }
-
-            .cta-title {
-                font-size: 42px;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .ai-orb {
-                width: 250px;
-                height: 250px;
-            }
-
-            .form-container {
-                padding: 25px 15px;
-            }
+            h1 { font-size: 32px; }
+            .subtitle { font-size: 18px; }
+            .logos-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Анимированные частицы -->
-    <div class="particles" id="particles"></div>
+    <div class="container">
+        <h1>🥐 Продающие варианты для вашей пекарни</h1>
+        <p class="subtitle">5 готовых концепций с логотипами и маркетинговым обоснованием</p>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/79362585387?text=Здравствуйте!%20Я%20заинтересован%20в%20разработке%20AI-агента%20для%20бизнеса" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Stats Bar -->
-    <div class="stats-bar">
-        <div class="container">
-            <div class="stats-container">
-                <div class="stat-item">
-                    <div class="stat-number">70%</div>
-                    <div class="stat-label">Экономия на зарплатах</div>
+        <div class="logos-grid">
+            <!-- Вариант 1: Тёплая Пышка -->
+            <div class="logo-card">
+                <div class="best-choice">ТОП ВЫБОР</div>
+                <div class="logo-wrapper">
+                    <svg class="logo-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Фон с паром -->
+                        <defs>
+                            <linearGradient id="steamGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#e8b974;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#e8b974;stop-opacity:0" />
+                            </linearGradient>
+                            <linearGradient id="bunGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#f4c89a" />
+                                <stop offset="100%" style="stop-color:#d4a574" />
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Пар от булочки (анимированный эффект) -->
+                        <path d="M 100 80 Q 95 60 100 40" stroke="url(#steamGradient)" stroke-width="3" fill="none" opacity="0.6">
+                            <animate attributeName="d" dur="3s" repeatCount="indefinite"
+                                values="M 100 80 Q 95 60 100 40; M 100 80 Q 105 60 100 40; M 100 80 Q 95 60 100 40"/>
+                        </path>
+                        <path d="M 150 80 Q 145 55 150 30" stroke="url(#steamGradient)" stroke-width="3" fill="none" opacity="0.6">
+                            <animate attributeName="d" dur="3.5s" repeatCount="indefinite"
+                                values="M 150 80 Q 145 55 150 30; M 150 80 Q 155 55 150 30; M 150 80 Q 145 55 150 30"/>
+                        </path>
+                        <path d="M 200 80 Q 195 65 200 50" stroke="url(#steamGradient)" stroke-width="3" fill="none" opacity="0.6">
+                            <animate attributeName="d" dur="2.8s" repeatCount="indefinite"
+                                values="M 200 80 Q 195 65 200 50; M 200 80 Q 205 65 200 50; M 200 80 Q 195 65 200 50"/>
+                        </path>
+                        
+                        <!-- Круг-основа -->
+                        <circle cx="150" cy="150" r="110" fill="#fff9f0" stroke="#d4a574" stroke-width="6"/>
+                        
+                        <!-- Стилизованная булочка с деталями -->
+                        <ellipse cx="150" cy="160" rx="70" ry="55" fill="url(#bunGradient)"/>
+                        <ellipse cx="150" cy="155" rx="65" ry="50" fill="#e8b974"/>
+                        
+                        <!-- Семечки на булочке -->
+                        <ellipse cx="135" cy="145" rx="3" ry="4" fill="#8d6e63" opacity="0.7"/>
+                        <ellipse cx="150" cy="140" rx="3" ry="4" fill="#8d6e63" opacity="0.7"/>
+                        <ellipse cx="165" cy="145" rx="3" ry="4" fill="#8d6e63" opacity="0.7"/>
+                        <ellipse cx="142" cy="155" rx="3" ry="4" fill="#8d6e63" opacity="0.7"/>
+                        <ellipse cx="158" cy="155" rx="3" ry="4" fill="#8d6e63" opacity="0.7"/>
+                        <ellipse cx="150" cy="165" rx="3" ry="4" fill="#8d6e63" opacity="0.7"/>
+                        
+                        <!-- Декоративные колосья пшеницы -->
+                        <g transform="translate(50, 140)">
+                            <line x1="0" y1="40" x2="0" y2="0" stroke="#d4a574" stroke-width="2"/>
+                            <ellipse cx="-3" cy="5" rx="4" ry="6" fill="#e8b974"/>
+                            <ellipse cx="3" cy="10" rx="4" ry="6" fill="#e8b974"/>
+                            <ellipse cx="-3" cy="15" rx="4" ry="6" fill="#e8b974"/>
+                            <ellipse cx="3" cy="20" rx="4" ry="6" fill="#e8b974"/>
+                        </g>
+                        <g transform="translate(250, 140) scale(-1, 1)">
+                            <line x1="0" y1="40" x2="0" y2="0" stroke="#d4a574" stroke-width="2"/>
+                            <ellipse cx="-3" cy="5" rx="4" ry="6" fill="#e8b974"/>
+                            <ellipse cx="3" cy="10" rx="4" ry="6" fill="#e8b974"/>
+                            <ellipse cx="-3" cy="15" rx="4" ry="6" fill="#e8b974"/>
+                            <ellipse cx="3" cy="20" rx="4" ry="6" fill="#e8b974"/>
+                        </g>
+                        
+                        <!-- Текст логотипа -->
+                        <text x="150" y="250" font-family="'Caveat', cursive" font-size="48" font-weight="700" 
+                              fill="#5d4037" text-anchor="middle">Тёплая Пышка</text>
+                    </svg>
+                    <div class="logo-tagline">Свежая выпечка с теплом и душой</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Работа без выходных</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">2-4 недели</div>
-                    <div class="stat-label">Срок внедрения</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Гарантия результата</div>
+                
+                <div class="marketing-info">
+                    <h3>Почему это работает:</h3>
+                    <ul>
+                        <li><strong>Эмоциональный триггер:</strong> "Тёплая" вызывает ассоциации с домом и заботой</li>
+                        <li><strong>Понятность:</strong> "Пышка" - знакомое всем слово, сразу понятен ассортимент</li>
+                        <li><strong>Запоминаемость:</strong> Игра слов создаёт позитивную эмоцию</li>
+                        <li><strong>Широкая аудитория:</strong> Обращается и к молодым, и к возрастным покупателям</li>
+                        <li><strong>SEO-дружественность:</strong> Легко найти в поиске по ключевым словам</li>
+                    </ul>
                 </div>
             </div>
+
+            <!-- Вариант 2: Домашний Очаг -->
+            <div class="logo-card">
+                <div class="logo-wrapper">
+                    <svg class="logo-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="houseGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#d4a574" />
+                                <stop offset="100%" style="stop-color:#c89666" />
+                            </linearGradient>
+                            <radialGradient id="warmthGlow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" style="stop-color:#ffe4c4;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#ffe4c4;stop-opacity:0" />
+                            </radialGradient>
+                        </defs>
+                        
+                        <!-- Теплое свечение -->
+                        <circle cx="150" cy="150" r="120" fill="url(#warmthGlow)"/>
+                        
+                        <!-- Круг-основа -->
+                        <circle cx="150" cy="150" r="110" fill="white" stroke="#c89666" stroke-width="6"/>
+                        
+                        <!-- Домик -->
+                        <path d="M 90 170 L 150 120 L 210 170 Z" fill="url(#houseGradient)"/>
+                        <rect x="110" y="170" width="80" height="60" fill="#e8b974"/>
+                        
+                        <!-- Окно с теплым светом -->
+                        <rect x="130" y="185" width="40" height="35" fill="#fff4e6" stroke="#d4a574" stroke-width="2"/>
+                        <line x1="150" y1="185" x2="150" y2="220" stroke="#d4a574" stroke-width="2"/>
+                        <line x1="130" y1="202" x2="170" y2="202" stroke="#d4a574" stroke-width="2"/>
+                        
+                        <!-- Дым из трубы -->
+                        <rect x="170" y="140" width="15" height="30" fill="#c89666"/>
+                        <ellipse cx="177.5" cy="120" rx="8" ry="12" fill="#d4a574" opacity="0.5">
+                            <animate attributeName="ry" values="12;16;12" dur="2s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.5;0.3;0.5" dur="2s" repeatCount="indefinite"/>
+                        </ellipse>
+                        
+                        <!-- Декоративный орнамент пшеницы -->
+                        <g transform="translate(150, 245)">
+                            <path d="M -30 0 Q -20 -5 -10 0" stroke="#d4a574" stroke-width="2" fill="none"/>
+                            <path d="M 10 0 Q 20 -5 30 0" stroke="#d4a574" stroke-width="2" fill="none"/>
+                            <circle cx="-25" cy="-3" r="3" fill="#e8b974"/>
+                            <circle cx="-15" cy="-3" r="3" fill="#e8b974"/>
+                            <circle cx="15" cy="-3" r="3" fill="#e8b974"/>
+                            <circle cx="25" cy="-3" r="3" fill="#e8b974"/>
+                        </g>
+                        
+                        <!-- Текст -->
+                        <text x="150" y="275" font-family="'Cormorant Garamond', serif" font-size="40" 
+                              font-weight="600" fill="#5d4037" text-anchor="middle">Домашний Очаг</text>
+                    </svg>
+                    <div class="logo-tagline">Как у бабушки, только лучше</div>
+                </div>
+                
+                <div class="marketing-info">
+                    <h3>Почему это работает:</h3>
+                    <ul>
+                        <li><strong>Глубокая метафора:</strong> "Очаг" = семья, традиции, надёжность</li>
+                        <li><strong>Эмоциональная связь:</strong> Ностальгия по домашнему уюту</li>
+                        <li><strong>Доверие:</strong> Ассоциация с качеством домашней выпечки</li>
+                        <li><strong>Премиальность:</strong> Звучит солидно, но тепло</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Вариант 3: Бабушкина Корзинка -->
+            <div class="logo-card">
+                <div class="logo-wrapper">
+                    <svg class="logo-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern id="basketWeave" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+                                <line x1="0" y1="5" x2="10" y2="5" stroke="#c89666" stroke-width="2"/>
+                                <line x1="5" y1="0" x2="5" y2="10" stroke="#d4a574" stroke-width="2"/>
+                            </pattern>
+                        </defs>
+                        
+                        <!-- Круг-основа -->
+                        <circle cx="150" cy="150" r="110" fill="#fffaf5" stroke="#d4a574" stroke-width="6"/>
+                        
+                        <!-- Корзинка -->
+                        <path d="M 80 180 L 220 180 L 210 220 L 90 220 Z" fill="url(#basketWeave)" stroke="#8d6e63" stroke-width="3"/>
+                        <ellipse cx="150" cy="180" rx="70" ry="15" fill="#d4a574"/>
+                        
+                        <!-- Ручка корзинки -->
+                        <path d="M 90 180 Q 150 130 210 180" stroke="#8d6e63" stroke-width="4" fill="none"/>
+                        
+                        <!-- Выпечка в корзинке -->
+                        <!-- Булочка 1 -->
+                        <circle cx="130" cy="175" r="18" fill="#e8b974"/>
+                        <circle cx="128" cy="172" r="3" fill="#8d6e63"/>
+                        <circle cx="132" cy="176" r="3" fill="#8d6e63"/>
+                        
+                        <!-- Булочка 2 -->
+                        <circle cx="170" cy="175" r="18" fill="#f4c89a"/>
+                        <circle cx="168" cy="172" r="3" fill="#8d6e63"/>
+                        <circle cx="172" cy="176" r="3" fill="#8d6e63"/>
+                        
+                        <!-- Булочка 3 (сверху) -->
+                        <circle cx="150" cy="160" r="16" fill="#d4a574"/>
+                        <circle cx="148" cy="158" r="2.5" fill="#8d6e63"/>
+                        <circle cx="152" cy="161" r="2.5" fill="#8d6e63"/>
+                        
+                        <!-- Декоративная клетчатая салфетка -->
+                        <path d="M 75 178 L 225 178" stroke="#ef9a9a" stroke-width="2" stroke-dasharray="5,5"/>
+                        
+                        <!-- Текст -->
+                        <text x="150" y="265" font-family="'Caveat', cursive" font-size="42" 
+                              font-weight="700" fill="#5d4037" text-anchor="middle">Бабушкина</text>
+                        <text x="150" y="290" font-family="'Caveat', cursive" font-size="42" 
+                              font-weight="700" fill="#5d4037" text-anchor="middle">Корзинка</text>
+                    </svg>
+                    <div class="logo-tagline">Проверенные рецепты с любовью</div>
+                </div>
+                
+                <div class="marketing-info">
+                    <h3>Почему это работает:</h3>
+                    <ul>
+                        <li><strong>Ностальгия:</strong> "Бабушкина" = качество, проверенное временем</li>
+                        <li><strong>Визуализация:</strong> "Корзинка" создаёт образ изобилия</li>
+                        <li><strong>Семейные ценности:</strong> Обращение к традициям</li>
+                        <li><strong>Уникальность:</strong> Выделяется среди конкурентов</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Вариант 4: Пышечная №1 -->
+            <div class="logo-card">
+                <div class="logo-wrapper">
+                    <svg class="logo-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#f4c89a" />
+                                <stop offset="50%" style="stop-color:#e8b974" />
+                                <stop offset="100%" style="stop-color:#d4a574" />
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Круг-основа с золотым градиентом -->
+                        <circle cx="150" cy="150" r="110" fill="white" stroke="url(#goldGradient)" stroke-width="8"/>
+                        
+                        <!-- Большая цифра 1 -->
+                        <text x="150" y="130" font-family="'Playfair Display', serif" font-size="100" 
+                              font-weight="700" fill="url(#goldGradient)" text-anchor="middle">№1</text>
+                        
+                        <!-- Лавровый венок вокруг цифры -->
+                        <g transform="translate(150, 100)">
+                            <path d="M -60 30 Q -50 20 -40 30 Q -50 35 -60 30" fill="#8fbc8f"/>
+                            <path d="M -50 40 Q -40 30 -30 40 Q -40 45 -50 40" fill="#8fbc8f"/>
+                            <path d="M -40 50 Q -30 40 -20 50 Q -30 55 -40 50" fill="#8fbc8f"/>
+                            
+                            <path d="M 60 30 Q 50 20 40 30 Q 50 35 60 30" fill="#8fbc8f"/>
+                            <path d="M 50 40 Q 40 30 30 40 Q 40 45 50 40" fill="#8fbc8f"/>
+                            <path d="M 40 50 Q 30 40 20 50 Q 30 55 40 50" fill="#8fbc8f"/>
+                        </g>
+                        
+                        <!-- Три пышки внизу -->
+                        <g transform="translate(150, 200)">
+                            <circle cx="-35" cy="0" r="15" fill="#e8b974"/>
+                            <circle cx="-33" cy="-2" r="2" fill="#8d6e63"/>
+                            <circle cx="-37" cy="1" r="2" fill="#8d6e63"/>
+                            
+                            <circle cx="0" cy="0" r="15" fill="#f4c89a"/>
+                            <circle cx="2" cy="-2" r="2" fill="#8d6e63"/>
+                            <circle cx="-2" cy="1" r="2" fill="#8d6e63"/>
+                            
+                            <circle cx="35" cy="0" r="15" fill="#e8b974"/>
+                            <circle cx="37" cy="-2" r="2" fill="#8d6e63"/>
+                            <circle cx="33" cy="1" r="2" fill="#8d6e63"/>
+                        </g>
+                        
+                        <!-- Текст -->
+                        <text x="150" y="255" font-family="'Comfortaa', cursive" font-size="44" 
+                              font-weight="600" fill="#5d4037" text-anchor="middle">Пышечная</text>
+                    </svg>
+                    <div class="logo-tagline">Лучшая выпечка в городе</div>
+                </div>
+                
+                <div class="marketing-info">
+                    <h3>Почему это работает:</h3>
+                    <ul>
+                        <li><strong>Авторитет:</strong> "№1" создаёт ощущение лидерства</li>
+                        <li><strong>Конкретика:</strong> "Пышечная" - чёткое позиционирование</li>
+                        <li><strong>Уверенность:</strong> Смелое заявление о качестве</li>
+                        <li><strong>Простота:</strong> Легко произносится и запоминается</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Вариант 5: Свежая Булочка -->
+            <div class="logo-card">
+                <div class="logo-wrapper">
+                    <svg class="logo-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="freshGlow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" style="stop-color:#fff4e6" />
+                                <stop offset="100%" style="stop-color:#ffe4c4" />
+                            </radialGradient>
+                        </defs>
+                        
+                        <!-- Круг-основа с эффектом свежести -->
+                        <circle cx="150" cy="150" r="115" fill="url(#freshGlow)"/>
+                        <circle cx="150" cy="150" r="110" fill="none" stroke="#e8b974" stroke-width="6"/>
+                        
+                        <!-- Большая свежая булочка -->
+                        <ellipse cx="150" cy="150" rx="80" ry="65" fill="#f4c89a"/>
+                        <ellipse cx="150" cy="145" rx="75" ry="60" fill="#e8b974"/>
+                        
+                        <!-- Рисунок на булочке -->
+                        <path d="M 120 140 Q 150 135 180 140" stroke="#d4a574" stroke-width="3" fill="none"/>
+                        <path d="M 120 155 Q 150 150 180 155" stroke="#d4a574" stroke-width="3" fill="none"/>
+                        
+                        <!-- Семечки -->
+                        <circle cx="130" cy="145" r="3.5" fill="#8d6e63"/>
+                        <circle cx="145" cy="140" r="3.5" fill="#8d6e63"/>
+                        <circle cx="155" cy="140" r="3.5" fill="#8d6e63"/>
+                        <circle cx="170" cy="145" r="3.5" fill="#8d6e63"/>
+                        <circle cx="135" cy="155" r="3.5" fill="#8d6e63"/>
+                        <circle cx="150" cy="152" r="3.5" fill="#8d6e63"/>
+                        <circle cx="165" cy="155" r="3.5" fill="#8d6e63"/>
+                        
+                        <!-- Блик свежести -->
+                        <ellipse cx="130" cy="135" rx="15" ry="10" fill="white" opacity="0.4"/>
+                        
+                        <!-- Часы показывают "только что" -->
+                        <g transform="translate(200, 100)">
+                            <circle cx="0" cy="0" r="20" fill="white" stroke="#d4a574" stroke-width="2"/>
+                            <line x1="0" y1="0" x2="0" y2="-12" stroke="#5d4037" stroke-width="2"/>
+                            <line x1="0" y1="0" x2="10" y2="0" stroke="#5d4037" stroke-width="2"/>
+                            <text x="0" y="35" font-size="12" fill="#5d4037" text-anchor="middle">Сейчас!</text>
+                        </g>
+                        
+                        <!-- Текст -->
+                        <text x="150" y="245" font-family="'Comfortaa', cursive" font-size="46" 
+                              font-weight="600" fill="#5d4037" text-anchor="middle">Свежая</text>
+                        <text x="150" y="280" font-family="'Comfortaa', cursive" font-size="46" 
+                              font-weight="600" fill="#5d4037" text-anchor="middle">Булочка</text>
+                    </svg>
+                    <div class="logo-tagline">Каждый день новая порция</div>
+                </div>
+                
+                <div class="marketing-info">
+                    <h3>Почему это работает:</h3>
+                    <ul>
+                        <li><strong>USP в названии:</strong> "Свежая" - главное преимущество выпечки</li>
+                        <li><strong>Честность:</strong> Простое и понятное обещание</li>
+                        <li><strong>Триггер качества:</strong> Акцент на свежести продукта</li>
+                        <li><strong>Универсальность:</strong> Подходит для любой аудитории</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Рекомендации по использованию -->
+        <div class="recommendations">
+            <h2>📊 Маркетинговые рекомендации</h2>
+            
+            <p><strong>Лучший выбор: "Тёплая Пышка"</strong></p>
+            <p>Это название оптимально сочетает все необходимые качества для успешного интернет-магазина домашней выпечки. Оно эмоционально привлекательное, легко запоминается, хорошо работает в SEO и создаёт правильные ассоциации с домашним уютом и качественной выпечкой.</p>
+            
+            <p><strong>Цветовая палитра бренда:</strong></p>
+            <div class="color-palette">
+                <div class="color-swatch" style="background: #5d4037;">
+                    <div class="color-label">Шоколад</div>
+                </div>
+                <div class="color-swatch" style="background: #d4a574;">
+                    <div class="color-label">Карамель</div>
+                </div>
+                <div class="color-swatch" style="background: #e8b974;">
+                    <div class="color-label">Золото</div>
+                </div>
+                <div class="color-swatch" style="background: #f4c89a;">
+                    <div class="color-label">Пшеница</div>
+                </div>
+                <div class="color-swatch" style="background: #fff9f0;">
+                    <div class="color-label">Крем</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 30px;"><strong>Как использовать логотип:</strong></p>
+            <p>✓ На упаковке и пакетах с выпечкой<br>
+            ✓ В шапке сайта и социальных сетях<br>
+            ✓ На визитках и рекламных материалах<br>
+            ✓ В качестве стикера на коробках с заказами<br>
+            ✓ На фартуках и униформе (если есть)</p>
+            
+            <p><strong>Слоган для продвижения:</strong><br>
+            "Тёплая Пышка - пекём с любовью, доставляем с заботой!"</p>
+            
+            <p><strong>Ключевые сообщения для маркетинга:</strong><br>
+            • Домашняя выпечка по традиционным рецептам<br>
+            • Свежая продукция каждый день<br>
+            • Доставка тёплой выпечки прямо к двери<br>
+            • Без консервантов и искусственных добавок<br>
+            • Выпекаем с душой, как для своей семьи</p>
         </div>
     </div>
-
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="container">
-            <div class="logo">
-                <i class="fas fa-robot logo-icon"></i>
-                AI Agent Factory
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul id="navMenu">
-                <li><a href="#benefits">Преимущества</a></li>
-                <li><a href="#portfolio">Решения</a></li>
-                <li><a href="#process">Процесс</a></li>
-                <li><a href="#application">Заявка</a></li>
-                <li><a href="#contact">Контакты</a></li>
-                <li><button class="nav-cta" onclick="openApplicationModal()">Бесплатная консультация</button></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="hero-badge">
-                        <i class="fas fa-bolt"></i>
-                        ТОП-1 AI Developer в России
-                    </div>
-                    <h1 class="hero-title">
-                        Нейросотрудники которые работают как люди, но лучше
-                    </h1>
-                    <p class="hero-subtitle">
-                        Автоматизируйте рутину с AI-агентами. Экономьте до 70% на зарплатах и получайте результат 24/7
-                    </p>
-                    <p class="hero-description">
-                        Создаю интеллектуальных AI-агентов под ключ, которые заменяют сотрудников, работают без ошибок и не требуют отпусков
-                    </p>
-                    
-                    <div class="cta-buttons">
-                        <button class="btn btn-primary" onclick="openApplicationModal()">
-                            <i class="fas fa-robot"></i> Получить консультацию
-                        </button>
-                        <button class="btn btn-secondary" onclick="scrollToPortfolio()">
-                            <i class="fas fa-eye"></i> Смотреть кейсы
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="hero-visual">
-                    <div class="ai-orb ai-pulse">
-                        <div class="orb-content">
-                            <i class="fas fa-brain orb-icon"></i>
-                            <div class="orb-text">AI READY</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section id="benefits" class="benefits">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Почему бизнес выбирает AI-агентов</h2>
-                <p class="section-subtitle">Реальные преимущества которые получают компании после внедрения нейросотрудников</p>
-            </div>
-            
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <i class="fas fa-money-bill-wave benefit-icon"></i>
-                    <h3>Экономия до 70%</h3>
-                    <p>AI-агенты работают без зарплаты, больничных и отпусков. Окупаемость от 1 месяца</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <i class="fas fa-clock benefit-icon"></i>
-                    <h3>Работа 24/7/365</h3>
-                    <p>Ваш бизнес работает круглосуточно без перерывов, выходных и праздников</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <i class="fas fa-chart-line benefit-icon"></i>
-                    <h3>Масштабируемость</h3>
-                    <p>Легко масштабируйте бизнес без найма дополнительного персонала</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <i class="fas fa-bolt benefit-icon"></i>
-                    <h3>Скорость внедрения</h3>
-                    <p>Готовое решение под ключ за 2-4 недели вместо месяцев разработки</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <i class="fas fa-shield-alt benefit-icon"></i>
-                    <h3>Нулевые ошибки</h3>
-                    <p>AI не устает, не отвлекается и выполняет задачи с 99.9% точностью</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <i class="fas fa-sync-alt benefit-icon"></i>
-                    <h3>Постоянное обучение</h3>
-                    <p>Агенты постоянно улучшаются и адаптируются под изменения в бизнесе</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Готовые AI-решения</h2>
-                <p class="section-subtitle">Проверенные кейсы автоматизации которые уже работают в бизнесе</p>
-            </div>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-card">
-                    <div class="card-header">
-                        <div class="card-icon">🎯</div>
-                        <h3 class="card-title">Нейро-контроль качества</h3>
-                    </div>
-                    <p>Автоматический анализ звонков с AI. Выявление проблем, оценка сотрудников и рекомендации по улучшению</p>
-                    <ul class="card-features">
-                        <li><i class="fas fa-check feature-icon"></i> Транскрибация аудио в текст</li>
-                        <li><i class="fas fa-check feature-icon"></i> Анализ эмоций и тона</li>
-                        <li><i class="fas fa-check feature-icon"></i> Авто-отчеты и рекомендации</li>
-                    </ul>
-                    <a href="#" class="card-cta" onclick="openApplicationModal()">
-                        Заказать решение <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                
-                <div class="portfolio-card">
-                    <div class="card-header">
-                        <div class="card-icon">👥</div>
-                        <h3 class="card-title">Нейро-HR менеджер</h3>
-                    </div>
-                    <p>Полная автоматизация подбора персонала. От скрининга резюме до проведения первичных собеседований</p>
-                    <ul class="card-features">
-                        <li><i class="fas fa-check feature-icon"></i> Авто-скрининг резюме</li>
-                        <li><i class="fas fa-check feature-icon"></i> Проведение интервью</li>
-                        <li><i class="fas fa-check feature-icon"></i> Оценка компетенций</li>
-                    </ul>
-                    <a href="#" class="card-cta" onclick="openApplicationModal()">
-                        Заказать решение <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                
-                <div class="portfolio-card">
-                    <div class="card-header">
-                        <div class="card-icon">📊</div>
-                        <h3 class="card-title">Нейро-маркетолог</h3>
-                    </div>
-                    <p>AI который создает контент, настраивает рекламу и анализирует эффективность маркетинга</p>
-                    <ul class="card-features">
-                        <li><i class="fas fa-check feature-icon"></i> Генерация контента</li>
-                        <li><i class="fas fa-check feature-icon"></i> Настройка рекламы</li>
-                        <li><i class="fas fa-check feature-icon"></i> Анализ конкурентов</li>
-                    </ul>
-                    <a href="#" class="card-cta" onclick="openApplicationModal()">
-                        Заказать решение <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 50px;">
-                <button class="btn btn-primary" onclick="openApplicationModal()">
-                    <i class="fas fa-magic"></i> Хочу такое решение для моего бизнеса
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section id="process" class="process">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Как мы работаем</h2>
-                <p class="section-subtitle">Простой и прозрачный процесс создания вашего AI-сотрудника</p>
-            </div>
-            
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3>Анализ и консультация</h3>
-                    <p>Бесплатно анализируем ваши процессы и определяем задачи для автоматизации</p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3>Разработка прототипа</h3>
-                    <p>Создаем работающий прототип за 5-7 дней для демонстрации возможностей</p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3>Внедрение и обучение</h3>
-                    <p>Интегрируем AI-агента в ваши процессы и обучаем команду работе с ним</p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h3>Поддержка и развитие</h3>
-                    <p>Обеспечиваем техническую поддержку и постоянно улучшаем вашего агента</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Application Form Section -->
-    <section id="application" class="form-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Оставьте заявку</h2>
-                <p class="section-subtitle">Получите бесплатную консультацию и расчет стоимости AI-агента для вашего бизнеса</p>
-            </div>
-            
-            <div class="form-container">
-                <h3 class="form-title">Бесплатная консультация</h3>
-                <p class="form-subtitle">Заполните форму и я свяжусь с вами в течение 30 минут</p>
-                
-                <form id="applicationForm">
-                    <div class="form-group">
-                        <label class="form-label" for="name">Ваше имя *</label>
-                        <input type="text" id="name" class="form-input" required placeholder="Как к вам обращаться?">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="phone">Телефон *</label>
-                        <input type="tel" id="phone" class="form-input" required placeholder="+7 (___) ___ __ __">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="email">Email</label>
-                        <input type="email" id="email" class="form-input" placeholder="Для отправки коммерческого предложения">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="business">Сфера бизнеса</label>
-                        <input type="text" id="business" class="form-input" placeholder="Чем занимается ваша компания?">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="task">Какую задачу хотите автоматизировать?</label>
-                        <select id="task" class="form-select">
-                            <option value="">Выберите задачу</option>
-                            <option value="control">Контроль качества звонков</option>
-                            <option value="hr">Подбор персонала</option>
-                            <option value="sales">Продажи и лидогенерация</option>
-                            <option value="content">Создание контента</option>
-                            <option value="support">Поддержка клиентов</option>
-                            <option value="other">Другое</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="message">Дополнительная информация</label>
-                        <textarea id="message" class="form-textarea" placeholder="Опишите подробнее вашу задачу..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="form-submit">
-                        <i class="fas fa-paper-plane"></i> Отправить заявку
-                    </button>
-                </form>
-                
-                <div id="formSuccess" class="form-success">
-                    <i class="fas fa-check-circle"></i>
-                    <strong>Спасибо! Ваша заявка принята.</strong><br>
-                    Я свяжусь с вами в течение 30 минут для консультации.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Готовы автоматизировать бизнес?</h2>
-                <p class="cta-subtitle">Получите бесплатную консультацию и расчет экономии для вашей компании</p>
-                
-                <div class="cta-buttons">
-                    <button class="btn btn-white" onclick="openApplicationModal()">
-                        <i class="fas fa-calculator"></i> Рассчитать экономию
-                    </button>
-                    <button class="btn btn-outline-white" onclick="openWhatsApp()">
-                        <i class="fab fa-whatsapp"></i> Написать в WhatsApp
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>AI Agent Factory</h3>
-                    <p style="color: var(--text-gray); margin-bottom: 20px;">Создаем умных нейросотрудников для автоматизации вашего бизнеса</p>
-                    <div style="display: flex; gap: 15px;">
-                        <a href="https://t.me/DmitryTo1986" style="color: var(--text-gray); font-size: 20px;"><i class="fab fa-telegram"></i></a>
-                        <a href="https://wa.me/79362585387" style="color: var(--text-gray); font-size: 20px;"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" style="color: var(--text-gray); font-size: 20px;"><i class="fab fa-vk"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Решения</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Нейро-контроль качества</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Нейро-HR менеджер</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Нейро-маркетолог</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Нейро-продажник</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Контакты</h3>
-                    <ul class="footer-links">
-                        <li><a href="tel:+79362585387"><i class="fas fa-phone"></i> +7 (936) 258-53-87</a></li>
-                        <li><a href="https://wa.me/79362585387"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
-                        <li><a href="https://t.me/DmitryTo1986"><i class="fab fa-telegram"></i> Telegram</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Москва</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 AI Agent Factory. Все права защищены. Создание AI-агентов для бизнеса</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Application Modal -->
-    <div class="modal" id="applicationModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeApplicationModal()">&times;</button>
-            <h3 class="modal-title">Бесплатная консультация</h3>
-            <p class="modal-description">Заполните форму и я свяжусь с вами в течение 30 минут</p>
-            
-            <form id="modalApplicationForm">
-                <div class="form-group">
-                    <label class="form-label" for="modalName">Ваше имя *</label>
-                    <input type="text" id="modalName" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="modalPhone">Телефон *</label>
-                    <input type="tel" id="modalPhone" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="modalTask">Задача для автоматизации</label>
-                    <select id="modalTask" class="form-select">
-                        <option value="">Выберите задачу</option>
-                        <option value="control">Контроль качества звонков</option>
-                        <option value="hr">Подбор персонала</option>
-                        <option value="sales">Продажи и лидогенерация</option>
-                        <option value="content">Создание контента</option>
-                        <option value="support">Поддержка клиентов</option>
-                        <option value="other">Другое</option>
-                    </select>
-                </div>
-                
-                <button type="submit" class="form-submit">
-                    <i class="fas fa-paper-plane"></i> Получить консультацию
-                </button>
-            </form>
-            
-            <div id="modalFormSuccess" class="form-success" style="display: none;">
-                <i class="fas fa-check-circle"></i>
-                <strong>Спасибо! Ваша заявка принята.</strong><br>
-                Я свяжусь с вами в течение 30 минут для консультации.
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Создание анимированных частиц
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                // Случайная позиция
-                particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.top = Math.random() * 100 + 'vh';
-                
-                // Случайная задержка анимации
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                
-                // Случайный размер
-                const size = Math.random() * 3 + 1;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Mobile menu
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            document.getElementById('navMenu').classList.toggle('active');
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                document.getElementById('navbar').classList.add('scrolled');
-            } else {
-                document.getElementById('navbar').classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-                
-                // Close mobile menu if open
-                document.getElementById('navMenu').classList.remove('active');
-            });
-        });
-
-        // Функции для кнопок
-        function openApplicationModal() {
-            document.getElementById('applicationModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeApplicationModal() {
-            document.getElementById('applicationModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        function scrollToPortfolio() {
-            document.getElementById('portfolio').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        }
-
-        function openWhatsApp() {
-            const message = "Здравствуйте! Я заинтересован в разработке AI-агента для бизнеса. Пожалуйста, свяжитесь со мной.";
-            const url = `https://wa.me/79362585387?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
-
-        // Формирование и отправка сообщения в WhatsApp и Telegram
-        function sendApplication(data, platform) {
-            const message = `Новая заявка с сайта AI Agent Factory:
-            
-Имя: ${data.name}
-Телефон: ${data.phone}
-Email: ${data.email || 'Не указан'}
-Сфера бизнеса: ${data.business || 'Не указана'}
-Задача: ${data.task || 'Не указана'}
-Доп. информация: ${data.message || 'Не указана'}
-
-Отправлено: ${new Date().toLocaleString()}`;
-
-            let url;
-            
-            if (platform === 'whatsapp') {
-                url = `https://wa.me/79362585387?text=${encodeURIComponent(message)}`;
-            } else if (platform === 'telegram') {
-                url = `https://t.me/DmitryTo1986?text=${encodeURIComponent(message)}`;
-            }
-            
-            window.open(url, '_blank');
-        }
-
-        // Обработка основной формы
-        document.getElementById('applicationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value,
-                business: document.getElementById('business').value,
-                task: document.getElementById('task').options[document.getElementById('task').selectedIndex].text,
-                message: document.getElementById('message').value
-            };
-            
-            // Показываем успешное сообщение
-            document.getElementById('formSuccess').style.display = 'block';
-            this.reset();
-            
-            // Отправляем в оба мессенджера
-            setTimeout(() => {
-                sendApplication(formData, 'whatsapp');
-            }, 1000);
-            
-            setTimeout(() => {
-                sendApplication(formData, 'telegram');
-            }, 3000);
-            
-            // Прокручиваем к успешному сообщению
-            document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-
-        // Обработка модальной формы
-        document.getElementById('modalApplicationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('modalName').value,
-                phone: document.getElementById('modalPhone').value,
-                task: document.getElementById('modalTask').options[document.getElementById('modalTask').selectedIndex].text
-            };
-            
-            // Показываем успешное сообщение
-            document.getElementById('modalFormSuccess').style.display = 'block';
-            this.reset();
-            
-            // Закрываем модальное окно через 3 секунды
-            setTimeout(() => {
-                closeApplicationModal();
-                document.getElementById('modalFormSuccess').style.display = 'none';
-            }, 3000);
-            
-            // Отправляем в оба мессенджера
-            setTimeout(() => {
-                sendApplication(formData, 'whatsapp');
-            }, 500);
-            
-            setTimeout(() => {
-                sendApplication(formData, 'telegram');
-            }, 1500);
-        });
-
-        // Закрытие модального окна при клике вне его
-        document.getElementById('applicationModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeApplicationModal();
-            }
-        });
-
-        // Закрытие модального окна по Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeApplicationModal();
-            }
-        });
-
-        // Инициализация при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-        });
-
-        // Анимация появления элементов при скролле
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Наблюдаем за карточками
-        document.querySelectorAll('.benefit-card, .portfolio-card, .process-step').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
 </body>
 </html>
