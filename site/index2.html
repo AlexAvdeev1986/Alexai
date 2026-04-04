@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AI Agent Factory | Нейросотрудники для бизнеса — 24/7</title>
+<meta name="description" content="Создаю AI-агентов под ключ: Анализатор звонков, Нейро-юрист, Нейро-секретарь. Внедрение за 2–4 недели. Экономия до 70% на зарплатах. Гарантия результата.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI Agent Factory | Нейросотрудники 24/7">
+<meta property="og:description" content="Автоматизируйте бизнес с AI-агентами. Экономьте до 70% на зарплатах. Внедрение за 2–4 недели с гарантией результата.">
+<link rel="canonical" href="https://ai-agent-factory.ru/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"AI Agent Factory","telephone":"+79362585387","url":"https://ai-agent-factory.ru","sameAs":["https://t.me/DmitryTo1986"],"founder":{"@type":"Person","name":"Дмитрий Тоноян"},"areaServed":"Russia"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --nc:#00f2fe;--nc2:#4facfe;--v1:#667eea;--v2:#764ba2;
+  --dk:#070710;--dk2:#0d0d1a;
+  --card:rgba(255,255,255,.032);--cb:rgba(0,242,254,.12);
+  --tx:#e8e8f0;--mt:#8888aa;
+  --glow:0 0 24px rgba(0,242,254,.45);
+  --f:'Exo 2',sans-serif;--mn:'JetBrains Mono',monospace;
+  --tbh:44px;--nvh:62px;--r:12px;--rlg:20px
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f);background:var(--dk);color:var(--tx);overflow-x:hidden;line-height:1.65}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 10% 0%,rgba(102,126,234,.08),transparent 60%),radial-gradient(ellipse 60% 40% at 90% 100%,rgba(0,242,254,.06),transparent 55%);pointer-events:none;z-index:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,32px);position:relative;z-index:1}
+
+/* PARTICLES */
+#ptcl{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.ptc{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(0,242,254,.8),rgba(102,126,234,.4));animation:pfl linear infinite;opacity:0}
+@keyframes pfl{0%{transform:translateY(100vh) scale(0);opacity:0}5%{opacity:.7}90%{opacity:.4}100%{transform:translateY(-20px) scale(1);opacity:0}}
+
+/* TELEGRAM SVG PATH reused */
+.tg-path{d:"M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"}
+
+/* FLOAT */
+.fc{position:fixed;bottom:clamp(14px,3vw,28px);right:clamp(12px,3vw,28px);display:flex;flex-direction:column;gap:9px;z-index:999}
+.fb{width:clamp(48px,7vw,60px);height:clamp(48px,7vw,60px);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff;border:none;cursor:pointer;transition:transform .25s,box-shadow .25s;position:relative;flex-shrink:0}
+.fb:hover{transform:scale(1.12)}
+.fb::after{content:attr(data-tip);position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);background:rgba(0,0,0,.9);color:#fff;font-size:11px;font-family:var(--f);padding:5px 10px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.fb:hover::after{opacity:1}
+@media(hover:none){.fb::after{display:none}}
+.fb-tg{background:linear-gradient(135deg,#229ed9,#1a7bbf);box-shadow:0 5px 20px rgba(34,158,217,.5)}
+.fb-mx{background:linear-gradient(135deg,#1e40af,#1d4ed8);box-shadow:0 5px 20px rgba(29,78,216,.5);font-size:clamp(10px,1.4vw,12px);font-weight:900;letter-spacing:-.05em}
+.fb-ph{background:linear-gradient(135deg,#16a34a,#15803d);box-shadow:0 5px 20px rgba(22,163,74,.5)}
+.fbico{width:clamp(22px,3.5vw,26px);height:clamp(22px,3.5vw,26px)}
+
+/* TOPBAR */
+.topbar{height:var(--tbh);background:linear-gradient(90deg,rgba(0,242,254,.07),rgba(102,126,234,.07));border-bottom:1px solid rgba(0,242,254,.14);position:relative;z-index:99;overflow:hidden}
+.tb-in{display:flex;align-items:center;justify-content:space-around;height:100%;gap:8px}
+.tbi{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.tbi i{color:var(--nc);font-size:13px}
+.tbn{font-size:clamp(14px,2.2vw,20px);font-weight:800;background:linear-gradient(90deg,var(--nc),var(--nc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.tblb{font-size:clamp(10px,1.3vw,13px);color:var(--tx);font-weight:500;white-space:nowrap}
+
+/* NAVBAR */
+nav{position:fixed;top:var(--tbh);width:100%;height:var(--nvh);background:rgba(7,7,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,242,254,.1);z-index:1000;transition:all .3s}
+nav.sc{background:rgba(7,7,16,.98);box-shadow:0 4px 28px rgba(0,242,254,.1)}
+.nvi{display:flex;align-items:center;justify-content:space-between;height:100%;padding:0 clamp(14px,4vw,28px);max-width:1180px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
+.lic{width:35px;height:35px;background:linear-gradient(135deg,var(--nc),var(--nc2));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ltx{font-size:clamp(14px,2vw,19px);font-weight:800;background:linear-gradient(90deg,#fff,var(--nc));-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+.nl{display:flex;align-items:center;list-style:none;gap:clamp(12px,2vw,26px)}
+.nla{color:rgba(255,255,255,.75);text-decoration:none;font-weight:600;font-size:clamp(12px,1.2vw,14px);transition:color .2s;position:relative;white-space:nowrap}
+.nla::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--nc);transition:width .3s}
+.nla:hover{color:var(--nc)}
+.nla:hover::after{width:100%}
+.ncta{background:linear-gradient(90deg,var(--nc),var(--nc2));color:#000;font-weight:800;font-size:clamp(11px,1.1vw,13px);padding:9px clamp(12px,1.5vw,20px);border-radius:8px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:var(--glow);white-space:nowrap}
+.ncta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,242,254,.5)}
+.bgr{display:none;background:none;border:none;color:#fff;font-size:22px;cursor:pointer;padding:6px;line-height:1;flex-shrink:0}
+
+/* MOBILE DRAWER */
+.drw{display:none;position:fixed;inset:0;background:rgba(7,7,16,.98);backdrop-filter:blur(24px);z-index:1100;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:80px 24px 36px}
+.drw.on{display:flex}
+.drw-x{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:19px;cursor:pointer}
+.dla{font-size:21px;font-weight:700;color:rgba(255,255,255,.85);text-decoration:none;padding:13px 28px;border-radius:var(--r);width:100%;max-width:280px;text-align:center;transition:background .2s,color .2s}
+.dla:hover,.dla:active{background:rgba(0,242,254,.08);color:var(--nc)}
+.dbt{background:linear-gradient(90deg,var(--nc),var(--nc2));color:#000;font-size:15px;font-weight:800;padding:15px 28px;border-radius:var(--r);border:none;cursor:pointer;width:100%;max-width:280px;margin-top:6px}
+.dms{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;justify-content:center}
+.dml{display:flex;align-items:center;gap:7px;padding:11px 18px;border-radius:var(--r);font-size:13px;font-weight:700;text-decoration:none;color:#fff}
+.dml-tg{background:linear-gradient(135deg,#229ed9,#1a7bbf)}
+.dml-mx{background:linear-gradient(135deg,#1e40af,#1d4ed8)}
+.dml svg{width:18px;height:18px;flex-shrink:0}
+.mx-badge{font-weight:900;font-size:11px;background:rgba(255,255,255,.2);padding:2px 6px;border-radius:4px;letter-spacing:-.03em}
+
+/* SECTION */
+section{padding:clamp(52px,8vw,96px) 0;position:relative}
+.sh{text-align:center;margin-bottom:clamp(32px,5vw,60px)}
+.stg{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--nc);margin-bottom:11px;font-family:var(--mn)}
+.sti{font-size:clamp(24px,4.5vw,50px);font-weight:900;letter-spacing:-1px;line-height:1.1;margin-bottom:13px;background:linear-gradient(135deg,#fff 0%,var(--nc) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ssu{font-size:clamp(14px,1.8vw,18px);color:var(--mt);max-width:600px;margin:0 auto;line-height:1.65}
+.ab{background:rgba(255,255,255,.018)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:clamp(12px,1.8vw,16px) clamp(18px,2.8vw,30px);border-radius:var(--r);font-family:var(--f);font-size:clamp(13px,1.5vw,15px);font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden;white-space:nowrap;justify-content:center}
+.btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transition:left .5s}
+.btn:hover::before{left:100%}
+.bn{background:linear-gradient(90deg,var(--nc),var(--nc2));color:#000;box-shadow:var(--glow)}
+.bn:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,242,254,.5)}
+.bg{background:rgba(255,255,255,.05);color:#fff;border:1px solid rgba(255,255,255,.14)}
+.bg:hover{background:rgba(0,242,254,.08);border-color:rgba(0,242,254,.4);transform:translateY(-3px)}
+.bw{background:#fff;color:#000}
+.bw:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,255,255,.2)}
+.bow{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6)}
+.bow:hover{background:#fff;color:#000}
+
+/* SEND BTNS */
+.sr{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.sb{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:var(--r);font-family:var(--f);font-size:clamp(12px,1.3vw,14px);font-weight:700;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;color:#fff}
+.sb:hover{transform:translateY(-2px)}
+.stg2{background:linear-gradient(135deg,#229ed9,#1a7bbf);box-shadow:0 4px 16px rgba(34,158,217,.35)}
+.smx{background:linear-gradient(135deg,#1e40af,#1d4ed8);box-shadow:0 4px 16px rgba(29,78,216,.35)}
+.si{width:18px;height:18px;flex-shrink:0}
+.mxb{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:rgba(255,255,255,.18);border-radius:4px;font-size:9px;font-weight:900;letter-spacing:-.04em;flex-shrink:0}
+
+/* HERO */
+.hero{padding-top:calc(var(--tbh) + var(--nvh) + clamp(32px,6vw,64px));padding-bottom:clamp(44px,7vw,90px)}
+.hg{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,56px);align-items:center}
+.bdg{display:inline-flex;align-items:center;gap:8px;background:rgba(0,242,254,.08);border:1px solid rgba(0,242,254,.25);color:var(--nc);padding:7px 15px;border-radius:999px;font-size:clamp(11px,1.2vw,13px);font-weight:700;letter-spacing:.04em;margin-bottom:20px}
+.bdot{width:7px;height:7px;border-radius:50%;background:var(--nc);animation:blk 1.5s infinite;flex-shrink:0}
+@keyframes blk{0%,100%{opacity:1}50%{opacity:.2}}
+h1.ht{font-size:clamp(26px,5vw,62px);font-weight:900;line-height:1.07;letter-spacing:clamp(-1px,-0.025em,-1.5px);background:linear-gradient(135deg,#fff 0%,var(--nc) 55%,var(--nc2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
+.hs{font-size:clamp(14px,2vw,20px);color:var(--tx);line-height:1.5;margin-bottom:11px}
+.hd{font-size:clamp(13px,1.4vw,15px);color:var(--mt);line-height:1.7;margin-bottom:28px;max-width:500px}
+.cr{display:flex;gap:11px;flex-wrap:wrap;margin-bottom:24px}
+.htr{display:flex;gap:clamp(10px,2vw,20px);flex-wrap:wrap}
+.tri{display:flex;align-items:center;gap:6px;font-size:clamp(11px,1.2vw,13px);color:var(--mt)}
+.tri i{color:var(--nc);font-size:12px}
+
+/* ORB */
+.hv{display:flex;justify-content:center;align-items:center;position:relative}
+.ow{position:relative;width:clamp(200px,34vw,360px);height:clamp(200px,34vw,360px)}
+.orb{width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(102,126,234,.9),rgba(0,242,254,.4),rgba(118,75,162,.8));box-shadow:0 0 80px rgba(102,126,234,.35),inset 0 0 60px rgba(255,255,255,.07);animation:ofl 7s ease-in-out infinite;display:flex;align-items:center;justify-content:center}
+@keyframes ofl{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-14px) scale(1.02)}}
+.orb::before{content:'';position:absolute;inset:-10px;border-radius:50%;background:conic-gradient(from 0deg,transparent 30%,rgba(0,242,254,.5),transparent 70%,rgba(102,126,234,.5),transparent);animation:rot 8s linear infinite;z-index:-1}
+@keyframes rot{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.oi{text-align:center;color:#fff}
+.oic{font-size:clamp(42px,7vw,68px);display:block;margin-bottom:10px}
+.olb{font-size:clamp(12px,1.6vw,17px);font-weight:800;letter-spacing:2px;background:linear-gradient(135deg,#fff,var(--nc));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ocs{position:absolute;right:-14px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:9px}
+.och{background:rgba(13,13,26,.9);border:1px solid rgba(0,242,254,.2);border-radius:9px;padding:8px 11px;display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;color:var(--tx);backdrop-filter:blur(12px);white-space:nowrap;animation:cp 3s ease-in-out infinite}
+.och:nth-child(2){animation-delay:.9s}
+.och:nth-child(3){animation-delay:1.8s}
+.och i{color:var(--nc);font-size:12px}
+@keyframes cp{0%,100%{transform:translateX(0)}50%{transform:translateX(-5px)}}
+
+/* TECH STRIP */
+.ts{background:rgba(255,255,255,.02);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:clamp(16px,3vw,26px) 0;overflow:hidden}
+.tslb{text-align:center;font-size:10px;font-weight:600;color:var(--mt);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.tsi{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:clamp(12px,2.5vw,32px)}
+.tsit{display:flex;align-items:center;gap:6px;color:var(--mt);font-size:clamp(10px,1.2vw,13px);font-weight:600;font-family:var(--mn);opacity:.55;transition:opacity .2s,color .2s}
+.tsit:hover{opacity:1;color:var(--nc)}
+.tsit i,.tsit svg{font-size:clamp(12px,1.8vw,17px);width:clamp(12px,1.8vw,17px);height:clamp(12px,1.8vw,17px)}
+
+/* CARDS COMMON */
+.gc{display:grid;gap:clamp(12px,2vw,22px)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.cd{background:var(--card);border:1px solid var(--cb);border-radius:var(--rlg);padding:clamp(20px,3vw,34px) clamp(16px,2.5vw,26px);transition:transform .35s,box-shadow .35s,border-color .35s;position:relative;overflow:hidden}
+.cd::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--nc),var(--nc2));transform:scaleX(0);transition:transform .35s;border-radius:3px 3px 0 0}
+.cd:hover::before{transform:scaleX(1)}
+.cd:hover{transform:translateY(-7px);box-shadow:0 18px 44px rgba(0,242,254,.12);border-color:rgba(0,242,254,.3)}
+.ci{font-size:clamp(26px,3.8vw,38px);margin-bottom:16px;display:block;background:linear-gradient(135deg,var(--nc),var(--nc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cd h3{font-size:clamp(15px,1.7vw,19px);font-weight:700;margin-bottom:8px;color:#fff}
+.cd p{font-size:clamp(12px,1.3vw,14px);color:var(--mt);line-height:1.65}
+
+/* PORTFOLIO */
+.pc{background:var(--card);border:1px solid var(--cb);border-radius:var(--rlg);padding:clamp(20px,3vw,30px);transition:transform .35s,box-shadow .35s,border-color .35s;position:relative;overflow:hidden;cursor:pointer}
+.pc::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(0,242,254,.07),transparent 65%);opacity:0;transition:opacity .35s;border-radius:var(--rlg)}
+.pc:hover::after{opacity:1}
+.pc:hover{transform:translateY(-7px);box-shadow:0 20px 50px rgba(0,242,254,.12);border-color:rgba(0,242,254,.3)}
+.pct{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;gap:8px}
+.pce{font-size:clamp(30px,4.5vw,42px);line-height:1}
+.pcb{font-size:10px;font-weight:700;font-family:var(--mn);color:var(--nc);background:rgba(0,242,254,.1);border:1px solid rgba(0,242,254,.2);padding:3px 8px;border-radius:6px;white-space:nowrap;flex-shrink:0}
+.pch{font-size:clamp(16px,1.9vw,21px);font-weight:800;color:#fff;margin-bottom:8px}
+.pcd{font-size:clamp(12px,1.3vw,14px);color:var(--mt);line-height:1.65;margin-bottom:14px}
+.pcs{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:16px}
+.st{font-size:10px;font-family:var(--mn);color:var(--mt);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:2px 7px;border-radius:5px}
+.pcr{border-top:1px solid var(--cb);padding-top:14px;margin-bottom:16px}
+.ri{display:flex;align-items:flex-start;gap:6px;font-size:clamp(11px,1.2vw,13px);color:var(--tx);margin-bottom:6px;line-height:1.4}
+.ri i{color:#22c55e;font-size:10px;margin-top:3px;flex-shrink:0}
+.pcl{display:inline-flex;align-items:center;gap:5px;color:var(--nc);font-size:clamp(11px,1.2vw,13px);font-weight:700;text-decoration:none;transition:gap .25s}
+.pcl:hover{gap:9px}
+
+/* TESTIMONIALS */
+.tc{background:var(--card);border:1px solid var(--cb);border-radius:var(--rlg);padding:clamp(20px,3vw,26px);transition:transform .3s,border-color .3s}
+.tc:hover{transform:translateY(-5px);border-color:rgba(0,242,254,.25)}
+.tq{font-size:clamp(26px,4vw,34px);color:var(--nc);opacity:.35;line-height:1;margin-bottom:9px;font-family:Georgia,serif}
+.tt{font-size:clamp(12px,1.3vw,14px);color:var(--tx);line-height:1.7;margin-bottom:14px;font-style:italic}
+.tr{display:inline-flex;align-items:center;gap:5px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#4ade80;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:16px}
+.ta{display:flex;align-items:center;gap:11px}
+.tav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--v1),var(--nc));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
+.tn{font-size:13px;font-weight:700;color:#fff}
+.trl{font-size:11px;color:var(--mt)}
+.tst{color:#fbbf24;font-size:10px;margin-top:2px}
+
+/* PROCESS */
+.prg{display:grid;gap:clamp(12px,2vw,22px);position:relative}
+.prg::before{content:'';position:absolute;top:36px;left:12.5%;width:75%;height:2px;background:linear-gradient(90deg,transparent,var(--nc),transparent);opacity:.17;z-index:0}
+.prs{background:var(--card);border:1px solid var(--cb);border-radius:var(--rlg);padding:clamp(20px,3vw,30px) clamp(14px,2vw,22px);text-align:center;position:relative;z-index:1;transition:transform .3s,border-color .3s,box-shadow .3s}
+.prs:hover{transform:translateY(-6px);border-color:rgba(0,242,254,.3);box-shadow:0 14px 36px rgba(0,242,254,.1)}
+.stn{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--nc),var(--nc2));color:#000;font-weight:900;font-size:19px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;box-shadow:var(--glow)}
+.prs h3{font-size:clamp(14px,1.6vw,17px);font-weight:700;color:#fff;margin-bottom:8px}
+.prs p{font-size:clamp(12px,1.2vw,13px);color:var(--mt);line-height:1.65}
+
+/* GUARANTEE */
+.gb{background:linear-gradient(135deg,rgba(0,242,254,.055),rgba(102,126,234,.055));border:1px solid rgba(0,242,254,.2);border-radius:24px;padding:clamp(24px,5vw,50px);display:grid;grid-template-columns:auto 1fr;gap:clamp(22px,4vw,40px);align-items:center}
+.gio{font-size:clamp(48px,7vw,76px)}
+.gt{font-size:clamp(20px,3.5vw,30px);font-weight:900;color:#fff;margin-bottom:11px}
+.gp{font-size:clamp(13px,1.4vw,15px);color:var(--mt);line-height:1.7;margin-bottom:20px}
+.gl{display:flex;flex-direction:column;gap:8px}
+.glit{display:flex;align-items:center;gap:8px;font-size:clamp(12px,1.3vw,14px);color:var(--tx)}
+.glit i{color:var(--nc);flex-shrink:0;font-size:13px}
+
+/* FAQ */
+.fqw{max-width:740px;margin:0 auto;display:flex;flex-direction:column;gap:11px}
+.fi{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);overflow:hidden;transition:border-color .25s}
+.fi.on{border-color:rgba(0,242,254,.3)}
+.fq{display:flex;align-items:center;justify-content:space-between;padding:clamp(14px,2.5vw,19px) clamp(14px,2.5vw,22px);cursor:pointer;font-size:clamp(13px,1.5vw,15px);font-weight:600;color:#fff;user-select:none;gap:14px}
+.fq:hover{color:var(--nc)}
+.fq i{color:var(--nc);font-size:12px;transition:transform .25s;flex-shrink:0}
+.fi.on .fq i{transform:rotate(180deg)}
+.fa2{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .25s;padding:0 clamp(14px,2.5vw,22px);font-size:clamp(12px,1.3vw,14px);color:var(--mt);line-height:1.7}
+.fi.on .fa2{max-height:260px;padding:0 clamp(14px,2.5vw,22px) clamp(13px,2vw,19px)}
+
+/* CTA */
+.cs{background:linear-gradient(135deg,rgba(0,242,254,.88),rgba(79,172,254,.9));position:relative;overflow:hidden}
+.cs::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 400'%3E%3Cpolygon fill='rgba(0,0,0,.07)' points='0,400 1000,0 1000,400'/%3E%3C/svg%3E") no-repeat center/cover}
+.ci2{position:relative;z-index:2;text-align:center}
+.ct{font-size:clamp(22px,4.5vw,50px);font-weight:900;color:#000;margin-bottom:12px;line-height:1.15}
+.csu{font-size:clamp(14px,1.8vw,17px);color:rgba(0,0,0,.7);margin-bottom:28px}
+.ub{display:inline-flex;align-items:center;gap:7px;background:rgba(0,0,0,.14);color:#000;font-weight:800;font-size:clamp(10px,1.2vw,12px);padding:6px 14px;border-radius:999px;margin-bottom:22px}
+.ub i{color:#dc2626}
+
+/* FORM */
+.fw{max-width:620px;margin:0 auto}
+.fcd{background:rgba(13,13,26,.85);border:1px solid rgba(0,242,254,.2);border-radius:24px;padding:clamp(22px,5vw,46px);backdrop-filter:blur(20px);box-shadow:0 22px 56px rgba(0,0,0,.4)}
+.fct{font-size:clamp(20px,3.5vw,30px);font-weight:900;color:#fff;text-align:center;margin-bottom:4px}
+.fcs{font-size:clamp(12px,1.4vw,14px);color:var(--mt);text-align:center;margin-bottom:26px}
+.f2c{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.fg{margin-bottom:17px}
+.fl{display:block;font-size:clamp(11px,1.2vw,12px);font-weight:600;color:var(--tx);margin-bottom:6px;letter-spacing:.02em}
+.fi2,.fse,.ftx{width:100%;padding:clamp(10px,1.5vw,13px) clamp(13px,1.8vw,17px);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:9px;color:#fff;font-family:var(--f);font-size:clamp(12px,1.4vw,14px);transition:border-color .25s,box-shadow .25s;-webkit-appearance:none;appearance:none}
+.fi2:focus,.fse:focus,.ftx:focus{outline:none;border-color:var(--nc);box-shadow:0 0 0 3px rgba(0,242,254,.12)}
+.fi2::placeholder,.ftx::placeholder{color:rgba(255,255,255,.2)}
+.fse option{background:#0d0d1a}
+.ftx{min-height:96px;resize:vertical}
+.fhn{font-size:11px;color:var(--mt);text-align:center;margin-top:13px}
+.fhn a{color:var(--nc);text-decoration:none}
+.fok{display:none;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.3);color:#4ade80;padding:16px;border-radius:var(--r);text-align:center;font-size:13px;margin-top:16px}
+.fok i{font-size:24px;margin-bottom:7px;display:block}
+.slbl{font-size:11px;color:var(--mt);margin-bottom:9px}
+
+/* FOOTER */
+footer{background:#040408;border-top:1px solid rgba(255,255,255,.06);padding:clamp(36px,6vw,58px) 0 clamp(22px,3vw,30px)}
+.fgd{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:clamp(20px,4vw,40px);margin-bottom:clamp(28px,4vw,44px)}
+.fbr p{font-size:13px;color:var(--mt);line-height:1.7;margin:11px 0 16px}
+.fso{display:flex;gap:9px;flex-wrap:wrap}
+.sl{width:37px;height:37px;border-radius:9px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:var(--mt);font-size:14px;text-decoration:none;transition:background .25s,color .25s,border-color .25s,transform .25s}
+.sl:hover{background:rgba(0,242,254,.1);border-color:rgba(0,242,254,.3);color:var(--nc);transform:translateY(-3px)}
+.sl svg{width:15px;height:15px}
+.sl-mx{font-size:9px;font-weight:900;letter-spacing:-.05em}
+.fco h4{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:15px}
+.fls{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fls a{color:var(--mt);text-decoration:none;font-size:13px;display:flex;align-items:center;gap:5px;transition:color .2s}
+.fls a i{font-size:10px;opacity:.5}
+.fls a:hover{color:var(--nc)}
+.fct2{display:flex;flex-direction:column;gap:9px}
+.fci{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mt)}
+.fci a{color:var(--mt);text-decoration:none;transition:color .2s}
+.fci a:hover{color:var(--nc)}
+.fci i,.fci svg{color:var(--nc);font-size:12px;width:14px;flex-shrink:0}
+.fpn{font-size:clamp(16px,2.3vw,21px);font-weight:800;color:#fff;margin:7px 0 2px}
+.fpn a{color:#fff;text-decoration:none}
+.fps{font-size:10px;color:var(--mt);margin-bottom:12px}
+.fbt{border-top:1px solid rgba(255,255,255,.06);padding-top:clamp(16px,3vw,24px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.fbt p{font-size:11px;color:var(--mt)}
+.fbl{display:flex;gap:16px;flex-wrap:wrap}
+.fbl a{color:var(--mt);text-decoration:none;font-size:11px;transition:color .2s}
+.fbl a:hover{color:var(--nc)}
+
+/* MODAL */
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.86);display:flex;align-items:center;justify-content:center;z-index:3000;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;backdrop-filter:blur(6px);padding:clamp(14px,3vw,24px)}
+.mo.on{opacity:1;visibility:visible}
+.mb{background:#0d0d1a;border:1px solid rgba(0,242,254,.25);border-radius:22px;padding:clamp(22px,4vw,38px);width:100%;max-width:420px;position:relative;transform:translateY(40px);transition:transform .3s;box-shadow:0 22px 56px rgba(0,0,0,.6);max-height:92vh;overflow-y:auto}
+.mo.on .mb{transform:translateY(0)}
+.mb::-webkit-scrollbar{width:3px}
+.mb::-webkit-scrollbar-thumb{background:rgba(0,242,254,.3);border-radius:3px}
+.mx2{position:absolute;top:11px;right:11px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.07);border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.mti{font-size:clamp(16px,2.5vw,22px);font-weight:800;color:#fff;margin-bottom:5px;text-align:center}
+.ms{font-size:12px;color:var(--mt);text-align:center;margin-bottom:22px}
+.pc2{max-height:52vh;overflow-y:auto;padding-right:4px}
+.pc2::-webkit-scrollbar{width:3px}
+.pc2::-webkit-scrollbar-thumb{background:rgba(0,242,254,.3);border-radius:3px}
+.pc2 h4{color:#fff;margin:14px 0 6px;font-size:12px}
+.pc2 p{font-size:11px;color:var(--mt);line-height:1.7}
+
+/* ANIM */
+.an{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.an.in{opacity:1;transform:translateY(0)}
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE — complete coverage
+   ══════════════════════════════════════════════════ */
+
+/* 1180 */
+@media(max-width:1180px){.nl{gap:16px}}
+
+/* 1024 — 2-col grids, single-col hero */
+@media(max-width:1024px){
+  .hg{grid-template-columns:1fr;text-align:center}
+  .hd,.cr,.htr{margin-left:auto;margin-right:auto}
+  .hd{max-width:560px}
+  .cr{justify-content:center}
+  .htr{justify-content:center}
+  .hv{margin-top:32px}
+  .ocs{display:none}
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .prg{grid-template-columns:repeat(2,1fr)}
+  .prg::before{display:none}
+  .fgd{grid-template-columns:repeat(2,1fr)}
+  .gb{grid-template-columns:1fr;text-align:center;gap:20px}
+  .gio{font-size:52px}
+  .gl{text-align:left;max-width:460px;margin:0 auto}
+}
+
+/* 768 — full mobile */
+@media(max-width:768px){
+  :root{--tbh:0px;--nvh:56px}
+  .topbar{display:none}
+  nav{top:0}
+  .nl{display:none}
+  .bgr{display:block}
+  .ncta{display:none}
+  .hero{padding-top:calc(var(--nvh) + clamp(24px,5vw,44px))}
+  .g3{grid-template-columns:1fr}
+  .prg{grid-template-columns:repeat(2,1fr)}
+  .fgd{grid-template-columns:1fr 1fr}
+  .f2c{grid-template-columns:1fr}
+  .fcd{padding:clamp(18px,5vw,26px) clamp(14px,4vw,22px)}
+  .sr{grid-template-columns:1fr 1fr}
+  .gb{padding:clamp(20px,4vw,30px) clamp(16px,4vw,24px)}
+}
+
+/* 600 */
+@media(max-width:600px){
+  .prg{grid-template-columns:1fr 1fr}
+  .fgd{grid-template-columns:1fr}
+}
+
+/* 480 */
+@media(max-width:480px){
+  .prg{grid-template-columns:1fr}
+  .sr{grid-template-columns:1fr}
+  .cr{flex-direction:column;align-items:stretch}
+  .cr .btn{justify-content:center;width:100%}
+  .ub{font-size:10px;padding:5px 11px}
+  .tsi{gap:9px}
+  .tsit{font-size:10px}
+  .g3{grid-template-columns:1fr}
+}
+
+/* 375 — smallest phones */
+@media(max-width:375px){
+  :root{--nvh:52px}
+  .ltx{font-size:13px}
+  .fc{bottom:10px;right:10px;gap:7px}
+  .fb{width:44px;height:44px}
+}
+
+/* Landscape mobile */
+@media(max-height:480px) and (orientation:landscape){
+  .hero{padding-top:calc(var(--nvh) + 18px);padding-bottom:28px}
+  .ow{width:160px;height:160px}
+  .drw{justify-content:flex-start;padding-top:65px;overflow-y:auto}
+}
+
+@media print{
+  .fc,.bgr,nav,.topbar,#ptcl,.mo,.drw{display:none!important}
+  body{background:#fff;color:#000}
+}
+</style>
+</head>
+<body>
+<div id="ptcl"></div>
+
+<!-- ── FLOAT ── -->
+<div class="fc" role="complementary" aria-label="Связаться">
+  <a href="https://t.me/DmitryTo1986" target="_blank" rel="noopener" class="fb fb-tg" data-tip="Telegram" aria-label="Написать в Telegram">
+    <svg class="fbico" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+  </a>
+  <a href="https://max.ru/u/f9LHodD0cOJlUbclcgcvXdPsrH3GSXkGr5454frvZB0OtFDna956oV4lpjw" target="_blank" rel="noopener" class="fb fb-mx" data-tip="MAX Messenger" aria-label="MAX Messenger">
+    <svg class="fbico" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <rect width="48" height="48" rx="24" fill="rgba(255,255,255,0.15)"/>
+      <text x="24" y="31" text-anchor="middle" fill="white" font-family="Arial Black,Arial" font-weight="900" font-size="15" letter-spacing="-0.5">MAX</text>
+    </svg>
+  </a>
+  <a href="tel:+79362585387" class="fb fb-ph" data-tip="+7 (936) 258-53-87" aria-label="Позвонить">
+    <svg class="fbico" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
+
+<!-- ── TOPBAR ── -->
+<div class="topbar" id="topbar">
+  <div class="wrap"><div class="tb-in">
+    <div class="tbi"><i class="fas fa-piggy-bank"></i><span class="tbn">70%</span><span class="tblb">экономия на ФОТ</span></div>
+    <div class="tbi"><i class="fas fa-clock"></i><span class="tbn">24/7</span><span class="tblb">без выходных</span></div>
+    <div class="tbi"><i class="fas fa-bolt"></i><span class="tbn">2–4</span><span class="tblb">нед. внедрения</span></div>
+    <div class="tbi"><i class="fas fa-shield-alt"></i><span class="tbn">100%</span><span class="tblb">гарантия</span></div>
+  </div></div>
+</div>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nvi">
+    <a href="#" class="logo" aria-label="AI Agent Factory — главная">
+      <div class="lic">🤖</div>
+      <span class="ltx">AI Agent Factory</span>
+    </a>
+    <ul class="nl" role="menubar">
+      <li><a href="#benefits" class="nla">Преимущества</a></li>
+      <li><a href="#portfolio" class="nla">Кейсы</a></li>
+      <li><a href="#testimonials" class="nla">Отзывы</a></li>
+      <li><a href="#process" class="nla">Процесс</a></li>
+      <li><a href="#faq" class="nla">FAQ</a></li>
+      <li><button class="ncta" onclick="openModal()">Бесплатная консультация</button></li>
+    </ul>
+    <button class="bgr" id="bgr" aria-label="Открыть меню" aria-expanded="false"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ── DRAWER ── -->
+<nav class="drw" id="drw" aria-label="Мобильное меню">
+  <button class="drw-x" onclick="closeDrw()" aria-label="Закрыть"><i class="fas fa-times"></i></button>
+  <a href="#benefits" class="dla" onclick="closeDrw()">Преимущества</a>
+  <a href="#portfolio" class="dla" onclick="closeDrw()">Кейсы</a>
+  <a href="#testimonials" class="dla" onclick="closeDrw()">Отзывы</a>
+  <a href="#process" class="dla" onclick="closeDrw()">Процесс</a>
+  <a href="#faq" class="dla" onclick="closeDrw()">FAQ</a>
+  <a href="#application" class="dla" onclick="closeDrw()">Оставить заявку</a>
+  <button class="dbt" onclick="closeDrw();openModal()">🤖 Бесплатная консультация</button>
+  <div class="dms">
+    <a href="https://t.me/DmitryTo1986" target="_blank" class="dml dml-tg">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+      Telegram
+    </a>
+    <a href="https://max.ru/u/f9LHodD0cOJlUbclcgcvXdPsrH3GSXkGr5454frvZB0OtFDna956oV4lpjw" target="_blank" class="dml dml-mx">
+      <span class="mx-badge">MAX</span> Messenger
+    </a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hg">
+      <div>
+        <div class="bdg"><span class="bdot"></span>Принимаю заказы · Осталось 2 места в мае</div>
+        <h1 class="ht">Нейросотрудники, которые работают как люди — но лучше</h1>
+        <p class="hs">Автоматизирую бизнес-процессы с AI-агентами. Экономьте до 70% на зарплатах и получайте результат 24/7.</p>
+        <p class="hd">Создаю интеллектуальных AI-агентов под ключ: контроль звонков, юридические консультации, протоколы совещаний — любая рутина без участия человека.</p>
+        <div class="cr">
+          <button class="btn bn" onclick="openModal()"><i class="fas fa-robot"></i> Получить консультацию</button>
+          <button class="btn bg" onclick="s2('portfolio')"><i class="fas fa-play"></i> Смотреть кейсы</button>
+        </div>
+        <div class="htr">
+          <div class="tri"><i class="fas fa-check-circle"></i> Прототип за 5 дней</div>
+          <div class="tri"><i class="fas fa-check-circle"></i> Гарантия возврата</div>
+          <div class="tri"><i class="fas fa-check-circle"></i> Поддержка 24/7</div>
+        </div>
+      </div>
+      <div class="hv" aria-hidden="true">
+        <div class="ow">
+          <div class="orb">
+            <div class="oi">
+              <i class="fas fa-brain oic"></i>
+              <div class="olb">AI READY</div>
+            </div>
+          </div>
+          <div class="ocs">
+            <div class="och"><i class="fas fa-microphone-alt"></i> Транскрибация аудио</div>
+            <div class="och"><i class="fas fa-balance-scale"></i> Юридические документы</div>
+            <div class="och"><i class="fas fa-chart-bar"></i> Отчёты автоматически</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TECH STRIP ── -->
+<div class="ts">
+  <div class="wrap">
+    <p class="tslb">Технологический стек</p>
+    <div class="tsi">
+      <div class="tsit"><i class="fas fa-brain"></i> GPT-4.1</div>
+      <div class="tsit"><i class="fas fa-microphone"></i> Whisper</div>
+      <div class="tsit"><i class="fab fa-python"></i> Python</div>
+      <div class="tsit"><i class="fas fa-server"></i> Django</div>
+      <div class="tsit">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Telegram API
+      </div>
+      <div class="tsit"><i class="fas fa-database"></i> PostgreSQL</div>
+      <div class="tsit"><i class="fas fa-cloud"></i> n8n / Make</div>
+      <div class="tsit"><i class="fas fa-code-branch"></i> LangChain</div>
+      <div class="tsit"><i class="fas fa-search"></i> RAG/VectorDB</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BENEFITS ── -->
+<section id="benefits" class="ab">
+  <div class="wrap">
+    <div class="sh"><p class="stg">Почему AI-агенты</p><h2 class="sti">Реальные результаты для бизнеса</h2><p class="ssu">Компании, внедрившие нейросотрудников, получают измеримый ROI уже в первый месяц</p></div>
+    <div class="gc g3">
+      <div class="cd an"><i class="fas fa-piggy-bank ci"></i><h3>Экономия до 70%</h3><p>AI-агент работает без зарплаты, больничных и отпусков. Окупаемость от 1 месяца. Отдел из 5 человек заменяется одним агентом.</p></div>
+      <div class="cd an"><i class="fas fa-clock ci"></i><h3>Работа 24/7/365</h3><p>Бизнес не спит: агент обрабатывает обращения, формирует отчёты и отвечает на вопросы в любое время суток.</p></div>
+      <div class="cd an"><i class="fas fa-chart-line ci"></i><h3>Масштабирование без найма</h3><p>Обрабатывайте в 10× больше задач без роста штата. AI-агент масштабируется мгновенно под любую нагрузку.</p></div>
+      <div class="cd an"><i class="fas fa-bolt ci"></i><h3>Внедрение за 2–4 недели</h3><p>Прототип готов за 5 дней, полноценный агент под ключ — за 2–4 недели. Никаких месяцев ожидания.</p></div>
+      <div class="cd an"><i class="fas fa-shield-alt ci"></i><h3>Точность 99,9%</h3><p>AI не устаёт и не отвлекается. Транскрибация, анализ, классификация — каждая задача с максимальной точностью.</p></div>
+      <div class="cd an"><i class="fas fa-sync-alt ci"></i><h3>Постоянное улучшение</h3><p>Агент обучается на ваших данных и адаптируется к изменениям бизнеса. Чем дольше работает — тем точнее.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO ── -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="sh"><p class="stg">Реальные кейсы</p><h2 class="sti">Готовые AI-решения</h2><p class="ssu">Три внедрённых продукта, которые уже работают в бизнесе и дают измеримый результат</p></div>
+    <div class="gc g3">
+
+      <div class="pc an" onclick="openModal()">
+        <div class="pct"><div class="pce">🎙️</div><span class="pcb">ГОТОВОЕ РЕШЕНИЕ</span></div>
+        <h3 class="pch">Анализатор разговоров</h3>
+        <p class="pcd">Система контроля качества звонков: Whisper + GPT-4.1-nano. Транскрибация, автоклассификация брака, отчёты. Сократил ручную проверку в разы.</p>
+        <div class="pcs"><span class="st">Python</span><span class="st">Whisper</span><span class="st">GPT-4.1-nano</span><span class="st">FastAPI</span><span class="st">PostgreSQL</span></div>
+        <div class="pcr">
+          <div class="ri"><i class="fas fa-check"></i> Транскрибация звонка за 30 секунд</div>
+          <div class="ri"><i class="fas fa-check"></i> Автоклассификация брака без менеджера</div>
+          <div class="ri"><i class="fas fa-check"></i> Экономия 80% времени на ручной проверке</div>
+        </div>
+        <a href="#" class="pcl" onclick="event.stopPropagation();openModal()">Смотреть презентацию <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="pc an" onclick="openModal()">
+        <div class="pct"><div class="pce">⚖️</div><span class="pcb">ГОТОВОЕ РЕШЕНИЕ</span></div>
+        <h3 class="pch">Нейро-юрист</h3>
+        <p class="pcd">Чат-бот для правовых консультаций и генерации юридических документов. Django-приложение с контекстным поиском по базам НПА.</p>
+        <div class="pcs"><span class="st">Django</span><span class="st">GPT-4.1</span><span class="st">RAG</span><span class="st">Vector DB</span><span class="st">НПА Base</span></div>
+        <div class="pcr">
+          <div class="ri"><i class="fas fa-check"></i> Поиск по 50 000+ нормативных актов</div>
+          <div class="ri"><i class="fas fa-check"></i> Генерация договоров и претензий за 10 сек</div>
+          <div class="ri"><i class="fas fa-check"></i> Заменяет консультацию юриста за 3–5 000 ₽</div>
+        </div>
+        <a href="#" class="pcl" onclick="event.stopPropagation();openModal()">Смотреть презентацию <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="pc an" onclick="openModal()">
+        <div class="pct"><div class="pce">📝</div><span class="pcb">ГОТОВОЕ РЕШЕНИЕ</span></div>
+        <h3 class="pch">Нейро-секретарь</h3>
+        <p class="pcd">Telegram-бот для автоматизации протоколов совещаний. Whisper транскрибирует аудио, GPT анализирует и формирует итоги, задачи и дедлайны.</p>
+        <div class="pcs"><span class="st">Telegram Bot API</span><span class="st">Whisper</span><span class="st">GPT-4.1</span><span class="st">Python</span></div>
+        <div class="pcr">
+          <div class="ri"><i class="fas fa-check"></i> Протокол готов через 2 минуты после встречи</div>
+          <div class="ri"><i class="fas fa-check"></i> Автоматически назначает задачи ответственным</div>
+          <div class="ri"><i class="fas fa-check"></i> Нет забытых договорённостей</div>
+        </div>
+        <a href="#" class="pcl" onclick="event.stopPropagation();openModal()">Смотреть презентацию <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:36px">
+      <button class="btn bn" onclick="openModal()"><i class="fas fa-magic"></i> Хочу такое решение для моего бизнеса</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials" class="ab">
+  <div class="wrap">
+    <div class="sh"><p class="stg">Отзывы клиентов</p><h2 class="sti">Что говорят заказчики</h2><p class="ssu">Реальные результаты компаний, внедривших нейросотрудников</p></div>
+    <div class="gc g3">
+      <div class="tc an"><div class="tq">"</div><p class="tt">Внедрили Анализатор разговоров в колл-центр. Раньше 3 менеджера тратили весь день на прослушку — теперь агент делает это за ночь и утром готовый отчёт. Отдел QA сократился вдвое.</p><div class="tr"><i class="fas fa-chart-line"></i> Экономия 140 000 ₽/мес на ФОТ</div><div class="ta"><div class="tav">АК</div><div><div class="tn">Алексей К.</div><div class="trl">Директор колл-центра, Москва</div><div class="tst">★★★★★</div></div></div></div>
+      <div class="tc an"><div class="tq">"</div><p class="tt">Нейро-юрист закрыл 80% типовых запросов. Генерирует договоры займа, претензии, ответы на жалобы по актуальным НПА. Клиенты в восторге от скорости.</p><div class="tr"><i class="fas fa-bolt"></i> Время ответа: с 2 дней до 10 секунд</div><div class="ta"><div class="tav">ОМ</div><div><div class="tn">Ольга М.</div><div class="trl">Управляющий партнёр юркомпании</div><div class="tst">★★★★★</div></div></div></div>
+      <div class="tc an"><div class="tq">"</div><p class="tt">Нейро-секретарь изменил культуру встреч. Записываем звонок — через 2 минуты в чате протокол с задачами и дедлайнами. Про «я не помню» забыли навсегда.</p><div class="tr"><i class="fas fa-clock"></i> 5 часов в неделю возвращено команде</div><div class="ta"><div class="tav">ДВ</div><div><div class="tn">Денис В.</div><div class="trl">Операционный директор IT-стартапа</div><div class="tst">★★★★★</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section id="process">
+  <div class="wrap">
+    <div class="sh"><p class="stg">Как мы работаем</p><h2 class="sti">4 шага до вашего нейросотрудника</h2><p class="ssu">Прозрачный процесс без воды — от анализа задачи до работающего агента</p></div>
+    <div class="prg g4 an">
+      <div class="prs"><div class="stn">1</div><h3>Бесплатный анализ</h3><p>Разбираем ваши процессы, определяем задачи для автоматизации прямо сейчас и считаем ROI</p></div>
+      <div class="prs"><div class="stn">2</div><h3>Прототип за 5 дней</h3><p>Создаём работающий демо-прототип — вы видите результат до начала основной разработки</p></div>
+      <div class="prs"><div class="stn">3</div><h3>Внедрение под ключ</h3><p>Интегрируем агента в ваши системы и обучаем команду — 2–4 недели и агент в боевом режиме</p></div>
+      <div class="prs"><div class="stn">4</div><h3>Поддержка и развитие</h3><p>Техподдержка, мониторинг работы и регулярные улучшения — всё включено в стоимость</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GUARANTEE ── -->
+<section class="ab" style="padding-top:0;padding-bottom:clamp(44px,7vw,76px)">
+  <div class="wrap">
+    <div class="gb an">
+      <div class="gio" aria-hidden="true">🛡️</div>
+      <div>
+        <h2 class="gt">Гарантия результата</h2>
+        <p class="gp">Уверен в качестве своей работы. Если не увидите результата после внедрения — верну деньги полностью. Без вопросов.</p>
+        <div class="gl">
+          <div class="glit"><i class="fas fa-check-circle"></i> Прототип бесплатно — вы видите результат до оплаты</div>
+          <div class="glit"><i class="fas fa-check-circle"></i> Поддержка 30 дней после запуска включена</div>
+          <div class="glit"><i class="fas fa-check-circle"></i> Фиксированная цена — никаких скрытых доплат</div>
+          <div class="glit"><i class="fas fa-check-circle"></i> Стоимость от 50 000 ₽ — окупается за 1 месяц</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sh"><p class="stg">Частые вопросы</p><h2 class="sti">FAQ</h2><p class="ssu">Ответы на самые популярные вопросы об AI-агентах</p></div>
+    <div class="fqw">
+      <div class="fi an"><div class="fq" onclick="tFaq(this)">Сколько стоит разработка AI-агента?<i class="fas fa-chevron-down"></i></div><div class="fa2">Стоимость начинается от 50 000 ₽ за готовое решение. Индивидуальная разработка — от 100 000 ₽. Точную цену рассчитываем после бесплатной консультации. Большинство клиентов окупают инвестицию за 1–2 месяца за счёт экономии на ФОТ.</div></div>
+      <div class="fi an"><div class="fq" onclick="tFaq(this)">Как долго длится разработка?<i class="fas fa-chevron-down"></i></div><div class="fa2">Прототип — 5–7 рабочих дней. Полноценный агент с интеграцией — 2–4 недели. Сроки фиксируются в договоре. Для готовых решений — от 1 недели.</div></div>
+      <div class="fi an"><div class="fq" onclick="tFaq(this)">Нужны ли технические знания для использования?<i class="fas fa-chevron-down"></i></div><div class="fa2">Нет. Агент разрабатывается с учётом вашей команды — Telegram-бот, веб-интерфейс или интеграция в CRM. Провожу обучение сотрудников и предоставляю инструкции. Пользоваться так же просто, как мессенджером.</div></div>
+      <div class="fi an"><div class="fq" onclick="tFaq(this)">Как агент интегрируется с нашими системами?<i class="fas fa-chevron-down"></i></div><div class="fa2">Агент подключается через API к вашим CRM (amoCRM, Битрикс24), телефонии (Mango, UIS), мессенджерам, 1С, Google Sheets. Если у системы есть API — интеграция возможна.</div></div>
+      <div class="fi an"><div class="fq" onclick="tFaq(this)">Безопасны ли данные нашей компании?<i class="fas fa-chevron-down"></i></div><div class="fa2">Да. Данные не передаются третьим лицам. Агент разворачивается на вашем или арендованном сервере. Использую российские провайдеры (Yandex Cloud, Selectel). Заключаю NDA.</div></div>
+      <div class="fi an"><div class="fq" onclick="tFaq(this)">Что если агент сделает ошибку?<i class="fas fa-chevron-down"></i></div><div class="fa2">Агент настраивается с порогами уверенности. Критические решения остаются за человеком — агент подготавливает, финальное решение принимает сотрудник. Все действия логируются для аудита.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cs">
+  <div class="wrap">
+    <div class="ci2">
+      <div class="ub"><i class="fas fa-fire"></i> Осталось 2 свободных места в мае 2025</div>
+      <h2 class="ct">Готовы автоматизировать бизнес?</h2>
+      <p class="csu">Получите бесплатную консультацию и расчёт ROI — сегодня</p>
+      <div class="cr" style="justify-content:center">
+        <button class="btn bw" onclick="openModal()"><i class="fas fa-calculator"></i> Рассчитать экономию</button>
+        <a href="https://t.me/DmitryTo1986" target="_blank" class="btn bow">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+          Написать в Telegram
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FORM ── -->
+<section id="application" class="ab">
+  <div class="wrap">
+    <div class="sh"><p class="stg">Оставьте заявку</p><h2 class="sti">Бесплатная консультация</h2><p class="ssu">Заполните форму — свяжусь в течение 30 минут и разберём вашу задачу</p></div>
+    <div class="fw">
+      <div class="fcd">
+        <h3 class="fct">Оставьте заявку</h3>
+        <p class="fcs">Заполните форму и я свяжусь с вами в течение 30 минут</p>
+        <form id="mf" novalidate>
+          <div class="f2c">
+            <div class="fg"><label class="fl" for="fn">Имя *</label><input type="text" id="fn" class="fi2" placeholder="Как обращаться?" required autocomplete="given-name"></div>
+            <div class="fg"><label class="fl" for="fp">Телефон *</label><input type="tel" id="fp" class="fi2" placeholder="+7 (___) ___-__-__" required autocomplete="tel"></div>
+          </div>
+          <div class="fg"><label class="fl" for="fe">Email</label><input type="email" id="fe" class="fi2" placeholder="Для КП и материалов" autocomplete="email"></div>
+          <div class="fg"><label class="fl" for="fb">Сфера бизнеса</label><input type="text" id="fb" class="fi2" placeholder="Чем занимается компания?"></div>
+          <div class="fg"><label class="fl" for="ft">Задача для автоматизации</label>
+            <select id="ft" class="fse"><option value="">Выберите направление</option><option>Контроль качества звонков</option><option>Юридические консультации</option><option>Протоколы совещаний</option><option>Подбор персонала</option><option>Продажи и лидогенерация</option><option>Поддержка клиентов</option><option>Создание контента</option><option>Другое</option></select>
+          </div>
+          <div class="fg"><label class="fl" for="fm">Описание задачи</label><textarea id="fm" class="ftx" placeholder="Расскажите подробнее — что хотите автоматизировать, какой объём задач?"></textarea></div>
+          <p class="slbl">Выберите мессенджер для получения заявки:</p>
+          <div class="sr">
+            <button type="button" class="sb stg2" onclick="subF('tg')">
+              <svg class="si" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+              Отправить в Telegram
+            </button>
+            <button type="button" class="sb smx" onclick="subF('max')">
+              <span class="mxb">MAX</span> Отправить в MAX
+            </button>
+          </div>
+          <p class="fhn">Нажимая, вы соглашаетесь с <a href="#" onclick="openPriv(event)">политикой конфиденциальности</a></p>
+        </form>
+        <div id="fok" class="fok"><i class="fas fa-check-circle"></i><strong>Заявка отправлена!</strong><br>Мессенджер откроется с вашими данными — отправьте сообщение, и я свяжусь в течение 30 минут.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="fgd">
+      <div class="fbr">
+        <a href="#" class="logo" style="display:inline-flex"><div class="lic">🤖</div><span class="ltx" style="margin-left:9px">AI Agent Factory</span></a>
+        <p>Создаю умных нейросотрудников для автоматизации бизнес-процессов. GPT-4, Whisper, RAG — под ключ с гарантией.</p>
+        <div class="fso">
+          <a href="https://t.me/DmitryTo1986" target="_blank" class="sl" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+          </a>
+          <a href="https://max.ru/u/f9LHodD0cOJlUbclcgcvXdPsrH3GSXkGr5454frvZB0OtFDna956oV4lpjw" target="_blank" class="sl sl-mx" aria-label="MAX Messenger">MAX</a>
+          <a href="tel:+79362585387" class="sl" aria-label="Телефон">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="fco"><h4>Решения</h4><ul class="fls"><li><a href="#portfolio"><i class="fas fa-chevron-right"></i> Анализатор звонков</a></li><li><a href="#portfolio"><i class="fas fa-chevron-right"></i> Нейро-юрист</a></li><li><a href="#portfolio"><i class="fas fa-chevron-right"></i> Нейро-секретарь</a></li><li><a href="#" onclick="openModal()"><i class="fas fa-chevron-right"></i> Индивидуальное решение</a></li></ul></div>
+      <div class="fco"><h4>Компания</h4><ul class="fls"><li><a href="#benefits"><i class="fas fa-chevron-right"></i> Преимущества</a></li><li><a href="#process"><i class="fas fa-chevron-right"></i> Как работаем</a></li><li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Отзывы</a></li><li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li><li><a href="#" onclick="openPriv(event)"><i class="fas fa-chevron-right"></i> Конфиденциальность</a></li></ul></div>
+      <div class="fco">
+        <h4>Контакты</h4>
+        <div class="fpn"><a href="tel:+79362585387">+7 (936) 258-53-87</a></div>
+        <div class="fps">Звонки · Пн–Вс 9:00–21:00</div>
+        <div class="fct2">
+          <div class="fci">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="color:var(--nc);flex-shrink:0"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+            <a href="https://t.me/DmitryTo1986" target="_blank">@DmitryTo1986</a>
+          </div>
+          <div class="fci">
+            <span style="font-size:9px;font-weight:900;color:var(--nc);width:14px;flex-shrink:0;letter-spacing:-.04em">MAX</span>
+            <a href="https://max.ru/u/f9LHodD0cOJlUbclcgcvXdPsrH3GSXkGr5454frvZB0OtFDna956oV4lpjw" target="_blank">MAX Messenger</a>
+          </div>
+          <div class="fci"><i class="fas fa-map-marker-alt"></i><span>Москва, Россия</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="fbt">
+      <p>© 2025 AI Agent Factory · Дмитрий Тоноян · Разработка AI-агентов для бизнеса</p>
+      <div class="fbl"><a href="#" onclick="openPriv(event)">Политика конфиденциальности</a><a href="#" onclick="openModal()">Оставить заявку</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── MODAL QUICK ── -->
+<div class="mo" id="mo" onclick="bgcl(event,'mo',closeM)" role="dialog" aria-modal="true">
+  <div class="mb">
+    <button class="mx2" onclick="closeM()" aria-label="Закрыть">&times;</button>
+    <h3 class="mti">Бесплатная консультация</h3>
+    <p class="ms">Заполните — свяжусь в течение 30 минут</p>
+    <form id="mqf" novalidate>
+      <div class="fg"><label class="fl">Имя *</label><input type="text" id="mn" class="fi2" placeholder="Как обращаться?" required autocomplete="given-name"></div>
+      <div class="fg"><label class="fl">Телефон *</label><input type="tel" id="mpn" class="fi2" placeholder="+7 (___) ___-__-__" required autocomplete="tel"></div>
+      <div class="fg"><label class="fl">Задача</label>
+        <select id="mt" class="fse"><option value="">Выберите направление</option><option>Контроль качества звонков</option><option>Юридические консультации</option><option>Протоколы совещаний</option><option>Продажи и лидогенерация</option><option>Поддержка клиентов</option><option>Другое</option></select>
+      </div>
+      <p class="slbl">Выберите мессенджер:</p>
+      <div class="sr">
+        <button type="button" class="sb stg2" onclick="subM('tg')">
+          <svg class="si" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+          Telegram
+        </button>
+        <button type="button" class="sb smx" onclick="subM('max')">
+          <span class="mxb">MAX</span> MAX Messenger
+        </button>
+      </div>
+      <p class="fhn" style="margin-top:12px">Отправляя, вы соглашаетесь с <a href="#" onclick="openPriv(event)">политикой конфиденциальности</a></p>
+    </form>
+    <div id="mok" class="fok"><i class="fas fa-check-circle"></i><strong>Заявка отправлена!</strong><br>Мессенджер откроется — отправьте сообщение, и я свяжусь в течение 30 минут.</div>
+  </div>
+</div>
+
+<!-- ── PRIVACY ── -->
+<div class="mo" id="pmo" onclick="bgcl(event,'pmo',closeP)" role="dialog" aria-modal="true">
+  <div class="mb" style="max-width:520px">
+    <button class="mx2" onclick="closeP()" aria-label="Закрыть">&times;</button>
+    <h3 class="mti">Политика конфиденциальности</h3>
+    <div class="pc2">
+      <p>Настоящая Политика регулирует обработку персональных данных, предоставляемых при использовании сайта AI Agent Factory.</p>
+      <h4>1. Сбор данных</h4><p>Мы собираем имя, номер телефона, email и описание задачи из формы обратной связи. Данные используются исключительно для связи с вами.</p>
+      <h4>2. Использование данных</h4><p>Данные используются для ответа на ваш запрос, формирования коммерческого предложения и отправки информационных материалов с вашего согласия.</p>
+      <h4>3. Хранение</h4><p>Данные хранятся в защищённых мессенджерах (Telegram, MAX) и не передаются третьим лицам. Срок хранения — не более 3 лет с момента последнего обращения.</p>
+      <h4>4. Права субъекта</h4><p>По Федеральному закону № 152-ФЗ «О персональных данных» вы вправе запросить уточнение, блокирование или уничтожение ваших данных. Запрос: Telegram @DmitryTo1986.</p>
+      <h4>5. Контакты</h4><p>Telegram: @DmitryTo1986 · Тел: +7 (936) 258-53-87</p>
+    </div>
+    <div style="text-align:center;margin-top:20px"><button class="btn bn" onclick="closeP()" style="display:inline-flex">Понятно</button></div>
+  </div>
+</div>
+
+<script>
+/* PARTICLES */
+(function(){
+  const c=document.getElementById('ptcl');
+  const n=window.innerWidth<480?14:window.innerWidth<768?22:38;
+  for(let i=0;i<n;i++){
+    const p=document.createElement('div');p.className='ptc';
+    const s=Math.random()*2.5+.8;
+    p.style.cssText=`left:${Math.random()*100}vw;width:${s}px;height:${s}px;animation-duration:${Math.random()*10+8}s;animation-delay:${Math.random()*12}s`;
+    c.appendChild(p);
+  }
+})();
+
+/* NAV */
+const navEl=document.getElementById('nav');
+const tb=document.getElementById('topbar');
+function updateTop(){navEl.style.top=(tb&&tb.offsetHeight>0?tb.offsetHeight:0)+'px'}
+updateTop();
+window.addEventListener('resize',updateTop,{passive:true});
+window.addEventListener('scroll',()=>navEl.classList.toggle('sc',window.scrollY>60),{passive:true});
+
+/* DRAWER */
+const drw=document.getElementById('drw');
+const bgr=document.getElementById('bgr');
+function openDrw(){drw.classList.add('on');document.body.style.overflow='hidden';bgr.setAttribute('aria-expanded','true')}
+function closeDrw(){drw.classList.remove('on');document.body.style.overflow='';bgr.setAttribute('aria-expanded','false')}
+bgr.addEventListener('click',()=>drw.classList.contains('on')?closeDrw():openDrw());
+
+/* SMOOTH SCROLL */
+function s2(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'})}
+document.querySelectorAll('.nla,.dla').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const h=a.getAttribute('href');
+    if(h&&h.startsWith('#')&&h.length>1){e.preventDefault();s2(h.slice(1))}
+    closeDrw();
+  });
+});
+
+/* MODALS */
+function openModal(){document.getElementById('mo').classList.add('on');document.body.style.overflow='hidden'}
+function closeM(){document.getElementById('mo').classList.remove('on');document.body.style.overflow=''}
+function openPriv(e){if(e)e.preventDefault();document.getElementById('pmo').classList.add('on');document.body.style.overflow='hidden'}
+function closeP(){document.getElementById('pmo').classList.remove('on');document.body.style.overflow=''}
+function bgcl(e,id,fn){if(e.target===document.getElementById(id))fn()}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeM();closeP();closeDrw()}});
+
+/* FAQ */
+function tFaq(q){
+  const item=q.parentElement;
+  const was=item.classList.contains('on');
+  document.querySelectorAll('.fi.on').forEach(i=>i.classList.remove('on'));
+  if(!was)item.classList.add('on');
+}
+
+/* FORM */
+function buildMsg(d){
+  return`🤖 Новая заявка — AI Agent Factory\n\n👤 Имя: ${d.n}\n📞 Телефон: ${d.p}${d.e?'\n📧 Email: '+d.e:''}${d.b?'\n🏢 Бизнес: '+d.b:''}${d.t?'\n⚙️ Задача: '+d.t:''}${d.m?'\n💬 Описание: '+d.m:''}\n\n⏰ ${new Date().toLocaleString('ru')}`;
+}
+function sendTo(msg,pl){
+  const enc=encodeURIComponent(msg);
+  if(pl==='tg')window.open('https://t.me/DmitryTo1986?text='+enc,'_blank');
+  else window.open('https://max.ru/u/f9LHodD0cOJlUbclcgcvXdPsrH3GSXkGr5454frvZB0OtFDna956oV4lpjw','_blank');
+}
+function subF(pl){
+  const n=document.getElementById('fn').value.trim();
+  const p=document.getElementById('fp').value.trim();
+  if(!n||!p){alert('Пожалуйста, заполните имя и телефон');return}
+  const d={n,p,e:document.getElementById('fe').value.trim(),b:document.getElementById('fb').value.trim(),t:document.getElementById('ft').value,m:document.getElementById('fm').value.trim()};
+  document.getElementById('mf').style.display='none';
+  document.getElementById('fok').style.display='block';
+  document.getElementById('fok').scrollIntoView({behavior:'smooth',block:'center'});
+  setTimeout(()=>sendTo(buildMsg(d),pl),400);
+}
+function subM(pl){
+  const n=document.getElementById('mn').value.trim();
+  const p=document.getElementById('mpn').value.trim();
+  if(!n||!p){alert('Пожалуйста, заполните имя и телефон');return}
+  const d={n,p,t:document.getElementById('mt').value};
+  document.getElementById('mqf').style.display='none';
+  document.getElementById('mok').style.display='block';
+  setTimeout(()=>sendTo(buildMsg(d),pl),400);
+  setTimeout(closeM,5000);
+}
+
+/* SCROLL ANIM */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
+},{threshold:.06,rootMargin:'0px 0px -28px 0px'});
+document.querySelectorAll('.an').forEach(el=>obs.observe(el));
+/* stagger */
+document.querySelectorAll('.gc,.prg').forEach(g=>{
+  [...g.children].forEach((c,i)=>{c.style.transitionDelay=i*.08+'s'});
+});
+</script>
+</body>
+</html>
