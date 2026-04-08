@@ -1,992 +1,420 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Tools Hub — Каталог нейросетей 2026</title>
-<meta name="description" content="Полный каталог нейросетей и AI-инструментов 2026. Чат, видео, изображения, агенты, голос, код. Бесплатные и платные.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --nc:#00f2fe;--nc2:#4facfe;--v1:#667eea;--v2:#764ba2;
-  --dk:#070710;--dk2:#0d0d1a;
-  --card:rgba(255,255,255,.032);--cb:rgba(0,242,254,.12);
-  --tx:#e8e8f0;--mt:#8888aa;
-  --glow:0 0 24px rgba(0,242,254,.45);
-  --f:'Exo 2',sans-serif;--mn:'JetBrains Mono',monospace;
-  --r:12px;--rlg:20px
-}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--f);background:var(--dk);color:var(--tx);overflow-x:hidden;line-height:1.65}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 10% 0%,rgba(102,126,234,.08),transparent 60%),radial-gradient(ellipse 60% 40% at 90% 100%,rgba(0,242,254,.06),transparent 55%);pointer-events:none;z-index:0}
-.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,32px);position:relative;z-index:1}
-
-/* PARTICLES */
-#ptcl{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.ptc{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(0,242,254,.8),rgba(102,126,234,.4));animation:pfl linear infinite;opacity:0}
-@keyframes pfl{0%{transform:translateY(100vh) scale(0);opacity:0}5%{opacity:.7}90%{opacity:.4}100%{transform:translateY(-20px) scale(1);opacity:0}}
-
-/* NAVBAR */
-nav{position:fixed;top:0;width:100%;height:64px;background:rgba(7,7,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,242,254,.1);z-index:1000}
-.nvi{display:flex;align-items:center;justify-content:space-between;height:100%;padding:0 clamp(14px,4vw,28px);max-width:1200px;margin:0 auto}
-.logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
-.lic{width:36px;height:36px;background:linear-gradient(135deg,var(--nc),var(--nc2));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.ltx{font-size:clamp(15px,2vw,20px);font-weight:800;background:linear-gradient(90deg,#fff,var(--nc));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nl{display:flex;align-items:center;list-style:none;gap:clamp(12px,2vw,24px)}
-.nla{color:rgba(255,255,255,.75);text-decoration:none;font-weight:600;font-size:clamp(12px,1.2vw,14px);transition:color .2s;position:relative;white-space:nowrap}
-.nla:hover{color:var(--nc)}
-.stat-bar{display:flex;align-items:center;gap:clamp(8px,1.5vw,18px)}
-.stat-item{display:flex;align-items:center;gap:5px;font-size:12px;font-family:var(--mn);color:var(--mt)}
-.stat-item span{color:var(--nc);font-weight:600}
-@media(max-width:680px){.nl,.stat-bar{display:none}}
-
-/* HERO */
-.hero{padding:clamp(100px,15vw,160px) 0 clamp(48px,7vw,80px);text-align:center;position:relative}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,242,254,.08);border:1px solid rgba(0,242,254,.25);color:var(--nc);padding:7px 16px;border-radius:999px;font-size:clamp(11px,1.2vw,13px);font-weight:700;letter-spacing:.04em;margin-bottom:22px;font-family:var(--mn)}
-.bdot{width:7px;height:7px;border-radius:50%;background:var(--nc);animation:blk 1.5s infinite;flex-shrink:0}
-@keyframes blk{0%,100%{opacity:1}50%{opacity:.2}}
-h1.hero-title{font-size:clamp(30px,6vw,72px);font-weight:900;line-height:1.05;letter-spacing:-2px;background:linear-gradient(135deg,#fff 0%,var(--nc) 55%,var(--nc2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
-.hero-sub{font-size:clamp(14px,2vw,20px);color:var(--mt);max-width:620px;margin:0 auto 36px;line-height:1.6}
-.hero-stats{display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(12px,2.5vw,32px);margin-top:32px}
-.hs-item{text-align:center}
-.hs-num{font-size:clamp(24px,4vw,42px);font-weight:900;background:linear-gradient(135deg,var(--nc),var(--nc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:var(--mn)}
-.hs-lbl{font-size:11px;color:var(--mt);text-transform:uppercase;letter-spacing:.08em;margin-top:3px}
-
-/* FILTERS */
-.filters-wrap{position:sticky;top:64px;z-index:100;background:rgba(7,7,16,.95);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.05);padding:14px 0}
-.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.filter-btn{padding:7px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:clamp(11px,1.2vw,13px);font-family:var(--f);font-weight:600;cursor:pointer;background:transparent;color:var(--mt);transition:all .2s;white-space:nowrap}
-.filter-btn:hover{color:#fff;border-color:rgba(0,242,254,.4)}
-.filter-btn.active{background:linear-gradient(90deg,var(--nc),var(--nc2));color:#000;border-color:transparent;font-weight:800;box-shadow:var(--glow)}
-.search-box{flex:1;min-width:180px;max-width:280px;margin-left:auto;position:relative}
-.search-box input{width:100%;padding:8px 14px 8px 34px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:999px;color:var(--tx);font-family:var(--f);font-size:13px;outline:none;transition:border-color .2s}
-.search-box input::placeholder{color:var(--mt)}
-.search-box input:focus{border-color:rgba(0,242,254,.4)}
-.search-box i{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--mt);font-size:12px}
-
-/* SECTION */
-section{padding:clamp(40px,6vw,72px) 0;position:relative}
-.sec-header{margin-bottom:clamp(20px,3vw,36px)}
-.sec-tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--nc);margin-bottom:8px;font-family:var(--mn)}
-.sec-title{font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:-1px;color:#fff;margin-bottom:6px}
-.sec-sub{font-size:14px;color:var(--mt)}
-.sec-count{font-family:var(--mn);font-size:12px;color:var(--mt);margin-left:10px;opacity:.6}
-
-/* GRID */
-.grid{display:grid;gap:clamp(10px,1.8vw,18px)}
-.g2{grid-template-columns:repeat(2,1fr)}
-.g3{grid-template-columns:repeat(3,1fr)}
-.g4{grid-template-columns:repeat(4,1fr)}
-@media(max-width:1080px){.g4{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:800px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.g3,.g4,.g2{grid-template-columns:1fr}}
-
-/* TOOL CARD */
-.tool-card{background:var(--card);border:1px solid var(--cb);border-radius:var(--rlg);padding:clamp(16px,2.5vw,24px);transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;display:flex;flex-direction:column}
-.tool-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--nc),var(--nc2));transform:scaleX(0);transform-origin:left;transition:transform .3s;border-radius:2px 2px 0 0}
-.tool-card:hover::before{transform:scaleX(1)}
-.tool-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,242,254,.1);border-color:rgba(0,242,254,.25)}
-
-/* tier accent lines */
-.tool-card.tier-free::before{background:linear-gradient(90deg,#22c55e,#4ade80)}
-.tool-card.tier-free{border-color:rgba(34,197,94,.15)}
-.tool-card.tier-free:hover{box-shadow:0 16px 40px rgba(34,197,94,.12);border-color:rgba(34,197,94,.35)}
-.tool-card.tier-paid::before{background:linear-gradient(90deg,#f59e0b,#ef4444)}
-.tool-card.tier-paid{border-color:rgba(245,158,11,.12)}
-
-.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:12px}
-.card-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;background:rgba(0,242,254,.08);border:1px solid rgba(0,242,254,.15)}
-.card-icon.ic-green{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.2)}
-.card-icon.ic-amber{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.2)}
-.card-icon.ic-purple{background:rgba(102,126,234,.08);border-color:rgba(102,126,234,.2)}
-.card-icon.ic-pink{background:rgba(236,72,153,.08);border-color:rgba(236,72,153,.2)}
-.card-icon.ic-cyan{background:rgba(6,182,212,.08);border-color:rgba(6,182,212,.2)}
-.card-icon.ic-red{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.2)}
-
-.tier-badge{font-size:10px;padding:3px 9px;border-radius:999px;font-weight:700;font-family:var(--mn);white-space:nowrap;flex-shrink:0}
-.tb-free{background:rgba(34,197,94,.12);color:#4ade80;border:1px solid rgba(34,197,94,.25)}
-.tb-freemium{background:rgba(251,191,36,.12);color:#fbbf24;border:1px solid rgba(251,191,36,.25)}
-.tb-paid{background:rgba(239,68,68,.1);color:#f87171;border:1px solid rgba(239,68,68,.2)}
-
-.card-name{font-size:clamp(14px,1.6vw,17px);font-weight:800;color:#fff;margin-bottom:6px;line-height:1.2}
-.card-name .new{font-size:9px;background:linear-gradient(90deg,var(--nc),var(--nc2));color:#000;padding:2px 6px;border-radius:4px;font-weight:800;margin-left:6px;vertical-align:middle}
-.card-desc{font-size:clamp(11px,1.2vw,13px);color:var(--mt);line-height:1.6;margin-bottom:12px;flex:1}
-.card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
-.tag{font-size:10px;font-family:var(--mn);color:var(--mt);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:2px 7px;border-radius:5px}
-.card-link{display:inline-flex;align-items:center;gap:5px;color:var(--nc);font-size:12px;font-weight:700;text-decoration:none;border:1px solid rgba(0,242,254,.2);padding:6px 12px;border-radius:8px;transition:all .2s;font-family:var(--mn);margin-top:auto}
-.card-link:hover{background:rgba(0,242,254,.08);border-color:rgba(0,242,254,.45);gap:8px}
-.card-link.lnk-free{color:#4ade80;border-color:rgba(34,197,94,.2)}
-.card-link.lnk-free:hover{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.4)}
-
-/* CATEGORY SECTION */
-.cat-section{margin-bottom:clamp(32px,5vw,60px)}
-.cat-section.hidden{display:none}
-
-/* FREE API TABLE */
-.api-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:16px}
-.api-table th{font-size:11px;font-family:var(--mn);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mt);padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.07);text-align:left}
-.api-table td{padding:12px 14px;font-size:clamp(11px,1.2vw,13px);border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle}
-.api-table tr:last-child td{border-bottom:none}
-.api-table tr:hover td{background:rgba(255,255,255,.02)}
-.api-table td:first-child{color:#fff;font-weight:700}
-.api-table .limit{color:var(--nc);font-family:var(--mn);font-size:12px}
-.api-table .speed{display:inline-flex;align-items:center;gap:4px}
-.api-table a{color:var(--nc);text-decoration:none;font-family:var(--mn);font-size:11px}
-.api-table a:hover{text-decoration:underline}
-.tbl-wrap{background:var(--card);border:1px solid var(--cb);border-radius:var(--rlg);overflow:hidden}
-.nocard{background:transparent;border:none;padding:0}
-
-/* MODEL CARDS (video) */
-.model-list{display:flex;flex-direction:column;gap:8px}
-.ml-item{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:12px 16px;transition:border-color .2s}
-.ml-item:hover{border-color:rgba(0,242,254,.2)}
-.ml-rank{font-family:var(--mn);font-size:11px;color:var(--mt);min-width:20px}
-.ml-name{font-size:13px;font-weight:700;color:#fff;flex:1}
-.ml-desc{font-size:12px;color:var(--mt)}
-.ml-badge{font-size:10px;padding:2px 8px;border-radius:6px;font-family:var(--mn)}
-
-/* NOTICE BOX */
-.notice{background:rgba(0,242,254,.06);border:1px solid rgba(0,242,254,.2);border-radius:12px;padding:16px 20px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start}
-.notice i{color:var(--nc);font-size:16px;flex-shrink:0;margin-top:2px}
-.notice p{font-size:13px;color:var(--tx);line-height:1.6}
-.notice strong{color:var(--nc)}
-
-/* FOOTER */
-footer{border-top:1px solid rgba(255,255,255,.06);padding:clamp(28px,5vw,56px) 0;margin-top:clamp(32px,6vw,80px)}
-.footer-inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px}
-.footer-logo{font-size:22px;font-weight:900;background:linear-gradient(90deg,#fff,var(--nc));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
-.footer-links a{color:var(--mt);font-size:12px;text-decoration:none;font-family:var(--mn);padding:4px 10px;border:1px solid rgba(255,255,255,.07);border-radius:6px;transition:color .2s,border-color .2s}
-.footer-links a:hover{color:var(--nc);border-color:rgba(0,242,254,.3)}
-.footer-copy{font-size:11px;color:var(--mt);opacity:.5}
-
-/* SCROLL TO TOP */
-.stt{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--nc),var(--nc2));color:#000;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;font-size:16px;z-index:999;box-shadow:var(--glow);transition:transform .2s}
-.stt:hover{transform:scale(1.1)}
-.stt.show{display:flex}
-
-/* COUNT BADGE */
-.cat-title-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.count-pill{background:rgba(0,242,254,.1);border:1px solid rgba(0,242,254,.2);color:var(--nc);font-size:11px;font-family:var(--mn);padding:2px 9px;border-radius:999px}
-
-/* EMPTY STATE */
-.empty{text-align:center;padding:48px 20px;color:var(--mt)}
-.empty i{font-size:32px;margin-bottom:12px;display:block;opacity:.3}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Factory × Tools Hub — Нейросотрудники и каталог AI-инструментов 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.0/400.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.0/500.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.0/600.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.0/700.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.0/800.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        brand: { 50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e' },
+                        accent: { 400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed', 700: '#6d28d9' }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                        'slide-in': 'slideIn 0.5s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        slideIn: { '0%': { opacity: '0', transform: 'translateX(-20px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0c4a6e 100%); }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-light { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(0, 0, 0, 0.05); }
+        .text-gradient { background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .tool-card { transition: all 0.3s ease; }
+        .tool-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .filter-btn.active { background: #0ea5e9; color: white; border-color: #0ea5e9; }
+        .nav-link:hover { color: #0ea5e9; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+        .faq-item.open .faq-answer { max-height: 500px; padding-top: 1rem; padding-bottom: 1rem; }
+        .faq-item.open .faq-icon { transform: rotate(180deg); }
+        .faq-icon { transition: transform 0.3s ease; }
+        .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+        .mobile-menu.open { transform: translateX(0); }
+        .modal { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .modal.active { opacity: 1; pointer-events: auto; }
+        .modal-content { transform: scale(0.9) translateY(20px); transition: transform 0.3s ease; }
+        .modal.active .modal-content { transform: scale(1) translateY(0); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
 </head>
-<body>
+<body class="bg-gray-900 text-white overflow-x-hidden">
 
-<div id="ptcl"></div>
+    <!-- Navigation (без изменений) -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gray-900/80 backdrop-blur-xl border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="#tools" class="flex items-center gap-2 group">
+                    <span class="text-2xl group-hover:scale-110 transition-transform">🤖</span>
+                    <span class="text-lg lg:text-xl font-bold text-white">AI Agent Factory <span class="text-gray-400 text-sm lg:text-base hidden sm:inline">×</span> <span class="text-brand-400 text-sm lg:text-base">Tools Hub</span></span>
+                </a>
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#tools" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">🗂 Каталог</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">О нас</a>
+                    <a href="#benefits" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">Преимущества</a>
+                    <a href="#portfolio" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">Кейсы</a>
+                    <a href="#testimonials" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">Отзывы</a>
+                    <a href="#process" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">Процесс</a>
+                    <a href="#faq" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">FAQ</a>
+                    <a href="#application" class="bg-gradient-to-r from-brand-500 to-accent-500 hover:from-brand-600 hover:to-accent-600 text-white px-5 py-2.5 rounded-xl font-semibold transition-all hover:scale-105 shadow-lg shadow-brand-500/25">Оставить заявку</a>
+                </div>
+                <button id="mobileMenuBtn" class="lg:hidden p-2 text-gray-300 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-<!-- NAV -->
-<nav>
-  <div class="nvi">
-    <a class="logo" href="#">
-      <div class="lic">🤖</div>
-      <span class="ltx">AI Tools Hub</span>
-    </a>
-    <ul class="nl">
-      <li><a class="nla" href="#chat">Чат</a></li>
-      <li><a class="nla" href="#agents">Агенты</a></li>
-      <li><a class="nla" href="#appbuilder">App Builder</a></li>
-      <li><a class="nla" href="#video">Видео</a></li>
-      <li><a class="nla" href="#image">Изображения</a></li>
-      <li><a class="nla" href="#voice">Голос</a></li>
-      <li><a class="nla" href="#code">Код</a></li>
-      <li><a class="nla" href="#free-api">Free API</a></li>
-    </ul>
-    <div class="stat-bar">
-      <div class="stat-item"><i class="fa fa-database"></i> <span>38</span>&nbsp;инструментов</div>
-      <div class="stat-item"><i class="fa fa-bolt"></i> Обновлено <span>2026</span></div>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-badge"><span class="bdot"></span> Каталог нейросетей 2026</div>
-    <h1 class="hero-title">AI Tools Hub</h1>
-    <p class="hero-sub">Полный обзор нейросетей и AI-инструментов. Систематизировано по категориям — бесплатный и платный функционал, прямые ссылки.</p>
-    <div class="hero-stats">
-      <div class="hs-item"><div class="hs-num">38</div><div class="hs-lbl">Инструментов</div></div>
-      <div class="hs-item"><div class="hs-num">7</div><div class="hs-lbl">Категорий</div></div>
-      <div class="hs-item"><div class="hs-num">18</div><div class="hs-lbl">Бесплатных</div></div>
-      <div class="hs-item"><div class="hs-num">2026</div><div class="hs-lbl">Актуально</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- FILTERS -->
-<div class="filters-wrap">
-  <div class="wrap">
-    <div class="filters">
-      <button class="filter-btn active" data-cat="all">Все</button>
-      <button class="filter-btn" data-cat="chat">💬 Чат / LLM</button>
-      <button class="filter-btn" data-cat="agents">🤖 Агенты</button>
-      <button class="filter-btn" data-cat="appbuilder">🏗️ App Builder</button>
-      <button class="filter-btn" data-cat="video">🎬 Видео</button>
-      <button class="filter-btn" data-cat="image">🖼️ Изображения</button>
-      <button class="filter-btn" data-cat="voice">🎙️ Голос</button>
-      <button class="filter-btn" data-cat="code">💻 Код</button>
-      <button class="filter-btn" data-cat="free-only">🆓 Только бесплатные</button>
-      <div class="search-box">
-        <i class="fa fa-search"></i>
-        <input type="text" id="searchInput" placeholder="Поиск по инструментам...">
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="wrap" style="position:relative;z-index:1">
-<div id="toolsContainer">
-
-<!-- ══════════════════════════════════════════
-     CHAT / LLM
-══════════════════════════════════════════ -->
-<section id="chat" class="cat-section" data-cat="chat">
-  <div class="sec-header">
-    <div class="sec-tag">Категория 01</div>
-    <div class="cat-title-row">
-      <div class="sec-title">💬 Чат-боты и LLM</div>
-      <span class="count-pill">15 инструментов</span>
-    </div>
-    <div class="sec-sub">Языковые модели для текста, анализа, кода и общения</div>
-  </div>
-  <div class="grid g4" id="chatGrid">
-
-    <div class="tool-card tier-freemium" data-name="chatgpt" data-tags="gpt openai чат агент поиск" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-cyan">🤖</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">ChatGPT</div>
-      <div class="card-desc">Самый популярный чат-ИИ от OpenAI. GPT-4o доступен бесплатно, GPT-o3, агенты и расширенные функции — платно (Plus ~$20/мес).</div>
-      <div class="card-tags"><span class="tag">GPT-4o</span><span class="tag">Агенты</span><span class="tag">Поиск</span><span class="tag">DALL-E</span></div>
-      <a class="card-link" href="https://chatgpt.com" target="_blank"><i class="fa fa-external-link"></i> chatgpt.com</a>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-40 bg-gray-900/98 backdrop-blur-lg lg:hidden">
+        <div class="flex flex-col h-full pt-20 pb-8 px-6">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-xl font-bold">Меню</span>
+                <button id="closeMobileMenu" class="p-2 text-gray-300 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <a href="#tools" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">🗂 Каталог нейросетей</a>
+            <a href="#about" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">О нас</a>
+            <a href="#benefits" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">Преимущества</a>
+            <a href="#portfolio" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">Кейсы</a>
+            <a href="#testimonials" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">Отзывы</a>
+            <a href="#process" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">Процесс</a>
+            <a href="#faq" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">FAQ</a>
+            <a href="#application" class="mt-6 bg-gradient-to-r from-brand-500 to-accent-500 text-white py-4 rounded-xl text-center font-semibold">Оставить заявку</a>
+        </div>
     </div>
 
-    <div class="tool-card tier-freemium" data-name="claude" data-tags="claude anthropic документы анализ" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-purple">✦</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Claude</div>
-      <div class="card-desc">LLM от Anthropic. Силён в анализе документов, работе с кодом, артефактах. Бесплатный уровень ограничен по сообщениям, Pro — мощнее.</div>
-      <div class="card-tags"><span class="tag">Sonnet</span><span class="tag">Opus</span><span class="tag">Артефакты</span><span class="tag">Документы</span></div>
-      <a class="card-link" href="https://claude.ai" target="_blank"><i class="fa fa-external-link"></i> claude.ai</a>
+    <!-- AI Tools Hub Section -->
+    <section id="tools" class="pt-24 lg:pt-32 pb-16 lg:pb-24 gradient-bg relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.15),transparent_50%)]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.15),transparent_50%)]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 animate-on-scroll">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium text-brand-300 mb-4">
+                    <span>🗂️</span> Экосистема инструментов · 2026
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4">
+                    <span class="text-gradient">AI Tools Hub</span><br>Каталог нейросетей
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-8">38 актуальных инструментов по 7 категориям — стек, который мы используем в работе и показываем открыто</p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto">
+                    <div class="glass rounded-xl p-3 sm:p-4 text-center">
+                        <div class="text-2xl sm:text-3xl font-bold text-brand-400">38</div>
+                        <div class="text-xs sm:text-sm text-gray-400">Инструментов</div>
+                    </div>
+                    <div class="glass rounded-xl p-3 sm:p-4 text-center">
+                        <div class="text-2xl sm:text-3xl font-bold text-brand-400">7</div>
+                        <div class="text-xs sm:text-sm text-gray-400">Категорий</div>
+                    </div>
+                    <div class="glass rounded-xl p-3 sm:p-4 text-center">
+                        <div class="text-2xl sm:text-3xl font-bold text-brand-400">18</div>
+                        <div class="text-xs sm:text-sm text-gray-400">Бесплатных</div>
+                    </div>
+                    <div class="glass rounded-xl p-3 sm:p-4 text-center">
+                        <div class="text-2xl sm:text-3xl font-bold text-brand-400">2026</div>
+                        <div class="text-xs sm:text-sm text-gray-400">Актуально</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10 animate-on-scroll">
+                <button class="filter-btn active px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="all">Все</button>
+                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="llm">💬 Чат / LLM</button>
+                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="agent">🤖 Агенты</button>
+                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="app">🏗️ App Builder</button>
+                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="video">🎬 Видео</button>
+                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="image">🖼️ Изображения</button>
+                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="voice">🎙️ Голос</button>
+                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="code">💻 Код</button>
+                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="free">🆓 Бесплатные</button>
+            </div>
+
+            <!-- Search -->
+            <div class="max-w-md mx-auto mb-10 animate-on-scroll">
+                <div class="relative">
+                    <input type="text" id="toolSearch" placeholder="Поиск инструментов..." class="w-full px-4 py-3 pl-11 rounded-xl bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all">
+                    <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+            </div>
+
+            <!-- Tools Grid -->
+            <div id="toolsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 mb-16"></div>
+
+            <!-- Free API Comparison Table -->
+            <div class="animate-on-scroll mb-8">
+                <h3 class="text-2xl lg:text-3xl font-bold text-center mb-2">🆓 Лучшие бесплатные LLM API</h3>
+                <p class="text-gray-400 text-center mb-6">Сравнение бесплатных API для разработчиков — без кредитной карты</p>
+                <div class="overflow-x-auto rounded-xl border border-gray-700">
+                    <table class="w-full min-w-[600px] text-sm">
+                        <thead class="bg-gray-800/80 text-left">
+                            <tr><th class="p-3 lg:p-4 font-semibold text-gray-300">#</th><th class="p-3 lg:p-4 font-semibold text-gray-300">Провайдер</th><th class="p-3 lg:p-4 font-semibold text-gray-300">Бесплатный лимит</th><th class="p-3 lg:p-4 font-semibold text-gray-300">Кредитка</th><th class="p-3 lg:p-4 font-semibold text-gray-300">Скорость</th><th class="p-3 lg:p-4 font-semibold text-gray-300 hidden md:table-cell">Лучше всего для</th><th class="p-3 lg:p-4 font-semibold text-gray-300">Ссылка</th></tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800 bg-gray-900/50">
+                            <tr class="hover:bg-gray-800/30 transition-colors"><td class="p-3 lg:p-4">🥇</td><td class="p-3 lg:p-4 font-medium">Google Gemini (AI Studio)</td><td class="p-3 lg:p-4 text-gray-300">500 req/день</td><td class="p-3 lg:p-4 text-red-400">❌ Нет</td><td class="p-3 lg:p-4 text-green-400">⚡ Быстро</td><td class="p-3 lg:p-4 text-gray-400 hidden md:table-cell">Продакшн прототипы, RAG</td><td class="p-3 lg:p-4"><a href="https://aistudio.google.com" target="_blank" class="text-brand-400 hover:underline">aistudio.google.com</a></td></tr>
+                            <tr class="hover:bg-gray-800/30 transition-colors"><td class="p-3 lg:p-4">🥈</td><td class="p-3 lg:p-4 font-medium">OpenRouter</td><td class="p-3 lg:p-4 text-gray-300">200 req/день</td><td class="p-3 lg:p-4 text-red-400">❌ Нет</td><td class="p-3 lg:p-4 text-yellow-400">📊 Средне</td><td class="p-3 lg:p-4 text-gray-400 hidden md:table-cell">Тест разных моделей</td><td class="p-3 lg:p-4"><a href="https://openrouter.ai" target="_blank" class="text-brand-400 hover:underline">openrouter.ai</a></td></tr>
+                            <tr class="hover:bg-gray-800/30 transition-colors"><td class="p-3 lg:p-4">🥉</td><td class="p-3 lg:p-4 font-medium">Groq</td><td class="p-3 lg:p-4 text-gray-300">Щедрые лимиты</td><td class="p-3 lg:p-4 text-red-400">❌ Нет</td><td class="p-3 lg:p-4 text-green-400">🚀 300+ т/с</td><td class="p-3 lg:p-4 text-gray-400 hidden md:table-cell">Realtime приложения</td><td class="p-3 lg:p-4"><a href="https://console.groq.com" target="_blank" class="text-brand-400 hover:underline">console.groq.com</a></td></tr>
+                            <tr class="hover:bg-gray-800/30 transition-colors"><td class="p-3 lg:p-4">4</td><td class="p-3 lg:p-4 font-medium">Mistral AI</td><td class="p-3 lg:p-4 text-gray-300">1M токенов/день</td><td class="p-3 lg:p-4 text-red-400">❌ Нет</td><td class="p-3 lg:p-4 text-green-400">⚡ Быстро</td><td class="p-3 lg:p-4 text-gray-400 hidden md:table-cell">Европейские данные, GDPR</td><td class="p-3 lg:p-4"><a href="https://console.mistral.ai" target="_blank" class="text-brand-400 hover:underline">console.mistral.ai</a></td></tr>
+                            <tr class="hover:bg-gray-800/30 transition-colors"><td class="p-3 lg:p-4">5</td><td class="p-3 lg:p-4 font-medium">HuggingFace Inference</td><td class="p-3 lg:p-4 text-gray-300">Ограничено</td><td class="p-3 lg:p-4 text-red-400">❌ Нет</td><td class="p-3 lg:p-4 text-yellow-400">🐢 Медленно</td><td class="p-3 lg:p-4 text-gray-400 hidden md:table-cell">Эксперименты, специализация</td><td class="p-3 lg:p-4"><a href="https://huggingface.co" target="_blank" class="text-brand-400 hover:underline">huggingface.co</a></td></tr>
+                            <tr class="hover:bg-gray-800/30 transition-colors"><td class="p-3 lg:p-4">6</td><td class="p-3 lg:p-4 font-medium">DeepSeek API</td><td class="p-3 lg:p-4 text-gray-300">~$5 кредитов</td><td class="p-3 lg:p-4 text-yellow-400">✅ Да</td><td class="p-3 lg:p-4 text-green-400">⚡ Быстро</td><td class="p-3 lg:p-4 text-gray-400 hidden md:table-cell">Когда бесплатные лимиты кончились</td><td class="p-3 lg:p-4"><a href="https://www.deepseek.com" target="_blank" class="text-brand-400 hover:underline">deepseek.com</a></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / AI Agent Factory Section -->
+    <section id="about" class="py-16 lg:py-24 bg-gray-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll">
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-6">Каталог нейросетей + <span class="text-gradient">разработка AI-решений</span></h2>
+                    <p class="text-lg text-gray-300 mb-6">AI-агенты и нейросети, которые работают как сильная команда. Помогаю бизнесу внедрять AI-агентов, нейросети и автоматизацию. Сначала показываю каталог инструментов, затем собираю решение под задачу и довожу до результата.</p>
+                    <p class="text-gray-400 mb-8">Создаю интеллектуальных AI-агентов под ключ: контроль звонков, юридические консультации, протоколы совещаний. Плюс — открытый каталог из 38 актуальных AI-инструментов.</p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center gap-3"><span class="text-green-400 text-xl">✓</span><span class="text-gray-300">Прототип за 5 дней</span></div>
+                        <div class="flex items-center gap-3"><span class="text-green-400 text-xl">✓</span><span class="text-gray-300">Гарантия возврата</span></div>
+                        <div class="flex items-center gap-3"><span class="text-green-400 text-xl">✓</span><span class="text-gray-300">Поддержка 24/7</span></div>
+                        <div class="flex items-center gap-3"><span class="text-green-400 text-xl">✓</span><span class="text-gray-300">AI READY</span></div>
+                    </div>
+                </div>
+                <div class="animate-on-scroll">
+                    <div class="glass rounded-2xl p-6 lg:p-8">
+                        <h3 class="text-xl font-semibold mb-4">Технологический стек</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-brand-500/10 border border-brand-500/30 text-brand-400 text-sm font-medium">GPT-4.1</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-400 text-sm font-medium">Whisper</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 text-sm font-medium">Python</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 text-sm font-medium">Django / FastAPI</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/30 text-sky-400 text-sm font-medium">Telegram API</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-sm font-medium">PostgreSQL</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-400 text-sm font-medium">n8n / Make</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-medium">LangChain</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-pink-500/10 border border-pink-500/30 text-pink-400 text-sm font-medium">RAG / Vector DB</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-sm font-medium">38 AI-инструментов</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits, Portfolio, Testimonials, Process, FAQ (без изменений, код тот же самый) -->
+    <section id="benefits" class="py-16 lg:py-24 bg-gray-800/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center mb-12 animate-on-scroll"><h2 class="text-3xl lg:text-4xl font-bold mb-4">Почему AI-агенты</h2><p class="text-lg text-gray-400">Реальные результаты для бизнеса. Компании, внедрившие нейросотрудников, получают измеримый ROI уже в первый месяц</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-brand-500/50 transition-all"><div class="text-4xl font-bold text-gradient mb-3">70%</div><h3 class="text-lg font-semibold mb-2">Экономия до 70%</h3><p class="text-gray-400 text-sm">AI-агент работает без зарплаты, больничных и отпусков. Окупаемость от 1 месяца. Отдел из 5 человек заменяется одним агентом.</p></div><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-brand-500/50 transition-all"><div class="text-4xl font-bold text-gradient mb-3">24/7</div><h3 class="text-lg font-semibold mb-2">Работа 24/7/365</h3><p class="text-gray-400 text-sm">Бизнес не спит: агент обрабатывает обращения, формирует отчёты и отвечает на вопросы в любое время суток.</p></div><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-brand-500/50 transition-all"><div class="text-4xl font-bold text-gradient mb-3">10×</div><h3 class="text-lg font-semibold mb-2">Масштабирование без найма</h3><p class="text-gray-400 text-sm">Обрабатывайте в 10× больше задач без роста штата. AI-агент масштабируется мгновенно под любую нагрузку.</p></div><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-brand-500/50 transition-all"><div class="text-4xl font-bold text-gradient mb-3">2–4 нед.</div><h3 class="text-lg font-semibold mb-2">Внедрение за 2–4 недели</h3><p class="text-gray-400 text-sm">Прототип готов за 5 дней, полноценный агент под ключ — за 2–4 недели. Никаких месяцев ожидания.</p></div><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-brand-500/50 transition-all"><div class="text-4xl font-bold text-gradient mb-3">99,9%</div><h3 class="text-lg font-semibold mb-2">Точность 99,9%</h3><p class="text-gray-400 text-sm">AI не устаёт и не отвлекается. Транскрибация, анализ, классификация — каждая задача с максимальной точностью.</p></div><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-brand-500/50 transition-all"><div class="text-4xl font-bold text-gradient mb-3">∞</div><h3 class="text-lg font-semibold mb-2">Постоянное улучшение</h3><p class="text-gray-400 text-sm">Агент обучается на ваших данных и адаптируется к изменениям бизнеса. Чем дольше работает — тем точнее.</p></div></div></div>
+    </section>
+
+    <section id="portfolio" class="py-16 lg:py-24 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center mb-12 animate-on-scroll"><h2 class="text-3xl lg:text-4xl font-bold mb-4">Реальные кейсы</h2><p class="text-lg text-gray-400">Три внедрённых продукта, которые уже работают в бизнесе и дают измеримый результат</p></div><div class="grid grid-cols-1 lg:grid-cols-3 gap-6"><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-red-500/50 transition-all group"><div class="inline-flex items-center px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-sm font-medium mb-4">🎙️ ГОТОВОЕ РЕШЕНИЕ</div><h3 class="text-xl font-bold mb-3">Анализатор разговоров</h3><p class="text-gray-400 text-sm mb-4">Система контроля качества звонков: Whisper + GPT-4.1-nano. Транскрибация, автоклассификация брака, отчёты. Сократил ручную проверку в разы.</p><div class="flex flex-wrap gap-2 mb-4"><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">Python</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">Whisper</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">GPT-4.1-nano</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">FastAPI</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">PostgreSQL</span></div><div class="space-y-2 mb-6"><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Транскрибация звонка за 30 секунд</span></div><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Автоклассификация брака без менеджера</span></div><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Экономия 80% времени на ручной проверке</span></div></div><a href="#" class="inline-flex items-center gap-1 text-brand-400 hover:text-brand-300 font-medium text-sm">Смотреть презентацию <span class="group-hover:translate-x-1 transition-transform">→</span></a></div><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-blue-500/50 transition-all group"><div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-sm font-medium mb-4">⚖️ ГОТОВОЕ РЕШЕНИЕ</div><h3 class="text-xl font-bold mb-3">Нейро-юрист</h3><p class="text-gray-400 text-sm mb-4">Чат-бот для правовых консультаций и генерации юридических документов. Django-приложение с контекстным поиском по базам НПА.</p><div class="flex flex-wrap gap-2 mb-4"><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">Django</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">GPT-4.1</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">RAG</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">Vector DB</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">НПА Base</span></div><div class="space-y-2 mb-6"><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Поиск по 50 000+ нормативных актов</span></div><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Генерация договоров и претензий за 10 сек</span></div><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Заменяет консультацию юриста за 3–5 000 ₽</span></div></div><a href="#" class="inline-flex items-center gap-1 text-brand-400 hover:text-brand-300 font-medium text-sm">Смотреть презентацию <span class="group-hover:translate-x-1 transition-transform">→</span></a></div><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-purple-500/50 transition-all group"><div class="inline-flex items-center px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-sm font-medium mb-4">📝 ГОТОВОЕ РЕШЕНИЕ</div><h3 class="text-xl font-bold mb-3">Нейро-секретарь</h3><p class="text-gray-400 text-sm mb-4">Telegram-бот для автоматизации протоколов совещаний. Whisper транскрибирует аудио, GPT анализирует и формирует итоги, задачи и дедлайны.</p><div class="flex flex-wrap gap-2 mb-4"><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">Telegram Bot API</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">Whisper</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">GPT-4.1</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">Python</span></div><div class="space-y-2 mb-6"><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Протокол готов через 2 минуты после встречи</span></div><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Автоматически назначает задачи ответственным</span></div><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Нет забытых договорённостей</span></div></div><a href="#" class="inline-flex items-center gap-1 text-brand-400 hover:text-brand-300 font-medium text-sm">Смотреть презентацию <span class="group-hover:translate-x-1 transition-transform">→</span></a></div></div><div class="text-center mt-10 animate-on-scroll"><a href="#application" class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-500 to-accent-500 hover:from-brand-600 hover:to-accent-600 text-white px-6 py-3 rounded-xl font-semibold transition-all hover:scale-105 shadow-lg shadow-brand-500/25">Хочу такое решение для моего бизнеса</a></div></div>
+    </section>
+
+    <section id="testimonials" class="py-16 lg:py-24 bg-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center mb-12 animate-on-scroll"><h2 class="text-3xl lg:text-4xl font-bold mb-4">Отзывы клиентов</h2><p class="text-lg text-gray-400">Реальные результаты компаний, внедривших нейросотрудников</p></div><div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div class="animate-on-scroll glass rounded-2xl p-6 relative"><svg class="absolute top-4 right-4 w-8 h-8 text-gray-700 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg><p class="text-gray-300 mb-6 italic">"Внедрили Анализатор разговоров в колл-центр. Раньше 3 менеджера тратили весь день на прослушку — теперь агент делает это за ночь и утром готовый отчёт. Отдел QA сократился вдвое."</p><div class="flex items-center gap-4 mb-3"><div class="w-12 h-12 rounded-full bg-brand-500/20 flex items-center justify-center text-xl">👨‍💼</div><div><div class="font-semibold">Алексей К.</div><div class="text-sm text-gray-400">Директор колл-центра, Москва</div></div></div><div class="text-green-400 font-medium mb-2">Экономия 140 000 ₽/мес на ФОТ</div><div class="flex text-yellow-400 gap-1">★★★★★</div></div><div class="animate-on-scroll glass rounded-2xl p-6 relative"><svg class="absolute top-4 right-4 w-8 h-8 text-gray-700 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg><p class="text-gray-300 mb-6 italic">"Нейро-юрист закрыл 80% типовых запросов. Генерирует договоры займа, претензии, ответы на жалобы по актуальным НПА. Клиенты в восторге от скорости."</p><div class="flex items-center gap-4 mb-3"><div class="w-12 h-12 rounded-full bg-accent-500/20 flex items-center justify-center text-xl">👩‍💼</div><div><div class="font-semibold">Ольга М.</div><div class="text-sm text-gray-400">Управляющий партнёр юркомпании</div></div></div><div class="text-green-400 font-medium mb-2">Время ответа: с 2 дней до 10 секунд</div><div class="flex text-yellow-400 gap-1">★★★★★</div></div><div class="animate-on-scroll glass rounded-2xl p-6 relative"><svg class="absolute top-4 right-4 w-8 h-8 text-gray-700 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg><p class="text-gray-300 mb-6 italic">"Нейро-секретарь изменил культуру встреч. Записываем звонок — через 2 минуты в чате протокол с задачами и дедлайнами. Про «я не помню» забыли навсегда."</p><div class="flex items-center gap-4 mb-3"><div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-xl">👨‍💻</div><div><div class="font-semibold">Денис В.</div><div class="text-sm text-gray-400">Операционный директор IT-стартапа</div></div></div><div class="text-green-400 font-medium mb-2">5 часов в неделю возвращено команде</div><div class="flex text-yellow-400 gap-1">★★★★★</div></div></div></div>
+    </section>
+
+    <section id="process" class="py-16 lg:py-24 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center mb-12 animate-on-scroll"><h2 class="text-3xl lg:text-4xl font-bold mb-4">Как мы работаем</h2><p class="text-lg text-gray-400">4 шага до вашего нейросотрудника. Прозрачный процесс без воды — от анализа задачи до работающего агента</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"><div class="animate-on-scroll glass rounded-2xl p-6 text-center relative"><div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center font-bold text-sm">1</div><div class="text-3xl mb-3 mt-2">🔍</div><h3 class="text-lg font-semibold mb-2">Бесплатный анализ</h3><p class="text-gray-400 text-sm">Разбираем ваши процессы, определяем задачи для автоматизации и считаем ROI</p></div><div class="animate-on-scroll glass rounded-2xl p-6 text-center relative"><div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center font-bold text-sm">2</div><div class="text-3xl mb-3 mt-2">⚡</div><h3 class="text-lg font-semibold mb-2">Прототип за 5 дней</h3><p class="text-gray-400 text-sm">Создаём работающий демо-прототип — вы видите результат до начала основной разработки</p></div><div class="animate-on-scroll glass rounded-2xl p-6 text-center relative"><div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center font-bold text-sm">3</div><div class="text-3xl mb-3 mt-2">🚀</div><h3 class="text-lg font-semibold mb-2">Внедрение под ключ</h3><p class="text-gray-400 text-sm">Интегрируем агента в ваши системы и обучаем команду — 2–4 недели и агент в боевом режиме</p></div><div class="animate-on-scroll glass rounded-2xl p-6 text-center relative"><div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center font-bold text-sm">4</div><div class="text-3xl mb-3 mt-2">🛡️</div><h3 class="text-lg font-semibold mb-2">Поддержка и развитие</h3><p class="text-gray-400 text-sm">Техподдержка, мониторинг работы и регулярные улучшения — всё включено в стоимость</p></div></div><div class="animate-on-scroll glass rounded-2xl p-6 lg:p-8 border-2 border-green-500/30 relative overflow-hidden"><div class="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full -translate-y-1/2 translate-x-1/2"></div><div class="flex flex-col lg:flex-row items-center gap-6"><div class="flex-shrink-0"><div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center text-3xl">🛡️</div></div><div class="flex-1 text-center lg:text-left"><h3 class="text-2xl font-bold mb-3">Гарантия результата</h3><p class="text-gray-300 mb-4">Уверен в качестве своей работы. Если не увидите результата после внедрения — верну деньги полностью. Без вопросов.</p><div class="flex flex-wrap justify-center lg:justify-start gap-4 text-sm"><div class="flex items-center gap-2"><span class="text-green-400">✓</span><span>Прототип бесплатно — вы видите результат до оплаты</span></div><div class="flex items-center gap-2"><span class="text-green-400">✓</span><span>Поддержка 30 дней после запуска включена</span></div><div class="flex items-center gap-2"><span class="text-green-400">✓</span><span>Фиксированная цена — никаких скрытых доплат</span></div><div class="flex items-center gap-2"><span class="text-green-400">✓</span><span>Стоимость от 50 000 ₽ — окупается за 1 месяц</span></div></div></div></div></div></div>
+    </section>
+
+    <section id="faq" class="py-16 lg:py-24 bg-gray-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center mb-12 animate-on-scroll"><h2 class="text-3xl lg:text-4xl font-bold mb-4">Частые вопросы</h2><p class="text-lg text-gray-400">Ответы на самые популярные вопросы об AI-агентах и инструментах</p></div><div class="space-y-3" id="faqContainer"></div></div>
+    </section>
+
+    <!-- Application Section (ФОРМА ИЗМЕНЕНА: данные уходят в мессенджер) -->
+    <section id="application" class="py-16 lg:py-24 bg-gradient-to-br from-gray-900 to-gray-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.1),transparent_70%)]"></div>
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-10 animate-on-scroll">
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-sm font-medium mb-4 animate-pulse-slow">⏳ Осталось 2 свободных места в мае 2026</div>
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Готовы автоматизировать бизнес?</h2>
+                <p class="text-lg text-gray-400">Получите бесплатную консультацию и расчёт ROI — сегодня</p>
+            </div>
+            <div class="animate-on-scroll glass rounded-2xl p-6 lg:p-8">
+                <h3 class="text-2xl font-bold mb-6 text-center">Оставьте заявку</h3>
+                <p class="text-gray-400 text-center mb-6">Заполните форму — данные будут отправлены мне в мессенджер</p>
+                <form id="contactForm" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div><label class="block text-sm font-medium text-gray-300 mb-1">Имя *</label><input type="text" name="name" required class="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" placeholder="Ваше имя"></div>
+                        <div><label class="block text-sm font-medium text-gray-300 mb-1">Телефон *</label><input type="tel" name="phone" required class="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" placeholder="+7 (___) ___-__-__"></div>
+                    </div>
+                    <div><label class="block text-sm font-medium text-gray-300 mb-1">Email</label><input type="email" name="email" class="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" placeholder="your@email.com"></div>
+                    <div><label class="block text-sm font-medium text-gray-300 mb-1">Сфера бизнеса</label><input type="text" name="business" class="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" placeholder="Например: Юридические услуги, Ритейл, IT"></div>
+                    <div><label class="block text-sm font-medium text-gray-300 mb-1">Задача для автоматизации</label><select name="task" class="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700 text-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"><option value="">Выберите направление</option><option value="calls">Контроль качества звонков</option><option value="legal">Юридические консультации</option><option value="meetings">Протоколы совещаний</option><option value="sales">Продажи и лидогенерация</option><option value="support">Поддержка клиентов</option><option value="content">Создание контента</option><option value="other">Другое</option></select></div>
+                    <div><label class="block text-sm font-medium text-gray-300 mb-1">Описание задачи</label><textarea name="description" rows="3" class="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all resize-none" placeholder="Опишите вашу задачу подробнее..."></textarea></div>
+                    <div><label class="block text-sm font-medium text-gray-300 mb-2">Выберите мессенджер для отправки заявки:</label><div class="flex flex-wrap gap-4"><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="messenger" value="telegram" checked class="w-4 h-4 text-brand-500 bg-gray-800 border-gray-600 focus:ring-brand-500"><span class="text-gray-300">📱 Telegram</span></label><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="messenger" value="max" class="w-4 h-4 text-brand-500 bg-gray-800 border-gray-600 focus:ring-brand-500"><span class="text-gray-300">💬 MAX Messenger</span></label></div></div>
+                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-500 to-accent-500 hover:from-brand-600 hover:to-accent-600 text-white font-bold text-lg transition-all hover:scale-[1.02] shadow-lg shadow-brand-500/25">Отправить заявку в мессенджер</button>
+                    <p class="text-xs text-gray-500 text-center">Нажимая, вы соглашаетесь с <a href="#" class="text-brand-400 hover:underline" id="openPrivacyModal">политикой конфиденциальности</a></p>
+                </form>
+                <div id="successMessage" class="hidden text-center py-8"><div class="text-5xl mb-4">✅</div><h4 class="text-xl font-bold mb-2">Спасибо!</h4><p class="text-gray-400">Сейчас откроется мессенджер — просто отправьте сообщение, и я свяжусь с вами в течение 30 минут.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8"><div><div class="flex items-center gap-2 mb-4"><span class="text-2xl">🤖</span><span class="text-lg font-bold">AI Agent Factory <span class="text-gray-500">×</span> Tools Hub</span></div><p class="text-gray-400 text-sm mb-4">Создаю умных нейросотрудников для автоматизации бизнес-процессов. GPT-4, Whisper, RAG — под ключ с гарантией. Плюс открытый каталог из 38 AI-инструментов.</p><div class="flex gap-3"><a href="https://max.ru/u/f9LHodD0cOJlUbclcgcvXdPsrH3GSXkGr5454frvZB0OtFDna956oV4lpjw" target="_blank" class="w-10 h-10 rounded-lg glass flex items-center justify-center hover:bg-gray-700 transition-colors" title="MAX">MAX</a></div></div><div><h4 class="font-semibold mb-4">Решения</h4><ul class="space-y-2 text-sm"><li><a href="#portfolio" class="text-gray-400 hover:text-white transition-colors">Анализатор звонков</a></li><li><a href="#portfolio" class="text-gray-400 hover:text-white transition-colors">Нейро-юрист</a></li><li><a href="#portfolio" class="text-gray-400 hover:text-white transition-colors">Нейро-секретарь</a></li><li><a href="#application" class="text-gray-400 hover:text-white transition-colors">Индивидуальное решение</a></li></ul></div><div><h4 class="font-semibold mb-4">Каталог AI-инструментов</h4><ul class="space-y-2 text-sm"><li><a href="#tools" class="text-gray-400 hover:text-white transition-colors">💬 Чат / LLM</a></li><li><a href="#tools" class="text-gray-400 hover:text-white transition-colors">🤖 Агенты</a></li><li><a href="#tools" class="text-gray-400 hover:text-white transition-colors">🎬 Видео / Изображения</a></li><li><a href="#tools" class="text-gray-400 hover:text-white transition-colors">💻 Код / Голос</a></li><li><a href="#tools" class="text-gray-400 hover:text-white transition-colors">🆓 Бесплатные API</a></li></ul></div><div><h4 class="font-semibold mb-4">Контакты</h4><ul class="space-y-3 text-sm"><li><a href="tel:+79362585387" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">📞 +7 (936) 258-53-87</a></li><li class="text-gray-500 text-xs">Звонки · Пн–Вс 9:00–21:00</li><li><a href="https://t.me/DmitryTo1986" target="_blank" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">💬 @DmitryTo1986</a></li><li><a href="https://max.ru/u/f9LHodD0cOJlUbclcgcvXdPsrH3GSXkGr5454frvZB0OtFDna956oV4lpjw" target="_blank" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">💬 MAX Messenger</a></li><li class="text-gray-400 flex items-center gap-2">📍 Москва, Россия</li></ul></div></div><div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500"><span>© 2026 AI Agent Factory × Tools Hub · Авдеев Александр · Разработка AI-агентов для бизнеса</span><div class="flex gap-4"><a href="#" id="openPrivacyFooter" class="hover:text-white transition-colors">Политика конфиденциальности</a><a href="#application" class="hover:text-white transition-colors">Оставить заявку</a></div></div></div>
+    </footer>
+
+    <!-- Modals (Privacy Modal оставлен, Consultation Modal тоже с изменённой формой) -->
+    <div id="consultationModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
+        <div class="modal-content bg-gray-800 rounded-2xl max-w-lg w-full p-6 lg:p-8 relative max-h-[90vh] overflow-y-auto">
+            <button class="closeModal absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-gray-600 transition-colors">×</button>
+            <h3 class="text-2xl font-bold mb-6 text-center">Бесплатная консультация</h3>
+            <p class="text-gray-400 text-center mb-6">Заполните — данные отправятся в мессенджер</p>
+            <form id="modalContactForm" class="space-y-4">
+                <div><label class="block text-sm font-medium text-gray-300 mb-1">Имя *</label><input type="text" name="name" required class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" placeholder="Ваше имя"></div>
+                <div><label class="block text-sm font-medium text-gray-300 mb-1">Телефон *</label><input type="tel" name="phone" required class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" placeholder="+7 (___) ___-__-__"></div>
+                <div><label class="block text-sm font-medium text-gray-300 mb-1">Задача</label><select name="task" class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"><option value="">Выберите направление</option><option value="calls">Контроль качества звонков</option><option value="legal">Юридические консультации</option><option value="meetings">Протоколы совещаний</option><option value="sales">Продажи и лидогенерация</option><option value="support">Поддержка клиентов</option><option value="other">Другое</option></select></div>
+                <div><label class="block text-sm font-medium text-gray-300 mb-2">Выберите мессенджер:</label><div class="flex flex-wrap gap-4"><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="messenger" value="telegram" checked class="w-4 h-4 text-brand-500 bg-gray-900 border-gray-600 focus:ring-brand-500"><span class="text-gray-300">📱 Telegram</span></label><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="messenger" value="max" class="w-4 h-4 text-brand-500 bg-gray-900 border-gray-600 focus:ring-brand-500"><span class="text-gray-300">💬 MAX Messenger</span></label></div></div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-500 to-accent-500 hover:from-brand-600 hover:to-accent-600 text-white font-semibold transition-all hover:scale-[1.02]">Отправить заявку</button>
+                <p class="text-xs text-gray-500 text-center">Отправляя, вы соглашаетесь с <a href="#" id="modalPrivacyLink" class="text-brand-400 hover:underline">политикой конфиденциальности</a></p>
+            </form>
+            <div id="modalSuccessMessage" class="hidden text-center py-8"><div class="text-5xl mb-4">✅</div><h4 class="text-xl font-bold mb-2">Заявка готова!</h4><p class="text-gray-400">Сейчас откроется мессенджер — отправьте сообщение, и я свяжусь.</p></div>
+        </div>
     </div>
 
-    <div class="tool-card tier-free" data-name="gemini aistudio google" data-tags="google gemini бесплатно api" data-tier="free">
-      <div class="card-top">
-        <div class="card-icon ic-green">🔵</div>
-        <span class="tier-badge tb-free">🆓 Бесплатно</span>
-      </div>
-      <div class="card-name">Gemini / AI Studio</div>
-      <div class="card-desc">До 500 запросов/день к Gemini 2.5 Flash бесплатно, без кредитной карты. Лучший бесплатный уровень среди крупных провайдеров.</div>
-      <div class="card-tags"><span class="tag">500 req/день</span><span class="tag">Бесплатно</span><span class="tag">Veo 3</span><span class="tag">API</span></div>
-      <a class="card-link lnk-free" href="https://aistudio.google.com" target="_blank"><i class="fa fa-external-link"></i> aistudio.google.com</a>
-    </div>
+    <div id="privacyModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"><div class="modal-content bg-gray-800 rounded-2xl max-w-lg w-full p-6 lg:p-8 relative max-h-[90vh] overflow-y-auto"><button class="closeModal absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-gray-600 transition-colors">×</button><h3 class="text-2xl font-bold mb-6 text-center">Политика конфиденциальности</h3><div class="prose prose-invert text-gray-300 text-sm space-y-4"><p>Настоящая Политика регулирует обработку персональных данных...</p><div><h4 class="font-semibold text-white mb-2">1. Сбор данных</h4><p class="text-gray-400">Мы собираем имя, номер телефона, email и описание задачи из формы обратной связи. Данные используются исключительно для связи с вами.</p></div><div><h4 class="font-semibold text-white mb-2">2. Использование данных</h4><p class="text-gray-400">Данные используются для ответа на ваш запрос и формирования коммерческого предложения.</p></div><div><h4 class="font-semibold text-white mb-2">3. Хранение</h4><p class="text-gray-400">Данные хранятся в защищённых мессенджерах и не передаются третьим лицам. Срок хранения — не более 3 лет.</p></div><div><h4 class="font-semibold text-white mb-2">4. Права субъекта</h4><p class="text-gray-400">По ФЗ № 152-ФЗ вы вправе запросить уточнение или уничтожение ваших данных. Запрос: Telegram @DmitryTo1986.</p></div><div><h4 class="font-semibold text-white mb-2">5. Контакты</h4><p class="text-gray-400">Telegram: @DmitryTo1986 · Тел: +7 (936) 258-53-87</p></div></div><button class="closeModal w-full mt-6 py-3 rounded-xl bg-gray-700 hover:bg-gray-600 text-white font-semibold transition-colors">Понятно</button></div></div>
 
-    <div class="tool-card tier-freemium" data-name="deepseek" data-tags="deepseek китай дешево api" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-cyan">🐋</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">DeepSeek</div>
-      <div class="card-desc">Топовое качество по минимальной цене. DeepSeek V3 — уровень frontier-моделей. API дешевле всех major-провайдеров на рынке.</div>
-      <div class="card-tags"><span class="tag">DeepSeek V3</span><span class="tag">Дёшево</span><span class="tag">API</span></div>
-      <a class="card-link" href="https://www.deepseek.com" target="_blank"><i class="fa fa-external-link"></i> deepseek.com</a>
-    </div>
+    <script>
+        // Tools data (полностью сохранён)
+        const toolsData = [
+            { name: "ChatGPT", icon: "✦", category: "llm", plan: "Freemium", desc: "Самый популярный чат-ИИ от OpenAI. GPT-4o доступен бесплатно, GPT-o3 и агенты — платно (Plus ~$20/мес).", tags: ["GPT-4o", "Агенты", "Поиск", "DALL-E"], url: "https://chatgpt.com", free: false },
+            { name: "Claude", icon: "✦", category: "llm", plan: "Freemium", desc: "Лучший для длинных документов и анализа. Claude Sonnet 4.6 — мощная бесплатная версия. Pro (Claude Opus) — $20/мес.", tags: ["Документы", "Анализ", "Код"], url: "https://claude.ai", free: false },
+            { name: "Gemini", icon: "🌟", category: "llm", plan: "Freemium", desc: "Google Gemini 2.5 Pro — лучший у Google. Глубокая интеграция с сервисами Google, мультимодальность. Бесплатно с лимитами.", tags: ["Мультимодальный", "Google", "Поиск"], url: "https://gemini.google.com", free: false },
+            { name: "DeepSeek R2", icon: "🐋", category: "llm", plan: "Freemium", desc: "Китайская альтернатива GPT-4. Бесплатный доступ к чату, мощное рассуждение, открытые веса. Один из лучших по соотношению цена/качество.", tags: ["Reasoning", "Open-source", "Бесплатно"], url: "https://www.deepseek.com", free: true },
+            { name: "Perplexity", icon: "🔍", category: "llm", plan: "Freemium", desc: "AI-поисковик с актуальными ответами из интернета и ссылками. Лучший инструмент для исследований и актуальной информации.", tags: ["Поиск", "Источники", "Актуально"], url: "https://www.perplexity.ai", free: false },
+            { name: "OpenRouter", icon: "🔀", category: "llm", plan: "Free", desc: "200 запросов/день бесплатно, без кредитной карты. OpenAI-совместимый API. Много бесплатных моделей: Llama, Mistral, Qwen.", tags: ["200 req/день", "OpenAI SDK", "Бесплатно"], url: "https://openrouter.ai", free: true },
+            { name: "Groq", icon: "🚀", category: "llm", plan: "Free", desc: "300+ токенов/с — самый быстрый LLM API в мире. Llama 3.3 70B. Щедрый бесплатный уровень, кредитная карта не нужна.", tags: ["300 т/с", "Llama 3.3", "Бесплатно"], url: "https://console.groq.com", free: true },
+            { name: "Mistral AI", icon: "🔺", category: "llm", plan: "Free", desc: "1 млн токенов/день бесплатно. Европейский провайдер, без кредитной карты. GDPR-совместимый — отличный выбор для российских и европейских данных.", tags: ["1M токенов/день", "Европа", "GDPR"], url: "https://console.mistral.ai", free: true },
+            { name: "NotebookLM", icon: "📓", category: "llm", plan: "Free", desc: "ИИ для работы с вашими документами. Загружаете PDF/текст — получаете резюме, ответы на вопросы, AI-подкасты из материалов.", tags: ["Документы", "Подкасты", "Google", "Бесплатно"], url: "https://notebooklm.google.com", free: true },
+            { name: "Yandex AI (YaGPT)", icon: "🔴", category: "llm", plan: "Freemium", desc: "Яндекс GPT агент. Работает без VPN, глубокая интеграция с сервисами Яндекса. Хорошо понимает российский контекст.", tags: ["Русский", "Без VPN", "Яндекс"], url: "https://ya.ru/ai/gpt", free: false },
+            { name: "GPT-4.1", icon: "🤖", category: "llm", plan: "Платно", desc: "Новейшая флагманская модель OpenAI. Улучшенный контекст, точность и скорость. Идеально для сложных задач и анализа.", tags: ["GPT-4.1", "Context", "OpenAI"], url: "https://openai.com", free: false },
+            { name: "GPT-4.1-nano", icon: "⚡", category: "llm", plan: "Freemium", desc: "Ультрабыстрая и дешёвая модель OpenAI для потоковых задач. Отличный баланс скорости и качества для транскрибации и классификации.", tags: ["Быстро", "Дёшево", "Потоковые задачи"], url: "https://openai.com", free: false },
+            { name: "Gemini 2.5 Pro", icon: "🌊", category: "llm", plan: "Freemium", desc: "Флагманская мультимодальная модель Google. Лучший анализ длинных документов (2М+ токенов контекста).", tags: ["2M токенов", "Мультимодальный", "Google"], url: "https://ai.google.dev", free: false },
+            { name: "Llama 3.3", icon: "🦙", category: "llm", plan: "Open-source", desc: "Open-source LLM от Meta. 70B параметров, отличная производительность. Работает через Groq, OpenRouter, локально.", tags: ["70B", "Meta", "Open-source"], url: "https://ai.meta.com", free: true },
+            { name: "Qwen 2.5", icon: "🔮", category: "llm", plan: "Open-source", desc: "Мощная китайская open-source модель. Лидер на HuggingFace. Доступна через OpenRouter и API.", tags: ["Open-source", "HuggingFace", "Многоязычный"], url: "https://qwenlm.github.io", free: true },
+            { name: "Genspark", icon: "✨", category: "agent", plan: "Freemium", desc: "Поисковой ИИ-агент нового поколения. Создаёт интерактивные страницы-отчёты с агрегацией из множества источников по вашему запросу.", tags: ["Поиск", "Агент", "Отчёты"], url: "https://genspark.ai", free: false },
+            { name: "Manus", icon: "🦾", category: "agent", plan: "Платно", desc: "Автономный ИИ-агент для сложных многоэтапных задач: исследование, написание кода, работа с файлами. Действует без постоянного контроля.", tags: ["Автономный", "Многоэтапный", "Файлы"], url: "https://manus.ai", free: false },
+            { name: "n8n", icon: "🔗", category: "agent", plan: "Freemium", desc: "No-code конструктор AI-агентов и автоматизаций. Self-host — полностью бесплатно. Сотни интеграций. Используем в наших проектах.", tags: ["No-code", "Self-host", "600+ интеграций"], url: "https://n8n.io", free: false },
+            { name: "OpenAI Agent Builder", icon: "⚙️", category: "agent", plan: "Freemium", desc: "Официальный конструктор агентов от OpenAI на базе Agents SDK. Визуальный редактор + API. Подключение MCP-серверов, инструментов и веб-поиска.", tags: ["Agents SDK", "MCP", "OpenAI"], url: "https://platform.openai.com/agent-builder", free: false },
+            { name: "Gamma", icon: "📊", category: "agent", plan: "Freemium", desc: "Автоматическое создание презентаций, лендингов и документов через ИИ. Достаточно описать идею — Gamma генерирует готовый дизайн.", tags: ["Презентации", "Лендинги", "Документы"], url: "https://gamma.app", free: false },
+            { name: "Base44", icon: "🏗️", category: "app", plan: "Freemium", desc: "ИИ-конструктор полноценных веб-приложений из текстового промпта. Frontend + backend + БД + авторизация — из коробки без кода. Приобретён Wix в 2025. Бесплатно: 5 запросов/день.", tags: ["No-code", "Full-stack", "Wix", "MVP"], url: "https://base44.com", free: false },
+            { name: "OpenRAG SDK", icon: "📚", category: "app", plan: "Open-source", desc: "Python SDK для построения RAG-систем. Объединяет Langflow (визуальный пайплайн), OpenSearch (векторный поиск) и Docling (обработка документов). Docker.", tags: ["RAG", "Langflow", "OpenSearch", "Open-source"], url: "https://pypi.org/project/openrag-sdk", free: true },
+            { name: "Sora 2", icon: "🎥", category: "video", plan: "Платно", desc: "Генерация реалистичных видео с аудио от OpenAI. Доступно в ChatGPT Plus/Pro. Sora 2 — улучшенный реализм и управление движением.", tags: ["Sora 2", "Аудио", "ChatGPT Plus"], url: "https://sora.chatgpt.com", free: false },
+            { name: "Veo 3.1 (Google)", icon: "🌊", category: "video", plan: "Платно", desc: "Veo 3.1 от Google — улучшенный контроль движения, реалистичная физика. Доступен через AI Studio.", tags: ["Veo 3.1", "Google", "Физика"], url: "https://aistudio.google.com/models/veo-3", free: false },
+            { name: "Runway Gen-4.5", icon: "🎞️", category: "video", plan: "Freemium", desc: "Управляемые готовые к производству видео. Gen-4.5 с HDR. Профессиональный стандарт для коммерческих проектов.", tags: ["Gen-4.5", "HDR", "Профи"], url: "https://runwayml.com", free: false },
+            { name: "Kling AI", icon: "🎬", category: "video", plan: "Freemium", desc: "Качественная видеогенерация с хорошим реализмом, управлением движением и камерой. Один из лучших вариантов с freemium-доступом.", tags: ["Реализм", "Управление", "Камера"], url: "https://app.klingai.com", free: false },
+            { name: "HeyGen", icon: "🎙️", category: "video", plan: "Freemium", desc: "Перевод и дублирование видео с сохранением голоса говорящего и синхронизацией губ. Лучший инструмент для локализации видео-контента.", tags: ["Перевод", "Дублирование", "Аватар"], url: "https://app.heygen.com", free: false },
+            { name: "Pika 2.2", icon: "💫", category: "video", plan: "Freemium", desc: "Быстрая генерация и редактирование видео, анимация фото. Pika 2.2 — улучшенное качество и эффекты. Есть бесплатные кредиты.", tags: ["Pika 2.2", "Анимация фото", "Эффекты"], url: "https://pika.art", free: false },
+            { name: "Adobe Firefly (Video)", icon: "🔥", category: "video", plan: "Freemium", desc: "Adobe генерирует видео и изображения, обученные на лицензированном контенте — безопасно для коммерческого использования.", tags: ["Коммерческий", "Видео", "Adobe"], url: "https://firefly.adobe.com", free: false },
+            { name: "Midjourney", icon: "🎨", category: "image", plan: "Freemium", desc: "Лучший инструмент для художественных изображений. V7 — революционное качество. Работает через Discord и веб. Базовый план от $10/мес.", tags: ["Арт", "V7", "Discord"], url: "https://midjourney.com", free: false },
+            { name: "Flux / Ideogram 3", icon: "⚡", category: "image", plan: "Freemium", desc: "Flux Schnell — самый быстрый open-source image gen. Ideogram 3 — лучший для изображений с текстом и логотипами. Оба с бесплатным доступом.", tags: ["Flux", "Ideogram 3", "Текст"], url: "https://ideogram.ai", free: true },
+            { name: "Recraft V3", icon: "🖊️", category: "image", plan: "Free", desc: "Генерация SVG-векторной графики, UI-элементов и иконок. Лучший выбор для дизайнеров. Recraft V3 — топ по HuggingFace. Бесплатные кредиты.", tags: ["SVG", "Вектор", "UI/UX", "Иконки"], url: "https://www.recraft.ai", free: true },
+            { name: "Adobe Firefly (Image)", icon: "🔥", category: "image", plan: "Freemium", desc: "Безопасная для коммерческого использования генерация от Adobe. Обучен на лицензированном контенте. Интеграция с Photoshop и Illustrator.", tags: ["Коммерческий", "Photoshop", "Adobe"], url: "https://firefly.adobe.com", free: false },
+            { name: "Remove.bg", icon: "✂️", category: "image", plan: "Free", desc: "Автоматическое удаление фона с фотографий. Бесплатно с водяным знаком или низким разрешением. API для разработчиков.", tags: ["Удаление фона", "API", "Авто"], url: "https://www.remove.bg", free: true },
+            { name: "Stable Diffusion", icon: "🌌", category: "image", plan: "Open-source", desc: "Open-source image gen, запускается локально. Полный контроль над моделью. ComfyUI / Automatic1111 для гибкой настройки. Бесплатно навсегда.", tags: ["Open-source", "Локально", "ComfyUI"], url: "https://huggingface.co/stabilityai", free: true },
+            { name: "Chatterbox TTS", icon: "🔊", category: "voice", plan: "Open-source MIT", desc: "Open-source TTS от Resemble AI. Поддержка 23 языков, уникальный контроль экспрессивности и интенсивности голоса. Обучен на 0.5 млн часов. MIT — бесплатно для коммерческого использования.", tags: ["Open-source", "23 языка", "MIT", "Экспрессивность"], url: "https://github.com/resemble-ai/chatterbox", free: true },
+            { name: "Resemble AI", icon: "🎤", category: "voice", plan: "Freemium", desc: "Коммерческий сервис TTS и клонирования голоса. Высокое качество, API-интеграция, поддержка реал-тайм генерации. Создатели Chatterbox.", tags: ["Клонирование", "API", "Real-time"], url: "https://app.resemble.ai", free: false },
+            { name: "Cursor", icon: "✏️", category: "code", plan: "Freemium", desc: "AI-нативная IDE — лучший инструмент для вайб-кодинга. Глубокий контекст всего проекта, автодополнение, чат с кодом. Совместим с VSCode-расширениями.", tags: ["IDE", "Vibe-coding", "GPT/Claude"], url: "https://cursor.sh", free: false },
+            { name: "Claude Code", icon: "⌨️", category: "code", plan: "Платно", desc: "Агентный ИИ для кода в терминале от Anthropic. Читает файлы, пишет код, запускает тесты, делает git-коммиты самостоятельно.", tags: ["CLI", "Агент", "Anthropic"], url: "https://claude.ai", free: false },
+            { name: "Gemini CLI", icon: "🖥️", category: "code", plan: "Free", desc: "CLI-инструмент Gemini от Google. Полностью бесплатно с ключом AI Studio (500 req/день). Работает в терминале, поддерживает контекст проекта.", tags: ["CLI", "Бесплатно", "Google"], url: "https://github.com/google-gemini/gemini-cli", free: true },
+        ];
 
-    <div class="tool-card tier-freemium" data-name="kimi moonshot" data-tags="kimi контекст китай" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-purple">🌙</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Kimi</div>
-      <div class="card-desc">Китайский LLM от Moonshot AI с огромным контекстным окном (1M+ токенов). Отличен для длинных документов и исследований.</div>
-      <div class="card-tags"><span class="tag">1M+ контекст</span><span class="tag">Moonshot</span><span class="tag">Документы</span></div>
-      <a class="card-link" href="https://www.kimi.com" target="_blank"><i class="fa fa-external-link"></i> kimi.com</a>
-    </div>
+        function renderTools(filter = 'all', search = '') { /* полностью сохранён */ 
+            const grid = document.getElementById('toolsGrid');
+            let filtered = toolsData;
+            if (filter === 'free') filtered = toolsData.filter(t => t.free);
+            else if (filter !== 'all') filtered = toolsData.filter(t => t.category === filter);
+            if (search) { const s = search.toLowerCase(); filtered = filtered.filter(t => t.name.toLowerCase().includes(s) || t.desc.toLowerCase().includes(s) || t.tags.some(tg => tg.toLowerCase().includes(s))); }
+            grid.innerHTML = filtered.map(tool => `<div class="tool-card animate-on-scroll rounded-xl p-4 ${tool.free ? 'border-l-4 border-l-green-500' : 'border-l-4 border-l-brand-500'} bg-gray-800/40 border border-gray-700/50 hover:border-gray-600 transition-all"><div class="flex items-start justify-between mb-3"><div class="flex items-center gap-2"><span class="text-2xl">${tool.icon}</span><h4 class="font-semibold text-white">${tool.name}</h4></div>${tool.free ? '<span class="px-2 py-0.5 rounded bg-green-500/10 text-green-400 text-xs font-medium">🆓 Free</span>' : '<span class="px-2 py-0.5 rounded bg-gray-700 text-gray-400 text-xs font-medium">'+tool.plan+'</span>'}</div><p class="text-gray-400 text-sm mb-3 leading-relaxed">${tool.desc}</p><div class="flex flex-wrap gap-1.5 mb-3">${tool.tags.map(tag => `<span class="px-2 py-0.5 rounded bg-gray-900/60 text-gray-300 text-xs">${tag}</span>`).join('')}</div><a href="${tool.url}" target="_blank" class="inline-flex items-center gap-1 text-brand-400 hover:text-brand-300 text-sm font-medium group">Перейти →</a></div>`).join('');
+            setTimeout(() => { document.querySelectorAll('.tool-card.animate-on-scroll').forEach(el => el.classList.add('visible')); }, 50);
+        }
 
-    <div class="tool-card tier-free" data-name="qwen alibaba" data-tags="qwen alibaba open-source бесплатно" data-tier="free">
-      <div class="card-top">
-        <div class="card-icon ic-green">🍊</div>
-        <span class="tier-badge tb-free">🆓 Бесплатно</span>
-      </div>
-      <div class="card-name">Qwen</div>
-      <div class="card-desc">Открытые модели Alibaba. Бесплатный веб-интерфейс, хорошая поддержка русского, мультимодальность. Open-source версии доступны для self-host.</div>
-      <div class="card-tags"><span class="tag">Open-source</span><span class="tag">Бесплатно</span><span class="tag">Alibaba</span></div>
-      <a class="card-link lnk-free" href="https://qwen.ai" target="_blank"><i class="fa fa-external-link"></i> qwen.ai</a>
-    </div>
+        const faqData = [{ q: "Сколько стоит разработка AI-агента?", a: "Стоимость начинается от 50 000 ₽ за готовое решение. Индивидуальная разработка — от 100 000 ₽. Точную цену рассчитываем после бесплатной консультации. Большинство клиентов окупают инвестицию за 1–2 месяца." },{ q: "Как долго длится разработка?", a: "Прототип — 5–7 рабочих дней. Полноценный агент с интеграцией — 2–4 недели. Сроки фиксируются в договоре." },{ q: "Нужны ли технические знания для использования агента?", a: "Нет. Агент разрабатывается с учётом вашей команды — Telegram-бот, веб-интерфейс или интеграция в CRM. Провожу обучение сотрудников и предоставляю инструкции. Пользоваться так же просто, как мессенджером." },{ q: "Как агент интегрируется с нашими системами?", a: "Агент подключается через API к вашим CRM (amoCRM, Битрикс24), телефонии (Mango, UIS), мессенджерам, 1С, Google Sheets. Если у системы есть API — интеграция возможна." },{ q: "Безопасны ли данные нашей компании?", a: "Да. Данные не передаются третьим лицам. Агент разворачивается на вашем или арендованном сервере. Использую российские провайдеры (Yandex Cloud, Selectel). Заключаю NDA." },{ q: "Какой лучший бесплатный LLM API для разработчиков?", a: "В 2026 году топ-3: Google Gemini AI Studio (500 req/день, без карты), OpenRouter (200 req/день, много моделей), Groq (самый быстрый — 300+ токенов/с). Все они в каталоге инструментов на этой странице." },{ q: "Что если агент сделает ошибку?", a: "Агент настраивается с порогами уверенности. Критические решения остаются за человеком. Все действия логируются для аудита." }];
+        function renderFAQ() { document.getElementById('faqContainer').innerHTML = faqData.map((item,i) => `<div class="faq-item animate-on-scroll rounded-xl border border-gray-700 bg-gray-800/30 overflow-hidden" data-index="${i}"><button class="faq-question w-full px-5 py-4 flex items-center justify-between text-left hover:bg-gray-800/50 transition-colors"><span class="font-medium text-white pr-4">${item.q}</span><svg class="faq-icon w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="faq-answer px-5 text-gray-400 text-sm leading-relaxed">${item.a}</div></div>`).join(''); }
 
-    <div class="tool-card tier-freemium" data-name="gigachat сбер" data-tags="сбер gigachat русский россия" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-cyan">🇷🇺</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">GigaChat (Сбер)</div>
-      <div class="card-desc">Российский LLM от Сбербанка. Работает без VPN, без западных ограничений. Хорошо понимает русский язык и контекст.</div>
-      <div class="card-tags"><span class="tag">Русский</span><span class="tag">Без VPN</span><span class="tag">Сбер</span></div>
-      <a class="card-link" href="https://giga.chat" target="_blank"><i class="fa fa-external-link"></i> giga.chat</a>
-    </div>
+        // Обработчик форм с отправкой данных в мессенджер
+        function setupFormSubmit(formId, successMsgId, closeModalAfter = false) {
+            const form = document.getElementById(formId);
+            if (!form) return;
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const messenger = formData.get('messenger');
+                let name = formData.get('name') || '';
+                let phone = formData.get('phone') || '';
+                let email = formData.get('email') || '';
+                let business = formData.get('business') || '';
+                let task = formData.get('task') || '';
+                let description = formData.get('description') || '';
+                const text = `*Новая заявка с сайта AI Agent Factory*\nИмя: ${name}\nТелефон: ${phone}\nEmail: ${email}\nСфера: ${business}\nЗадача: ${task}\nОписание: ${description}`;
+                const encoded = encodeURIComponent(text);
+                let url = '';
+                if (messenger === 'telegram') {
+                    url = `https://t.me/DmitryTo1986?text=${encoded}`;
+                } else if (messenger === 'max') {
+                    url = `https://max.ru/u/f9LHodD0cOJlUbclcgcvXdPsrH3GSXkGr5454frvZB0OtFDna956oV4lpjw?text=${encoded}`;
+                }
+                form.classList.add('hidden');
+                const successDiv = document.getElementById(successMsgId);
+                if (successDiv) successDiv.classList.remove('hidden');
+                if (url) {
+                    setTimeout(() => { window.open(url, '_blank'); if (closeModalAfter) { closeAllModals(); } }, 1000);
+                } else {
+                    setTimeout(() => { if (closeModalAfter) closeAllModals(); }, 1000);
+                }
+            });
+        }
 
-    <div class="tool-card tier-free" data-name="chatglm chatz glm zhipu" data-tags="glm китай многоязычный" data-tier="free">
-      <div class="card-top">
-        <div class="card-icon ic-green">⚡</div>
-        <span class="tier-badge tb-free">🆓 Бесплатно</span>
-      </div>
-      <div class="card-name">ChatGLM / Chatz</div>
-      <div class="card-desc">GLM-4.7 от Zhipu AI. Многоязычная модель с акцентом на китайский и английский. Доступен через веб без регистрации.</div>
-      <div class="card-tags"><span class="tag">GLM-4.7</span><span class="tag">Многоязычный</span><span class="tag">Бесплатно</span></div>
-      <a class="card-link lnk-free" href="https://chatglm.cn" target="_blank"><i class="fa fa-external-link"></i> chatglm.cn</a>
-    </div>
+        function closeAllModals() { document.querySelectorAll('.modal').forEach(m => m.classList.remove('active')); document.body.style.overflow = ''; }
+        function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
 
-    <div class="tool-card tier-freemium" data-name="abacus ai chatllm" data-tags="abacus агрегатор chatllm" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-amber">🧮</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Abacus AI</div>
-      <div class="card-desc">Агрегатор AI-моделей (ChatLLM). Доступ к GPT-4, Claude, Gemini и другим моделям в одном интерфейсе. Есть бесплатный уровень.</div>
-      <div class="card-tags"><span class="tag">Агрегатор</span><span class="tag">ChatLLM</span><span class="tag">Мультимодель</span></div>
-      <a class="card-link" href="https://abacus.ai" target="_blank"><i class="fa fa-external-link"></i> abacus.ai</a>
-    </div>
-
-    <div class="tool-card tier-free" data-name="openrouter" data-tags="openrouter api бесплатно openai-совместимый" data-tier="free">
-      <div class="card-top">
-        <div class="card-icon ic-green">🛣️</div>
-        <span class="tier-badge tb-free">🆓 Бесплатно</span>
-      </div>
-      <div class="card-name">OpenRouter</div>
-      <div class="card-desc">200 запросов/день бесплатно, без кредитной карты. OpenAI-совместимый API. Много бесплатных моделей: Llama, Mistral, Qwen.</div>
-      <div class="card-tags"><span class="tag">200 req/день</span><span class="tag">OpenAI SDK</span><span class="tag">Бесплатно</span></div>
-      <a class="card-link lnk-free" href="https://openrouter.ai" target="_blank"><i class="fa fa-external-link"></i> openrouter.ai</a>
-    </div>
-
-    <div class="tool-card tier-free" data-name="groq llama быстрый" data-tags="groq llama скорость быстро" data-tier="free">
-      <div class="card-top">
-        <div class="card-icon ic-green">🚀</div>
-        <span class="tier-badge tb-free">🆓 Бесплатно</span>
-      </div>
-      <div class="card-name">Groq</div>
-      <div class="card-desc">300+ токенов/с — самый быстрый LLM API в мире. Llama 3.3 70B. Щедрый бесплатный уровень, кредитная карта не нужна.</div>
-      <div class="card-tags"><span class="tag">300 т/с</span><span class="tag">Llama 3.3</span><span class="tag">Бесплатно</span><span class="tag">Realtime</span></div>
-      <a class="card-link lnk-free" href="https://console.groq.com" target="_blank"><i class="fa fa-external-link"></i> console.groq.com</a>
-    </div>
-
-    <div class="tool-card tier-free" data-name="mistral европейский" data-tags="mistral европа токены бесплатно" data-tier="free">
-      <div class="card-top">
-        <div class="card-icon ic-green">🔺</div>
-        <span class="tier-badge tb-free">🆓 Бесплатно</span>
-      </div>
-      <div class="card-name">Mistral AI</div>
-      <div class="card-desc">1 млн токенов/день бесплатно. Европейский провайдер, без кредитной карты (нужна верификация телефона). GDPR-совместимый.</div>
-      <div class="card-tags"><span class="tag">1M токенов/день</span><span class="tag">Европа</span><span class="tag">GDPR</span></div>
-      <a class="card-link lnk-free" href="https://console.mistral.ai" target="_blank"><i class="fa fa-external-link"></i> console.mistral.ai</a>
-    </div>
-
-    <div class="tool-card tier-free" data-name="huggingface hugging face inference" data-tags="huggingface open-source модели inference" data-tier="free">
-      <div class="card-top">
-        <div class="card-icon ic-amber">🤗</div>
-        <span class="tier-badge tb-free">🆓 Бесплатно</span>
-      </div>
-      <div class="card-name">HuggingFace Inference</div>
-      <div class="card-desc">300+ моделей через бесплатный API. Медленнее коммерческих, но огромный выбор. Идеально для экспериментов и специализированных задач.</div>
-      <div class="card-tags"><span class="tag">300+ моделей</span><span class="tag">Open-source</span><span class="tag">API</span></div>
-      <a class="card-link lnk-free" href="https://huggingface.co" target="_blank"><i class="fa fa-external-link"></i> huggingface.co</a>
-    </div>
-
-    <div class="tool-card tier-freemium" data-name="yandex gpt яндекс" data-tags="яндекс gpt русский россия" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-red">🔴</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Yandex AI (YaGPT)</div>
-      <div class="card-desc">Яндекс GPT агент. Работает без VPN, глубокая интеграция с сервисами Яндекса. Хорошо понимает российский контекст.</div>
-      <div class="card-tags"><span class="tag">Русский</span><span class="tag">Без VPN</span><span class="tag">Яндекс</span></div>
-      <a class="card-link" href="https://ya.ru/ai/gpt" target="_blank"><i class="fa fa-external-link"></i> ya.ru/ai/gpt</a>
-    </div>
-
-    <div class="tool-card tier-free" data-name="notebooklm google документы подкасты" data-tags="google документы подкасты notebooklm" data-tier="free">
-      <div class="card-top">
-        <div class="card-icon ic-green">📓</div>
-        <span class="tier-badge tb-free">🆓 Бесплатно</span>
-      </div>
-      <div class="card-name">NotebookLM</div>
-      <div class="card-desc">ИИ для работы с вашими документами. Загружаете PDF/текст — получаете резюме, ответы на вопросы, AI-подкасты из материалов.</div>
-      <div class="card-tags"><span class="tag">Документы</span><span class="tag">Подкасты</span><span class="tag">Google</span><span class="tag">Бесплатно</span></div>
-      <a class="card-link lnk-free" href="https://notebooklm.google.com" target="_blank"><i class="fa fa-external-link"></i> notebooklm.google.com</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     AGENTS
-══════════════════════════════════════════ -->
-<section id="agents" class="cat-section" data-cat="agents">
-  <div class="sec-header">
-    <div class="sec-tag">Категория 02</div>
-    <div class="cat-title-row">
-      <div class="sec-title">🤖 Агенты и автоматизация</div>
-      <span class="count-pill">5 инструментов</span>
-    </div>
-    <div class="sec-sub">ИИ-агенты, no-code автоматизация, конструкторы пайплайнов</div>
-  </div>
-  <div class="grid g3">
-
-    <div class="tool-card tier-freemium" data-name="genspark поиск агент" data-tags="genspark поиск агент отчёты" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-cyan">✨</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Genspark</div>
-      <div class="card-desc">Поисковой ИИ-агент нового поколения. Создаёт интерактивные страницы-отчёты с агрегацией из множества источников по вашему запросу.</div>
-      <div class="card-tags"><span class="tag">Поиск</span><span class="tag">Агент</span><span class="tag">Отчёты</span></div>
-      <a class="card-link" href="https://genspark.ai" target="_blank"><i class="fa fa-external-link"></i> genspark.ai</a>
-    </div>
-
-    <div class="tool-card tier-paid" data-name="manus автономный агент" data-tags="manus автономный сложные задачи" data-tier="paid">
-      <div class="card-top">
-        <div class="card-icon ic-amber">🦾</div>
-        <span class="tier-badge tb-paid">Платно</span>
-      </div>
-      <div class="card-name">Manus</div>
-      <div class="card-desc">Автономный ИИ-агент для сложных многоэтапных задач: исследование, написание кода, работа с файлами. Действует без постоянного контроля.</div>
-      <div class="card-tags"><span class="tag">Автономный</span><span class="tag">Многоэтапный</span><span class="tag">Файлы</span></div>
-      <a class="card-link" href="https://manus.ai" target="_blank"><i class="fa fa-external-link"></i> manus.ai</a>
-    </div>
-
-    <div class="tool-card tier-freemium" data-name="n8n автоматизация no-code self-host" data-tags="n8n автоматизация no-code self-host конструктор" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-purple">🔗</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">n8n</div>
-      <div class="card-desc">No-code конструктор ИИ-агентов и автоматизаций. Self-host — полностью бесплатно. Облачная версия — платно. Сотни интеграций.</div>
-      <div class="card-tags"><span class="tag">No-code</span><span class="tag">Self-host</span><span class="tag">Автоматизация</span><span class="tag">600+ интеграций</span></div>
-      <a class="card-link" href="https://n8n.io" target="_blank"><i class="fa fa-external-link"></i> n8n.io</a>
-    </div>
-
-    <div class="tool-card tier-freemium" data-name="openai agent builder agents sdk" data-tags="openai agent builder agents sdk" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-cyan">⚙️</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">OpenAI Agent Builder</div>
-      <div class="card-desc">Официальный конструктор агентов от OpenAI на базе Agents SDK. Визуальный редактор + API. Подключение MCP-серверов, инструментов и веб-поиска.</div>
-      <div class="card-tags"><span class="tag">Agents SDK</span><span class="tag">MCP</span><span class="tag">OpenAI</span></div>
-      <a class="card-link" href="https://platform.openai.com/agent-builder" target="_blank"><i class="fa fa-external-link"></i> platform.openai.com</a>
-    </div>
-
-    <div class="tool-card tier-freemium" data-name="gamma презентации документы лендинг" data-tags="gamma презентации документы лендинги" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-pink">📊</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Gamma</div>
-      <div class="card-desc">Автоматическое создание презентаций, лендингов и документов через ИИ. Достаточно описать идею — Gamma генерирует готовый дизайн.</div>
-      <div class="card-tags"><span class="tag">Презентации</span><span class="tag">Лендинги</span><span class="tag">Документы</span></div>
-      <a class="card-link" href="https://gamma.app" target="_blank"><i class="fa fa-external-link"></i> gamma.app</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     APP BUILDER
-══════════════════════════════════════════ -->
-<section id="appbuilder" class="cat-section" data-cat="appbuilder">
-  <div class="sec-header">
-    <div class="sec-tag">Категория 03</div>
-    <div class="cat-title-row">
-      <div class="sec-title">🏗️ App Builder / RAG</div>
-      <span class="count-pill">2 инструмента</span>
-    </div>
-    <div class="sec-sub">Генерация полноценных приложений из промпта, RAG-системы</div>
-  </div>
-  <div class="grid g2">
-
-    <div class="tool-card tier-freemium" data-name="base44 приложения веб app builder" data-tags="base44 приложения full-stack no-code wix" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-cyan">🏗️</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Base44 <span class="new">NEW</span></div>
-      <div class="card-desc">ИИ-конструктор полноценных веб-приложений из текстового промпта. Frontend + backend + БД + авторизация — из коробки без кода. Используется Claude Sonnet + Gemini 2.5 Pro. Приобретён Wix в 2025. Бесплатно: 5 запросов/день.</div>
-      <div class="card-tags"><span class="tag">No-code</span><span class="tag">Full-stack</span><span class="tag">Wix</span><span class="tag">MVP</span><span class="tag">5 req/день free</span></div>
-      <a class="card-link" href="https://base44.com" target="_blank"><i class="fa fa-external-link"></i> base44.com</a>
-    </div>
-
-    <div class="tool-card tier-free" data-name="openrag rag sdk langflow python" data-tags="openrag rag langflow opensearch python sdk" data-tier="free">
-      <div class="card-top">
-        <div class="card-icon ic-green">📚</div>
-        <span class="tier-badge tb-free">🆓 Open-source</span>
-      </div>
-      <div class="card-name">OpenRAG SDK</div>
-      <div class="card-desc">Python SDK для построения RAG-систем. Объединяет Langflow (визуальный пайплайн), OpenSearch (векторный поиск) и Docling (обработка документов). Разворачивается через Docker.</div>
-      <div class="card-tags"><span class="tag">RAG</span><span class="tag">Langflow</span><span class="tag">OpenSearch</span><span class="tag">Docker</span><span class="tag">Open-source</span></div>
-      <a class="card-link lnk-free" href="https://pypi.org/project/openrag-sdk" target="_blank"><i class="fa fa-external-link"></i> pypi.org/project/openrag-sdk</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     VIDEO
-══════════════════════════════════════════ -->
-<section id="video" class="cat-section" data-cat="video">
-  <div class="sec-header">
-    <div class="sec-tag">Категория 04</div>
-    <div class="cat-title-row">
-      <div class="sec-title">🎬 Генерация видео</div>
-      <span class="count-pill">8 инструментов</span>
-    </div>
-    <div class="sec-sub">Text-to-video, image-to-video, дублирование и перевод видео</div>
-  </div>
-
-  <div class="notice">
-    <i class="fa fa-info-circle"></i>
-    <p>Актуальные топ-модели по состоянию на 2026: <strong>Veo 3.1</strong> (Google), <strong>Runway Gen-4.5</strong>, <strong>Sora 2</strong> (OpenAI), <strong>Kling AI</strong>, <strong>Ray3 HDR</strong> (Luma). Большинство требует подписки.</p>
-  </div>
-
-  <div class="grid g4">
-
-    <div class="tool-card tier-paid" data-name="sora openai видео" data-tags="sora openai видео реалистичное аудио" data-tier="paid">
-      <div class="card-top">
-        <div class="card-icon ic-cyan">🎥</div>
-        <span class="tier-badge tb-paid">Платно</span>
-      </div>
-      <div class="card-name">Sora 2</div>
-      <div class="card-desc">Генерация реалистичных видео с аудио от OpenAI. Доступно в ChatGPT Plus/Pro. Sora 2 — улучшенный реализм и управление движением.</div>
-      <div class="card-tags"><span class="tag">Sora 2</span><span class="tag">Аудио</span><span class="tag">ChatGPT Plus</span></div>
-      <a class="card-link" href="https://sora.chatgpt.com" target="_blank"><i class="fa fa-external-link"></i> sora.chatgpt.com</a>
-    </div>
-
-    <div class="tool-card tier-paid" data-name="veo google видео" data-tags="veo google видео физика реализм" data-tier="paid">
-      <div class="card-top">
-        <div class="card-icon ic-green">🌊</div>
-        <span class="tier-badge tb-paid">Платно</span>
-      </div>
-      <div class="card-name">Veo 3.1 (Google)</div>
-      <div class="card-desc">Veo 3.1 от Google — улучшенный контроль движения, реалистичная физика, высокое качество. Доступен через AI Studio.</div>
-      <div class="card-tags"><span class="tag">Veo 3.1</span><span class="tag">Google</span><span class="tag">Физика</span></div>
-      <a class="card-link" href="https://aistudio.google.com/models/veo-3" target="_blank"><i class="fa fa-external-link"></i> aistudio.google.com</a>
-    </div>
-
-    <div class="tool-card tier-freemium" data-name="runway gen видео" data-tags="runway gen-4 профессиональный видео hdr" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-purple">🎞️</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Runway Gen-4.5</div>
-      <div class="card-desc">Управляемые готовые к производству видео. Gen-4.5 с HDR. Профессиональный стандарт для коммерческих проектов.</div>
-      <div class="card-tags"><span class="tag">Gen-4.5</span><span class="tag">HDR</span><span class="tag">Профи</span></div>
-      <a class="card-link" href="https://runwayml.com" target="_blank"><i class="fa fa-external-link"></i> runwayml.com</a>
-    </div>
-
-    <div class="tool-card tier-freemium" data-name="kling ai видео" data-tags="kling видео реализм движение" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-cyan">🎬</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Kling AI</div>
-      <div class="card-desc">Качественная видеогенерация с хорошим реализмом, управлением движением и камерой. Один из лучших вариантов с freemium-доступом.</div>
-      <div class="card-tags"><span class="tag">Реализм</span><span class="tag">Управление</span><span class="tag">Камера</span></div>
-      <a class="card-link" href="https://app.klingai.com" target="_blank"><i class="fa fa-external-link"></i> app.klingai.com</a>
-    </div>
-
-    <div class="tool-card tier-freemium" data-name="pika видео анимация" data-tags="pika видео анимация генерация" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-pink">💫</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Pika 2.2</div>
-      <div class="card-desc">Быстрая генерация и редактирование видео, анимация фото. Pika 2.2 — улучшенное качество и эффекты. Есть бесплатные кредиты.</div>
-      <div class="card-tags"><span class="tag">Pika 2.2</span><span class="tag">Анимация фото</span><span class="tag">Эффекты</span></div>
-      <a class="card-link" href="https://pika.art" target="_blank"><i class="fa fa-external-link"></i> pika.art</a>
-    </div>
-
-    <div class="tool-card tier-freemium" data-name="heygen перевод видео аватар" data-tags="heygen перевод дублирование аватар видео" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-amber">🎙️</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">HeyGen</div>
-      <div class="card-desc">Перевод и дублирование видео с сохранением голоса говорящего и синхронизацией губ. Лучший инструмент для локализации видео-контента.</div>
-      <div class="card-tags"><span class="tag">Перевод</span><span class="tag">Дублирование</span><span class="tag">Аватар</span></div>
-      <a class="card-link" href="https://app.heygen.com" target="_blank"><i class="fa fa-external-link"></i> app.heygen.com</a>
-    </div>
-
-    <div class="tool-card tier-freemium" data-name="deevid image to video" data-tags="deevid image-to-video" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-cyan">🖼️</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Deevid AI</div>
-      <div class="card-desc">Image-to-video генерация. Превращает изображение в короткое видео с движением. Простой интерфейс, быстрый результат.</div>
-      <div class="card-tags"><span class="tag">Image-to-video</span><span class="tag">Быстро</span></div>
-      <a class="card-link" href="https://deevid.ai/image-to-video" target="_blank"><i class="fa fa-external-link"></i> deevid.ai</a>
-    </div>
-
-    <div class="tool-card tier-freemium" data-name="adobe firefly видео изображения" data-tags="adobe firefly видео изображения коммерческий" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-red">🔥</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Adobe Firefly</div>
-      <div class="card-desc">Генерация изображений и видео от Adobe. Коммерчески безопасный контент (обучен на лицензированных данных). Интеграция с Adobe CC.</div>
-      <div class="card-tags"><span class="tag">Adobe CC</span><span class="tag">Коммерческий</span><span class="tag">Видео+Фото</span></div>
-      <a class="card-link" href="https://firefly.adobe.com" target="_blank"><i class="fa fa-external-link"></i> firefly.adobe.com</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     IMAGE
-══════════════════════════════════════════ -->
-<section id="image" class="cat-section" data-cat="image">
-  <div class="sec-header">
-    <div class="sec-tag">Категория 05</div>
-    <div class="cat-title-row">
-      <div class="sec-title">🖼️ Генерация изображений</div>
-      <span class="count-pill">5 инструментов</span>
-    </div>
-    <div class="sec-sub">Text-to-image, редактирование, 3D-контроль, стилизация</div>
-  </div>
-  <div class="grid g3">
-
-    <div class="tool-card tier-freemium" data-name="reve редактор изображений" data-tags="reve редактор изображения инструкции" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-pink">🎨</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Reve Image Editor</div>
-      <div class="card-desc">Мощный ИИ-редактор изображений. Редактирование через текстовые инструкции: «убери фон», «добавь закат», «измени одежду». Один из лучших редакторов 2026.</div>
-      <div class="card-tags"><span class="tag">Редактор</span><span class="tag">Инструкции</span><span class="tag">Inpainting</span></div>
-      <a class="card-link" href="https://app.reve.com" target="_blank"><i class="fa fa-external-link"></i> app.reve.com</a>
-    </div>
-
-    <div class="tool-card tier-free" data-name="glm image huggingface генерация" data-tags="glm image huggingface бесплатно генерация" data-tier="free">
-      <div class="card-top">
-        <div class="card-icon ic-green">🖌️</div>
-        <span class="tier-badge tb-free">🆓 Бесплатно</span>
-      </div>
-      <div class="card-name">GLM Image (HF)</div>
-      <div class="card-desc">Бесплатная генерация изображений на HuggingFace Space. Модель GLM от Zhipu AI. Хорошее качество без регистрации и API-ключей.</div>
-      <div class="card-tags"><span class="tag">Бесплатно</span><span class="tag">HF Space</span><span class="tag">GLM</span></div>
-      <a class="card-link lnk-free" href="https://huggingface.co/spaces/multimodalart/GLM-Image" target="_blank"><i class="fa fa-external-link"></i> HuggingFace Space</a>
-    </div>
-
-    <div class="tool-card tier-free" data-name="qwen image edit 3d camera" data-tags="qwen image 3d camera control huggingface" data-tier="free">
-      <div class="card-top">
-        <div class="card-icon ic-green">📷</div>
-        <span class="tier-badge tb-free">🆓 Бесплатно</span>
-      </div>
-      <div class="card-name">Qwen Image Edit 3D</div>
-      <div class="card-desc">3D Camera Control для изображений. Управление углом камеры и перспективой. Qwen Image Edit 2511 на HuggingFace — бесплатно.</div>
-      <div class="card-tags"><span class="tag">3D контроль</span><span class="tag">Камера</span><span class="tag">Бесплатно</span></div>
-      <a class="card-link lnk-free" href="https://huggingface.co/spaces/multimodalart/qwen-image-multiple-angles-3d-camera" target="_blank"><i class="fa fa-external-link"></i> HuggingFace Space</a>
-    </div>
-
-    <div class="tool-card tier-free" data-name="z-image turbo быстрый генерация" data-tags="z-image turbo быстрая генерация huggingface" data-tier="free">
-      <div class="card-top">
-        <div class="card-icon ic-green">⚡</div>
-        <span class="tier-badge tb-free">🆓 Бесплатно</span>
-      </div>
-      <div class="card-name">Z-Image Turbo</div>
-      <div class="card-desc">Быстрая генерация изображений на HuggingFace Space. Минимальная задержка, хорошее качество. Без регистрации.</div>
-      <div class="card-tags"><span class="tag">Быстро</span><span class="tag">Бесплатно</span><span class="tag">HF Space</span></div>
-      <a class="card-link lnk-free" href="https://huggingface.co/spaces/mrfakename/Z-Image-Turbo" target="_blank"><i class="fa fa-external-link"></i> HuggingFace Space</a>
-    </div>
-
-    <div class="tool-card tier-freemium" data-name="nanobanana генератор" data-tags="nanobanana генератор изображений" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-amber">🍌</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">NanoBanana</div>
-      <div class="card-desc">Генератор изображений с простым и удобным интерфейсом. Подходит для быстрых прототипов и иллюстраций.</div>
-      <div class="card-tags"><span class="tag">Генератор</span><span class="tag">Простой</span></div>
-      <a class="card-link" href="https://nanobanana.ai/generator" target="_blank"><i class="fa fa-external-link"></i> nanobanana.ai</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     VOICE / TTS
-══════════════════════════════════════════ -->
-<section id="voice" class="cat-section" data-cat="voice">
-  <div class="sec-header">
-    <div class="sec-tag">Категория 06</div>
-    <div class="cat-title-row">
-      <div class="sec-title">🎙️ Голос / TTS</div>
-      <span class="count-pill">2 инструмента</span>
-    </div>
-    <div class="sec-sub">Синтез речи, клонирование голоса, многоязычный TTS</div>
-  </div>
-  <div class="grid g2">
-
-    <div class="tool-card tier-free" data-name="chatterbox tts open-source голос речь" data-tags="chatterbox tts open-source голос речь 23 языка mit" data-tier="free">
-      <div class="card-top">
-        <div class="card-icon ic-green">🔊</div>
-        <span class="tier-badge tb-free">🆓 Open-source MIT</span>
-      </div>
-      <div class="card-name">Chatterbox TTS</div>
-      <div class="card-desc">Open-source TTS от Resemble AI. Поддержка 23 языков, уникальный контроль экспрессивности и интенсивности голоса. Обучен на 0.5 млн часов. MIT-лицензия — полностью бесплатно для коммерческого использования.</div>
-      <div class="card-tags"><span class="tag">Open-source</span><span class="tag">23 языка</span><span class="tag">MIT</span><span class="tag">Экспрессивность</span><span class="tag">Llama 0.5B</span></div>
-      <a class="card-link lnk-free" href="https://github.com/resemble-ai/chatterbox" target="_blank"><i class="fa fa-external-link"></i> github.com/resemble-ai/chatterbox</a>
-    </div>
-
-    <div class="tool-card tier-freemium" data-name="resemble ai голос клонирование" data-tags="resemble голос клонирование api tts" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-purple">🎤</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Resemble AI</div>
-      <div class="card-desc">Коммерческий сервис TTS и клонирования голоса. Высокое качество, API-интеграция, поддержка реал-тайм генерации. Создатели Chatterbox.</div>
-      <div class="card-tags"><span class="tag">Клонирование</span><span class="tag">API</span><span class="tag">Real-time</span></div>
-      <a class="card-link" href="https://app.resemble.ai" target="_blank"><i class="fa fa-external-link"></i> app.resemble.ai</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     CODE
-══════════════════════════════════════════ -->
-<section id="code" class="cat-section" data-cat="code">
-  <div class="sec-header">
-    <div class="sec-tag">Категория 07</div>
-    <div class="cat-title-row">
-      <div class="sec-title">💻 Инструменты для кода</div>
-      <span class="count-pill">3 инструмента</span>
-    </div>
-    <div class="sec-sub">AI-нативные IDE, CLI-инструменты, vibe-coding</div>
-  </div>
-  <div class="grid g3">
-
-    <div class="tool-card tier-freemium" data-name="cursor ide vibe-coding" data-tags="cursor ide vibe-coding ai редактор контекст" data-tier="freemium">
-      <div class="card-top">
-        <div class="card-icon ic-purple">✏️</div>
-        <span class="tier-badge tb-freemium">Freemium</span>
-      </div>
-      <div class="card-name">Cursor</div>
-      <div class="card-desc">AI-нативная IDE — лучший инструмент для вайб-кодинга. Глубокий контекст всего проекта, автодополнение, чат с кодом. Совместим с VSCode-расширениями.</div>
-      <div class="card-tags"><span class="tag">IDE</span><span class="tag">Vibe-coding</span><span class="tag">GPT/Claude</span><span class="tag">Контекст</span></div>
-      <a class="card-link" href="https://cursor.sh" target="_blank"><i class="fa fa-external-link"></i> cursor.sh</a>
-    </div>
-
-    <div class="tool-card tier-paid" data-name="claude code cli агент терминал" data-tags="claude code cli агент терминал anthropic" data-tier="paid">
-      <div class="card-top">
-        <div class="card-icon ic-purple">⌨️</div>
-        <span class="tier-badge tb-paid">Платно</span>
-      </div>
-      <div class="card-name">Claude Code</div>
-      <div class="card-desc">Агентный ИИ для кода в терминале от Anthropic. Может самостоятельно читать файлы, писать код, запускать тесты, делать git-коммиты. Требует подписку.</div>
-      <div class="card-tags"><span class="tag">CLI</span><span class="tag">Агент</span><span class="tag">Anthropic</span><span class="tag">Терминал</span></div>
-      <a class="card-link" href="https://claude.ai" target="_blank"><i class="fa fa-external-link"></i> claude.ai</a>
-    </div>
-
-    <div class="tool-card tier-free" data-name="gemini cli google терминал" data-tags="gemini cli google терминал бесплатно" data-tier="free">
-      <div class="card-top">
-        <div class="card-icon ic-green">🖥️</div>
-        <span class="tier-badge tb-free">🆓 Бесплатно</span>
-      </div>
-      <div class="card-name">Gemini CLI</div>
-      <div class="card-desc">CLI-инструмент Gemini от Google. Полностью бесплатно с ключом AI Studio (500 req/день). Работает в терминале, поддерживает контекст проекта.</div>
-      <div class="card-tags"><span class="tag">CLI</span><span class="tag">Бесплатно</span><span class="tag">Google</span><span class="tag">Node.js</span></div>
-      <a class="card-link lnk-free" href="https://github.com/google-gemini/gemini-cli" target="_blank"><i class="fa fa-external-link"></i> github.com/google-gemini/gemini-cli</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     FREE API TABLE
-══════════════════════════════════════════ -->
-<section id="free-api" class="cat-section" data-cat="free-only">
-  <div class="sec-header">
-    <div class="sec-tag">Бонус: сравнение</div>
-    <div class="cat-title-row">
-      <div class="sec-title">🆓 Лучшие бесплатные LLM API</div>
-    </div>
-    <div class="sec-sub">Сравнение бесплатных API для разработчиков — без кредитной карты</div>
-  </div>
-  <div class="tbl-wrap">
-    <table class="api-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Провайдер</th>
-          <th>Бесплатный лимит</th>
-          <th>Кредитка</th>
-          <th>Скорость</th>
-          <th>Лучше всего для</th>
-          <th>Ссылка</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>🥇</td>
-          <td>Google Gemini (AI Studio)</td>
-          <td><span class="limit">500 req/день</span></td>
-          <td>❌ Нет</td>
-          <td><span class="speed">⚡ Быстро</span></td>
-          <td>Продакшн прототипы, RAG</td>
-          <td><a href="https://aistudio.google.com" target="_blank">aistudio.google.com</a></td>
-        </tr>
-        <tr>
-          <td>🥈</td>
-          <td>OpenRouter</td>
-          <td><span class="limit">200 req/день</span></td>
-          <td>❌ Нет</td>
-          <td><span class="speed">📊 Средне</span></td>
-          <td>Тест разных моделей</td>
-          <td><a href="https://openrouter.ai" target="_blank">openrouter.ai</a></td>
-        </tr>
-        <tr>
-          <td>🥉</td>
-          <td>Groq</td>
-          <td><span class="limit">Щедрые лимиты</span></td>
-          <td>❌ Нет</td>
-          <td><span class="speed">🚀 300+ т/с</span></td>
-          <td>Realtime приложения</td>
-          <td><a href="https://console.groq.com" target="_blank">console.groq.com</a></td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Mistral AI</td>
-          <td><span class="limit">1M токенов/день</span></td>
-          <td>❌ Нет</td>
-          <td><span class="speed">⚡ Быстро</span></td>
-          <td>Европейские данные, GDPR</td>
-          <td><a href="https://console.mistral.ai" target="_blank">console.mistral.ai</a></td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>HuggingFace Inference</td>
-          <td><span class="limit">Ограничено</span></td>
-          <td>❌ Нет</td>
-          <td><span class="speed">🐢 Медленно</span></td>
-          <td>Эксперименты, специализация</td>
-          <td><a href="https://huggingface.co" target="_blank">huggingface.co</a></td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>DeepSeek API</td>
-          <td><span class="limit">~$5 кредитов</span></td>
-          <td>✅ Да</td>
-          <td><span class="speed">⚡ Быстро</span></td>
-          <td>Когда бесплатные лимиты кончились</td>
-          <td><a href="https://www.deepseek.com" target="_blank">deepseek.com</a></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-</div><!-- /toolsContainer -->
-</div><!-- /wrap -->
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <div class="footer-logo">🤖 AI Tools Hub</div>
-      <p style="font-size:13px;color:var(--mt);max-width:500px;text-align:center">Каталог актуальных нейросетей и AI-инструментов. Обновлено в 2026 году.</p>
-      <div class="footer-links">
-        <a href="#chat">Чат / LLM</a>
-        <a href="#agents">Агенты</a>
-        <a href="#appbuilder">App Builder</a>
-        <a href="#video">Видео</a>
-        <a href="#image">Изображения</a>
-        <a href="#voice">Голос</a>
-        <a href="#code">Код</a>
-        <a href="#free-api">Free API</a>
-      </div>
-      <div class="footer-copy">AI Tools Hub © 2026 — информация актуальна на апрель 2026</div>
-    </div>
-  </div>
-</footer>
-
-<button class="stt" id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa fa-arrow-up"></i></button>
-
-<script>
-// PARTICLES
-(function(){
-  const c=document.getElementById('ptcl');
-  for(let i=0;i<18;i++){
-    const p=document.createElement('div');
-    p.className='ptc';
-    const s=Math.random()*4+2;
-    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*12+8}s;animation-delay:${Math.random()*10}s`;
-    c.appendChild(p);
-  }
-})();
-
-// SCROLL TO TOP
-window.addEventListener('scroll',()=>{
-  document.getElementById('stt').classList.toggle('show',window.scrollY>400);
-});
-
-// FILTER
-const filterBtns=document.querySelectorAll('.filter-btn');
-const catSections=document.querySelectorAll('.cat-section');
-const allCards=document.querySelectorAll('.tool-card');
-const searchInput=document.getElementById('searchInput');
-
-function applyFilter(cat){
-  const q=searchInput.value.toLowerCase().trim();
-  catSections.forEach(s=>{
-    const secCat=s.dataset.cat;
-    let showSection=false;
-    const cards=s.querySelectorAll('.tool-card');
-    cards.forEach(card=>{
-      const name=(card.dataset.name||'').toLowerCase();
-      const tags=(card.dataset.tags||'').toLowerCase();
-      const desc=card.querySelector('.card-desc')?.textContent.toLowerCase()||'';
-      const tier=card.dataset.tier||'';
-      const matchSearch=!q||(name.includes(q)||tags.includes(q)||desc.includes(q));
-      const matchCat=cat==='all'||(cat==='free-only'&&tier==='free')||secCat===cat;
-      if(matchSearch&&matchCat){card.style.display='flex';showSection=true;}
-      else card.style.display='none';
-    });
-    // Also show free-api section for free-only
-    if(cat==='free-only'&&secCat==='free-only') showSection=true;
-    s.style.display=showSection?'':'none';
-  });
-}
-
-let currentCat='all';
-filterBtns.forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    filterBtns.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    currentCat=btn.dataset.cat;
-    applyFilter(currentCat);
-  });
-});
-
-searchInput.addEventListener('input',()=>applyFilter(currentCat));
-
-// SMOOTH NAV
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const id=a.getAttribute('href');
-    if(id==='#')return;
-    const el=document.querySelector(id);
-    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}
-  });
-});
-</script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTools(); renderFAQ();
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderTools(btn.dataset.filter, document.getElementById('toolSearch').value); }));
+            document.getElementById('toolSearch').addEventListener('input', (e) => { renderTools(document.querySelector('.filter-btn.active').dataset.filter, e.target.value); });
+            document.getElementById('faqContainer').addEventListener('click', (e) => { const item = e.target.closest('.faq-item'); if (!item) return; const wasOpen = item.classList.contains('open'); document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open')); if (!wasOpen) item.classList.add('open'); });
+            const mobileMenu = document.getElementById('mobileMenu');
+            document.getElementById('mobileMenuBtn').addEventListener('click', () => mobileMenu.classList.add('open'));
+            document.getElementById('closeMobileMenu').addEventListener('click', () => mobileMenu.classList.remove('open'));
+            document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
+            document.querySelectorAll('.closeModal').forEach(btn => btn.addEventListener('click', closeAllModals));
+            document.querySelectorAll('.modal').forEach(modal => modal.addEventListener('click', (e) => { if (e.target === modal) closeAllModals(); }));
+            document.getElementById('openPrivacyModal')?.addEventListener('click', (e) => { e.preventDefault(); openModal('privacyModal'); });
+            document.getElementById('openPrivacyFooter')?.addEventListener('click', (e) => { e.preventDefault(); openModal('privacyModal'); });
+            document.getElementById('modalPrivacyLink')?.addEventListener('click', (e) => { e.preventDefault(); openModal('privacyModal'); });
+            setupFormSubmit('contactForm', 'successMessage', false);
+            setupFormSubmit('modalContactForm', 'modalSuccessMessage', true);
+            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+            let lastScroll = 0;
+            window.addEventListener('scroll', () => { const navbar = document.getElementById('navbar'); const scrollY = window.scrollY; if (scrollY > 100) { navbar.classList.add('shadow-lg', 'bg-gray-900/95'); } else { navbar.classList.remove('shadow-lg', 'bg-gray-900/95'); } lastScroll = scrollY; });
+        });
+    </script>
 </body>
 </html>

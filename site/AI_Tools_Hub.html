@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tools Hub — Каталог нейросетей 2026</title>
+<meta name="description" content="Полный каталог нейросетей и AI-инструментов 2026. Чат, видео, изображения, агенты, голос, код. Бесплатные и платные.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --nc:#00f2fe;--nc2:#4facfe;--v1:#667eea;--v2:#764ba2;
+  --dk:#070710;--dk2:#0d0d1a;
+  --card:rgba(255,255,255,.032);--cb:rgba(0,242,254,.12);
+  --tx:#e8e8f0;--mt:#8888aa;
+  --glow:0 0 24px rgba(0,242,254,.45);
+  --f:'Exo 2',sans-serif;--mn:'JetBrains Mono',monospace;
+  --r:12px;--rlg:20px
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f);background:var(--dk);color:var(--tx);overflow-x:hidden;line-height:1.65}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 10% 0%,rgba(102,126,234,.08),transparent 60%),radial-gradient(ellipse 60% 40% at 90% 100%,rgba(0,242,254,.06),transparent 55%);pointer-events:none;z-index:0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,32px);position:relative;z-index:1}
+
+/* PARTICLES */
+#ptcl{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.ptc{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(0,242,254,.8),rgba(102,126,234,.4));animation:pfl linear infinite;opacity:0}
+@keyframes pfl{0%{transform:translateY(100vh) scale(0);opacity:0}5%{opacity:.7}90%{opacity:.4}100%{transform:translateY(-20px) scale(1);opacity:0}}
+
+/* NAVBAR */
+nav{position:fixed;top:0;width:100%;height:64px;background:rgba(7,7,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,242,254,.1);z-index:1000}
+.nvi{display:flex;align-items:center;justify-content:space-between;height:100%;padding:0 clamp(14px,4vw,28px);max-width:1200px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
+.lic{width:36px;height:36px;background:linear-gradient(135deg,var(--nc),var(--nc2));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ltx{font-size:clamp(15px,2vw,20px);font-weight:800;background:linear-gradient(90deg,#fff,var(--nc));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nl{display:flex;align-items:center;list-style:none;gap:clamp(12px,2vw,24px)}
+.nla{color:rgba(255,255,255,.75);text-decoration:none;font-weight:600;font-size:clamp(12px,1.2vw,14px);transition:color .2s;position:relative;white-space:nowrap}
+.nla:hover{color:var(--nc)}
+.stat-bar{display:flex;align-items:center;gap:clamp(8px,1.5vw,18px)}
+.stat-item{display:flex;align-items:center;gap:5px;font-size:12px;font-family:var(--mn);color:var(--mt)}
+.stat-item span{color:var(--nc);font-weight:600}
+@media(max-width:680px){.nl,.stat-bar{display:none}}
+
+/* HERO */
+.hero{padding:clamp(100px,15vw,160px) 0 clamp(48px,7vw,80px);text-align:center;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,242,254,.08);border:1px solid rgba(0,242,254,.25);color:var(--nc);padding:7px 16px;border-radius:999px;font-size:clamp(11px,1.2vw,13px);font-weight:700;letter-spacing:.04em;margin-bottom:22px;font-family:var(--mn)}
+.bdot{width:7px;height:7px;border-radius:50%;background:var(--nc);animation:blk 1.5s infinite;flex-shrink:0}
+@keyframes blk{0%,100%{opacity:1}50%{opacity:.2}}
+h1.hero-title{font-size:clamp(30px,6vw,72px);font-weight:900;line-height:1.05;letter-spacing:-2px;background:linear-gradient(135deg,#fff 0%,var(--nc) 55%,var(--nc2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
+.hero-sub{font-size:clamp(14px,2vw,20px);color:var(--mt);max-width:620px;margin:0 auto 36px;line-height:1.6}
+.hero-stats{display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(12px,2.5vw,32px);margin-top:32px}
+.hs-item{text-align:center}
+.hs-num{font-size:clamp(24px,4vw,42px);font-weight:900;background:linear-gradient(135deg,var(--nc),var(--nc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:var(--mn)}
+.hs-lbl{font-size:11px;color:var(--mt);text-transform:uppercase;letter-spacing:.08em;margin-top:3px}
+
+/* FILTERS */
+.filters-wrap{position:sticky;top:64px;z-index:100;background:rgba(7,7,16,.95);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.05);padding:14px 0}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.filter-btn{padding:7px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:clamp(11px,1.2vw,13px);font-family:var(--f);font-weight:600;cursor:pointer;background:transparent;color:var(--mt);transition:all .2s;white-space:nowrap}
+.filter-btn:hover{color:#fff;border-color:rgba(0,242,254,.4)}
+.filter-btn.active{background:linear-gradient(90deg,var(--nc),var(--nc2));color:#000;border-color:transparent;font-weight:800;box-shadow:var(--glow)}
+.search-box{flex:1;min-width:180px;max-width:280px;margin-left:auto;position:relative}
+.search-box input{width:100%;padding:8px 14px 8px 34px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:999px;color:var(--tx);font-family:var(--f);font-size:13px;outline:none;transition:border-color .2s}
+.search-box input::placeholder{color:var(--mt)}
+.search-box input:focus{border-color:rgba(0,242,254,.4)}
+.search-box i{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--mt);font-size:12px}
+
+/* SECTION */
+section{padding:clamp(40px,6vw,72px) 0;position:relative}
+.sec-header{margin-bottom:clamp(20px,3vw,36px)}
+.sec-tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--nc);margin-bottom:8px;font-family:var(--mn)}
+.sec-title{font-size:clamp(22px,3vw,36px);font-weight:900;letter-spacing:-1px;color:#fff;margin-bottom:6px}
+.sec-sub{font-size:14px;color:var(--mt)}
+.sec-count{font-family:var(--mn);font-size:12px;color:var(--mt);margin-left:10px;opacity:.6}
+
+/* GRID */
+.grid{display:grid;gap:clamp(10px,1.8vw,18px)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1080px){.g4{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:800px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.g3,.g4,.g2{grid-template-columns:1fr}}
+
+/* TOOL CARD */
+.tool-card{background:var(--card);border:1px solid var(--cb);border-radius:var(--rlg);padding:clamp(16px,2.5vw,24px);transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.tool-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--nc),var(--nc2));transform:scaleX(0);transform-origin:left;transition:transform .3s;border-radius:2px 2px 0 0}
+.tool-card:hover::before{transform:scaleX(1)}
+.tool-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,242,254,.1);border-color:rgba(0,242,254,.25)}
+
+/* tier accent lines */
+.tool-card.tier-free::before{background:linear-gradient(90deg,#22c55e,#4ade80)}
+.tool-card.tier-free{border-color:rgba(34,197,94,.15)}
+.tool-card.tier-free:hover{box-shadow:0 16px 40px rgba(34,197,94,.12);border-color:rgba(34,197,94,.35)}
+.tool-card.tier-paid::before{background:linear-gradient(90deg,#f59e0b,#ef4444)}
+.tool-card.tier-paid{border-color:rgba(245,158,11,.12)}
+
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:12px}
+.card-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;background:rgba(0,242,254,.08);border:1px solid rgba(0,242,254,.15)}
+.card-icon.ic-green{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.2)}
+.card-icon.ic-amber{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.2)}
+.card-icon.ic-purple{background:rgba(102,126,234,.08);border-color:rgba(102,126,234,.2)}
+.card-icon.ic-pink{background:rgba(236,72,153,.08);border-color:rgba(236,72,153,.2)}
+.card-icon.ic-cyan{background:rgba(6,182,212,.08);border-color:rgba(6,182,212,.2)}
+.card-icon.ic-red{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.2)}
+
+.tier-badge{font-size:10px;padding:3px 9px;border-radius:999px;font-weight:700;font-family:var(--mn);white-space:nowrap;flex-shrink:0}
+.tb-free{background:rgba(34,197,94,.12);color:#4ade80;border:1px solid rgba(34,197,94,.25)}
+.tb-freemium{background:rgba(251,191,36,.12);color:#fbbf24;border:1px solid rgba(251,191,36,.25)}
+.tb-paid{background:rgba(239,68,68,.1);color:#f87171;border:1px solid rgba(239,68,68,.2)}
+
+.card-name{font-size:clamp(14px,1.6vw,17px);font-weight:800;color:#fff;margin-bottom:6px;line-height:1.2}
+.card-name .new{font-size:9px;background:linear-gradient(90deg,var(--nc),var(--nc2));color:#000;padding:2px 6px;border-radius:4px;font-weight:800;margin-left:6px;vertical-align:middle}
+.card-desc{font-size:clamp(11px,1.2vw,13px);color:var(--mt);line-height:1.6;margin-bottom:12px;flex:1}
+.card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.tag{font-size:10px;font-family:var(--mn);color:var(--mt);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:2px 7px;border-radius:5px}
+.card-link{display:inline-flex;align-items:center;gap:5px;color:var(--nc);font-size:12px;font-weight:700;text-decoration:none;border:1px solid rgba(0,242,254,.2);padding:6px 12px;border-radius:8px;transition:all .2s;font-family:var(--mn);margin-top:auto}
+.card-link:hover{background:rgba(0,242,254,.08);border-color:rgba(0,242,254,.45);gap:8px}
+.card-link.lnk-free{color:#4ade80;border-color:rgba(34,197,94,.2)}
+.card-link.lnk-free:hover{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.4)}
+
+/* CATEGORY SECTION */
+.cat-section{margin-bottom:clamp(32px,5vw,60px)}
+.cat-section.hidden{display:none}
+
+/* FREE API TABLE */
+.api-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:16px}
+.api-table th{font-size:11px;font-family:var(--mn);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mt);padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.07);text-align:left}
+.api-table td{padding:12px 14px;font-size:clamp(11px,1.2vw,13px);border-bottom:1px solid rgba(255,255,255,.04);vertical-align:middle}
+.api-table tr:last-child td{border-bottom:none}
+.api-table tr:hover td{background:rgba(255,255,255,.02)}
+.api-table td:first-child{color:#fff;font-weight:700}
+.api-table .limit{color:var(--nc);font-family:var(--mn);font-size:12px}
+.api-table .speed{display:inline-flex;align-items:center;gap:4px}
+.api-table a{color:var(--nc);text-decoration:none;font-family:var(--mn);font-size:11px}
+.api-table a:hover{text-decoration:underline}
+.tbl-wrap{background:var(--card);border:1px solid var(--cb);border-radius:var(--rlg);overflow:hidden}
+.nocard{background:transparent;border:none;padding:0}
+
+/* MODEL CARDS (video) */
+.model-list{display:flex;flex-direction:column;gap:8px}
+.ml-item{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:12px 16px;transition:border-color .2s}
+.ml-item:hover{border-color:rgba(0,242,254,.2)}
+.ml-rank{font-family:var(--mn);font-size:11px;color:var(--mt);min-width:20px}
+.ml-name{font-size:13px;font-weight:700;color:#fff;flex:1}
+.ml-desc{font-size:12px;color:var(--mt)}
+.ml-badge{font-size:10px;padding:2px 8px;border-radius:6px;font-family:var(--mn)}
+
+/* NOTICE BOX */
+.notice{background:rgba(0,242,254,.06);border:1px solid rgba(0,242,254,.2);border-radius:12px;padding:16px 20px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start}
+.notice i{color:var(--nc);font-size:16px;flex-shrink:0;margin-top:2px}
+.notice p{font-size:13px;color:var(--tx);line-height:1.6}
+.notice strong{color:var(--nc)}
+
+/* FOOTER */
+footer{border-top:1px solid rgba(255,255,255,.06);padding:clamp(28px,5vw,56px) 0;margin-top:clamp(32px,6vw,80px)}
+.footer-inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px}
+.footer-logo{font-size:22px;font-weight:900;background:linear-gradient(90deg,#fff,var(--nc));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.footer-links a{color:var(--mt);font-size:12px;text-decoration:none;font-family:var(--mn);padding:4px 10px;border:1px solid rgba(255,255,255,.07);border-radius:6px;transition:color .2s,border-color .2s}
+.footer-links a:hover{color:var(--nc);border-color:rgba(0,242,254,.3)}
+.footer-copy{font-size:11px;color:var(--mt);opacity:.5}
+
+/* SCROLL TO TOP */
+.stt{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--nc),var(--nc2));color:#000;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;font-size:16px;z-index:999;box-shadow:var(--glow);transition:transform .2s}
+.stt:hover{transform:scale(1.1)}
+.stt.show{display:flex}
+
+/* COUNT BADGE */
+.cat-title-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.count-pill{background:rgba(0,242,254,.1);border:1px solid rgba(0,242,254,.2);color:var(--nc);font-size:11px;font-family:var(--mn);padding:2px 9px;border-radius:999px}
+
+/* EMPTY STATE */
+.empty{text-align:center;padding:48px 20px;color:var(--mt)}
+.empty i{font-size:32px;margin-bottom:12px;display:block;opacity:.3}
+</style>
+</head>
+<body>
+
+<div id="ptcl"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nvi">
+    <a class="logo" href="#">
+      <div class="lic">🤖</div>
+      <span class="ltx">AI Tools Hub</span>
+    </a>
+    <ul class="nl">
+      <li><a class="nla" href="#chat">Чат</a></li>
+      <li><a class="nla" href="#agents">Агенты</a></li>
+      <li><a class="nla" href="#appbuilder">App Builder</a></li>
+      <li><a class="nla" href="#video">Видео</a></li>
+      <li><a class="nla" href="#image">Изображения</a></li>
+      <li><a class="nla" href="#voice">Голос</a></li>
+      <li><a class="nla" href="#code">Код</a></li>
+      <li><a class="nla" href="#free-api">Free API</a></li>
+    </ul>
+    <div class="stat-bar">
+      <div class="stat-item"><i class="fa fa-database"></i> <span>38</span>&nbsp;инструментов</div>
+      <div class="stat-item"><i class="fa fa-bolt"></i> Обновлено <span>2026</span></div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-badge"><span class="bdot"></span> Каталог нейросетей 2026</div>
+    <h1 class="hero-title">AI Tools Hub</h1>
+    <p class="hero-sub">Полный обзор нейросетей и AI-инструментов. Систематизировано по категориям — бесплатный и платный функционал, прямые ссылки.</p>
+    <div class="hero-stats">
+      <div class="hs-item"><div class="hs-num">38</div><div class="hs-lbl">Инструментов</div></div>
+      <div class="hs-item"><div class="hs-num">7</div><div class="hs-lbl">Категорий</div></div>
+      <div class="hs-item"><div class="hs-num">18</div><div class="hs-lbl">Бесплатных</div></div>
+      <div class="hs-item"><div class="hs-num">2026</div><div class="hs-lbl">Актуально</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<div class="filters-wrap">
+  <div class="wrap">
+    <div class="filters">
+      <button class="filter-btn active" data-cat="all">Все</button>
+      <button class="filter-btn" data-cat="chat">💬 Чат / LLM</button>
+      <button class="filter-btn" data-cat="agents">🤖 Агенты</button>
+      <button class="filter-btn" data-cat="appbuilder">🏗️ App Builder</button>
+      <button class="filter-btn" data-cat="video">🎬 Видео</button>
+      <button class="filter-btn" data-cat="image">🖼️ Изображения</button>
+      <button class="filter-btn" data-cat="voice">🎙️ Голос</button>
+      <button class="filter-btn" data-cat="code">💻 Код</button>
+      <button class="filter-btn" data-cat="free-only">🆓 Только бесплатные</button>
+      <div class="search-box">
+        <i class="fa fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Поиск по инструментам...">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="position:relative;z-index:1">
+<div id="toolsContainer">
+
+<!-- ══════════════════════════════════════════
+     CHAT / LLM
+══════════════════════════════════════════ -->
+<section id="chat" class="cat-section" data-cat="chat">
+  <div class="sec-header">
+    <div class="sec-tag">Категория 01</div>
+    <div class="cat-title-row">
+      <div class="sec-title">💬 Чат-боты и LLM</div>
+      <span class="count-pill">15 инструментов</span>
+    </div>
+    <div class="sec-sub">Языковые модели для текста, анализа, кода и общения</div>
+  </div>
+  <div class="grid g4" id="chatGrid">
+
+    <div class="tool-card tier-freemium" data-name="chatgpt" data-tags="gpt openai чат агент поиск" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-cyan">🤖</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">ChatGPT</div>
+      <div class="card-desc">Самый популярный чат-ИИ от OpenAI. GPT-4o доступен бесплатно, GPT-o3, агенты и расширенные функции — платно (Plus ~$20/мес).</div>
+      <div class="card-tags"><span class="tag">GPT-4o</span><span class="tag">Агенты</span><span class="tag">Поиск</span><span class="tag">DALL-E</span></div>
+      <a class="card-link" href="https://chatgpt.com" target="_blank"><i class="fa fa-external-link"></i> chatgpt.com</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="claude" data-tags="claude anthropic документы анализ" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-purple">✦</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Claude</div>
+      <div class="card-desc">LLM от Anthropic. Силён в анализе документов, работе с кодом, артефактах. Бесплатный уровень ограничен по сообщениям, Pro — мощнее.</div>
+      <div class="card-tags"><span class="tag">Sonnet</span><span class="tag">Opus</span><span class="tag">Артефакты</span><span class="tag">Документы</span></div>
+      <a class="card-link" href="https://claude.ai" target="_blank"><i class="fa fa-external-link"></i> claude.ai</a>
+    </div>
+
+    <div class="tool-card tier-free" data-name="gemini aistudio google" data-tags="google gemini бесплатно api" data-tier="free">
+      <div class="card-top">
+        <div class="card-icon ic-green">🔵</div>
+        <span class="tier-badge tb-free">🆓 Бесплатно</span>
+      </div>
+      <div class="card-name">Gemini / AI Studio</div>
+      <div class="card-desc">До 500 запросов/день к Gemini 2.5 Flash бесплатно, без кредитной карты. Лучший бесплатный уровень среди крупных провайдеров.</div>
+      <div class="card-tags"><span class="tag">500 req/день</span><span class="tag">Бесплатно</span><span class="tag">Veo 3</span><span class="tag">API</span></div>
+      <a class="card-link lnk-free" href="https://aistudio.google.com" target="_blank"><i class="fa fa-external-link"></i> aistudio.google.com</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="deepseek" data-tags="deepseek китай дешево api" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-cyan">🐋</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">DeepSeek</div>
+      <div class="card-desc">Топовое качество по минимальной цене. DeepSeek V3 — уровень frontier-моделей. API дешевле всех major-провайдеров на рынке.</div>
+      <div class="card-tags"><span class="tag">DeepSeek V3</span><span class="tag">Дёшево</span><span class="tag">API</span></div>
+      <a class="card-link" href="https://www.deepseek.com" target="_blank"><i class="fa fa-external-link"></i> deepseek.com</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="kimi moonshot" data-tags="kimi контекст китай" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-purple">🌙</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Kimi</div>
+      <div class="card-desc">Китайский LLM от Moonshot AI с огромным контекстным окном (1M+ токенов). Отличен для длинных документов и исследований.</div>
+      <div class="card-tags"><span class="tag">1M+ контекст</span><span class="tag">Moonshot</span><span class="tag">Документы</span></div>
+      <a class="card-link" href="https://www.kimi.com" target="_blank"><i class="fa fa-external-link"></i> kimi.com</a>
+    </div>
+
+    <div class="tool-card tier-free" data-name="qwen alibaba" data-tags="qwen alibaba open-source бесплатно" data-tier="free">
+      <div class="card-top">
+        <div class="card-icon ic-green">🍊</div>
+        <span class="tier-badge tb-free">🆓 Бесплатно</span>
+      </div>
+      <div class="card-name">Qwen</div>
+      <div class="card-desc">Открытые модели Alibaba. Бесплатный веб-интерфейс, хорошая поддержка русского, мультимодальность. Open-source версии доступны для self-host.</div>
+      <div class="card-tags"><span class="tag">Open-source</span><span class="tag">Бесплатно</span><span class="tag">Alibaba</span></div>
+      <a class="card-link lnk-free" href="https://qwen.ai" target="_blank"><i class="fa fa-external-link"></i> qwen.ai</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="gigachat сбер" data-tags="сбер gigachat русский россия" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-cyan">🇷🇺</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">GigaChat (Сбер)</div>
+      <div class="card-desc">Российский LLM от Сбербанка. Работает без VPN, без западных ограничений. Хорошо понимает русский язык и контекст.</div>
+      <div class="card-tags"><span class="tag">Русский</span><span class="tag">Без VPN</span><span class="tag">Сбер</span></div>
+      <a class="card-link" href="https://giga.chat" target="_blank"><i class="fa fa-external-link"></i> giga.chat</a>
+    </div>
+
+    <div class="tool-card tier-free" data-name="chatglm chatz glm zhipu" data-tags="glm китай многоязычный" data-tier="free">
+      <div class="card-top">
+        <div class="card-icon ic-green">⚡</div>
+        <span class="tier-badge tb-free">🆓 Бесплатно</span>
+      </div>
+      <div class="card-name">ChatGLM / Chatz</div>
+      <div class="card-desc">GLM-4.7 от Zhipu AI. Многоязычная модель с акцентом на китайский и английский. Доступен через веб без регистрации.</div>
+      <div class="card-tags"><span class="tag">GLM-4.7</span><span class="tag">Многоязычный</span><span class="tag">Бесплатно</span></div>
+      <a class="card-link lnk-free" href="https://chatglm.cn" target="_blank"><i class="fa fa-external-link"></i> chatglm.cn</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="abacus ai chatllm" data-tags="abacus агрегатор chatllm" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-amber">🧮</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Abacus AI</div>
+      <div class="card-desc">Агрегатор AI-моделей (ChatLLM). Доступ к GPT-4, Claude, Gemini и другим моделям в одном интерфейсе. Есть бесплатный уровень.</div>
+      <div class="card-tags"><span class="tag">Агрегатор</span><span class="tag">ChatLLM</span><span class="tag">Мультимодель</span></div>
+      <a class="card-link" href="https://abacus.ai" target="_blank"><i class="fa fa-external-link"></i> abacus.ai</a>
+    </div>
+
+    <div class="tool-card tier-free" data-name="openrouter" data-tags="openrouter api бесплатно openai-совместимый" data-tier="free">
+      <div class="card-top">
+        <div class="card-icon ic-green">🛣️</div>
+        <span class="tier-badge tb-free">🆓 Бесплатно</span>
+      </div>
+      <div class="card-name">OpenRouter</div>
+      <div class="card-desc">200 запросов/день бесплатно, без кредитной карты. OpenAI-совместимый API. Много бесплатных моделей: Llama, Mistral, Qwen.</div>
+      <div class="card-tags"><span class="tag">200 req/день</span><span class="tag">OpenAI SDK</span><span class="tag">Бесплатно</span></div>
+      <a class="card-link lnk-free" href="https://openrouter.ai" target="_blank"><i class="fa fa-external-link"></i> openrouter.ai</a>
+    </div>
+
+    <div class="tool-card tier-free" data-name="groq llama быстрый" data-tags="groq llama скорость быстро" data-tier="free">
+      <div class="card-top">
+        <div class="card-icon ic-green">🚀</div>
+        <span class="tier-badge tb-free">🆓 Бесплатно</span>
+      </div>
+      <div class="card-name">Groq</div>
+      <div class="card-desc">300+ токенов/с — самый быстрый LLM API в мире. Llama 3.3 70B. Щедрый бесплатный уровень, кредитная карта не нужна.</div>
+      <div class="card-tags"><span class="tag">300 т/с</span><span class="tag">Llama 3.3</span><span class="tag">Бесплатно</span><span class="tag">Realtime</span></div>
+      <a class="card-link lnk-free" href="https://console.groq.com" target="_blank"><i class="fa fa-external-link"></i> console.groq.com</a>
+    </div>
+
+    <div class="tool-card tier-free" data-name="mistral европейский" data-tags="mistral европа токены бесплатно" data-tier="free">
+      <div class="card-top">
+        <div class="card-icon ic-green">🔺</div>
+        <span class="tier-badge tb-free">🆓 Бесплатно</span>
+      </div>
+      <div class="card-name">Mistral AI</div>
+      <div class="card-desc">1 млн токенов/день бесплатно. Европейский провайдер, без кредитной карты (нужна верификация телефона). GDPR-совместимый.</div>
+      <div class="card-tags"><span class="tag">1M токенов/день</span><span class="tag">Европа</span><span class="tag">GDPR</span></div>
+      <a class="card-link lnk-free" href="https://console.mistral.ai" target="_blank"><i class="fa fa-external-link"></i> console.mistral.ai</a>
+    </div>
+
+    <div class="tool-card tier-free" data-name="huggingface hugging face inference" data-tags="huggingface open-source модели inference" data-tier="free">
+      <div class="card-top">
+        <div class="card-icon ic-amber">🤗</div>
+        <span class="tier-badge tb-free">🆓 Бесплатно</span>
+      </div>
+      <div class="card-name">HuggingFace Inference</div>
+      <div class="card-desc">300+ моделей через бесплатный API. Медленнее коммерческих, но огромный выбор. Идеально для экспериментов и специализированных задач.</div>
+      <div class="card-tags"><span class="tag">300+ моделей</span><span class="tag">Open-source</span><span class="tag">API</span></div>
+      <a class="card-link lnk-free" href="https://huggingface.co" target="_blank"><i class="fa fa-external-link"></i> huggingface.co</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="yandex gpt яндекс" data-tags="яндекс gpt русский россия" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-red">🔴</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Yandex AI (YaGPT)</div>
+      <div class="card-desc">Яндекс GPT агент. Работает без VPN, глубокая интеграция с сервисами Яндекса. Хорошо понимает российский контекст.</div>
+      <div class="card-tags"><span class="tag">Русский</span><span class="tag">Без VPN</span><span class="tag">Яндекс</span></div>
+      <a class="card-link" href="https://ya.ru/ai/gpt" target="_blank"><i class="fa fa-external-link"></i> ya.ru/ai/gpt</a>
+    </div>
+
+    <div class="tool-card tier-free" data-name="notebooklm google документы подкасты" data-tags="google документы подкасты notebooklm" data-tier="free">
+      <div class="card-top">
+        <div class="card-icon ic-green">📓</div>
+        <span class="tier-badge tb-free">🆓 Бесплатно</span>
+      </div>
+      <div class="card-name">NotebookLM</div>
+      <div class="card-desc">ИИ для работы с вашими документами. Загружаете PDF/текст — получаете резюме, ответы на вопросы, AI-подкасты из материалов.</div>
+      <div class="card-tags"><span class="tag">Документы</span><span class="tag">Подкасты</span><span class="tag">Google</span><span class="tag">Бесплатно</span></div>
+      <a class="card-link lnk-free" href="https://notebooklm.google.com" target="_blank"><i class="fa fa-external-link"></i> notebooklm.google.com</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     AGENTS
+══════════════════════════════════════════ -->
+<section id="agents" class="cat-section" data-cat="agents">
+  <div class="sec-header">
+    <div class="sec-tag">Категория 02</div>
+    <div class="cat-title-row">
+      <div class="sec-title">🤖 Агенты и автоматизация</div>
+      <span class="count-pill">5 инструментов</span>
+    </div>
+    <div class="sec-sub">ИИ-агенты, no-code автоматизация, конструкторы пайплайнов</div>
+  </div>
+  <div class="grid g3">
+
+    <div class="tool-card tier-freemium" data-name="genspark поиск агент" data-tags="genspark поиск агент отчёты" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-cyan">✨</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Genspark</div>
+      <div class="card-desc">Поисковой ИИ-агент нового поколения. Создаёт интерактивные страницы-отчёты с агрегацией из множества источников по вашему запросу.</div>
+      <div class="card-tags"><span class="tag">Поиск</span><span class="tag">Агент</span><span class="tag">Отчёты</span></div>
+      <a class="card-link" href="https://genspark.ai" target="_blank"><i class="fa fa-external-link"></i> genspark.ai</a>
+    </div>
+
+    <div class="tool-card tier-paid" data-name="manus автономный агент" data-tags="manus автономный сложные задачи" data-tier="paid">
+      <div class="card-top">
+        <div class="card-icon ic-amber">🦾</div>
+        <span class="tier-badge tb-paid">Платно</span>
+      </div>
+      <div class="card-name">Manus</div>
+      <div class="card-desc">Автономный ИИ-агент для сложных многоэтапных задач: исследование, написание кода, работа с файлами. Действует без постоянного контроля.</div>
+      <div class="card-tags"><span class="tag">Автономный</span><span class="tag">Многоэтапный</span><span class="tag">Файлы</span></div>
+      <a class="card-link" href="https://manus.ai" target="_blank"><i class="fa fa-external-link"></i> manus.ai</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="n8n автоматизация no-code self-host" data-tags="n8n автоматизация no-code self-host конструктор" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-purple">🔗</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">n8n</div>
+      <div class="card-desc">No-code конструктор ИИ-агентов и автоматизаций. Self-host — полностью бесплатно. Облачная версия — платно. Сотни интеграций.</div>
+      <div class="card-tags"><span class="tag">No-code</span><span class="tag">Self-host</span><span class="tag">Автоматизация</span><span class="tag">600+ интеграций</span></div>
+      <a class="card-link" href="https://n8n.io" target="_blank"><i class="fa fa-external-link"></i> n8n.io</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="openai agent builder agents sdk" data-tags="openai agent builder agents sdk" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-cyan">⚙️</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">OpenAI Agent Builder</div>
+      <div class="card-desc">Официальный конструктор агентов от OpenAI на базе Agents SDK. Визуальный редактор + API. Подключение MCP-серверов, инструментов и веб-поиска.</div>
+      <div class="card-tags"><span class="tag">Agents SDK</span><span class="tag">MCP</span><span class="tag">OpenAI</span></div>
+      <a class="card-link" href="https://platform.openai.com/agent-builder" target="_blank"><i class="fa fa-external-link"></i> platform.openai.com</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="gamma презентации документы лендинг" data-tags="gamma презентации документы лендинги" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-pink">📊</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Gamma</div>
+      <div class="card-desc">Автоматическое создание презентаций, лендингов и документов через ИИ. Достаточно описать идею — Gamma генерирует готовый дизайн.</div>
+      <div class="card-tags"><span class="tag">Презентации</span><span class="tag">Лендинги</span><span class="tag">Документы</span></div>
+      <a class="card-link" href="https://gamma.app" target="_blank"><i class="fa fa-external-link"></i> gamma.app</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     APP BUILDER
+══════════════════════════════════════════ -->
+<section id="appbuilder" class="cat-section" data-cat="appbuilder">
+  <div class="sec-header">
+    <div class="sec-tag">Категория 03</div>
+    <div class="cat-title-row">
+      <div class="sec-title">🏗️ App Builder / RAG</div>
+      <span class="count-pill">2 инструмента</span>
+    </div>
+    <div class="sec-sub">Генерация полноценных приложений из промпта, RAG-системы</div>
+  </div>
+  <div class="grid g2">
+
+    <div class="tool-card tier-freemium" data-name="base44 приложения веб app builder" data-tags="base44 приложения full-stack no-code wix" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-cyan">🏗️</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Base44 <span class="new">NEW</span></div>
+      <div class="card-desc">ИИ-конструктор полноценных веб-приложений из текстового промпта. Frontend + backend + БД + авторизация — из коробки без кода. Используется Claude Sonnet + Gemini 2.5 Pro. Приобретён Wix в 2025. Бесплатно: 5 запросов/день.</div>
+      <div class="card-tags"><span class="tag">No-code</span><span class="tag">Full-stack</span><span class="tag">Wix</span><span class="tag">MVP</span><span class="tag">5 req/день free</span></div>
+      <a class="card-link" href="https://base44.com" target="_blank"><i class="fa fa-external-link"></i> base44.com</a>
+    </div>
+
+    <div class="tool-card tier-free" data-name="openrag rag sdk langflow python" data-tags="openrag rag langflow opensearch python sdk" data-tier="free">
+      <div class="card-top">
+        <div class="card-icon ic-green">📚</div>
+        <span class="tier-badge tb-free">🆓 Open-source</span>
+      </div>
+      <div class="card-name">OpenRAG SDK</div>
+      <div class="card-desc">Python SDK для построения RAG-систем. Объединяет Langflow (визуальный пайплайн), OpenSearch (векторный поиск) и Docling (обработка документов). Разворачивается через Docker.</div>
+      <div class="card-tags"><span class="tag">RAG</span><span class="tag">Langflow</span><span class="tag">OpenSearch</span><span class="tag">Docker</span><span class="tag">Open-source</span></div>
+      <a class="card-link lnk-free" href="https://pypi.org/project/openrag-sdk" target="_blank"><i class="fa fa-external-link"></i> pypi.org/project/openrag-sdk</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     VIDEO
+══════════════════════════════════════════ -->
+<section id="video" class="cat-section" data-cat="video">
+  <div class="sec-header">
+    <div class="sec-tag">Категория 04</div>
+    <div class="cat-title-row">
+      <div class="sec-title">🎬 Генерация видео</div>
+      <span class="count-pill">8 инструментов</span>
+    </div>
+    <div class="sec-sub">Text-to-video, image-to-video, дублирование и перевод видео</div>
+  </div>
+
+  <div class="notice">
+    <i class="fa fa-info-circle"></i>
+    <p>Актуальные топ-модели по состоянию на 2026: <strong>Veo 3.1</strong> (Google), <strong>Runway Gen-4.5</strong>, <strong>Sora 2</strong> (OpenAI), <strong>Kling AI</strong>, <strong>Ray3 HDR</strong> (Luma). Большинство требует подписки.</p>
+  </div>
+
+  <div class="grid g4">
+
+    <div class="tool-card tier-paid" data-name="sora openai видео" data-tags="sora openai видео реалистичное аудио" data-tier="paid">
+      <div class="card-top">
+        <div class="card-icon ic-cyan">🎥</div>
+        <span class="tier-badge tb-paid">Платно</span>
+      </div>
+      <div class="card-name">Sora 2</div>
+      <div class="card-desc">Генерация реалистичных видео с аудио от OpenAI. Доступно в ChatGPT Plus/Pro. Sora 2 — улучшенный реализм и управление движением.</div>
+      <div class="card-tags"><span class="tag">Sora 2</span><span class="tag">Аудио</span><span class="tag">ChatGPT Plus</span></div>
+      <a class="card-link" href="https://sora.chatgpt.com" target="_blank"><i class="fa fa-external-link"></i> sora.chatgpt.com</a>
+    </div>
+
+    <div class="tool-card tier-paid" data-name="veo google видео" data-tags="veo google видео физика реализм" data-tier="paid">
+      <div class="card-top">
+        <div class="card-icon ic-green">🌊</div>
+        <span class="tier-badge tb-paid">Платно</span>
+      </div>
+      <div class="card-name">Veo 3.1 (Google)</div>
+      <div class="card-desc">Veo 3.1 от Google — улучшенный контроль движения, реалистичная физика, высокое качество. Доступен через AI Studio.</div>
+      <div class="card-tags"><span class="tag">Veo 3.1</span><span class="tag">Google</span><span class="tag">Физика</span></div>
+      <a class="card-link" href="https://aistudio.google.com/models/veo-3" target="_blank"><i class="fa fa-external-link"></i> aistudio.google.com</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="runway gen видео" data-tags="runway gen-4 профессиональный видео hdr" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-purple">🎞️</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Runway Gen-4.5</div>
+      <div class="card-desc">Управляемые готовые к производству видео. Gen-4.5 с HDR. Профессиональный стандарт для коммерческих проектов.</div>
+      <div class="card-tags"><span class="tag">Gen-4.5</span><span class="tag">HDR</span><span class="tag">Профи</span></div>
+      <a class="card-link" href="https://runwayml.com" target="_blank"><i class="fa fa-external-link"></i> runwayml.com</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="kling ai видео" data-tags="kling видео реализм движение" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-cyan">🎬</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Kling AI</div>
+      <div class="card-desc">Качественная видеогенерация с хорошим реализмом, управлением движением и камерой. Один из лучших вариантов с freemium-доступом.</div>
+      <div class="card-tags"><span class="tag">Реализм</span><span class="tag">Управление</span><span class="tag">Камера</span></div>
+      <a class="card-link" href="https://app.klingai.com" target="_blank"><i class="fa fa-external-link"></i> app.klingai.com</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="pika видео анимация" data-tags="pika видео анимация генерация" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-pink">💫</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Pika 2.2</div>
+      <div class="card-desc">Быстрая генерация и редактирование видео, анимация фото. Pika 2.2 — улучшенное качество и эффекты. Есть бесплатные кредиты.</div>
+      <div class="card-tags"><span class="tag">Pika 2.2</span><span class="tag">Анимация фото</span><span class="tag">Эффекты</span></div>
+      <a class="card-link" href="https://pika.art" target="_blank"><i class="fa fa-external-link"></i> pika.art</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="heygen перевод видео аватар" data-tags="heygen перевод дублирование аватар видео" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-amber">🎙️</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">HeyGen</div>
+      <div class="card-desc">Перевод и дублирование видео с сохранением голоса говорящего и синхронизацией губ. Лучший инструмент для локализации видео-контента.</div>
+      <div class="card-tags"><span class="tag">Перевод</span><span class="tag">Дублирование</span><span class="tag">Аватар</span></div>
+      <a class="card-link" href="https://app.heygen.com" target="_blank"><i class="fa fa-external-link"></i> app.heygen.com</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="deevid image to video" data-tags="deevid image-to-video" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-cyan">🖼️</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Deevid AI</div>
+      <div class="card-desc">Image-to-video генерация. Превращает изображение в короткое видео с движением. Простой интерфейс, быстрый результат.</div>
+      <div class="card-tags"><span class="tag">Image-to-video</span><span class="tag">Быстро</span></div>
+      <a class="card-link" href="https://deevid.ai/image-to-video" target="_blank"><i class="fa fa-external-link"></i> deevid.ai</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="adobe firefly видео изображения" data-tags="adobe firefly видео изображения коммерческий" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-red">🔥</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Adobe Firefly</div>
+      <div class="card-desc">Генерация изображений и видео от Adobe. Коммерчески безопасный контент (обучен на лицензированных данных). Интеграция с Adobe CC.</div>
+      <div class="card-tags"><span class="tag">Adobe CC</span><span class="tag">Коммерческий</span><span class="tag">Видео+Фото</span></div>
+      <a class="card-link" href="https://firefly.adobe.com" target="_blank"><i class="fa fa-external-link"></i> firefly.adobe.com</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     IMAGE
+══════════════════════════════════════════ -->
+<section id="image" class="cat-section" data-cat="image">
+  <div class="sec-header">
+    <div class="sec-tag">Категория 05</div>
+    <div class="cat-title-row">
+      <div class="sec-title">🖼️ Генерация изображений</div>
+      <span class="count-pill">5 инструментов</span>
+    </div>
+    <div class="sec-sub">Text-to-image, редактирование, 3D-контроль, стилизация</div>
+  </div>
+  <div class="grid g3">
+
+    <div class="tool-card tier-freemium" data-name="reve редактор изображений" data-tags="reve редактор изображения инструкции" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-pink">🎨</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Reve Image Editor</div>
+      <div class="card-desc">Мощный ИИ-редактор изображений. Редактирование через текстовые инструкции: «убери фон», «добавь закат», «измени одежду». Один из лучших редакторов 2026.</div>
+      <div class="card-tags"><span class="tag">Редактор</span><span class="tag">Инструкции</span><span class="tag">Inpainting</span></div>
+      <a class="card-link" href="https://app.reve.com" target="_blank"><i class="fa fa-external-link"></i> app.reve.com</a>
+    </div>
+
+    <div class="tool-card tier-free" data-name="glm image huggingface генерация" data-tags="glm image huggingface бесплатно генерация" data-tier="free">
+      <div class="card-top">
+        <div class="card-icon ic-green">🖌️</div>
+        <span class="tier-badge tb-free">🆓 Бесплатно</span>
+      </div>
+      <div class="card-name">GLM Image (HF)</div>
+      <div class="card-desc">Бесплатная генерация изображений на HuggingFace Space. Модель GLM от Zhipu AI. Хорошее качество без регистрации и API-ключей.</div>
+      <div class="card-tags"><span class="tag">Бесплатно</span><span class="tag">HF Space</span><span class="tag">GLM</span></div>
+      <a class="card-link lnk-free" href="https://huggingface.co/spaces/multimodalart/GLM-Image" target="_blank"><i class="fa fa-external-link"></i> HuggingFace Space</a>
+    </div>
+
+    <div class="tool-card tier-free" data-name="qwen image edit 3d camera" data-tags="qwen image 3d camera control huggingface" data-tier="free">
+      <div class="card-top">
+        <div class="card-icon ic-green">📷</div>
+        <span class="tier-badge tb-free">🆓 Бесплатно</span>
+      </div>
+      <div class="card-name">Qwen Image Edit 3D</div>
+      <div class="card-desc">3D Camera Control для изображений. Управление углом камеры и перспективой. Qwen Image Edit 2511 на HuggingFace — бесплатно.</div>
+      <div class="card-tags"><span class="tag">3D контроль</span><span class="tag">Камера</span><span class="tag">Бесплатно</span></div>
+      <a class="card-link lnk-free" href="https://huggingface.co/spaces/multimodalart/qwen-image-multiple-angles-3d-camera" target="_blank"><i class="fa fa-external-link"></i> HuggingFace Space</a>
+    </div>
+
+    <div class="tool-card tier-free" data-name="z-image turbo быстрый генерация" data-tags="z-image turbo быстрая генерация huggingface" data-tier="free">
+      <div class="card-top">
+        <div class="card-icon ic-green">⚡</div>
+        <span class="tier-badge tb-free">🆓 Бесплатно</span>
+      </div>
+      <div class="card-name">Z-Image Turbo</div>
+      <div class="card-desc">Быстрая генерация изображений на HuggingFace Space. Минимальная задержка, хорошее качество. Без регистрации.</div>
+      <div class="card-tags"><span class="tag">Быстро</span><span class="tag">Бесплатно</span><span class="tag">HF Space</span></div>
+      <a class="card-link lnk-free" href="https://huggingface.co/spaces/mrfakename/Z-Image-Turbo" target="_blank"><i class="fa fa-external-link"></i> HuggingFace Space</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="nanobanana генератор" data-tags="nanobanana генератор изображений" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-amber">🍌</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">NanoBanana</div>
+      <div class="card-desc">Генератор изображений с простым и удобным интерфейсом. Подходит для быстрых прототипов и иллюстраций.</div>
+      <div class="card-tags"><span class="tag">Генератор</span><span class="tag">Простой</span></div>
+      <a class="card-link" href="https://nanobanana.ai/generator" target="_blank"><i class="fa fa-external-link"></i> nanobanana.ai</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     VOICE / TTS
+══════════════════════════════════════════ -->
+<section id="voice" class="cat-section" data-cat="voice">
+  <div class="sec-header">
+    <div class="sec-tag">Категория 06</div>
+    <div class="cat-title-row">
+      <div class="sec-title">🎙️ Голос / TTS</div>
+      <span class="count-pill">2 инструмента</span>
+    </div>
+    <div class="sec-sub">Синтез речи, клонирование голоса, многоязычный TTS</div>
+  </div>
+  <div class="grid g2">
+
+    <div class="tool-card tier-free" data-name="chatterbox tts open-source голос речь" data-tags="chatterbox tts open-source голос речь 23 языка mit" data-tier="free">
+      <div class="card-top">
+        <div class="card-icon ic-green">🔊</div>
+        <span class="tier-badge tb-free">🆓 Open-source MIT</span>
+      </div>
+      <div class="card-name">Chatterbox TTS</div>
+      <div class="card-desc">Open-source TTS от Resemble AI. Поддержка 23 языков, уникальный контроль экспрессивности и интенсивности голоса. Обучен на 0.5 млн часов. MIT-лицензия — полностью бесплатно для коммерческого использования.</div>
+      <div class="card-tags"><span class="tag">Open-source</span><span class="tag">23 языка</span><span class="tag">MIT</span><span class="tag">Экспрессивность</span><span class="tag">Llama 0.5B</span></div>
+      <a class="card-link lnk-free" href="https://github.com/resemble-ai/chatterbox" target="_blank"><i class="fa fa-external-link"></i> github.com/resemble-ai/chatterbox</a>
+    </div>
+
+    <div class="tool-card tier-freemium" data-name="resemble ai голос клонирование" data-tags="resemble голос клонирование api tts" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-purple">🎤</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Resemble AI</div>
+      <div class="card-desc">Коммерческий сервис TTS и клонирования голоса. Высокое качество, API-интеграция, поддержка реал-тайм генерации. Создатели Chatterbox.</div>
+      <div class="card-tags"><span class="tag">Клонирование</span><span class="tag">API</span><span class="tag">Real-time</span></div>
+      <a class="card-link" href="https://app.resemble.ai" target="_blank"><i class="fa fa-external-link"></i> app.resemble.ai</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CODE
+══════════════════════════════════════════ -->
+<section id="code" class="cat-section" data-cat="code">
+  <div class="sec-header">
+    <div class="sec-tag">Категория 07</div>
+    <div class="cat-title-row">
+      <div class="sec-title">💻 Инструменты для кода</div>
+      <span class="count-pill">3 инструмента</span>
+    </div>
+    <div class="sec-sub">AI-нативные IDE, CLI-инструменты, vibe-coding</div>
+  </div>
+  <div class="grid g3">
+
+    <div class="tool-card tier-freemium" data-name="cursor ide vibe-coding" data-tags="cursor ide vibe-coding ai редактор контекст" data-tier="freemium">
+      <div class="card-top">
+        <div class="card-icon ic-purple">✏️</div>
+        <span class="tier-badge tb-freemium">Freemium</span>
+      </div>
+      <div class="card-name">Cursor</div>
+      <div class="card-desc">AI-нативная IDE — лучший инструмент для вайб-кодинга. Глубокий контекст всего проекта, автодополнение, чат с кодом. Совместим с VSCode-расширениями.</div>
+      <div class="card-tags"><span class="tag">IDE</span><span class="tag">Vibe-coding</span><span class="tag">GPT/Claude</span><span class="tag">Контекст</span></div>
+      <a class="card-link" href="https://cursor.sh" target="_blank"><i class="fa fa-external-link"></i> cursor.sh</a>
+    </div>
+
+    <div class="tool-card tier-paid" data-name="claude code cli агент терминал" data-tags="claude code cli агент терминал anthropic" data-tier="paid">
+      <div class="card-top">
+        <div class="card-icon ic-purple">⌨️</div>
+        <span class="tier-badge tb-paid">Платно</span>
+      </div>
+      <div class="card-name">Claude Code</div>
+      <div class="card-desc">Агентный ИИ для кода в терминале от Anthropic. Может самостоятельно читать файлы, писать код, запускать тесты, делать git-коммиты. Требует подписку.</div>
+      <div class="card-tags"><span class="tag">CLI</span><span class="tag">Агент</span><span class="tag">Anthropic</span><span class="tag">Терминал</span></div>
+      <a class="card-link" href="https://claude.ai" target="_blank"><i class="fa fa-external-link"></i> claude.ai</a>
+    </div>
+
+    <div class="tool-card tier-free" data-name="gemini cli google терминал" data-tags="gemini cli google терминал бесплатно" data-tier="free">
+      <div class="card-top">
+        <div class="card-icon ic-green">🖥️</div>
+        <span class="tier-badge tb-free">🆓 Бесплатно</span>
+      </div>
+      <div class="card-name">Gemini CLI</div>
+      <div class="card-desc">CLI-инструмент Gemini от Google. Полностью бесплатно с ключом AI Studio (500 req/день). Работает в терминале, поддерживает контекст проекта.</div>
+      <div class="card-tags"><span class="tag">CLI</span><span class="tag">Бесплатно</span><span class="tag">Google</span><span class="tag">Node.js</span></div>
+      <a class="card-link lnk-free" href="https://github.com/google-gemini/gemini-cli" target="_blank"><i class="fa fa-external-link"></i> github.com/google-gemini/gemini-cli</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FREE API TABLE
+══════════════════════════════════════════ -->
+<section id="free-api" class="cat-section" data-cat="free-only">
+  <div class="sec-header">
+    <div class="sec-tag">Бонус: сравнение</div>
+    <div class="cat-title-row">
+      <div class="sec-title">🆓 Лучшие бесплатные LLM API</div>
+    </div>
+    <div class="sec-sub">Сравнение бесплатных API для разработчиков — без кредитной карты</div>
+  </div>
+  <div class="tbl-wrap">
+    <table class="api-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Провайдер</th>
+          <th>Бесплатный лимит</th>
+          <th>Кредитка</th>
+          <th>Скорость</th>
+          <th>Лучше всего для</th>
+          <th>Ссылка</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🥇</td>
+          <td>Google Gemini (AI Studio)</td>
+          <td><span class="limit">500 req/день</span></td>
+          <td>❌ Нет</td>
+          <td><span class="speed">⚡ Быстро</span></td>
+          <td>Продакшн прототипы, RAG</td>
+          <td><a href="https://aistudio.google.com" target="_blank">aistudio.google.com</a></td>
+        </tr>
+        <tr>
+          <td>🥈</td>
+          <td>OpenRouter</td>
+          <td><span class="limit">200 req/день</span></td>
+          <td>❌ Нет</td>
+          <td><span class="speed">📊 Средне</span></td>
+          <td>Тест разных моделей</td>
+          <td><a href="https://openrouter.ai" target="_blank">openrouter.ai</a></td>
+        </tr>
+        <tr>
+          <td>🥉</td>
+          <td>Groq</td>
+          <td><span class="limit">Щедрые лимиты</span></td>
+          <td>❌ Нет</td>
+          <td><span class="speed">🚀 300+ т/с</span></td>
+          <td>Realtime приложения</td>
+          <td><a href="https://console.groq.com" target="_blank">console.groq.com</a></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Mistral AI</td>
+          <td><span class="limit">1M токенов/день</span></td>
+          <td>❌ Нет</td>
+          <td><span class="speed">⚡ Быстро</span></td>
+          <td>Европейские данные, GDPR</td>
+          <td><a href="https://console.mistral.ai" target="_blank">console.mistral.ai</a></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>HuggingFace Inference</td>
+          <td><span class="limit">Ограничено</span></td>
+          <td>❌ Нет</td>
+          <td><span class="speed">🐢 Медленно</span></td>
+          <td>Эксперименты, специализация</td>
+          <td><a href="https://huggingface.co" target="_blank">huggingface.co</a></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>DeepSeek API</td>
+          <td><span class="limit">~$5 кредитов</span></td>
+          <td>✅ Да</td>
+          <td><span class="speed">⚡ Быстро</span></td>
+          <td>Когда бесплатные лимиты кончились</td>
+          <td><a href="https://www.deepseek.com" target="_blank">deepseek.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</div><!-- /toolsContainer -->
+</div><!-- /wrap -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-logo">🤖 AI Tools Hub</div>
+      <p style="font-size:13px;color:var(--mt);max-width:500px;text-align:center">Каталог актуальных нейросетей и AI-инструментов. Обновлено в 2026 году.</p>
+      <div class="footer-links">
+        <a href="#chat">Чат / LLM</a>
+        <a href="#agents">Агенты</a>
+        <a href="#appbuilder">App Builder</a>
+        <a href="#video">Видео</a>
+        <a href="#image">Изображения</a>
+        <a href="#voice">Голос</a>
+        <a href="#code">Код</a>
+        <a href="#free-api">Free API</a>
+      </div>
+      <div class="footer-copy">AI Tools Hub © 2026 — информация актуальна на апрель 2026</div>
+    </div>
+  </div>
+</footer>
+
+<button class="stt" id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa fa-arrow-up"></i></button>
+
+<script>
+// PARTICLES
+(function(){
+  const c=document.getElementById('ptcl');
+  for(let i=0;i<18;i++){
+    const p=document.createElement('div');
+    p.className='ptc';
+    const s=Math.random()*4+2;
+    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*12+8}s;animation-delay:${Math.random()*10}s`;
+    c.appendChild(p);
+  }
+})();
+
+// SCROLL TO TOP
+window.addEventListener('scroll',()=>{
+  document.getElementById('stt').classList.toggle('show',window.scrollY>400);
+});
+
+// FILTER
+const filterBtns=document.querySelectorAll('.filter-btn');
+const catSections=document.querySelectorAll('.cat-section');
+const allCards=document.querySelectorAll('.tool-card');
+const searchInput=document.getElementById('searchInput');
+
+function applyFilter(cat){
+  const q=searchInput.value.toLowerCase().trim();
+  catSections.forEach(s=>{
+    const secCat=s.dataset.cat;
+    let showSection=false;
+    const cards=s.querySelectorAll('.tool-card');
+    cards.forEach(card=>{
+      const name=(card.dataset.name||'').toLowerCase();
+      const tags=(card.dataset.tags||'').toLowerCase();
+      const desc=card.querySelector('.card-desc')?.textContent.toLowerCase()||'';
+      const tier=card.dataset.tier||'';
+      const matchSearch=!q||(name.includes(q)||tags.includes(q)||desc.includes(q));
+      const matchCat=cat==='all'||(cat==='free-only'&&tier==='free')||secCat===cat;
+      if(matchSearch&&matchCat){card.style.display='flex';showSection=true;}
+      else card.style.display='none';
+    });
+    // Also show free-api section for free-only
+    if(cat==='free-only'&&secCat==='free-only') showSection=true;
+    s.style.display=showSection?'':'none';
+  });
+}
+
+let currentCat='all';
+filterBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    filterBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCat=btn.dataset.cat;
+    applyFilter(currentCat);
+  });
+});
+
+searchInput.addEventListener('input',()=>applyFilter(currentCat));
+
+// SMOOTH NAV
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    if(id==='#')return;
+    const el=document.querySelector(id);
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
