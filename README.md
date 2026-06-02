@@ -200,7 +200,7 @@ Certbot автоматически обновит конфигурацию Nginx
 ### 3.7 Запустите Docker контейнер
 
 ```bash
-cd /opt/Alexai
+cd Alexai
 docker-compose up -d
 
 # Проверьте статус
