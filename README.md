@@ -112,7 +112,7 @@ git clone https://github.com/AlexAvdeev1986/Alexai.git
 ```nginx
 server {
     listen 81;
-    server_name alexai.ddns.net;
+    server_name agentfactory.ddns.net;
     root /usr/share/nginx/html;
     index index.html;
 
@@ -150,7 +150,7 @@ sudo nano /etc/nginx/sites-available/Alexai
 ```nginx
 server {
     listen 81;
-    server_name alexai.ddns.net;
+    server_name agentfactory.ddns.net;
 
     location / {
         proxy_pass http://127.0.0.1:8081;
@@ -189,7 +189,7 @@ journalctl -xeu nginx.service
 
 
 # Получите SSL-сертификат
-sudo certbot --nginx -d alexai.ddns.net
+sudo certbot --nginx -d agentfactory.ddns.net
 
 # Следуйте инструкциям certbot
 # Выберите опцию редиректа HTTP -> HTTPS
@@ -221,7 +221,7 @@ sudo certbot renew --dry-run
 
 ## Шаг 4: Проверка работы
 
-1. Откройте браузер и перейдите по адресу: `https://alexai.ddns.net`
+1. Откройте браузер и перейдите по адресу: `https://agentfactory.ddns.net`
 2. Убедитесь, что:
    - Сайт загружается
    - Используется HTTPS
@@ -271,7 +271,7 @@ sudo firewall-cmd --reload
 Пользователь → HTTPS (443) → Nginx (хост) → HTTP (127.0.0.1:8081) → Docker контейнер (Nginx)
 ```
 
-Теперь ваш сайт будет доступен по адресу `https://alexai.ddns.net` без отображения порта!
+Теперь ваш сайт будет доступен по адресу `https://agentfactory.ddns.net` без отображения порта!
 
 
 # Просмотр логов контейнера
