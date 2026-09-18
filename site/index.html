@@ -72,6 +72,7 @@
                     <span class="text-lg lg:text-xl font-bold text-white">AI Agent Factory <span class="text-gray-400 text-sm lg:text-base hidden sm:inline">×</span> <span class="text-brand-400 text-sm lg:text-base">Tools Hub</span></span>
                 </a>
                 <div class="hidden lg:flex items-center gap-8">
+                    <a href="#video-tools" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">🎬 Видео</a>
                     <a href="#tools" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">🗂 Каталог</a>
                     <a href="#about" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">О нас</a>
                     <a href="#benefits" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">Преимущества</a>
@@ -97,6 +98,7 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
+            <a href="#video-tools" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">🎬 Видео-инструмент</a>
             <a href="#tools" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">🗂 Каталог нейросетей</a>
             <a href="#about" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">О нас</a>
             <a href="#benefits" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">Преимущества</a>
@@ -108,8 +110,92 @@
         </div>
     </div>
 
+    <!-- Live ffmpeg demo: runs server-side via ffmpeg-api, proxied at /api/ -->
+    <section id="video-tools" class="pt-24 lg:pt-32 pb-16 lg:pb-24 bg-gray-900 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 animate-on-scroll">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium text-brand-300 mb-4">
+                    <span>🎬</span> Живое демо
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">AI-обработка <span class="text-gradient">видео и звука</span></h2>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto">Тот же ffmpeg-пайплайн, что использую в проектах — обрезка, замена звука, микс и автоматический дакинг музыки. Обработка идёт прямо на этом сервере.</p>
+            </div>
+
+            <div class="glass rounded-2xl p-6 lg:p-8 animate-on-scroll">
+                <div id="vtModeButtons" class="flex flex-wrap gap-2 mb-6">
+                    <button type="button" data-mode="trim" class="vt-mode-btn filter-btn active px-4 py-2 rounded-lg border border-gray-700 text-sm font-medium text-gray-300 transition-colors">✂️ Обрезать</button>
+                    <button type="button" data-mode="replace" class="vt-mode-btn filter-btn px-4 py-2 rounded-lg border border-gray-700 text-sm font-medium text-gray-300 transition-colors">🔁 Заменить звук</button>
+                    <button type="button" data-mode="mix" class="vt-mode-btn filter-btn px-4 py-2 rounded-lg border border-gray-700 text-sm font-medium text-gray-300 transition-colors">🎚️ Смешать</button>
+                    <button type="button" data-mode="duck" class="vt-mode-btn filter-btn px-4 py-2 rounded-lg border border-gray-700 text-sm font-medium text-gray-300 transition-colors">🎧 Дакинг</button>
+                </div>
+
+                <form id="vtForm" class="space-y-5">
+                    <div data-vt-field="trim">
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Файл (видео или аудио)</label>
+                        <input type="file" id="vtTrimFile" accept="video/*,audio/*" class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-brand-500 file:text-white file:font-medium file:cursor-pointer hover:file:bg-brand-600">
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-1">Начало, сек</label>
+                                <input type="number" id="vtStart" value="0" min="0" step="0.1" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-1">Конец, сек</label>
+                                <input type="number" id="vtEnd" value="30" min="0.1" step="0.1" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-vt-field="replace,mix,duck" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Видео</label>
+                            <input type="file" id="vtVideo" accept="video/*" class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-brand-500 file:text-white file:font-medium file:cursor-pointer hover:file:bg-brand-600">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Аудио / музыка</label>
+                            <input type="file" id="vtAudio" accept="audio/*" class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-accent-500 file:text-white file:font-medium file:cursor-pointer hover:file:bg-accent-600">
+                        </div>
+                    </div>
+
+                    <div data-vt-field="mix" class="hidden">
+                        <label class="block text-sm text-gray-400 mb-1">Громкость музыки: <span id="vtVolVal">0.4</span></label>
+                        <input type="range" id="vtVolume" min="0" max="1.5" step="0.05" value="0.4" class="w-full accent-brand-500">
+                    </div>
+
+                    <div data-vt-field="duck" class="hidden grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <div>
+                            <label class="block text-xs text-gray-400 mb-1">Threshold</label>
+                            <input type="number" id="vtThreshold" value="0.03" min="0.001" max="1" step="0.005" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-2 py-2 text-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 mb-1">Ratio</label>
+                            <input type="number" id="vtRatio" value="8" min="1" max="20" step="1" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-2 py-2 text-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 mb-1">Attack, мс</label>
+                            <input type="number" id="vtAttack" value="5" min="1" max="2000" step="1" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-2 py-2 text-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 mb-1">Release, мс</label>
+                            <input type="number" id="vtRelease" value="300" min="1" max="5000" step="1" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-2 py-2 text-white text-sm">
+                        </div>
+                    </div>
+
+                    <button type="submit" id="vtSubmitBtn" class="w-full sm:w-auto bg-gradient-to-r from-brand-500 to-accent-500 hover:from-brand-600 hover:to-accent-600 text-white px-6 py-3 rounded-xl font-semibold transition-all hover:scale-105 shadow-lg shadow-brand-500/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">Обработать</button>
+                </form>
+
+                <div id="vtStatus" class="mt-4 text-sm hidden"></div>
+
+                <div id="vtResult" class="mt-6 hidden">
+                    <video id="vtResultVideo" controls class="w-full rounded-xl border border-gray-700 max-h-[480px] bg-black hidden"></video>
+                    <audio id="vtResultAudio" controls class="w-full hidden"></audio>
+                    <a id="vtDownloadLink" href="#" class="inline-flex items-center gap-2 mt-4 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-colors">⬇️ Скачать результат</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- AI Tools Hub Section -->
-    <section id="tools" class="pt-24 lg:pt-32 pb-16 lg:pb-24 gradient-bg relative overflow-hidden">
+    <section id="tools" class="py-16 lg:py-24 gradient-bg relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.15),transparent_50%)]"></div>
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.15),transparent_50%)]"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -394,8 +480,123 @@
         function closeAllModals() { document.querySelectorAll('.modal').forEach(m => m.classList.remove('active')); document.body.style.overflow = ''; }
         function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
 
+        // Live ffmpeg demo — talks to /api/process (ffmpeg-api container behind nginx)
+        function setupVideoTools() {
+            const modeButtonsWrap = document.getElementById('vtModeButtons');
+            if (!modeButtonsWrap) return;
+            let vtMode = 'trim';
+
+            function applyVtMode(mode) {
+                vtMode = mode;
+                document.querySelectorAll('.vt-mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+                document.querySelectorAll('[data-vt-field]').forEach(el => {
+                    const modes = el.dataset.vtField.split(',');
+                    el.classList.toggle('hidden', !modes.includes(mode));
+                });
+            }
+            modeButtonsWrap.addEventListener('click', (e) => {
+                const btn = e.target.closest('.vt-mode-btn');
+                if (btn) applyVtMode(btn.dataset.mode);
+            });
+
+            const vtVolume = document.getElementById('vtVolume');
+            const vtVolVal = document.getElementById('vtVolVal');
+            vtVolume?.addEventListener('input', () => { vtVolVal.textContent = vtVolume.value; });
+
+            const vtForm = document.getElementById('vtForm');
+            const vtStatus = document.getElementById('vtStatus');
+            const vtResult = document.getElementById('vtResult');
+            const vtResultVideo = document.getElementById('vtResultVideo');
+            const vtResultAudio = document.getElementById('vtResultAudio');
+            const vtDownloadLink = document.getElementById('vtDownloadLink');
+            const vtSubmitBtn = document.getElementById('vtSubmitBtn');
+            const audioExts = ['mp3', 'wav', 'm4a', 'aac', 'ogg', 'flac'];
+            let vtLastUrl = null;
+
+            function setStatus(text, isError) {
+                vtStatus.textContent = text;
+                vtStatus.classList.remove('hidden');
+                vtStatus.classList.toggle('text-red-400', !!isError);
+                vtStatus.classList.toggle('text-gray-400', !isError);
+            }
+
+            vtForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                vtResult.classList.add('hidden');
+                const fd = new FormData();
+                fd.append('mode', vtMode);
+
+                try {
+                    if (vtMode === 'trim') {
+                        const file = document.getElementById('vtTrimFile').files[0];
+                        if (!file) throw new Error('Выберите файл для обрезки');
+                        fd.append('file', file);
+                        fd.append('start', document.getElementById('vtStart').value);
+                        fd.append('end', document.getElementById('vtEnd').value);
+                    } else {
+                        const video = document.getElementById('vtVideo').files[0];
+                        const audio = document.getElementById('vtAudio').files[0];
+                        if (!video || !audio) throw new Error('Выберите видео и аудио файл');
+                        fd.append('video', video);
+                        fd.append('audio', audio);
+                        if (vtMode === 'mix') {
+                            fd.append('music_volume', document.getElementById('vtVolume').value);
+                        } else if (vtMode === 'duck') {
+                            fd.append('threshold', document.getElementById('vtThreshold').value);
+                            fd.append('ratio', document.getElementById('vtRatio').value);
+                            fd.append('attack', document.getElementById('vtAttack').value);
+                            fd.append('release', document.getElementById('vtRelease').value);
+                        }
+                    }
+
+                    vtSubmitBtn.disabled = true;
+                    setStatus('Обрабатываю на сервере — это может занять до пары минут...', false);
+
+                    const resp = await fetch('/api/process', { method: 'POST', body: fd });
+                    if (!resp.ok) {
+                        let msg = 'Ошибка обработки';
+                        try { const j = await resp.json(); msg = j.error || msg; } catch (_) { /* non-JSON error body */ }
+                        throw new Error(msg);
+                    }
+
+                    const blob = await resp.blob();
+                    if (vtLastUrl) URL.revokeObjectURL(vtLastUrl);
+                    const url = URL.createObjectURL(blob);
+                    vtLastUrl = url;
+                    const cd = resp.headers.get('Content-Disposition') || '';
+                    const matchStar = cd.match(/filename\*=UTF-8''([^;]+)/i);
+                    const match = cd.match(/filename="?([^";]+)"?/i);
+                    const filename = matchStar ? decodeURIComponent(matchStar[1]) : (match ? match[1] : 'result.mp4');
+                    const isAudio = audioExts.some(ext => filename.toLowerCase().endsWith('.' + ext));
+
+                    setStatus('Готово! Файл скачивается. Если загрузка не началась — нажмите «Скачать результат» ниже.', false);
+                    vtResult.classList.remove('hidden');
+                    vtResultVideo.classList.toggle('hidden', isAudio);
+                    vtResultAudio.classList.toggle('hidden', !isAudio);
+                    if (isAudio) { vtResultAudio.src = url; vtResultVideo.removeAttribute('src'); }
+                    else { vtResultVideo.src = url; vtResultAudio.removeAttribute('src'); }
+                    vtDownloadLink.href = url;
+                    vtDownloadLink.download = filename;
+
+                    // Скачиваем сразу, без дополнительного клика — ссылка остаётся рабочей для повторного скачивания
+                    const autoDownload = document.createElement('a');
+                    autoDownload.href = url;
+                    autoDownload.download = filename;
+                    document.body.appendChild(autoDownload);
+                    autoDownload.click();
+                    autoDownload.remove();
+                } catch (err) {
+                    setStatus(err.message || 'Ошибка обработки', true);
+                } finally {
+                    vtSubmitBtn.disabled = false;
+                }
+            });
+
+            applyVtMode('trim');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            renderTools(); renderFAQ();
+            renderTools(); renderFAQ(); setupVideoTools();
             document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderTools(btn.dataset.filter, document.getElementById('toolSearch').value); }));
             document.getElementById('toolSearch').addEventListener('input', (e) => { renderTools(document.querySelector('.filter-btn.active').dataset.filter, e.target.value); });
             document.getElementById('faqContainer').addEventListener('click', (e) => { const item = e.target.closest('.faq-item'); if (!item) return; const wasOpen = item.classList.contains('open'); document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open')); if (!wasOpen) item.classList.add('open'); });

@@ -8,14 +8,18 @@
 Создайте следующую структуру директорий:
 
 ```
-project/
-├── docker-compose.yml
+project-root/                    ← этот самый корень
+├── docker-compose.yml           ← заменить на новый (тот, что я прислал)
+├── LICENSE
+├── README.md
+├── ffmpeg-api/                  ← НОВАЯ папка, создать рядом с nginx/ и site/
+│   ├── app.py
+│   ├── Dockerfile
+│   └── requirements.txt
 ├── nginx/
-│   └── your-site.conf
+│   └── ...conf                  ← заменить содержимым your-site.conf
 └── site/
-    ├── index.html
-    └── photo_2025-10-14_18-20-51.jpg
-```
+    └── index.html                ← заменить на новый
 
 
 # Или Чтобы использовать Python в проектах, создавайте виртуальные окружения:
