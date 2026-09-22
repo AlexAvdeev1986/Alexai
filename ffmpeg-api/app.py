@@ -1,4 +1,6 @@
+import mimetypes
 import os
+import re
 import shutil
 import subprocess
 import time
@@ -17,10 +19,15 @@ JOBS_ROOT = Path(os.environ.get("FFMPEG_JOBS_DIR", "/tmp/ffmpeg-jobs"))
 JOBS_ROOT.mkdir(parents=True, exist_ok=True)
 
 FFMPEG_TIMEOUT = int(os.environ.get("FFMPEG_TIMEOUT_SECONDS", "600"))
-JOB_MAX_AGE_SECONDS = 2 * 3600  # orphaned job dirs older than this get swept
+# Готовые файлы теперь ждут на диске, пока пользователь их не скачает (или не
+# откроет превью) — сколько именно ждать, задаётся этим порогом. Достаточно,
+# чтобы человек успел посмотреть превью и нажать «Скачать», но не бесконечно.
+JOB_MAX_AGE_SECONDS = int(os.environ.get("FFMPEG_JOB_MAX_AGE_SECONDS", str(3600)))
 
 VIDEO_EXTS = {"mp4", "mov", "mkv", "webm", "m4v"}
 AUDIO_EXTS = {"mp3", "wav", "m4a", "aac", "ogg", "flac"}
+
+JOB_ID_RE = re.compile(r"^[0-9a-f]{32}$")  # uuid4().hex — заодно защита от path traversal
 
 
 class ValidationError(Exception):
@@ -32,7 +39,8 @@ def ext_of(filename):
 
 
 def sweep_old_jobs():
-    """Best-effort cleanup of job dirs left behind by crashed/interrupted requests."""
+    """Best-effort cleanup: удаляет job-папки старше JOB_MAX_AGE_SECONDS —
+    и забытые никем результаты, и осиротевшие после аварийных обрывов."""
     now = time.time()
     try:
         for entry in JOBS_ROOT.iterdir():
@@ -92,15 +100,6 @@ def run_ffmpeg(cmd):
         raise ValidationError(f"ffmpeg завершился с ошибкой:\n{tail}")
 
 
-def send_and_cleanup(path, download_name, mimetype, job_dir):
-    response = send_file(path, as_attachment=True, download_name=download_name,
-                          mimetype=mimetype, conditional=False)
-    # Runs only once the WSGI server has finished streaming the response body,
-    # so the file is guaranteed to still exist while it's being sent.
-    response.call_on_close(lambda: shutil.rmtree(job_dir, ignore_errors=True))
-    return response
-
-
 @app.get("/api/health")
 def health():
     return jsonify({"status": "ok"})
@@ -125,13 +124,13 @@ def process():
             if end <= start:
                 raise ValidationError("Время окончания должно быть больше времени начала")
 
-            out_path = job_dir / f"output.{ext}"
+            out_path = job_dir / f"result.{ext}"
             cmd = ["ffmpeg", "-y", "-i", str(src), "-ss", str(start), "-to", str(end),
                    "-c", "copy", str(out_path)]
             run_ffmpeg(cmd)
+            src.unlink(missing_ok=True)  # входной файл больше не нужен, результат уже готов
 
-            mimetype = "video/mp4" if ext in VIDEO_EXTS else "audio/mpeg"
-            return send_and_cleanup(out_path, f"trim.{ext}", mimetype, job_dir)
+            return jsonify({"job_id": job_dir.name, "filename": out_path.name})
 
         elif mode in ("replace", "mix", "duck"):
             video_path = job_dir / "video"
@@ -148,7 +147,7 @@ def process():
             if duration is None:
                 raise ValidationError("Не удалось определить длительность видео")
 
-            out_path = job_dir / "output.mp4"
+            out_path = job_dir / "result.mp4"
 
             if mode == "replace":
                 cmd = ["ffmpeg", "-y", "-i", str(video_path), "-i", str(audio_path),
@@ -189,7 +188,10 @@ def process():
                        "-shortest", str(out_path)]
 
             run_ffmpeg(cmd)
-            return send_and_cleanup(out_path, "result.mp4", "video/mp4", job_dir)
+            video_path.unlink(missing_ok=True)
+            audio_path.unlink(missing_ok=True)
+
+            return jsonify({"job_id": job_dir.name, "filename": out_path.name})
 
         else:
             raise ValidationError("Неизвестный режим обработки")
@@ -200,6 +202,33 @@ def process():
     except Exception:
         shutil.rmtree(job_dir, ignore_errors=True)
         return jsonify({"error": "Внутренняя ошибка сервера"}), 500
+
+
+@app.get("/api/result/<job_id>")
+def get_result(job_id):
+    """Отдаёт готовый файл — как реальный HTTP-ответ, а не blob в JS.
+    Без ?download=1 — для встраивания в <video>/<audio> (проигрывание, перемотка).
+    С ?download=1 — Content-Disposition: attachment, чтобы браузер сохранил файл
+    на устройство пользователя, независимо от того, десктоп это или телефон."""
+    sweep_old_jobs()
+
+    if not JOB_ID_RE.match(job_id):
+        return jsonify({"error": "Некорректный идентификатор"}), 400
+
+    job_dir = JOBS_ROOT / job_id
+    if not job_dir.is_dir():
+        return jsonify({"error": "Файл не найден — возможно, он уже удалён по истечении срока хранения"}), 404
+
+    matches = sorted(job_dir.glob("result.*"))
+    if not matches:
+        return jsonify({"error": "Файл не найден — возможно, он уже удалён по истечении срока хранения"}), 404
+
+    out_path = matches[0]
+    mimetype, _ = mimetypes.guess_type(out_path.name)
+    as_attachment = request.args.get("download") == "1"
+
+    return send_file(out_path, mimetype=mimetype or "application/octet-stream",
+                      as_attachment=as_attachment, download_name=out_path.name)
 
 
 @app.errorhandler(413)

@@ -66,6 +66,7 @@ server {
 ```bash
 # Перейдите в директорию проекта
 cd Alexai
+sudo systemctl start podman
 
 # Запустите контейнер
 podman-compose up -d

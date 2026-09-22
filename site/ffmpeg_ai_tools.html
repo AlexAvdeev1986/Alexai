@@ -510,7 +510,8 @@
             const vtResultAudio = document.getElementById('vtResultAudio');
             const vtDownloadLink = document.getElementById('vtDownloadLink');
             const vtSubmitBtn = document.getElementById('vtSubmitBtn');
-            const audioExts = ['mp3', 'wav', 'm4a', 'ogg', 'flac'];
+            const audioExts = ['mp3', 'wav', 'm4a', 'aac', 'ogg', 'flac'];
+            let vtLastUrl = null;
 
             function setStatus(text, isError) {
                 vtStatus.textContent = text;
@@ -552,36 +553,38 @@
                     setStatus('Обрабатываю на сервере — это может занять до пары минут...', false);
 
                     const resp = await fetch('/api/process', { method: 'POST', body: fd });
-                    let data = null;
-                    try { data = await resp.json(); } catch (_) { /* non-JSON body */ }
-                    if (!resp.ok || !data || !data.job_id) {
-                        throw new Error((data && data.error) || 'Ошибка обработки');
+                    if (!resp.ok) {
+                        let msg = 'Ошибка обработки';
+                        try { const j = await resp.json(); msg = j.error || msg; } catch (_) { /* non-JSON error body */ }
+                        throw new Error(msg);
                     }
 
-                    const filename = data.filename || 'result.mp4';
-                    const resultUrl = `/api/result/${data.job_id}`;
-                    const downloadUrl = `${resultUrl}?download=1`;
+                    const blob = await resp.blob();
+                    if (vtLastUrl) URL.revokeObjectURL(vtLastUrl);
+                    const url = URL.createObjectURL(blob);
+                    vtLastUrl = url;
+                    const cd = resp.headers.get('Content-Disposition') || '';
+                    const matchStar = cd.match(/filename\*=UTF-8''([^;]+)/i);
+                    const match = cd.match(/filename="?([^";]+)"?/i);
+                    const filename = matchStar ? decodeURIComponent(matchStar[1]) : (match ? match[1] : 'result.mp4');
                     const isAudio = audioExts.some(ext => filename.toLowerCase().endsWith('.' + ext));
 
-                    vtStatus.classList.add('hidden');
+                    setStatus('Готово! Файл скачивается. Если загрузка не началась — нажмите «Скачать результат» ниже.', false);
                     vtResult.classList.remove('hidden');
                     vtResultVideo.classList.toggle('hidden', isAudio);
                     vtResultAudio.classList.toggle('hidden', !isAudio);
-                    if (isAudio) { vtResultAudio.src = resultUrl; vtResultVideo.removeAttribute('src'); }
-                    else { vtResultVideo.src = resultUrl; vtResultAudio.removeAttribute('src'); }
-                    vtDownloadLink.href = downloadUrl;
+                    if (isAudio) { vtResultAudio.src = url; vtResultVideo.removeAttribute('src'); }
+                    else { vtResultVideo.src = url; vtResultAudio.removeAttribute('src'); }
+                    vtDownloadLink.href = url;
                     vtDownloadLink.download = filename;
 
-                    // Файл реально лежит на сервере по downloadUrl с заголовком
-                    // Content-Disposition: attachment — скачивание через скрытый iframe
-                    // работает надёжно на любом устройстве (включая мобильный Safari),
-                    // в отличие от blob-URL с программным кликом. Кнопка ниже остаётся
-                    // как гарантированный способ скачать вручную, если что-то заблокирует iframe.
-                    const dlFrame = document.createElement('iframe');
-                    dlFrame.style.display = 'none';
-                    dlFrame.src = downloadUrl;
-                    document.body.appendChild(dlFrame);
-                    setTimeout(() => dlFrame.remove(), 15000);
+                    // Скачиваем сразу, без дополнительного клика — ссылка остаётся рабочей для повторного скачивания
+                    const autoDownload = document.createElement('a');
+                    autoDownload.href = url;
+                    autoDownload.download = filename;
+                    document.body.appendChild(autoDownload);
+                    autoDownload.click();
+                    autoDownload.remove();
                 } catch (err) {
                     setStatus(err.message || 'Ошибка обработки', true);
                 } finally {
