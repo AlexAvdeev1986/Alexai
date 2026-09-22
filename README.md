@@ -12,12 +12,12 @@ project-root/                    ← этот самый корень
 ├── docker-compose.yml           ← заменить на новый (тот, что я прислал)
 ├── LICENSE
 ├── README.md
-├── ffmpeg-api/                  ← НОВАЯ папка, создать рядом с nginx/ и site/
-│   ├── app.py
+├── ffmpeg-api/                  ← НОВАЯ папка, создать рядом с nginx/ 
+    ├── app.py
 │   ├── Dockerfile
 │   └── requirements.txt
 ├── nginx/
-│   └── ...conf                  ← заменить содержимым your-site.conf
+│   └── your-site.conf                  ← заменить содержимым your-site.conf
 └── site/
     └── index.html                ← заменить на новый
 
@@ -80,6 +80,16 @@ podman-compose ps
 # Откройте в браузере
 firefox http://127.0.0.1:8081
 
+Если хочешь снести вообще всё дочиста (включая старые образы, а не только контейнеры) — на случай если кэш чем-то мешает:
+podman-compose down
+podman rmi localhost/alexai_ffmpeg-api:latest    # старый образ ffmpeg-api
+sudo systemctl stop podman
+sudo systemctl stop podman.socket
+sudo systemctl stop podman.service
+sudo systemctl disable podman.socket
+
+Если вам понадобится API Podman:
+sudo systemctl start podman.socket
 ```
 Теперь сайт доступен по адресу: `http://127.0.0.1:8081`
 
