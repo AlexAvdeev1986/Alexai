@@ -1,618 +1,174 @@
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent Factory × Tools Hub — Нейросотрудники и каталог AI-инструментов 2026</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.0/400.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.0/500.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.0/600.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.0/700.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.1.0/800.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
-                    colors: {
-                        brand: { 50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e' },
-                        accent: { 400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed', 700: '#6d28d9' }
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
-                        'slide-in': 'slideIn 0.5s ease-out forwards',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'bounce-slow': 'bounce 3s infinite',
-                    },
-                    keyframes: {
-                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-                        slideIn: { '0%': { opacity: '0', transform: 'translateX(-20px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0c4a6e 100%); }
-        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .glass-light { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(0, 0, 0, 0.05); }
-        .text-gradient { background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .tool-card { transition: all 0.3s ease; }
-        .tool-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .filter-btn.active { background: #0ea5e9; color: white; border-color: #0ea5e9; }
-        .nav-link:hover { color: #0ea5e9; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
-        .faq-item.open .faq-answer { max-height: 500px; padding-top: 1rem; padding-bottom: 1rem; }
-        .faq-item.open .faq-icon { transform: rotate(180deg); }
-        .faq-icon { transition: transform 0.3s ease; }
-        .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
-        .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
-        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
-        .mobile-menu.open { transform: translateX(0); }
-        .modal { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-        .modal.active { opacity: 1; pointer-events: auto; }
-        .modal-content { transform: scale(0.9) translateY(20px); transition: transform 0.3s ease; }
-        .modal.active .modal-content { transform: scale(1) translateY(0); }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Скрипт звонка: лизинг</title>
+<style>
+:root{--bg:#f1f4f2;--surface:#fff;--ink:#14201b;--mute:#5d6c65;--line:#d6ddd9;--accent:#0e6b55;--on:#fff;--say:#e2f2ea;--hint:#fff2d2;--hint-ink:#654500;--bad:#b3261e;--ok:#1e8e5a;--warm:#c98a00;--blue:#2a6fb5;--sh:0 1px 2px rgba(0,0,0,.06);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1512;--surface:#17211c;--ink:#e7f0ea;--mute:#9fb0a7;--line:#2c3b34;--accent:#4cc3a0;--on:#06231a;--say:#17342a;--hint:#3a2f10;--hint-ink:#f2d58a;--bad:#ff8a80;--sh:none}}
+:root[data-theme="dark"]{--bg:#0e1512;--surface:#17211c;--ink:#e7f0ea;--mute:#9fb0a7;--line:#2c3b34;--accent:#4cc3a0;--on:#06231a;--say:#17342a;--hint:#3a2f10;--hint-ink:#f2d58a;--bad:#ff8a80;--sh:none}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{max-width:1040px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.bar h1{font-size:17px;margin:0;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chip{font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--line);color:var(--ink);white-space:nowrap}
+.chip.hot{background:var(--ok);color:#fff}.chip.warm{background:var(--warm);color:#fff}.chip.blue{background:var(--blue);color:#fff}.chip.cold{background:var(--bad);color:#fff}
+.ghost{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 12px;font-size:14px}
+.steps{max-width:1040px;margin:0 auto;padding:0 16px 10px;display:flex;gap:6px}
+.steps i{flex:1;height:6px;border-radius:3px;background:var(--line);font-style:normal}
+.steps i.done{background:var(--accent);opacity:.45}.steps i.now{background:var(--accent)}
+.phase{max-width:1040px;margin:0 auto;padding:0 16px 8px;font-size:13px;color:var(--mute)}
+.wrap{max-width:1040px;margin:0 auto;padding:16px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start}
+.main{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--sh)}
+.label{font-size:14px;color:var(--mute);font-weight:600;margin:0 0 8px}
+.say{background:var(--say);border-radius:10px;padding:16px 18px;font-size:21px;line-height:1.55;margin:0 0 14px}
+.say b{background:var(--hint);color:var(--hint-ink);padding:0 5px;border-radius:4px}
+details{margin:0 0 16px;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:15px}
+details summary{cursor:pointer;font-weight:600;color:var(--mute)}
+details p,details ul{margin:8px 0 0;padding-left:0}details ul{padding-left:20px}
+.opts{display:grid;gap:10px}
+.opt{width:100%;min-height:54px;text-align:left;padding:12px 16px;background:var(--surface);border:2px solid var(--line);border-radius:12px;font-size:17px}
+.opt:hover{border-color:var(--accent)}
+.opt.bad{border-style:dashed}
+.btn{width:100%;min-height:54px;padding:12px 16px;border:0;border-radius:12px;background:var(--accent);color:var(--on);font-weight:600;font-size:17px}
+.back{margin-top:12px;background:none;border:0;color:var(--mute);padding:8px 0;font-size:15px}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:2px 10px;border-radius:999px;background:var(--hint);color:var(--hint-ink);margin-bottom:10px}
+.side{position:sticky;top:120px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;max-height:calc(100vh - 140px);overflow:auto}
+.side h2{font-size:15px;margin:0 0 10px}
+.ob{display:block;width:100%;text-align:left;padding:10px 12px;margin:0 0 6px;background:var(--bg);border:1px solid var(--line);border-radius:10px;font-size:15px}
+.ob:hover,.ob.on{border-color:var(--accent)}.ob.on{background:var(--say)}
+.fab{display:none}
+@media(max-width:820px){
+ .wrap{grid-template-columns:1fr;padding:12px 12px 110px}
+ .say{font-size:20px}
+ .side{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:20;max-height:75vh;border-radius:18px 18px 0 0;transform:translateY(105%);transition:transform .2s;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+ .side.open{transform:none;box-shadow:0 -8px 30px rgba(0,0,0,.3)}
+ .fab{display:block;position:fixed;z-index:10;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));min-height:52px;border-radius:14px;border:2px solid var(--accent);background:var(--surface);font-weight:600;font-size:17px;box-shadow:0 4px 16px rgba(0,0,0,.18)}
+ .fab.hide{display:none}
+ .shade{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:15;display:none}.shade.open{display:block}
+}
+@media(prefers-reduced-motion:reduce){.side{transition:none}}
+</style>
 </head>
-<body class="bg-gray-900 text-white overflow-x-hidden">
+<body>
+<div class="top">
+ <div class="bar"><h1>Скрипт звонка: лизинг</h1><span id="st" class="chip">Статус: —</span><button class="ghost" id="reset">Заново</button></div>
+ <div class="steps" id="steps"></div>
+ <div class="phase" id="phase"></div>
+</div>
+<div class="wrap">
+ <main class="main" id="main"></main>
+ <aside class="side" id="side"><h2>Клиент возражает? Нажмите:</h2><div id="objs"></div></aside>
+</div>
+<button class="fab" id="fab">Возражения клиента</button>
+<div class="shade" id="shade"></div>
 
-    <!-- Navigation (без изменений) -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gray-900/80 backdrop-blur-xl border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16 lg:h-20">
-                <a href="#tools" class="flex items-center gap-2 group">
-                    <span class="text-2xl group-hover:scale-110 transition-transform">🤖</span>
-                    <span class="text-lg lg:text-xl font-bold text-white">AI Agent Factory <span class="text-gray-400 text-sm lg:text-base hidden sm:inline">×</span> <span class="text-brand-400 text-sm lg:text-base">Tools Hub</span></span>
-                </a>
-                <div class="hidden lg:flex items-center gap-8">
-                    <a href="#video-tools" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">🎬 Видео</a>
-                    <a href="#tools" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">🗂 Каталог</a>
-                    <a href="#about" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">О нас</a>
-                    <a href="#benefits" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">Преимущества</a>
-                    <a href="#portfolio" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">Кейсы</a>
-                    <a href="#testimonials" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">Отзывы</a>
-                    <a href="#process" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">Процесс</a>
-                    <a href="#faq" class="nav-link text-gray-300 hover:text-white font-medium transition-colors">FAQ</a>
-                    <a href="#application" class="bg-gradient-to-r from-brand-500 to-accent-500 hover:from-brand-600 hover:to-accent-600 text-white px-5 py-2.5 rounded-xl font-semibold transition-all hover:scale-105 shadow-lg shadow-brand-500/25">Оставить заявку</a>
-                </div>
-                <button id="mobileMenuBtn" class="lg:hidden p-2 text-gray-300 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-40 bg-gray-900/98 backdrop-blur-lg lg:hidden">
-        <div class="flex flex-col h-full pt-20 pb-8 px-6">
-            <div class="flex justify-between items-center mb-8">
-                <span class="text-xl font-bold">Меню</span>
-                <button id="closeMobileMenu" class="p-2 text-gray-300 hover:text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
-            <a href="#video-tools" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">🎬 Видео-инструмент</a>
-            <a href="#tools" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">🗂 Каталог нейросетей</a>
-            <a href="#about" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">О нас</a>
-            <a href="#benefits" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">Преимущества</a>
-            <a href="#portfolio" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">Кейсы</a>
-            <a href="#testimonials" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">Отзывы</a>
-            <a href="#process" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">Процесс</a>
-            <a href="#faq" class="mobile-nav-link py-4 text-lg font-medium border-b border-gray-800">FAQ</a>
-            <a href="#application" class="mt-6 bg-gradient-to-r from-brand-500 to-accent-500 text-white py-4 rounded-xl text-center font-semibold">Оставить заявку</a>
-        </div>
-    </div>
-
-    <!-- Live ffmpeg demo: runs server-side via ffmpeg-api, proxied at /api/ -->
-    <section id="video-tools" class="pt-24 lg:pt-32 pb-16 lg:pb-24 bg-gray-900 relative overflow-hidden">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 animate-on-scroll">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium text-brand-300 mb-4">
-                    <span>🎬</span> Живое демо
-                </div>
-                <h2 class="text-3xl lg:text-4xl font-bold mb-4">AI-обработка <span class="text-gradient">видео и звука</span></h2>
-                <p class="text-lg text-gray-400 max-w-2xl mx-auto">Тот же ffmpeg-пайплайн, что использую в проектах — обрезка, замена звука, микс и автоматический дакинг музыки. Обработка идёт прямо на этом сервере.</p>
-            </div>
-
-            <div class="glass rounded-2xl p-6 lg:p-8 animate-on-scroll">
-                <div id="vtModeButtons" class="flex flex-wrap gap-2 mb-6">
-                    <button type="button" data-mode="trim" class="vt-mode-btn filter-btn active px-4 py-2 rounded-lg border border-gray-700 text-sm font-medium text-gray-300 transition-colors">✂️ Обрезать</button>
-                    <button type="button" data-mode="replace" class="vt-mode-btn filter-btn px-4 py-2 rounded-lg border border-gray-700 text-sm font-medium text-gray-300 transition-colors">🔁 Заменить звук</button>
-                    <button type="button" data-mode="mix" class="vt-mode-btn filter-btn px-4 py-2 rounded-lg border border-gray-700 text-sm font-medium text-gray-300 transition-colors">🎚️ Смешать</button>
-                    <button type="button" data-mode="duck" class="vt-mode-btn filter-btn px-4 py-2 rounded-lg border border-gray-700 text-sm font-medium text-gray-300 transition-colors">🎧 Дакинг</button>
-                </div>
-
-                <form id="vtForm" class="space-y-5">
-                    <div data-vt-field="trim">
-                        <label class="block text-sm font-medium text-gray-300 mb-2">Файл (видео или аудио)</label>
-                        <input type="file" id="vtTrimFile" accept="video/*,audio/*" class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-brand-500 file:text-white file:font-medium file:cursor-pointer hover:file:bg-brand-600">
-                        <div class="grid grid-cols-2 gap-4 mt-4">
-                            <div>
-                                <label class="block text-sm text-gray-400 mb-1">Начало, сек</label>
-                                <input type="number" id="vtStart" value="0" min="0" step="0.1" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-sm text-gray-400 mb-1">Конец, сек</label>
-                                <input type="number" id="vtEnd" value="30" min="0.1" step="0.1" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div data-vt-field="replace,mix,duck" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-300 mb-2">Видео</label>
-                            <input type="file" id="vtVideo" accept="video/*" class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-brand-500 file:text-white file:font-medium file:cursor-pointer hover:file:bg-brand-600">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-300 mb-2">Аудио / музыка</label>
-                            <input type="file" id="vtAudio" accept="audio/*" class="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-accent-500 file:text-white file:font-medium file:cursor-pointer hover:file:bg-accent-600">
-                        </div>
-                    </div>
-
-                    <div data-vt-field="mix" class="hidden">
-                        <label class="block text-sm text-gray-400 mb-1">Громкость музыки: <span id="vtVolVal">0.4</span></label>
-                        <input type="range" id="vtVolume" min="0" max="1.5" step="0.05" value="0.4" class="w-full accent-brand-500">
-                    </div>
-
-                    <div data-vt-field="duck" class="hidden grid grid-cols-2 sm:grid-cols-4 gap-4">
-                        <div>
-                            <label class="block text-xs text-gray-400 mb-1">Threshold</label>
-                            <input type="number" id="vtThreshold" value="0.03" min="0.001" max="1" step="0.005" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-2 py-2 text-white text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs text-gray-400 mb-1">Ratio</label>
-                            <input type="number" id="vtRatio" value="8" min="1" max="20" step="1" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-2 py-2 text-white text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs text-gray-400 mb-1">Attack, мс</label>
-                            <input type="number" id="vtAttack" value="5" min="1" max="2000" step="1" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-2 py-2 text-white text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs text-gray-400 mb-1">Release, мс</label>
-                            <input type="number" id="vtRelease" value="300" min="1" max="5000" step="1" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-2 py-2 text-white text-sm">
-                        </div>
-                    </div>
-
-                    <button type="submit" id="vtSubmitBtn" class="w-full sm:w-auto bg-gradient-to-r from-brand-500 to-accent-500 hover:from-brand-600 hover:to-accent-600 text-white px-6 py-3 rounded-xl font-semibold transition-all hover:scale-105 shadow-lg shadow-brand-500/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">Обработать</button>
-                </form>
-
-                <div id="vtStatus" class="mt-4 text-sm hidden"></div>
-
-                <div id="vtResult" class="mt-6 hidden">
-                    <video id="vtResultVideo" controls class="w-full rounded-xl border border-gray-700 max-h-[480px] bg-black hidden"></video>
-                    <audio id="vtResultAudio" controls class="w-full hidden"></audio>
-                    <a id="vtDownloadLink" href="#" class="inline-flex items-center gap-2 mt-4 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-colors">⬇️ Скачать результат</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AI Tools Hub Section -->
-    <section id="tools" class="py-16 lg:py-24 gradient-bg relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.15),transparent_50%)]"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.15),transparent_50%)]"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12 animate-on-scroll">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium text-brand-300 mb-4">
-                    <span>🗂️</span> Экосистема инструментов · 2026
-                </div>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4">
-                    <span class="text-gradient">AI Tools Hub</span><br>Каталог нейросетей
-                </h1>
-                <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-8">38 актуальных инструментов по 7 категориям — стек, который мы используем в работе и показываем открыто</p>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto">
-                    <div class="glass rounded-xl p-3 sm:p-4 text-center">
-                        <div class="text-2xl sm:text-3xl font-bold text-brand-400">38</div>
-                        <div class="text-xs sm:text-sm text-gray-400">Инструментов</div>
-                    </div>
-                    <div class="glass rounded-xl p-3 sm:p-4 text-center">
-                        <div class="text-2xl sm:text-3xl font-bold text-brand-400">7</div>
-                        <div class="text-xs sm:text-sm text-gray-400">Категорий</div>
-                    </div>
-                    <div class="glass rounded-xl p-3 sm:p-4 text-center">
-                        <div class="text-2xl sm:text-3xl font-bold text-brand-400">18</div>
-                        <div class="text-xs sm:text-sm text-gray-400">Бесплатных</div>
-                    </div>
-                    <div class="glass rounded-xl p-3 sm:p-4 text-center">
-                        <div class="text-2xl sm:text-3xl font-bold text-brand-400">2026</div>
-                        <div class="text-xs sm:text-sm text-gray-400">Актуально</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Category Filter -->
-            <div class="flex flex-wrap justify-center gap-2 mb-10 animate-on-scroll">
-                <button class="filter-btn active px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="all">Все</button>
-                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="llm">💬 Чат / LLM</button>
-                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="agent">🤖 Агенты</button>
-                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="app">🏗️ App Builder</button>
-                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="video">🎬 Видео</button>
-                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="image">🖼️ Изображения</button>
-                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="voice">🎙️ Голос</button>
-                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="code">💻 Код</button>
-                <button class="filter-btn px-3 py-2 rounded-lg border border-gray-700 bg-transparent text-gray-300 text-sm font-medium transition-all hover:border-brand-500" data-filter="free">🆓 Бесплатные</button>
-            </div>
-
-            <!-- Search -->
-            <div class="max-w-md mx-auto mb-10 animate-on-scroll">
-                <div class="relative">
-                    <input type="text" id="toolSearch" placeholder="Поиск инструментов..." class="w-full px-4 py-3 pl-11 rounded-xl bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all">
-                    <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                </div>
-            </div>
-
-            <!-- Tools Grid -->
-            <div id="toolsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 mb-16"></div>
-
-            <!-- Free API Comparison Table -->
-            <div class="animate-on-scroll mb-8">
-                <h3 class="text-2xl lg:text-3xl font-bold text-center mb-2">🆓 Лучшие бесплатные LLM API</h3>
-                <p class="text-gray-400 text-center mb-6">Сравнение бесплатных API для разработчиков — без кредитной карты</p>
-                <div class="overflow-x-auto rounded-xl border border-gray-700">
-                    <table class="w-full min-w-[600px] text-sm">
-                        <thead class="bg-gray-800/80 text-left">
-                            <tr><th class="p-3 lg:p-4 font-semibold text-gray-300">#</th><th class="p-3 lg:p-4 font-semibold text-gray-300">Провайдер</th><th class="p-3 lg:p-4 font-semibold text-gray-300">Бесплатный лимит</th><th class="p-3 lg:p-4 font-semibold text-gray-300">Кредитка</th><th class="p-3 lg:p-4 font-semibold text-gray-300">Скорость</th><th class="p-3 lg:p-4 font-semibold text-gray-300 hidden md:table-cell">Лучше всего для</th><th class="p-3 lg:p-4 font-semibold text-gray-300">Ссылка</th></tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-800 bg-gray-900/50">
-                            <tr class="hover:bg-gray-800/30 transition-colors"><td class="p-3 lg:p-4">🥇</td><td class="p-3 lg:p-4 font-medium">Google Gemini (AI Studio)</td><td class="p-3 lg:p-4 text-gray-300">500 req/день</td><td class="p-3 lg:p-4 text-red-400">❌ Нет</td><td class="p-3 lg:p-4 text-green-400">⚡ Быстро</td><td class="p-3 lg:p-4 text-gray-400 hidden md:table-cell">Продакшн прототипы, RAG</td><td class="p-3 lg:p-4"><a href="https://aistudio.google.com" target="_blank" class="text-brand-400 hover:underline">aistudio.google.com</a></td></tr>
-                            <tr class="hover:bg-gray-800/30 transition-colors"><td class="p-3 lg:p-4">🥈</td><td class="p-3 lg:p-4 font-medium">OpenRouter</td><td class="p-3 lg:p-4 text-gray-300">200 req/день</td><td class="p-3 lg:p-4 text-red-400">❌ Нет</td><td class="p-3 lg:p-4 text-yellow-400">📊 Средне</td><td class="p-3 lg:p-4 text-gray-400 hidden md:table-cell">Тест разных моделей</td><td class="p-3 lg:p-4"><a href="https://openrouter.ai" target="_blank" class="text-brand-400 hover:underline">openrouter.ai</a></td></tr>
-                            <tr class="hover:bg-gray-800/30 transition-colors"><td class="p-3 lg:p-4">🥉</td><td class="p-3 lg:p-4 font-medium">Groq</td><td class="p-3 lg:p-4 text-gray-300">Щедрые лимиты</td><td class="p-3 lg:p-4 text-red-400">❌ Нет</td><td class="p-3 lg:p-4 text-green-400">🚀 300+ т/с</td><td class="p-3 lg:p-4 text-gray-400 hidden md:table-cell">Realtime приложения</td><td class="p-3 lg:p-4"><a href="https://console.groq.com" target="_blank" class="text-brand-400 hover:underline">console.groq.com</a></td></tr>
-                            <tr class="hover:bg-gray-800/30 transition-colors"><td class="p-3 lg:p-4">4</td><td class="p-3 lg:p-4 font-medium">Mistral AI</td><td class="p-3 lg:p-4 text-gray-300">1M токенов/день</td><td class="p-3 lg:p-4 text-red-400">❌ Нет</td><td class="p-3 lg:p-4 text-green-400">⚡ Быстро</td><td class="p-3 lg:p-4 text-gray-400 hidden md:table-cell">Европейские данные, GDPR</td><td class="p-3 lg:p-4"><a href="https://console.mistral.ai" target="_blank" class="text-brand-400 hover:underline">console.mistral.ai</a></td></tr>
-                            <tr class="hover:bg-gray-800/30 transition-colors"><td class="p-3 lg:p-4">5</td><td class="p-3 lg:p-4 font-medium">HuggingFace Inference</td><td class="p-3 lg:p-4 text-gray-300">Ограничено</td><td class="p-3 lg:p-4 text-red-400">❌ Нет</td><td class="p-3 lg:p-4 text-yellow-400">🐢 Медленно</td><td class="p-3 lg:p-4 text-gray-400 hidden md:table-cell">Эксперименты, специализация</td><td class="p-3 lg:p-4"><a href="https://huggingface.co" target="_blank" class="text-brand-400 hover:underline">huggingface.co</a></td></tr>
-                            <tr class="hover:bg-gray-800/30 transition-colors"><td class="p-3 lg:p-4">6</td><td class="p-3 lg:p-4 font-medium">DeepSeek API</td><td class="p-3 lg:p-4 text-gray-300">~$5 кредитов</td><td class="p-3 lg:p-4 text-yellow-400">✅ Да</td><td class="p-3 lg:p-4 text-green-400">⚡ Быстро</td><td class="p-3 lg:p-4 text-gray-400 hidden md:table-cell">Когда бесплатные лимиты кончились</td><td class="p-3 lg:p-4"><a href="https://www.deepseek.com" target="_blank" class="text-brand-400 hover:underline">deepseek.com</a></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About / AI Agent Factory Section -->
-    <section id="about" class="py-16 lg:py-24 bg-gray-900 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="animate-on-scroll">
-                    <h2 class="text-3xl lg:text-4xl font-bold mb-6">Каталог нейросетей + <span class="text-gradient">разработка AI-решений</span></h2>
-                    <p class="text-lg text-gray-300 mb-6">AI-агенты и нейросети, которые работают как сильная команда. Помогаю бизнесу внедрять AI-агентов, нейросети и автоматизацию. Сначала показываю каталог инструментов, затем собираю решение под задачу и довожу до результата.</p>
-                    <p class="text-gray-400 mb-8">Создаю интеллектуальных AI-агентов под ключ: контроль звонков, юридические консультации, протоколы совещаний. Плюс — открытый каталог из 38 актуальных AI-инструментов.</p>
-                    <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="flex items-center gap-3"><span class="text-green-400 text-xl">✓</span><span class="text-gray-300">Прототип за 5 дней</span></div>
-                        <div class="flex items-center gap-3"><span class="text-green-400 text-xl">✓</span><span class="text-gray-300">Гарантия возврата</span></div>
-                        <div class="flex items-center gap-3"><span class="text-green-400 text-xl">✓</span><span class="text-gray-300">Поддержка 24/7</span></div>
-                        <div class="flex items-center gap-3"><span class="text-green-400 text-xl">✓</span><span class="text-gray-300">AI READY</span></div>
-                    </div>
-                </div>
-                <div class="animate-on-scroll">
-                    <div class="glass rounded-2xl p-6 lg:p-8">
-                        <h3 class="text-xl font-semibold mb-4">Технологический стек</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1.5 rounded-lg bg-brand-500/10 border border-brand-500/30 text-brand-400 text-sm font-medium">GPT-4.1</span>
-                            <span class="px-3 py-1.5 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-400 text-sm font-medium">Whisper</span>
-                            <span class="px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 text-sm font-medium">Python</span>
-                            <span class="px-3 py-1.5 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 text-sm font-medium">Django / FastAPI</span>
-                            <span class="px-3 py-1.5 rounded-lg bg-sky-500/10 border border-sky-500/30 text-sky-400 text-sm font-medium">Telegram API</span>
-                            <span class="px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-sm font-medium">PostgreSQL</span>
-                            <span class="px-3 py-1.5 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-400 text-sm font-medium">n8n / Make</span>
-                            <span class="px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-medium">LangChain</span>
-                            <span class="px-3 py-1.5 rounded-lg bg-pink-500/10 border border-pink-500/30 text-pink-400 text-sm font-medium">RAG / Vector DB</span>
-                            <span class="px-3 py-1.5 rounded-lg bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-sm font-medium">38 AI-инструментов</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Benefits, Portfolio, Testimonials, Process, FAQ (без изменений, код тот же самый) -->
-    <section id="benefits" class="py-16 lg:py-24 bg-gray-800/50 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center mb-12 animate-on-scroll"><h2 class="text-3xl lg:text-4xl font-bold mb-4">Почему AI-агенты</h2><p class="text-lg text-gray-400">Реальные результаты для бизнеса. Компании, внедрившие нейросотрудников, получают измеримый ROI уже в первый месяц</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-brand-500/50 transition-all"><div class="text-4xl font-bold text-gradient mb-3">70%</div><h3 class="text-lg font-semibold mb-2">Экономия до 70%</h3><p class="text-gray-400 text-sm">AI-агент работает без зарплаты, больничных и отпусков. Окупаемость от 1 месяца. Отдел из 5 человек заменяется одним агентом.</p></div><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-brand-500/50 transition-all"><div class="text-4xl font-bold text-gradient mb-3">24/7</div><h3 class="text-lg font-semibold mb-2">Работа 24/7/365</h3><p class="text-gray-400 text-sm">Бизнес не спит: агент обрабатывает обращения, формирует отчёты и отвечает на вопросы в любое время суток.</p></div><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-brand-500/50 transition-all"><div class="text-4xl font-bold text-gradient mb-3">10×</div><h3 class="text-lg font-semibold mb-2">Масштабирование без найма</h3><p class="text-gray-400 text-sm">Обрабатывайте в 10× больше задач без роста штата. AI-агент масштабируется мгновенно под любую нагрузку.</p></div><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-brand-500/50 transition-all"><div class="text-4xl font-bold text-gradient mb-3">2–4 нед.</div><h3 class="text-lg font-semibold mb-2">Внедрение за 2–4 недели</h3><p class="text-gray-400 text-sm">Прототип готов за 5 дней, полноценный агент под ключ — за 2–4 недели. Никаких месяцев ожидания.</p></div><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-brand-500/50 transition-all"><div class="text-4xl font-bold text-gradient mb-3">99,9%</div><h3 class="text-lg font-semibold mb-2">Точность 99,9%</h3><p class="text-gray-400 text-sm">AI не устаёт и не отвлекается. Транскрибация, анализ, классификация — каждая задача с максимальной точностью.</p></div><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-brand-500/50 transition-all"><div class="text-4xl font-bold text-gradient mb-3">∞</div><h3 class="text-lg font-semibold mb-2">Постоянное улучшение</h3><p class="text-gray-400 text-sm">Агент обучается на ваших данных и адаптируется к изменениям бизнеса. Чем дольше работает — тем точнее.</p></div></div></div>
-    </section>
-
-    <section id="portfolio" class="py-16 lg:py-24 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center mb-12 animate-on-scroll"><h2 class="text-3xl lg:text-4xl font-bold mb-4">Реальные кейсы</h2><p class="text-lg text-gray-400">Три внедрённых продукта, которые уже работают в бизнесе и дают измеримый результат</p></div><div class="grid grid-cols-1 lg:grid-cols-3 gap-6"><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-red-500/50 transition-all group"><div class="inline-flex items-center px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-sm font-medium mb-4">🎙️ ГОТОВОЕ РЕШЕНИЕ</div><h3 class="text-xl font-bold mb-3">Анализатор разговоров</h3><p class="text-gray-400 text-sm mb-4">Система контроля качества звонков: Whisper + GPT-4.1-nano. Транскрибация, автоклассификация брака, отчёты. Сократил ручную проверку в разы.</p><div class="flex flex-wrap gap-2 mb-4"><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">Python</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">Whisper</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">GPT-4.1-nano</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">FastAPI</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">PostgreSQL</span></div><div class="space-y-2 mb-6"><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Транскрибация звонка за 30 секунд</span></div><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Автоклассификация брака без менеджера</span></div><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Экономия 80% времени на ручной проверке</span></div></div><a href="#" class="inline-flex items-center gap-1 text-brand-400 hover:text-brand-300 font-medium text-sm">Смотреть презентацию <span class="group-hover:translate-x-1 transition-transform">→</span></a></div><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-blue-500/50 transition-all group"><div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-sm font-medium mb-4">⚖️ ГОТОВОЕ РЕШЕНИЕ</div><h3 class="text-xl font-bold mb-3">Нейро-юрист</h3><p class="text-gray-400 text-sm mb-4">Чат-бот для правовых консультаций и генерации юридических документов. Django-приложение с контекстным поиском по базам НПА.</p><div class="flex flex-wrap gap-2 mb-4"><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">Django</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">GPT-4.1</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">RAG</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">Vector DB</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">НПА Base</span></div><div class="space-y-2 mb-6"><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Поиск по 50 000+ нормативных актов</span></div><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Генерация договоров и претензий за 10 сек</span></div><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Заменяет консультацию юриста за 3–5 000 ₽</span></div></div><a href="#" class="inline-flex items-center gap-1 text-brand-400 hover:text-brand-300 font-medium text-sm">Смотреть презентацию <span class="group-hover:translate-x-1 transition-transform">→</span></a></div><div class="animate-on-scroll glass rounded-2xl p-6 hover:border-purple-500/50 transition-all group"><div class="inline-flex items-center px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-sm font-medium mb-4">📝 ГОТОВОЕ РЕШЕНИЕ</div><h3 class="text-xl font-bold mb-3">Нейро-секретарь</h3><p class="text-gray-400 text-sm mb-4">Telegram-бот для автоматизации протоколов совещаний. Whisper транскрибирует аудио, GPT анализирует и формирует итоги, задачи и дедлайны.</p><div class="flex flex-wrap gap-2 mb-4"><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">Telegram Bot API</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">Whisper</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">GPT-4.1</span><span class="px-2 py-1 rounded bg-gray-800 text-xs text-gray-300">Python</span></div><div class="space-y-2 mb-6"><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Протокол готов через 2 минуты после встречи</span></div><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Автоматически назначает задачи ответственным</span></div><div class="flex items-start gap-2 text-sm"><span class="text-green-400 mt-0.5">✓</span><span class="text-gray-300">Нет забытых договорённостей</span></div></div><a href="#" class="inline-flex items-center gap-1 text-brand-400 hover:text-brand-300 font-medium text-sm">Смотреть презентацию <span class="group-hover:translate-x-1 transition-transform">→</span></a></div></div><div class="text-center mt-10 animate-on-scroll"><a href="#application" class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-500 to-accent-500 hover:from-brand-600 hover:to-accent-600 text-white px-6 py-3 rounded-xl font-semibold transition-all hover:scale-105 shadow-lg shadow-brand-500/25">Хочу такое решение для моего бизнеса</a></div></div>
-    </section>
-
-    <section id="testimonials" class="py-16 lg:py-24 bg-gray-800/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center mb-12 animate-on-scroll"><h2 class="text-3xl lg:text-4xl font-bold mb-4">Отзывы клиентов</h2><p class="text-lg text-gray-400">Реальные результаты компаний, внедривших нейросотрудников</p></div><div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div class="animate-on-scroll glass rounded-2xl p-6 relative"><svg class="absolute top-4 right-4 w-8 h-8 text-gray-700 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg><p class="text-gray-300 mb-6 italic">"Внедрили Анализатор разговоров в колл-центр. Раньше 3 менеджера тратили весь день на прослушку — теперь агент делает это за ночь и утром готовый отчёт. Отдел QA сократился вдвое."</p><div class="flex items-center gap-4 mb-3"><div class="w-12 h-12 rounded-full bg-brand-500/20 flex items-center justify-center text-xl">👨‍💼</div><div><div class="font-semibold">Алексей К.</div><div class="text-sm text-gray-400">Директор колл-центра, Москва</div></div></div><div class="text-green-400 font-medium mb-2">Экономия 140 000 ₽/мес на ФОТ</div><div class="flex text-yellow-400 gap-1">★★★★★</div></div><div class="animate-on-scroll glass rounded-2xl p-6 relative"><svg class="absolute top-4 right-4 w-8 h-8 text-gray-700 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg><p class="text-gray-300 mb-6 italic">"Нейро-юрист закрыл 80% типовых запросов. Генерирует договоры займа, претензии, ответы на жалобы по актуальным НПА. Клиенты в восторге от скорости."</p><div class="flex items-center gap-4 mb-3"><div class="w-12 h-12 rounded-full bg-accent-500/20 flex items-center justify-center text-xl">👩‍💼</div><div><div class="font-semibold">Ольга М.</div><div class="text-sm text-gray-400">Управляющий партнёр юркомпании</div></div></div><div class="text-green-400 font-medium mb-2">Время ответа: с 2 дней до 10 секунд</div><div class="flex text-yellow-400 gap-1">★★★★★</div></div><div class="animate-on-scroll glass rounded-2xl p-6 relative"><svg class="absolute top-4 right-4 w-8 h-8 text-gray-700 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg><p class="text-gray-300 mb-6 italic">"Нейро-секретарь изменил культуру встреч. Записываем звонок — через 2 минуты в чате протокол с задачами и дедлайнами. Про «я не помню» забыли навсегда."</p><div class="flex items-center gap-4 mb-3"><div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-xl">👨‍💻</div><div><div class="font-semibold">Денис В.</div><div class="text-sm text-gray-400">Операционный директор IT-стартапа</div></div></div><div class="text-green-400 font-medium mb-2">5 часов в неделю возвращено команде</div><div class="flex text-yellow-400 gap-1">★★★★★</div></div></div></div>
-    </section>
-
-    <section id="process" class="py-16 lg:py-24 bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center mb-12 animate-on-scroll"><h2 class="text-3xl lg:text-4xl font-bold mb-4">Как мы работаем</h2><p class="text-lg text-gray-400">4 шага до вашего нейросотрудника. Прозрачный процесс без воды — от анализа задачи до работающего агента</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"><div class="animate-on-scroll glass rounded-2xl p-6 text-center relative"><div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center font-bold text-sm">1</div><div class="text-3xl mb-3 mt-2">🔍</div><h3 class="text-lg font-semibold mb-2">Бесплатный анализ</h3><p class="text-gray-400 text-sm">Разбираем ваши процессы, определяем задачи для автоматизации и считаем ROI</p></div><div class="animate-on-scroll glass rounded-2xl p-6 text-center relative"><div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center font-bold text-sm">2</div><div class="text-3xl mb-3 mt-2">⚡</div><h3 class="text-lg font-semibold mb-2">Прототип за 5 дней</h3><p class="text-gray-400 text-sm">Создаём работающий демо-прототип — вы видите результат до начала основной разработки</p></div><div class="animate-on-scroll glass rounded-2xl p-6 text-center relative"><div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center font-bold text-sm">3</div><div class="text-3xl mb-3 mt-2">🚀</div><h3 class="text-lg font-semibold mb-2">Внедрение под ключ</h3><p class="text-gray-400 text-sm">Интегрируем агента в ваши системы и обучаем команду — 2–4 недели и агент в боевом режиме</p></div><div class="animate-on-scroll glass rounded-2xl p-6 text-center relative"><div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center font-bold text-sm">4</div><div class="text-3xl mb-3 mt-2">🛡️</div><h3 class="text-lg font-semibold mb-2">Поддержка и развитие</h3><p class="text-gray-400 text-sm">Техподдержка, мониторинг работы и регулярные улучшения — всё включено в стоимость</p></div></div><div class="animate-on-scroll glass rounded-2xl p-6 lg:p-8 border-2 border-green-500/30 relative overflow-hidden"><div class="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full -translate-y-1/2 translate-x-1/2"></div><div class="flex flex-col lg:flex-row items-center gap-6"><div class="flex-shrink-0"><div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center text-3xl">🛡️</div></div><div class="flex-1 text-center lg:text-left"><h3 class="text-2xl font-bold mb-3">Гарантия результата</h3><p class="text-gray-300 mb-4">Уверен в качестве своей работы. Если не увидите результата после внедрения — верну деньги полностью. Без вопросов.</p><div class="flex flex-wrap justify-center lg:justify-start gap-4 text-sm"><div class="flex items-center gap-2"><span class="text-green-400">✓</span><span>Прототип бесплатно — вы видите результат до оплаты</span></div><div class="flex items-center gap-2"><span class="text-green-400">✓</span><span>Поддержка 30 дней после запуска включена</span></div><div class="flex items-center gap-2"><span class="text-green-400">✓</span><span>Фиксированная цена — никаких скрытых доплат</span></div><div class="flex items-center gap-2"><span class="text-green-400">✓</span><span>Стоимость от 50 000 ₽ — окупается за 1 месяц</span></div></div></div></div></div></div>
-    </section>
-
-    <section id="faq" class="py-16 lg:py-24 bg-gray-800/50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center mb-12 animate-on-scroll"><h2 class="text-3xl lg:text-4xl font-bold mb-4">Частые вопросы</h2><p class="text-lg text-gray-400">Ответы на самые популярные вопросы об AI-агентах и инструментах</p></div><div class="space-y-3" id="faqContainer"></div></div>
-    </section>
-
-    <!-- Application Section (ФОРМА ИЗМЕНЕНА: данные уходят в мессенджер) -->
-    <section id="application" class="py-16 lg:py-24 bg-gradient-to-br from-gray-900 to-gray-800 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.1),transparent_70%)]"></div>
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-10 animate-on-scroll">
-                <div class="inline-flex items-center px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-sm font-medium mb-4 animate-pulse-slow">⏳ Осталось 2 свободных места в мае 2026</div>
-                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Готовы автоматизировать бизнес?</h2>
-                <p class="text-lg text-gray-400">Получите бесплатную консультацию и расчёт ROI — сегодня</p>
-            </div>
-            <div class="animate-on-scroll glass rounded-2xl p-6 lg:p-8">
-                <h3 class="text-2xl font-bold mb-6 text-center">Оставьте заявку</h3>
-                <p class="text-gray-400 text-center mb-6">Заполните форму — данные будут отправлены мне в мессенджер</p>
-                <form id="contactForm" class="space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div><label class="block text-sm font-medium text-gray-300 mb-1">Имя *</label><input type="text" name="name" required class="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" placeholder="Ваше имя"></div>
-                        <div><label class="block text-sm font-medium text-gray-300 mb-1">Телефон *</label><input type="tel" name="phone" required class="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" placeholder="+7 (___) ___-__-__"></div>
-                    </div>
-                    <div><label class="block text-sm font-medium text-gray-300 mb-1">Email</label><input type="email" name="email" class="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" placeholder="your@email.com"></div>
-                    <div><label class="block text-sm font-medium text-gray-300 mb-1">Сфера бизнеса</label><input type="text" name="business" class="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" placeholder="Например: Юридические услуги, Ритейл, IT"></div>
-                    <div><label class="block text-sm font-medium text-gray-300 mb-1">Задача для автоматизации</label><select name="task" class="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700 text-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"><option value="">Выберите направление</option><option value="calls">Контроль качества звонков</option><option value="legal">Юридические консультации</option><option value="meetings">Протоколы совещаний</option><option value="sales">Продажи и лидогенерация</option><option value="support">Поддержка клиентов</option><option value="content">Создание контента</option><option value="other">Другое</option></select></div>
-                    <div><label class="block text-sm font-medium text-gray-300 mb-1">Описание задачи</label><textarea name="description" rows="3" class="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all resize-none" placeholder="Опишите вашу задачу подробнее..."></textarea></div>
-                    <div><label class="block text-sm font-medium text-gray-300 mb-2">Выберите мессенджер для отправки заявки:</label><div class="flex flex-wrap gap-4"><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="messenger" value="telegram" checked class="w-4 h-4 text-brand-500 bg-gray-800 border-gray-600 focus:ring-brand-500"><span class="text-gray-300">📱 Telegram</span></label><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="messenger" value="max" class="w-4 h-4 text-brand-500 bg-gray-800 border-gray-600 focus:ring-brand-500"><span class="text-gray-300">💬 MAX Messenger</span></label></div></div>
-                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-500 to-accent-500 hover:from-brand-600 hover:to-accent-600 text-white font-bold text-lg transition-all hover:scale-[1.02] shadow-lg shadow-brand-500/25">Отправить заявку в мессенджер</button>
-                    <p class="text-xs text-gray-500 text-center">Нажимая, вы соглашаетесь с <a href="#" class="text-brand-400 hover:underline" id="openPrivacyModal">политикой конфиденциальности</a></p>
-                </form>
-                <div id="successMessage" class="hidden text-center py-8"><div class="text-5xl mb-4">✅</div><h4 class="text-xl font-bold mb-2">Спасибо!</h4><p class="text-gray-400">Сейчас откроется мессенджер — просто отправьте сообщение, и я свяжусь с вами в течение 30 минут.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-12 bg-gray-900 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8"><div><div class="flex items-center gap-2 mb-4"><span class="text-2xl">🤖</span><span class="text-lg font-bold">AI Agent Factory <span class="text-gray-500">×</span> Tools Hub</span></div><p class="text-gray-400 text-sm mb-4">Создаю умных нейросотрудников для автоматизации бизнес-процессов. GPT-4, Whisper, RAG — под ключ с гарантией. Плюс открытый каталог из 38 AI-инструментов.</p><div class="flex gap-3"><a href="https://max.ru/u/f9LHodD0cOJlUbclcgcvXdPsrH3GSXkGr5454frvZB0OtFDna956oV4lpjw" target="_blank" class="w-10 h-10 rounded-lg glass flex items-center justify-center hover:bg-gray-700 transition-colors" title="MAX">MAX</a></div></div><div><h4 class="font-semibold mb-4">Решения</h4><ul class="space-y-2 text-sm"><li><a href="#portfolio" class="text-gray-400 hover:text-white transition-colors">Анализатор звонков</a></li><li><a href="#portfolio" class="text-gray-400 hover:text-white transition-colors">Нейро-юрист</a></li><li><a href="#portfolio" class="text-gray-400 hover:text-white transition-colors">Нейро-секретарь</a></li><li><a href="#application" class="text-gray-400 hover:text-white transition-colors">Индивидуальное решение</a></li></ul></div><div><h4 class="font-semibold mb-4">Каталог AI-инструментов</h4><ul class="space-y-2 text-sm"><li><a href="#tools" class="text-gray-400 hover:text-white transition-colors">💬 Чат / LLM</a></li><li><a href="#tools" class="text-gray-400 hover:text-white transition-colors">🤖 Агенты</a></li><li><a href="#tools" class="text-gray-400 hover:text-white transition-colors">🎬 Видео / Изображения</a></li><li><a href="#tools" class="text-gray-400 hover:text-white transition-colors">💻 Код / Голос</a></li><li><a href="#tools" class="text-gray-400 hover:text-white transition-colors">🆓 Бесплатные API</a></li></ul></div><div><h4 class="font-semibold mb-4">Контакты</h4><ul class="space-y-3 text-sm"><li><a href="tel:+79362585387" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">📞 +7 (936) 258-53-87</a></li><li class="text-gray-500 text-xs">Звонки · Пн–Вс 9:00–21:00</li><li><a href="https://t.me/DmitryTo1986" target="_blank" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">💬 @DmitryTo1986</a></li><li><a href="https://max.ru/u/f9LHodD0cOJlUbclcgcvXdPsrH3GSXkGr5454frvZB0OtFDna956oV4lpjw" target="_blank" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2">💬 MAX Messenger</a></li><li class="text-gray-400 flex items-center gap-2">📍 Москва, Россия</li></ul></div></div><div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500"><span>© 2026 AI Agent Factory × Tools Hub · Авдеев Александр · Разработка AI-агентов для бизнеса</span><div class="flex gap-4"><a href="#" id="openPrivacyFooter" class="hover:text-white transition-colors">Политика конфиденциальности</a><a href="#application" class="hover:text-white transition-colors">Оставить заявку</a></div></div></div>
-    </footer>
-
-    <!-- Modals (Privacy Modal оставлен, Consultation Modal тоже с изменённой формой) -->
-    <div id="consultationModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
-        <div class="modal-content bg-gray-800 rounded-2xl max-w-lg w-full p-6 lg:p-8 relative max-h-[90vh] overflow-y-auto">
-            <button class="closeModal absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-gray-600 transition-colors">×</button>
-            <h3 class="text-2xl font-bold mb-6 text-center">Бесплатная консультация</h3>
-            <p class="text-gray-400 text-center mb-6">Заполните — данные отправятся в мессенджер</p>
-            <form id="modalContactForm" class="space-y-4">
-                <div><label class="block text-sm font-medium text-gray-300 mb-1">Имя *</label><input type="text" name="name" required class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" placeholder="Ваше имя"></div>
-                <div><label class="block text-sm font-medium text-gray-300 mb-1">Телефон *</label><input type="tel" name="phone" required class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" placeholder="+7 (___) ___-__-__"></div>
-                <div><label class="block text-sm font-medium text-gray-300 mb-1">Задача</label><select name="task" class="w-full px-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700 text-white focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"><option value="">Выберите направление</option><option value="calls">Контроль качества звонков</option><option value="legal">Юридические консультации</option><option value="meetings">Протоколы совещаний</option><option value="sales">Продажи и лидогенерация</option><option value="support">Поддержка клиентов</option><option value="other">Другое</option></select></div>
-                <div><label class="block text-sm font-medium text-gray-300 mb-2">Выберите мессенджер:</label><div class="flex flex-wrap gap-4"><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="messenger" value="telegram" checked class="w-4 h-4 text-brand-500 bg-gray-900 border-gray-600 focus:ring-brand-500"><span class="text-gray-300">📱 Telegram</span></label><label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="messenger" value="max" class="w-4 h-4 text-brand-500 bg-gray-900 border-gray-600 focus:ring-brand-500"><span class="text-gray-300">💬 MAX Messenger</span></label></div></div>
-                <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-500 to-accent-500 hover:from-brand-600 hover:to-accent-600 text-white font-semibold transition-all hover:scale-[1.02]">Отправить заявку</button>
-                <p class="text-xs text-gray-500 text-center">Отправляя, вы соглашаетесь с <a href="#" id="modalPrivacyLink" class="text-brand-400 hover:underline">политикой конфиденциальности</a></p>
-            </form>
-            <div id="modalSuccessMessage" class="hidden text-center py-8"><div class="text-5xl mb-4">✅</div><h4 class="text-xl font-bold mb-2">Заявка готова!</h4><p class="text-gray-400">Сейчас откроется мессенджер — отправьте сообщение, и я свяжусь.</p></div>
-        </div>
-    </div>
-
-    <div id="privacyModal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"><div class="modal-content bg-gray-800 rounded-2xl max-w-lg w-full p-6 lg:p-8 relative max-h-[90vh] overflow-y-auto"><button class="closeModal absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-gray-600 transition-colors">×</button><h3 class="text-2xl font-bold mb-6 text-center">Политика конфиденциальности</h3><div class="prose prose-invert text-gray-300 text-sm space-y-4"><p>Настоящая Политика регулирует обработку персональных данных...</p><div><h4 class="font-semibold text-white mb-2">1. Сбор данных</h4><p class="text-gray-400">Мы собираем имя, номер телефона, email и описание задачи из формы обратной связи. Данные используются исключительно для связи с вами.</p></div><div><h4 class="font-semibold text-white mb-2">2. Использование данных</h4><p class="text-gray-400">Данные используются для ответа на ваш запрос и формирования коммерческого предложения.</p></div><div><h4 class="font-semibold text-white mb-2">3. Хранение</h4><p class="text-gray-400">Данные хранятся в защищённых мессенджерах и не передаются третьим лицам. Срок хранения — не более 3 лет.</p></div><div><h4 class="font-semibold text-white mb-2">4. Права субъекта</h4><p class="text-gray-400">По ФЗ № 152-ФЗ вы вправе запросить уточнение или уничтожение ваших данных. Запрос: Telegram @DmitryTo1986.</p></div><div><h4 class="font-semibold text-white mb-2">5. Контакты</h4><p class="text-gray-400">Telegram: @DmitryTo1986 · Тел: +7 (936) 258-53-87</p></div></div><button class="closeModal w-full mt-6 py-3 rounded-xl bg-gray-700 hover:bg-gray-600 text-white font-semibold transition-colors">Понятно</button></div></div>
-
-    <script>
-        // Tools data (полностью сохранён)
-        const toolsData = [
-            { name: "ChatGPT", icon: "✦", category: "llm", plan: "Freemium", desc: "Самый популярный чат-ИИ от OpenAI. GPT-4o доступен бесплатно, GPT-o3 и агенты — платно (Plus ~$20/мес).", tags: ["GPT-4o", "Агенты", "Поиск", "DALL-E"], url: "https://chatgpt.com", free: false },
-            { name: "Claude", icon: "✦", category: "llm", plan: "Freemium", desc: "Лучший для длинных документов и анализа. Claude Sonnet 4.6 — мощная бесплатная версия. Pro (Claude Opus) — $20/мес.", tags: ["Документы", "Анализ", "Код"], url: "https://claude.ai", free: false },
-            { name: "Gemini", icon: "🌟", category: "llm", plan: "Freemium", desc: "Google Gemini 2.5 Pro — лучший у Google. Глубокая интеграция с сервисами Google, мультимодальность. Бесплатно с лимитами.", tags: ["Мультимодальный", "Google", "Поиск"], url: "https://gemini.google.com", free: false },
-            { name: "DeepSeek R2", icon: "🐋", category: "llm", plan: "Freemium", desc: "Китайская альтернатива GPT-4. Бесплатный доступ к чату, мощное рассуждение, открытые веса. Один из лучших по соотношению цена/качество.", tags: ["Reasoning", "Open-source", "Бесплатно"], url: "https://www.deepseek.com", free: true },
-            { name: "Perplexity", icon: "🔍", category: "llm", plan: "Freemium", desc: "AI-поисковик с актуальными ответами из интернета и ссылками. Лучший инструмент для исследований и актуальной информации.", tags: ["Поиск", "Источники", "Актуально"], url: "https://www.perplexity.ai", free: false },
-            { name: "OpenRouter", icon: "🔀", category: "llm", plan: "Free", desc: "200 запросов/день бесплатно, без кредитной карты. OpenAI-совместимый API. Много бесплатных моделей: Llama, Mistral, Qwen.", tags: ["200 req/день", "OpenAI SDK", "Бесплатно"], url: "https://openrouter.ai", free: true },
-            { name: "Groq", icon: "🚀", category: "llm", plan: "Free", desc: "300+ токенов/с — самый быстрый LLM API в мире. Llama 3.3 70B. Щедрый бесплатный уровень, кредитная карта не нужна.", tags: ["300 т/с", "Llama 3.3", "Бесплатно"], url: "https://console.groq.com", free: true },
-            { name: "Mistral AI", icon: "🔺", category: "llm", plan: "Free", desc: "1 млн токенов/день бесплатно. Европейский провайдер, без кредитной карты. GDPR-совместимый — отличный выбор для российских и европейских данных.", tags: ["1M токенов/день", "Европа", "GDPR"], url: "https://console.mistral.ai", free: true },
-            { name: "NotebookLM", icon: "📓", category: "llm", plan: "Free", desc: "ИИ для работы с вашими документами. Загружаете PDF/текст — получаете резюме, ответы на вопросы, AI-подкасты из материалов.", tags: ["Документы", "Подкасты", "Google", "Бесплатно"], url: "https://notebooklm.google.com", free: true },
-            { name: "Yandex AI (YaGPT)", icon: "🔴", category: "llm", plan: "Freemium", desc: "Яндекс GPT агент. Работает без VPN, глубокая интеграция с сервисами Яндекса. Хорошо понимает российский контекст.", tags: ["Русский", "Без VPN", "Яндекс"], url: "https://ya.ru/ai/gpt", free: false },
-            { name: "GPT-4.1", icon: "🤖", category: "llm", plan: "Платно", desc: "Новейшая флагманская модель OpenAI. Улучшенный контекст, точность и скорость. Идеально для сложных задач и анализа.", tags: ["GPT-4.1", "Context", "OpenAI"], url: "https://openai.com", free: false },
-            { name: "GPT-4.1-nano", icon: "⚡", category: "llm", plan: "Freemium", desc: "Ультрабыстрая и дешёвая модель OpenAI для потоковых задач. Отличный баланс скорости и качества для транскрибации и классификации.", tags: ["Быстро", "Дёшево", "Потоковые задачи"], url: "https://openai.com", free: false },
-            { name: "Gemini 2.5 Pro", icon: "🌊", category: "llm", plan: "Freemium", desc: "Флагманская мультимодальная модель Google. Лучший анализ длинных документов (2М+ токенов контекста).", tags: ["2M токенов", "Мультимодальный", "Google"], url: "https://ai.google.dev", free: false },
-            { name: "Llama 3.3", icon: "🦙", category: "llm", plan: "Open-source", desc: "Open-source LLM от Meta. 70B параметров, отличная производительность. Работает через Groq, OpenRouter, локально.", tags: ["70B", "Meta", "Open-source"], url: "https://ai.meta.com", free: true },
-            { name: "Qwen 2.5", icon: "🔮", category: "llm", plan: "Open-source", desc: "Мощная китайская open-source модель. Лидер на HuggingFace. Доступна через OpenRouter и API.", tags: ["Open-source", "HuggingFace", "Многоязычный"], url: "https://qwenlm.github.io", free: true },
-            { name: "Genspark", icon: "✨", category: "agent", plan: "Freemium", desc: "Поисковой ИИ-агент нового поколения. Создаёт интерактивные страницы-отчёты с агрегацией из множества источников по вашему запросу.", tags: ["Поиск", "Агент", "Отчёты"], url: "https://genspark.ai", free: false },
-            { name: "Manus", icon: "🦾", category: "agent", plan: "Платно", desc: "Автономный ИИ-агент для сложных многоэтапных задач: исследование, написание кода, работа с файлами. Действует без постоянного контроля.", tags: ["Автономный", "Многоэтапный", "Файлы"], url: "https://manus.ai", free: false },
-            { name: "n8n", icon: "🔗", category: "agent", plan: "Freemium", desc: "No-code конструктор AI-агентов и автоматизаций. Self-host — полностью бесплатно. Сотни интеграций. Используем в наших проектах.", tags: ["No-code", "Self-host", "600+ интеграций"], url: "https://n8n.io", free: false },
-            { name: "OpenAI Agent Builder", icon: "⚙️", category: "agent", plan: "Freemium", desc: "Официальный конструктор агентов от OpenAI на базе Agents SDK. Визуальный редактор + API. Подключение MCP-серверов, инструментов и веб-поиска.", tags: ["Agents SDK", "MCP", "OpenAI"], url: "https://platform.openai.com/agent-builder", free: false },
-            { name: "Gamma", icon: "📊", category: "agent", plan: "Freemium", desc: "Автоматическое создание презентаций, лендингов и документов через ИИ. Достаточно описать идею — Gamma генерирует готовый дизайн.", tags: ["Презентации", "Лендинги", "Документы"], url: "https://gamma.app", free: false },
-            { name: "Base44", icon: "🏗️", category: "app", plan: "Freemium", desc: "ИИ-конструктор полноценных веб-приложений из текстового промпта. Frontend + backend + БД + авторизация — из коробки без кода. Приобретён Wix в 2025. Бесплатно: 5 запросов/день.", tags: ["No-code", "Full-stack", "Wix", "MVP"], url: "https://base44.com", free: false },
-            { name: "OpenRAG SDK", icon: "📚", category: "app", plan: "Open-source", desc: "Python SDK для построения RAG-систем. Объединяет Langflow (визуальный пайплайн), OpenSearch (векторный поиск) и Docling (обработка документов). Docker.", tags: ["RAG", "Langflow", "OpenSearch", "Open-source"], url: "https://pypi.org/project/openrag-sdk", free: true },
-            { name: "Sora 2", icon: "🎥", category: "video", plan: "Платно", desc: "Генерация реалистичных видео с аудио от OpenAI. Доступно в ChatGPT Plus/Pro. Sora 2 — улучшенный реализм и управление движением.", tags: ["Sora 2", "Аудио", "ChatGPT Plus"], url: "https://sora.chatgpt.com", free: false },
-            { name: "Veo 3.1 (Google)", icon: "🌊", category: "video", plan: "Платно", desc: "Veo 3.1 от Google — улучшенный контроль движения, реалистичная физика. Доступен через AI Studio.", tags: ["Veo 3.1", "Google", "Физика"], url: "https://aistudio.google.com/models/veo-3", free: false },
-            { name: "Runway Gen-4.5", icon: "🎞️", category: "video", plan: "Freemium", desc: "Управляемые готовые к производству видео. Gen-4.5 с HDR. Профессиональный стандарт для коммерческих проектов.", tags: ["Gen-4.5", "HDR", "Профи"], url: "https://runwayml.com", free: false },
-            { name: "Kling AI", icon: "🎬", category: "video", plan: "Freemium", desc: "Качественная видеогенерация с хорошим реализмом, управлением движением и камерой. Один из лучших вариантов с freemium-доступом.", tags: ["Реализм", "Управление", "Камера"], url: "https://app.klingai.com", free: false },
-            { name: "HeyGen", icon: "🎙️", category: "video", plan: "Freemium", desc: "Перевод и дублирование видео с сохранением голоса говорящего и синхронизацией губ. Лучший инструмент для локализации видео-контента.", tags: ["Перевод", "Дублирование", "Аватар"], url: "https://app.heygen.com", free: false },
-            { name: "Pika 2.2", icon: "💫", category: "video", plan: "Freemium", desc: "Быстрая генерация и редактирование видео, анимация фото. Pika 2.2 — улучшенное качество и эффекты. Есть бесплатные кредиты.", tags: ["Pika 2.2", "Анимация фото", "Эффекты"], url: "https://pika.art", free: false },
-            { name: "Adobe Firefly (Video)", icon: "🔥", category: "video", plan: "Freemium", desc: "Adobe генерирует видео и изображения, обученные на лицензированном контенте — безопасно для коммерческого использования.", tags: ["Коммерческий", "Видео", "Adobe"], url: "https://firefly.adobe.com", free: false },
-            { name: "Midjourney", icon: "🎨", category: "image", plan: "Freemium", desc: "Лучший инструмент для художественных изображений. V7 — революционное качество. Работает через Discord и веб. Базовый план от $10/мес.", tags: ["Арт", "V7", "Discord"], url: "https://midjourney.com", free: false },
-            { name: "Flux / Ideogram 3", icon: "⚡", category: "image", plan: "Freemium", desc: "Flux Schnell — самый быстрый open-source image gen. Ideogram 3 — лучший для изображений с текстом и логотипами. Оба с бесплатным доступом.", tags: ["Flux", "Ideogram 3", "Текст"], url: "https://ideogram.ai", free: true },
-            { name: "Recraft V3", icon: "🖊️", category: "image", plan: "Free", desc: "Генерация SVG-векторной графики, UI-элементов и иконок. Лучший выбор для дизайнеров. Recraft V3 — топ по HuggingFace. Бесплатные кредиты.", tags: ["SVG", "Вектор", "UI/UX", "Иконки"], url: "https://www.recraft.ai", free: true },
-            { name: "Adobe Firefly (Image)", icon: "🔥", category: "image", plan: "Freemium", desc: "Безопасная для коммерческого использования генерация от Adobe. Обучен на лицензированном контенте. Интеграция с Photoshop и Illustrator.", tags: ["Коммерческий", "Photoshop", "Adobe"], url: "https://firefly.adobe.com", free: false },
-            { name: "Remove.bg", icon: "✂️", category: "image", plan: "Free", desc: "Автоматическое удаление фона с фотографий. Бесплатно с водяным знаком или низким разрешением. API для разработчиков.", tags: ["Удаление фона", "API", "Авто"], url: "https://www.remove.bg", free: true },
-            { name: "Stable Diffusion", icon: "🌌", category: "image", plan: "Open-source", desc: "Open-source image gen, запускается локально. Полный контроль над моделью. ComfyUI / Automatic1111 для гибкой настройки. Бесплатно навсегда.", tags: ["Open-source", "Локально", "ComfyUI"], url: "https://huggingface.co/stabilityai", free: true },
-            { name: "Chatterbox TTS", icon: "🔊", category: "voice", plan: "Open-source MIT", desc: "Open-source TTS от Resemble AI. Поддержка 23 языков, уникальный контроль экспрессивности и интенсивности голоса. Обучен на 0.5 млн часов. MIT — бесплатно для коммерческого использования.", tags: ["Open-source", "23 языка", "MIT", "Экспрессивность"], url: "https://github.com/resemble-ai/chatterbox", free: true },
-            { name: "Resemble AI", icon: "🎤", category: "voice", plan: "Freemium", desc: "Коммерческий сервис TTS и клонирования голоса. Высокое качество, API-интеграция, поддержка реал-тайм генерации. Создатели Chatterbox.", tags: ["Клонирование", "API", "Real-time"], url: "https://app.resemble.ai", free: false },
-            { name: "Cursor", icon: "✏️", category: "code", plan: "Freemium", desc: "AI-нативная IDE — лучший инструмент для вайб-кодинга. Глубокий контекст всего проекта, автодополнение, чат с кодом. Совместим с VSCode-расширениями.", tags: ["IDE", "Vibe-coding", "GPT/Claude"], url: "https://cursor.sh", free: false },
-            { name: "Claude Code", icon: "⌨️", category: "code", plan: "Платно", desc: "Агентный ИИ для кода в терминале от Anthropic. Читает файлы, пишет код, запускает тесты, делает git-коммиты самостоятельно.", tags: ["CLI", "Агент", "Anthropic"], url: "https://claude.ai", free: false },
-            { name: "Gemini CLI", icon: "🖥️", category: "code", plan: "Free", desc: "CLI-инструмент Gemini от Google. Полностью бесплатно с ключом AI Studio (500 req/день). Работает в терминале, поддерживает контекст проекта.", tags: ["CLI", "Бесплатно", "Google"], url: "https://github.com/google-gemini/gemini-cli", free: true },
-        ];
-
-        function renderTools(filter = 'all', search = '') { /* полностью сохранён */ 
-            const grid = document.getElementById('toolsGrid');
-            let filtered = toolsData;
-            if (filter === 'free') filtered = toolsData.filter(t => t.free);
-            else if (filter !== 'all') filtered = toolsData.filter(t => t.category === filter);
-            if (search) { const s = search.toLowerCase(); filtered = filtered.filter(t => t.name.toLowerCase().includes(s) || t.desc.toLowerCase().includes(s) || t.tags.some(tg => tg.toLowerCase().includes(s))); }
-            grid.innerHTML = filtered.map(tool => `<div class="tool-card animate-on-scroll rounded-xl p-4 ${tool.free ? 'border-l-4 border-l-green-500' : 'border-l-4 border-l-brand-500'} bg-gray-800/40 border border-gray-700/50 hover:border-gray-600 transition-all"><div class="flex items-start justify-between mb-3"><div class="flex items-center gap-2"><span class="text-2xl">${tool.icon}</span><h4 class="font-semibold text-white">${tool.name}</h4></div>${tool.free ? '<span class="px-2 py-0.5 rounded bg-green-500/10 text-green-400 text-xs font-medium">🆓 Free</span>' : '<span class="px-2 py-0.5 rounded bg-gray-700 text-gray-400 text-xs font-medium">'+tool.plan+'</span>'}</div><p class="text-gray-400 text-sm mb-3 leading-relaxed">${tool.desc}</p><div class="flex flex-wrap gap-1.5 mb-3">${tool.tags.map(tag => `<span class="px-2 py-0.5 rounded bg-gray-900/60 text-gray-300 text-xs">${tag}</span>`).join('')}</div><a href="${tool.url}" target="_blank" class="inline-flex items-center gap-1 text-brand-400 hover:text-brand-300 text-sm font-medium group">Перейти →</a></div>`).join('');
-            setTimeout(() => { document.querySelectorAll('.tool-card.animate-on-scroll').forEach(el => el.classList.add('visible')); }, 50);
-        }
-
-        const faqData = [{ q: "Сколько стоит разработка AI-агента?", a: "Стоимость начинается от 50 000 ₽ за готовое решение. Индивидуальная разработка — от 100 000 ₽. Точную цену рассчитываем после бесплатной консультации. Большинство клиентов окупают инвестицию за 1–2 месяца." },{ q: "Как долго длится разработка?", a: "Прототип — 5–7 рабочих дней. Полноценный агент с интеграцией — 2–4 недели. Сроки фиксируются в договоре." },{ q: "Нужны ли технические знания для использования агента?", a: "Нет. Агент разрабатывается с учётом вашей команды — Telegram-бот, веб-интерфейс или интеграция в CRM. Провожу обучение сотрудников и предоставляю инструкции. Пользоваться так же просто, как мессенджером." },{ q: "Как агент интегрируется с нашими системами?", a: "Агент подключается через API к вашим CRM (amoCRM, Битрикс24), телефонии (Mango, UIS), мессенджерам, 1С, Google Sheets. Если у системы есть API — интеграция возможна." },{ q: "Безопасны ли данные нашей компании?", a: "Да. Данные не передаются третьим лицам. Агент разворачивается на вашем или арендованном сервере. Использую российские провайдеры (Yandex Cloud, Selectel). Заключаю NDA." },{ q: "Какой лучший бесплатный LLM API для разработчиков?", a: "В 2026 году топ-3: Google Gemini AI Studio (500 req/день, без карты), OpenRouter (200 req/день, много моделей), Groq (самый быстрый — 300+ токенов/с). Все они в каталоге инструментов на этой странице." },{ q: "Что если агент сделает ошибку?", a: "Агент настраивается с порогами уверенности. Критические решения остаются за человеком. Все действия логируются для аудита." }];
-        function renderFAQ() { document.getElementById('faqContainer').innerHTML = faqData.map((item,i) => `<div class="faq-item animate-on-scroll rounded-xl border border-gray-700 bg-gray-800/30 overflow-hidden" data-index="${i}"><button class="faq-question w-full px-5 py-4 flex items-center justify-between text-left hover:bg-gray-800/50 transition-colors"><span class="font-medium text-white pr-4">${item.q}</span><svg class="faq-icon w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div class="faq-answer px-5 text-gray-400 text-sm leading-relaxed">${item.a}</div></div>`).join(''); }
-
-        // Обработчик форм с отправкой данных в мессенджер
-        function setupFormSubmit(formId, successMsgId, closeModalAfter = false) {
-            const form = document.getElementById(formId);
-            if (!form) return;
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const formData = new FormData(form);
-                const messenger = formData.get('messenger');
-                let name = formData.get('name') || '';
-                let phone = formData.get('phone') || '';
-                let email = formData.get('email') || '';
-                let business = formData.get('business') || '';
-                let task = formData.get('task') || '';
-                let description = formData.get('description') || '';
-                const text = `*Новая заявка с сайта AI Agent Factory*\nИмя: ${name}\nТелефон: ${phone}\nEmail: ${email}\nСфера: ${business}\nЗадача: ${task}\nОписание: ${description}`;
-                const encoded = encodeURIComponent(text);
-                let url = '';
-                if (messenger === 'telegram') {
-                    url = `https://t.me/DmitryTo1986?text=${encoded}`;
-                } else if (messenger === 'max') {
-                    url = `https://max.ru/u/f9LHodD0cOJlUbclcgcvXdPsrH3GSXkGr5454frvZB0OtFDna956oV4lpjw?text=${encoded}`;
-                }
-                form.classList.add('hidden');
-                const successDiv = document.getElementById(successMsgId);
-                if (successDiv) successDiv.classList.remove('hidden');
-                if (url) {
-                    setTimeout(() => { window.open(url, '_blank'); if (closeModalAfter) { closeAllModals(); } }, 1000);
-                } else {
-                    setTimeout(() => { if (closeModalAfter) closeAllModals(); }, 1000);
-                }
-            });
-        }
-
-        function closeAllModals() { document.querySelectorAll('.modal').forEach(m => m.classList.remove('active')); document.body.style.overflow = ''; }
-        function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
-
-        // Live ffmpeg demo — talks to /api/process (ffmpeg-api container behind nginx)
-        function setupVideoTools() {
-            const modeButtonsWrap = document.getElementById('vtModeButtons');
-            if (!modeButtonsWrap) return;
-            let vtMode = 'trim';
-
-            function applyVtMode(mode) {
-                vtMode = mode;
-                document.querySelectorAll('.vt-mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
-                document.querySelectorAll('[data-vt-field]').forEach(el => {
-                    const modes = el.dataset.vtField.split(',');
-                    el.classList.toggle('hidden', !modes.includes(mode));
-                });
-            }
-            modeButtonsWrap.addEventListener('click', (e) => {
-                const btn = e.target.closest('.vt-mode-btn');
-                if (btn) applyVtMode(btn.dataset.mode);
-            });
-
-            const vtVolume = document.getElementById('vtVolume');
-            const vtVolVal = document.getElementById('vtVolVal');
-            vtVolume?.addEventListener('input', () => { vtVolVal.textContent = vtVolume.value; });
-
-            const vtForm = document.getElementById('vtForm');
-            const vtStatus = document.getElementById('vtStatus');
-            const vtResult = document.getElementById('vtResult');
-            const vtResultVideo = document.getElementById('vtResultVideo');
-            const vtResultAudio = document.getElementById('vtResultAudio');
-            const vtDownloadLink = document.getElementById('vtDownloadLink');
-            const vtSubmitBtn = document.getElementById('vtSubmitBtn');
-            const audioExts = ['mp3', 'wav', 'm4a', 'ogg', 'flac'];
-
-            function setStatus(text, isError) {
-                vtStatus.textContent = text;
-                vtStatus.classList.remove('hidden');
-                vtStatus.classList.toggle('text-red-400', !!isError);
-                vtStatus.classList.toggle('text-gray-400', !isError);
-            }
-
-            vtForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                vtResult.classList.add('hidden');
-                const fd = new FormData();
-                fd.append('mode', vtMode);
-
-                try {
-                    if (vtMode === 'trim') {
-                        const file = document.getElementById('vtTrimFile').files[0];
-                        if (!file) throw new Error('Выберите файл для обрезки');
-                        fd.append('file', file);
-                        fd.append('start', document.getElementById('vtStart').value);
-                        fd.append('end', document.getElementById('vtEnd').value);
-                    } else {
-                        const video = document.getElementById('vtVideo').files[0];
-                        const audio = document.getElementById('vtAudio').files[0];
-                        if (!video || !audio) throw new Error('Выберите видео и аудио файл');
-                        fd.append('video', video);
-                        fd.append('audio', audio);
-                        if (vtMode === 'mix') {
-                            fd.append('music_volume', document.getElementById('vtVolume').value);
-                        } else if (vtMode === 'duck') {
-                            fd.append('threshold', document.getElementById('vtThreshold').value);
-                            fd.append('ratio', document.getElementById('vtRatio').value);
-                            fd.append('attack', document.getElementById('vtAttack').value);
-                            fd.append('release', document.getElementById('vtRelease').value);
-                        }
-                    }
-
-                    vtSubmitBtn.disabled = true;
-                    setStatus('Обрабатываю на сервере — это может занять до пары минут...', false);
-
-                    const resp = await fetch('/api/process', { method: 'POST', body: fd });
-                    let data = null;
-                    try { data = await resp.json(); } catch (_) { /* non-JSON body */ }
-                    if (!resp.ok || !data || !data.job_id) {
-                        throw new Error((data && data.error) || 'Ошибка обработки');
-                    }
-
-                    const filename = data.filename || 'result.mp4';
-                    const resultUrl = `/api/result/${data.job_id}`;
-                    const downloadUrl = `${resultUrl}?download=1`;
-                    const isAudio = audioExts.some(ext => filename.toLowerCase().endsWith('.' + ext));
-
-                    vtStatus.classList.add('hidden');
-                    vtResult.classList.remove('hidden');
-                    vtResultVideo.classList.toggle('hidden', isAudio);
-                    vtResultAudio.classList.toggle('hidden', !isAudio);
-                    if (isAudio) { vtResultAudio.src = resultUrl; vtResultVideo.removeAttribute('src'); }
-                    else { vtResultVideo.src = resultUrl; vtResultAudio.removeAttribute('src'); }
-                    vtDownloadLink.href = downloadUrl;
-                    vtDownloadLink.download = filename;
-
-                    // Файл реально лежит на сервере по downloadUrl с заголовком
-                    // Content-Disposition: attachment — скачивание через скрытый iframe
-                    // работает надёжно на любом устройстве (включая мобильный Safari),
-                    // в отличие от blob-URL с программным кликом. Кнопка ниже остаётся
-                    // как гарантированный способ скачать вручную, если что-то заблокирует iframe.
-                    const dlFrame = document.createElement('iframe');
-                    dlFrame.style.display = 'none';
-                    dlFrame.src = downloadUrl;
-                    document.body.appendChild(dlFrame);
-                    setTimeout(() => dlFrame.remove(), 15000);
-                } catch (err) {
-                    setStatus(err.message || 'Ошибка обработки', true);
-                } finally {
-                    vtSubmitBtn.disabled = false;
-                }
-            });
-
-            applyVtMode('trim');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderTools(); renderFAQ(); setupVideoTools();
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderTools(btn.dataset.filter, document.getElementById('toolSearch').value); }));
-            document.getElementById('toolSearch').addEventListener('input', (e) => { renderTools(document.querySelector('.filter-btn.active').dataset.filter, e.target.value); });
-            document.getElementById('faqContainer').addEventListener('click', (e) => { const item = e.target.closest('.faq-item'); if (!item) return; const wasOpen = item.classList.contains('open'); document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open')); if (!wasOpen) item.classList.add('open'); });
-            const mobileMenu = document.getElementById('mobileMenu');
-            document.getElementById('mobileMenuBtn').addEventListener('click', () => mobileMenu.classList.add('open'));
-            document.getElementById('closeMobileMenu').addEventListener('click', () => mobileMenu.classList.remove('open'));
-            document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
-            document.querySelectorAll('.closeModal').forEach(btn => btn.addEventListener('click', closeAllModals));
-            document.querySelectorAll('.modal').forEach(modal => modal.addEventListener('click', (e) => { if (e.target === modal) closeAllModals(); }));
-            document.getElementById('openPrivacyModal')?.addEventListener('click', (e) => { e.preventDefault(); openModal('privacyModal'); });
-            document.getElementById('openPrivacyFooter')?.addEventListener('click', (e) => { e.preventDefault(); openModal('privacyModal'); });
-            document.getElementById('modalPrivacyLink')?.addEventListener('click', (e) => { e.preventDefault(); openModal('privacyModal'); });
-            setupFormSubmit('contactForm', 'successMessage', false);
-            setupFormSubmit('modalContactForm', 'modalSuccessMessage', true);
-            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-            let lastScroll = 0;
-            window.addEventListener('scroll', () => { const navbar = document.getElementById('navbar'); const scrollY = window.scrollY; if (scrollY > 100) { navbar.classList.add('shadow-lg', 'bg-gray-900/95'); } else { navbar.classList.remove('shadow-lg', 'bg-gray-900/95'); } lastScroll = scrollY; });
-        });
-    </script>
+<script>
+var S={node:"open",obj:null,cat:"",cond:"",status:"",hist:[]};
+var $=function(i){return document.getElementById(i)};
+function esc(t){return String(t).replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c]})}
+function ph(t){return esc(t).replace(/\{me\}/g,"<b>[ваше имя]</b>").replace(/\{fio\}/g,"<b>[Имя Отчество]</b>")}
+var CONSENT={
+ auto:"Передаю информацию нашим партнёрам: Газпромбанк Автолизинг и Европлан. Лизинговые компании конкурируют, так что вы сравните предложения и выберете, где выгоднее. Менеджеры позвонят вам. Главное, ответьте на звонок и подтвердите потребность обоим. Вы не против?",
+ eq:"Передаю информацию в Европлан. Также могу передать запрос другим партнёрам, которые финансируют оборудование: Фера, Южноуральский лизинговый центр, БСПБ Лизинг, ПР-Лизинг, Инвест-Лизинг, Лизинг-Медицина. Так вы сравните предложения. Вы не против звонков от менеджеров?",
+ re:"Могу передать запрос нашим партнёрам, которые финансируют недвижимость: Интерлизинг, Инвестлизинг, Балтийский лизинг, ПР-Лизинг, Совкомбанк Лизинг, Эконом Лизинг. Они сделают предложения, вы выберете выгодное. Главное, ответьте на звонок и подтвердите потребность. Вы не против?",
+ "":"Передам информацию менеджерам Газпром Лизинга, Европлана и Сберлизинга. Они сконкурируют между собой, а вы сравните предложения. Главное, ответьте на звонок и подтвердите потребность. Вы не против?"
+};
+var PH=["Открытие","Потребность","Компания","Согласие","Итог"];
+var N={
+open:{p:0,stage:"Скажите",
+ say:"Добрый день, {fio}? Меня зовут {me}, я партнёр Газпром Лизинг, Европлан и Сберлизинг. Звоню коротко, одним вопросом: вы сейчас рассматриваете покупку в лизинг?",
+ hook:"Клиент не сбросит, если: назвать его по имени-отчеству, сразу сказать «коротко, одним вопросом», назвать известные бренды и задать простой вопрос «да/нет». Не спрашивайте «удобно ли говорить?» и не рассказывайте о себе дольше 5 секунд.",
+ tips:["Улыбка в голосе, темп чуть быстрее обычного, без паузы после первой фразы.","Если перебивает, сразу переходите к вопросу и не оправдывайтесь."],
+ opts:[{t:"«Да, рассматриваем / есть планы»",go:"what"},{t:"«Нет, пока не рассматриваем»",go:"no"},{t:"«Уже работаем с Газпромом / Европланом»",obj:"have"},{t:"«Кто вы? Откуда номер?»",obj:"who"},{t:"«Не интересно / не нужно»",obj:"no_int",bad:1},{t:"«Занят, нет времени»",obj:"busy",bad:1}]},
+what:{p:1,say:"Отлично. Что планируете приобрести?",tips:["Выберите категорию по ответу: от неё зависят партнёры на шаге согласия."],
+ opts:[{t:"Авто / спецтехника",go:"isnew",set:{cat:"auto"}},{t:"Оборудование",go:"isnew",set:{cat:"eq"}},{t:"Недвижимость",go:"isnew",set:{cat:"re"}},{t:"Другое / не уточнил",go:"isnew",set:{cat:""}}]},
+isnew:{p:1,say:"Интересует новое или б/у?",tips:["Если б/у, дальше спросите про аванс и срок."],
+ opts:[{t:"Новое",go:"company",set:{cond:"new"}},{t:"Б/у",go:"company",set:{cond:"used"}},{t:"Изъятое",go:"company",set:{cond:"seized"}}]},
+company:{p:2,say:"На какую компанию вы будете оформлять?",hook:"Без компании лид бесполезен. Задайте вопрос уверенно и дождитесь названия.",tips:["Запишите название и, если назовёт, ИНН."],
+ opts:[{t:"Называет свою компанию",go:"lc"},{t:"Называет другую компанию (не свою)",go:"dir"},{t:"Не хочет называть",obj:"nocomp",bad:1}]},
+dir:{p:2,say:"Вы являетесь директором этой компании?",opts:[{t:"Да",go:"lc"},{t:"Нет",go:"dirname"}]},
+dirname:{p:2,say:"Подскажите, пожалуйста, ФИО директора и город компании.",tips:["Зафиксируйте контакт директора и назначьте повторный звонок."],opts:[{t:"Назвал → завершить",go:"end_blue"}]},
+lc:{p:2,say:"С какой-то лизинговой компанией уже работаете?",tips:["Если называет Газпром или Европлан: вы их партнёр, и можно сравнить условия."],
+ opts:[{t:"Нет / называет компанию",go:function(){return S.cond==="used"?"adv":"consent"}},{t:"«Нас всё устраивает»",obj:"have"}]},
+adv:{p:2,say:"Какой аванс и на какой срок рассматриваете?",tips:["Не обсуждайте ставки и условия."],opts:[{t:"Ответил",go:"consent"}]},
+consent:{p:3,say:function(){return CONSENT[S.cat]||CONSENT[""]},hook:"Лид сгорает, если клиент не ответит на звонок или не подтвердит интерес каждому менеджеру. Скажите это прямо и получите явное «да».",tips:["Цель: согласие на звонок. Почту и рассылку не предлагаем.","Не обещайте ставок и условий.","Говорите «передаю заявку» только в рамках реальных договорённостей с лизингодателями."],
+ opts:[{t:"«Да, пусть звонят»",go:"end_hot"},{t:"«Подумаю / не уверен»",obj:"think",bad:1},{t:"«Не надо звонков»",obj:"nocall",bad:1},{t:"Категорично отказался",go:"end_cold",bad:1}]},
+end_hot:{p:4,tag:"Горячий лид",say:"Я передам информацию менеджерам, они свяжутся с вами в ближайшее время. Ожидайте звонка. Спасибо за время, всего доброго!",tips:["Сразу занесите данные в CRM: ФИО, компания, предмет, новое/б/у, согласие."],status:"hot",end:1,opts:[]},
+no:{p:1,say:"Понял. Тогда, возможно, вас заинтересует изъятая техника? На неё действует скидка.",hook:"Не прощайтесь после «нет»: изъятая техника со скидкой — второй крючок.",
+ opts:[{t:"«А что есть?» / проявил интерес",go:"nowhat"},{t:"«Нет, не интересно»",go:"future"}]},
+nowhat:{p:1,say:"А что вас конкретно интересует?",
+ opts:[{t:"Авто / спецтехника",go:"company",set:{cat:"auto",cond:"seized"}},{t:"Оборудование",go:"company",set:{cat:"eq",cond:"seized"}},{t:"Недвижимость",go:"company",set:{cat:"re",cond:"seized"}}]},
+future:{p:1,say:"Подскажите, пожалуйста, в дальнейшем планируете покупку? Мы оперативно передадим запрос в компании, когда понадобится.",
+ opts:[{t:"«Возможно, позже»",go:"company",status:"warm"},{t:"«Нет, не планируем»",go:"end_cold"}]},
+end_cold:{p:4,tag:"Отказ",say:"Понял, спасибо за время. Если появится потребность, мы на связи. Всего доброго!",tips:["Отметка «отказ» в CRM. Не дожимайте."],status:"cold",end:1,opts:[]},
+end_blue:{p:4,tag:"Нужен директор",say:"Спасибо большое! Мы свяжемся с директором. Всего доброго!",tips:["Зафиксируйте ФИО директора и город."],status:"blue",end:1,opts:[]}
+};
+var O={
+have:{k:"Уже работаем с Газпром Лизингом / Европланом",say:"Отлично, значит, вы знаете эти компании, а я как раз их партнёр. Могу передать ваш запрос сразу нескольким лизинговым компаниям. Они сконкурируют, а вы сравните и выберете, где выгоднее. Что планируете приобрести?",tip:"Аргумент: конкуренция лизингодателей. Не критикуйте текущего поставщика.",back:"what"},
+who:{k:"Кто вы? Откуда номер?",say:"Меня зовут {me}, я партнёр Газпром Лизинга, Европлана и Сберлизинга. Возможно, вы или ваши коллеги интересовались лизингом или оставляли запрос в интернете, вот я и звоню уточнить, актуально ли это сейчас. Если нет, скажите, не буду отвлекать. Вы что-то рассматриваете в лизинг?",tip:"Говорите именно «возможно», а не утверждайте, что заявка была. Если клиент отвечает «я ничего не оставлял», спокойно: «Тогда прошу прощения, контакты нашёл в открытых источниках. Кстати, есть изъятая техника со скидкой, это может быть интересно?» и переходите к блоку про изъятую технику.",back:"what"},
+no_int:{k:"Не интересно / не нужно",say:"Понимаю, сейчас, возможно, нет задач. Один вопрос: бывает, что компании берут изъятую технику со скидкой. Это было бы вам интересно в будущем?",tip:"Не спорьте. Изъятая техника — мягкий второй вопрос.",back:"no"},
+busy:{k:"Занят, нет времени",say:"Понял, займу 30 секунд. Один вопрос: вы планируете покупку техники или оборудования в лизинг в ближайшее время?",tip:"Если снова «занят», уточните время для звонка и поставьте задачу в CRM.",back:"what"},
+mail:{k:"Пришлите на почту",say:"Понимаю. Условия зависят от техники и компании, поэтому в письме будет общий текст, а менеджер лизинговой компании за пару минут по телефону назовёт конкретные условия. Давайте передам ваш контакт. Что планируете приобрести?",tip:"Почту не предлагаем. Цель: согласие на звонок менеджера. Возвращайте клиента к потребности.",back:"what"},
+own:{k:"Покупаем за свои / без лизинга",say:"Понимаю. Лизинг как раз позволяет не замораживать оборотные деньги. Могу передать запрос лизингодателям, вы просто сравните их предложение со своим вариантом. Что присматриваете?",tip:"Без давления: сравнение, а не замена.",back:"what"},
+later:{k:"Перезвоните позже",say:"Конечно. Давайте я сразу передам менеджерам, и они позвонят в удобное для вас время. Когда лучше? И что планируете приобрести?",tip:"Цель: согласие на звонок менеджеров и удобное время. Время фиксируйте в CRM.",back:"what"},
+bank:{k:"Вы банк? Это не мошенники?",say:"Нет, я партнёр лизинговых компаний. Ничего не оформляю и не прошу данных карт. Передаю заявку менеджерам Газпром Лизинга и Европлана, они сами свяжутся с вами официально.",tip:"Не просите платёжных данных. Только компания, предмет и согласие.",back:"what"},
+price:{k:"Дорого / высокие ставки",say:"Ставки и условия определяют сами лизинговые компании, я их не обещаю. Но когда они конкурируют за клиента, обычно удаётся найти лучший вариант. Давайте передам запрос, а вы сравните.",tip:"Не называйте цифр и не обещайте условий.",back:"what"},
+sec:{k:"Секретарь / не директор",say:"Подскажите, пожалуйста, ФИО директора и как с ним связаться. Мы партнёр лизинговых компаний, хотим предложить условия по технике.",tip:"Цель: контакт директора или время звонка. Статус «Не директор».",back:"dirname"},
+nocomp:{k:"Не хочет называть компанию",say:"Я спрашиваю, чтобы менеджеры подготовили предложение именно под вашу компанию, без этого они не смогут рассчитать условия. Подскажете название?",tip:"Если откажется, отметьте «тёплый» и вежливо закройте звонок.",back:"lc"},
+think:{k:"Подумаю / не уверен",say:"Конечно, звонок ни к чему не обязывает: менеджер коротко расскажет условия, а решение за вами. Давайте передам, и вы сравните предложения.",tip:"Подчеркните, что звонок короткий и без обязательств, но не давите.",back:"consent"},
+nocall:{k:"Не надо звонков",say:"Понимаю. Это один короткий звонок на пару минут, без обязательств: менеджер назовёт условия и ответит на вопросы. Могу передать так, чтобы позвонили в удобное для вас время. Когда лучше?",tip:"Предложите выбрать время вместо отказа. Если клиент категорично против, нажмите «Категорично отказался» на шаге согласия.",back:"consent"},
+stop:{k:"Удалите из базы / не звоните",say:"Приношу извинения, сейчас пометим, что звонить не нужно. Всего доброго!",tip:"Сразу отметка «не звонить» в CRM. Никаких попыток удержать.",back:"end_cold"}
+};
+var ORDER=["have","no_int","mail","busy","who","own","later","price","bank","sec","nocomp","think","nocall","stop"];
+function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
+function setStatus(s){S.status=s;var m={hot:"Горячий",warm:"Тёплый",blue:"Не директор",cold:"Отказ"};var e=$("st");e.className="chip "+(s||"");e.textContent=s?m[s]:"Статус: —"}
+function sheet(o){$("side").classList.toggle("open",o);$("shade").classList.toggle("open",o);$("fab").classList.toggle("hide",o)}
+function bar(p){var s=$("steps");s.innerHTML="";PH.forEach(function(_,i){s.appendChild(el("i",i<p?"done":i===p?"now":""))});$("phase").textContent="Шаг "+(p+1)+" из "+PH.length+": "+PH[p]}
+function render(){
+ var m=$("main");m.innerHTML="";
+ document.querySelectorAll(".ob").forEach(function(b){b.classList.toggle("on",b.dataset.k===S.obj)});
+ if(S.obj){var o=O[S.obj];
+  m.appendChild(el("span","tag","Возражение: "+esc(o.k)));
+  m.appendChild(el("div","label","Скажите"));
+  m.appendChild(el("p","say",ph(o.say)));
+  m.appendChild(el("details","", "<summary>Совет</summary><p>"+esc(o.tip)+"</p>")).open=true;
+  var b=el("button","btn","Вернуться к скрипту");
+  b.onclick=function(){var k=S.obj;S.obj=null;if(k==="stop"||k==="nocall")setStatus("cold");go(O[k].back)};
+  m.appendChild(b);return}
+ var n=N[S.node];bar(n.p);
+ if(n.tag)m.appendChild(el("span","tag",esc(n.tag)));
+ m.appendChild(el("div","label","Скажите"));
+ var say=typeof n.say==="function"?n.say():n.say;
+ m.appendChild(el("p","say",ph(say)));
+ var d="";
+ if(n.hook)d+="<p>"+esc(n.hook)+"</p>";
+ if(n.tips&&n.tips.length)d+="<ul>"+n.tips.map(function(t){return"<li>"+esc(t)+"</li>"}).join("")+"</ul>";
+ if(d){var dt=el("details","","<summary>Подсказка менеджеру</summary>"+d);if(S.node==="open")dt.open=true;m.appendChild(dt)}
+ if(n.opts.length){m.appendChild(el("div","label","Что ответил клиент?"));
+  var w=el("div","opts");
+  n.opts.forEach(function(op){var b=el("button","opt"+(op.bad?" bad":""),esc(op.t));
+   b.onclick=function(){
+    if(op.set)for(var k in op.set)S[k]=op.set[k];
+    if(op.status)setStatus(op.status);
+    S.hist.push(S.node);
+    if(op.obj){S.obj=op.obj;render();window.scrollTo(0,0)}else go(typeof op.go==="function"?op.go():op.go);
+   };w.appendChild(b)});
+  m.appendChild(w)}
+ if(n.end){var r=el("button","btn","Начать новый звонок");r.onclick=reset;m.appendChild(r)}
+ else if(S.hist.length){var bk=el("button","back","← Назад");bk.onclick=function(){S.node=S.hist.pop()||"open";render()};m.appendChild(bk)}
+}
+function go(id){S.node=id;if(N[id].status)setStatus(N[id].status);render();window.scrollTo(0,0)}
+function reset(){S={node:"open",obj:null,cat:"",cond:"",status:"",hist:[]};setStatus("");render();window.scrollTo(0,0)}
+ORDER.forEach(function(k){var b=el("button","ob",esc(O[k].k));b.dataset.k=k;b.onclick=function(){S.obj=k;sheet(false);render();window.scrollTo(0,0)};$("objs").appendChild(b)});
+$("fab").onclick=function(){sheet(true)};$("shade").onclick=function(){sheet(false)};
+$("reset").onclick=reset;
+render();
+</script>
 </body>
 </html>

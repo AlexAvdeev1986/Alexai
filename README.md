@@ -12,10 +12,6 @@ project-root/                    ← этот самый корень
 ├── docker-compose.yml           ← заменить на новый (тот, что я прислал)
 ├── LICENSE
 ├── README.md
-├── ffmpeg-api/                  ← НОВАЯ папка, создать рядом с nginx/ 
-    ├── app.py
-│   ├── Dockerfile
-│   └── requirements.txt
 ├── nginx/
 │   └── your-site.conf                  ← заменить содержимым your-site.conf
 └── site/
@@ -127,7 +123,7 @@ git clone https://github.com/AlexAvdeev1986/Alexai.git
 ```nginx
 server {
     listen 81;
-    server_name agentfactory.ddns.net;
+    server_name leadfactory.ddns.net;
     root /usr/share/nginx/html;
     index index.html;
 
@@ -165,7 +161,7 @@ sudo nano /etc/nginx/sites-available/Alexai
 ```nginx
 server {
     listen 81;
-    server_name agentfactory.ddns.net;
+    server_name leadfactory.ddns.net;
 
     location / {
         proxy_pass http://127.0.0.1:8081;
@@ -204,7 +200,7 @@ journalctl -xeu nginx.service
 
 
 # Получите SSL-сертификат
-sudo certbot --nginx -d agentfactory.ddns.net
+sudo certbot --nginx -d leadfactory.ddns.net
 
 # Следуйте инструкциям certbot
 # Выберите опцию редиректа HTTP -> HTTPS
@@ -236,7 +232,7 @@ sudo certbot renew --dry-run
 
 ## Шаг 4: Проверка работы
 
-1. Откройте браузер и перейдите по адресу: `https://agentfactory.ddns.net`
+1. Откройте браузер и перейдите по адресу: `leadfactory.ddns.net`
 2. Убедитесь, что:
    - Сайт загружается
    - Используется HTTPS
@@ -286,7 +282,7 @@ sudo firewall-cmd --reload
 Пользователь → HTTPS (443) → Nginx (хост) → HTTP (127.0.0.1:8081) → Docker контейнер (Nginx)
 ```
 
-Теперь ваш сайт будет доступен по адресу `https://agentfactory.ddns.net` без отображения порта!
+Теперь ваш сайт будет доступен по адресу `leadfactory.ddns.net` без отображения порта!
 
 
 # Просмотр логов контейнера

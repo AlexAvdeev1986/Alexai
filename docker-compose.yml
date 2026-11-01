@@ -1,23 +1,10 @@
-# docker-compose.yml
 services:
   nginx:
     image: nginx:alpine
     container_name: Alexai
     ports:
-      - "127.0.0.1:8081:81"  # Слушаем только на localhost
+      - "127.0.0.1:8081:81"   # слушаем только localhost
     volumes:
       - ./nginx:/etc/nginx/conf.d/:ro
       - ./site:/usr/share/nginx/html:ro
-    depends_on:
-      - ffmpeg-api
-    restart: unless-stopped
-
-  ffmpeg-api:
-    build: ./ffmpeg-api
-    container_name: Alexai-ffmpeg-api
-    expose:
-      - "5000"               # доступен только внутри сети compose, наружу не публикуется
-    environment:
-      - FFMPEG_MAX_CONTENT_MB=500
-      - FFMPEG_TIMEOUT_SECONDS=600
     restart: unless-stopped
